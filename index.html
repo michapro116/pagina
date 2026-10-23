@@ -165,7 +165,6 @@ h4{font-size:22px;font-weight:400}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
-/* POPUP */
 .popup-overlay{position:fixed;inset:0;z-index:9999;background:rgba(26,26,26,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
 .popup-overlay.open{display:flex;animation:popupFadeIn .35s var(--ease)}
 .popup-overlay.open .popup-card{animation:popupSlideUp .5s var(--ease)}
@@ -553,7 +552,6 @@ h4{font-size:22px;font-weight:400}
   <span>Pedir</span>
 </a>
 
-<!-- POPUP OFERTA -->
 <div class="popup-overlay" id="timedPopup" role="dialog" aria-modal="true" aria-labelledby="timedTitle" aria-hidden="true">
   <div class="popup-card">
     <button class="popup-close" data-close aria-label="Cerrar oferta">×</button>
@@ -589,7 +587,6 @@ h4{font-size:22px;font-weight:400}
 <script>
 const WHATSAPP = '59173913409';
 
-/* Header scroll */
 (function(){
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => {
@@ -599,7 +596,6 @@ const WHATSAPP = '59173913409';
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* Menú móvil */
 (function(){
   const btn = document.getElementById('menuToggle');
   const nav = document.getElementById('mainNav');
@@ -610,7 +606,6 @@ document.getElementById('year').textContent = new Date().getFullYear();
   );
 })();
 
-/* Reveal */
 (function(){
   const els = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {
@@ -628,7 +623,6 @@ document.getElementById('year').textContent = new Date().getFullYear();
   els.forEach(el => io.observe(el));
 })();
 
-/* Saludo dinámico */
 function saludo(){
   const h = new Date().getHours();
   if (h >= 5 && h < 12) return 'Buenos días';
@@ -636,7 +630,6 @@ function saludo(){
   return 'Buenas noches';
 }
 
-/* Formulario → WhatsApp */
 (function(){
   const form = document.getElementById('pedidoForm');
   const status = document.getElementById('formStatus');
@@ -684,44 +677,37 @@ function saludo(){
 })();
 
 /* ============================================================
-   POPUP OFERTA — trigger SOLO botón atrás (PC + mobile) + 50% scroll
-   ------------------------------------------------------------
-   • Aparece cuando el usuario presiona ATRÁS (popstate)
-   • O cuando scrollea al 50%
-   • SOLO UNA VEZ por visita (el primero que dispare gana)
-   • Una vez mostrado, ya no aparece en esa visita → lo deja salir
-   • Próxima visita (nueva navegación) → se repite el ciclo
-   • Countdown persistente real (localStorage, se respeta el tiempo)
+   POPUP OFERTA — PC + Móvil
+   Triggers (el primero que ocurra gana, solo una vez por visita):
+     1. Botón atrás (popstate) — armado tras primera interacción
+     2. Scroll al 50% de la página
+     3. Móvil: scroll rápido hacia arriba (plan B)
+   Una vez mostrado → deja salir al usuario tranquilamente.
+   Nueva visita → ciclo se repite.
+   Countdown persistente real (localStorage).
    ============================================================ */
 (function () {
   'use strict';
 
-  const DEADLINE_KEY    = 'pausa_offer_deadline';
-  const VISIT_FLAG_KEY  = 'pausa_offer_shown_visit';
-  const COUNTDOWN_HOURS = 2;
-  const MIN_TIME_ON_PAGE = 2000;      // 2s mínimo (anti-brusco)
-  const SCROLL_TRIGGER   = 0.5;       // 50% del scroll
+  const DEADLINE_KEY        = 'pausa_offer_deadline';
+  const VISIT_FLAG_KEY      = 'pausa_offer_shown_visit';
+  const COUNTDOWN_HOURS     = 2;
+  const MIN_TIME_ON_PAGE    = 2000;
+  const SCROLL_TRIGGER_PCT  = 0.5;
+  const SCROLL_UP_THRESHOLD = 200;
+  const SCROLL_UP_TIME      = 300;
 
   const popup = document.getElementById('timedPopup');
   if (!popup) return;
 
-  /* -------- Detectar tipo de navegación -------- */
-  let navType = 'navigate';
-  try {
-    const entries = performance.getEntriesByType('navigation');
-    if (entries && entries[0] && entries[0].type) navType = entries[0].type;
-  } catch (e) {}
-
-  // Nueva visita → limpiamos el flag (recarga NO limpia)
-  if (navType === 'navigate' || navType === 'back_forward' || navType === '') {
-    try { sessionStorage.removeItem(VISIT_FLAG_KEY); } catch (e) {}
-  }
-
   const pageStart = Date.now();
   let active = false;
   let countdownInterval = null;
+  let historyArmed = false;
+  let lastScrollY = window.scrollY;
+  let lastScrollTime = Date.now();
+  let scrollUpAccum = 0;
 
-  /* -------- Deadline persistente (countdown real) -------- */
   function getDeadline() {
     let d = 0;
     try { d = parseInt(localStorage.getItem(DEADLINE_KEY) || '0', 10); } catch (e) {}
@@ -732,7 +718,6 @@ function saludo(){
     return d;
   }
 
-  /* -------- Flag por visita -------- */
   function alreadyShownThisVisit() {
     try { return sessionStorage.getItem(VISIT_FLAG_KEY) === '1'; }
     catch (e) { return false; }
@@ -741,10 +726,8 @@ function saludo(){
     try { sessionStorage.setItem(VISIT_FLAG_KEY, '1'); } catch (e) {}
   }
 
-  /* -------- Abrir / cerrar -------- */
   function openPopup() {
-    if (active) return;
-    if (alreadyShownThisVisit()) return;
+    if (active || alreadyShownThisVisit()) return;
     if (Date.now() - pageStart < MIN_TIME_ON_PAGE) return;
 
     markShownThisVisit();
@@ -771,7 +754,6 @@ function saludo(){
     }
   }
 
-  /* -------- Countdown -------- */
   function startCountdown() {
     const elH = popup.querySelector('[data-cd="h"]');
     const elM = popup.querySelector('[data-cd="m"]');
@@ -792,7 +774,6 @@ function saludo(){
     countdownInterval = setInterval(tick, 1000);
   }
 
-  /* -------- Cerrar con ESC, backdrop, X, "Ahora no" -------- */
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && active) closePopup();
   });
@@ -803,7 +784,6 @@ function saludo(){
     if (e.target === popup) closePopup();
   });
 
-  /* -------- Reconstruir href de WhatsApp -------- */
   const cta = popup.querySelector('.popup-cta');
   if (cta && cta.dataset.offer) {
     let msg = '¡Hola PAUSA! Quiero aprovechar ' + cta.dataset.offer;
@@ -812,45 +792,61 @@ function saludo(){
     cta.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
   }
 
-  /* ============================================================
-     TRIGGER 1 — BOTÓN ATRÁS (popstate) en PC + móvil
-     ------------------------------------------------------------
-     Truco: ponemos un "guard" en el history. Cuando el usuario
-     presiona atrás, se dispara popstate ANTES de salir. Ahí
-     volvemos a poner el guard (repeliendo la salida) y mostramos
-     el popup. Como el flag por visita queda activo, la próxima
-     vez que presione atrás NO hacemos el guard y lo dejamos salir.
-     ============================================================ */
-  if (!alreadyShownThisVisit()) {
-    try { history.pushState({ pausa: 'guard' }, '', location.href); } catch (e) {}
+  /* Armar el history guard tras primera interacción */
+  function armHistoryGuard() {
+    if (historyArmed || alreadyShownThisVisit()) return;
+    try {
+      history.pushState({ pausaGuard: true }, '', location.href);
+      historyArmed = true;
+    } catch (e) {}
   }
 
-  window.addEventListener('popstate', function () {
-    // Si ya apareció esta visita → dejamos salir tranquilo
-    if (alreadyShownThisVisit()) return;
-    // Si entró hace muy poco → no lo molestamos
-    if (Date.now() - pageStart < MIN_TIME_ON_PAGE) return;
+  window.addEventListener('scroll', armHistoryGuard, { once: true, passive: true });
+  window.addEventListener('touchstart', armHistoryGuard, { once: true, passive: true });
+  window.addEventListener('click', armHistoryGuard, { once: true });
 
-    // Reponemos el guard (repelando la salida) y mostramos el popup
-    try { history.pushState({ pausa: 'guard' }, '', location.href); } catch (e) {}
+  /* TRIGGER 1: botón atrás */
+  window.addEventListener('popstate', function () {
+    if (!historyArmed || alreadyShownThisVisit()) return;
+    try { history.pushState({ pausaGuard: true }, '', location.href); } catch (e) {}
     openPopup();
   });
 
-  /* ============================================================
-     TRIGGER 2 — 50% del scroll (una vez por visita)
-     ============================================================ */
-  function onScroll() {
+  /* TRIGGER 2: 50% de scroll */
+  function onScrollPercent() {
     if (alreadyShownThisVisit()) {
-      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('scroll', onScrollPercent);
       return;
     }
     const pct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
-    if (pct >= SCROLL_TRIGGER) {
-      window.removeEventListener('scroll', onScroll);
+    if (pct >= SCROLL_TRIGGER_PCT) {
+      window.removeEventListener('scroll', onScrollPercent);
       openPopup();
     }
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', onScrollPercent, { passive: true });
+
+  /* TRIGGER 3 (móvil): scroll rápido hacia arriba */
+  const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  if (isMobile) {
+    window.addEventListener('scroll', function () {
+      if (alreadyShownThisVisit()) return;
+      const now = Date.now();
+      const dt = now - lastScrollTime;
+      const dy = lastScrollY - window.scrollY;
+      if (dt < SCROLL_UP_TIME && dy > 0) {
+        scrollUpAccum += dy;
+      } else {
+        scrollUpAccum = 0;
+      }
+      lastScrollY = window.scrollY;
+      lastScrollTime = now;
+      if (scrollUpAccum > SCROLL_UP_THRESHOLD) {
+        scrollUpAccum = 0;
+        openPopup();
+      }
+    }, { passive: true });
+  }
 })();
 </script>
 </body>
