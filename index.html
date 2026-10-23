@@ -13,911 +13,188 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
-/* ================= VARIABLES ================= */
 :root{
-  --bone:#f4f1ea;
-  --bone-2:#ebe6db;
-  --paper:#ffffff;
-  --ink:#1a1a1a;
-  --ink-2:#2c2c2c;
-  --muted:#8a8378;
-  --muted-2:#a8a298;
-  --plum:#6b2d3c;
-  --plum-soft:#8b4557;
-  --sage:#8a9a7b;
-  --line:rgba(26,26,26,.14);
-  --line-2:rgba(26,26,26,.07);
+  --bone:#f4f1ea;--bone-2:#ebe6db;--paper:#ffffff;--ink:#1a1a1a;--ink-2:#2c2c2c;
+  --muted:#8a8378;--muted-2:#a8a298;--plum:#6b2d3c;--plum-soft:#8b4557;--sage:#8a9a7b;
+  --line:rgba(26,26,26,.14);--line-2:rgba(26,26,26,.07);
   --f-display:'Instrument Serif', Georgia, serif;
   --f-mono:'IBM Plex Mono', ui-monospace, monospace;
   --f-body:'Inter', -apple-system, sans-serif;
   --ease:cubic-bezier(.4,.14,.3,1);
 }
-
-/* ================= RESET ================= */
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:var(--f-body);
-  font-size:15px;
-  font-weight:400;
-  line-height:1.65;
-  color:var(--ink);
-  background:var(--bone);
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
+body{margin:0;font-family:var(--f-body);font-size:15px;font-weight:400;line-height:1.65;color:var(--ink);background:var(--bone);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
 a{text-decoration:none;color:inherit;transition:color .25s var(--ease)}
 button{font-family:inherit;cursor:pointer}
 ::selection{background:var(--plum);color:var(--bone)}
-
-.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .container{width:100%;max-width:1320px;margin:0 auto;padding:0 48px}
 
-/* ================= TIPOGRAFÍA ================= */
-h1,h2,h3,h4{
-  font-family:var(--f-display);
-  font-weight:400;
-  line-height:1.02;
-  letter-spacing:-.015em;
-  color:var(--ink);
-  margin:0;
-}
-h1{font-size:clamp(64px, 13vw, 200px); font-weight:400;}
-h2{font-size:clamp(40px, 6vw, 96px); font-weight:400;}
-h3{font-size:32px; font-weight:400;}
-h4{font-size:22px; font-weight:400;}
-
-.italic{font-style:italic}
-
-.mono{
-  font-family:var(--f-mono);
-  font-size:11px;
-  font-weight:500;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--muted);
-}
-
-.tag{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--f-mono);
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:var(--plum);
-  margin:0 0 22px;
-}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:400;line-height:1.02;letter-spacing:-.015em;color:var(--ink);margin:0}
+h1{font-size:clamp(64px, 13vw, 200px);font-weight:400}
+h2{font-size:clamp(40px, 6vw, 96px);font-weight:400}
+h3{font-size:32px;font-weight:400}
+h4{font-size:22px;font-weight:400}
+.tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--plum);margin:0 0 22px}
 .tag::before{content:'';width:28px;height:1px;background:var(--plum)}
 
-/* ================= BOTONES ================= */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  font-family:var(--f-body);
-  font-size:13px;
-  font-weight:600;
-  letter-spacing:.5px;
-  padding:16px 30px;
-  border:1px solid var(--ink);
-  background:var(--ink);
-  color:var(--bone);
-  border-radius:0;
-  transition:all .3s var(--ease);
-  cursor:pointer;
-}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--f-body);font-size:13px;font-weight:600;letter-spacing:.5px;padding:16px 30px;border:1px solid var(--ink);background:var(--ink);color:var(--bone);border-radius:0;transition:all .3s var(--ease);cursor:pointer}
 .btn:hover{background:var(--plum);border-color:var(--plum);color:var(--bone)}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
 .btn-ghost:hover{background:var(--ink);color:var(--bone)}
-.btn-wa{background:#25d366;border-color:#25d366;color:var(--ink)}
-.btn-wa:hover{background:var(--ink);color:#25d366;border-color:var(--ink)}
 
-.link-arrow{
-  display:inline-flex;align-items:center;gap:14px;
-  font-family:var(--f-mono);
-  font-size:12px;
-  font-weight:600;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--ink);
-  padding-bottom:6px;
-  border-bottom:1px solid var(--ink);
-  transition:all .3s var(--ease);
-}
-.link-arrow:hover{gap:22px;color:var(--plum);border-color:var(--plum)}
-
-/* ================= HEADER ================= */
-.site-header{
-  position:fixed;top:0;left:0;right:0;z-index:50;
-  padding:22px 0;
-  transition:all .3s var(--ease);
-}
-.site-header.scrolled{
-  background:rgba(244,241,234,.95);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--line-2);
-  padding:14px 0;
-}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;padding:22px 0;transition:all .3s var(--ease)}
+.site-header.scrolled{background:rgba(244,241,234,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-2);padding:14px 0}
 .site-header .container{display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{
-  font-family:var(--f-display);
-  font-size:28px;
-  letter-spacing:.01em;
-  color:var(--bone);
-  transition:color .3s var(--ease);
-  line-height:1;
-}
+.logo{font-family:var(--f-display);font-size:28px;letter-spacing:.01em;color:var(--bone);transition:color .3s var(--ease);line-height:1}
 .site-header.scrolled .logo{color:var(--ink)}
 .logo em{color:var(--plum);font-style:italic}
 .nav{display:flex;gap:34px;align-items:center}
-.nav a{
-  font-family:var(--f-mono);
-  font-size:11px;
-  font-weight:500;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--bone);
-  position:relative;
-  padding:4px 0;
-  transition:color .3s var(--ease);
-}
+.nav a{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--bone);position:relative;padding:4px 0;transition:color .3s var(--ease)}
 .site-header.scrolled .nav a{color:var(--ink)}
-.nav a::after{
-  content:'';position:absolute;left:0;right:0;bottom:0;
-  height:1px;background:currentColor;
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .3s var(--ease);
-}
+.nav a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
 .nav a:hover::after{transform:scaleX(1)}
-.nav-cta{
-  padding:10px 20px!important;
-  background:var(--bone);
-  color:var(--ink)!important;
-  transition:all .25s var(--ease)!important;
-}
+.nav-cta{padding:10px 20px!important;background:var(--bone);color:var(--ink)!important;transition:all .25s var(--ease)!important}
 .site-header.scrolled .nav-cta{background:var(--ink);color:var(--bone)!important}
 .nav-cta::after{display:none!important}
 .nav-cta:hover{background:var(--plum)!important;color:var(--bone)!important}
-.menu-toggle{
-  display:none;background:none;border:0;
-  color:var(--bone);font-size:22px;padding:6px;
-  transition:color .3s var(--ease);
-}
+.menu-toggle{display:none;background:none;border:0;color:var(--bone);font-size:22px;padding:6px;transition:color .3s var(--ease)}
 .site-header.scrolled .menu-toggle{color:var(--ink)}
 
-/* ================= HERO ================= */
-.hero{
-  position:relative;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  overflow:hidden;
-}
-.hero-bg{
-  position:absolute;inset:0;z-index:0;
-  background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80');
-  background-position:center 35%;
-  background-size:cover;
-  background-repeat:no-repeat;
-}
-.hero-bg::after{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(26,26,26,.35) 0%, rgba(26,26,26,.15) 40%, rgba(26,26,26,.75) 100%);
-}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80') center 35%/cover no-repeat}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,.35) 0%,rgba(26,26,26,.15) 40%,rgba(26,26,26,.75) 100%)}
 .hero .container{position:relative;z-index:1;padding-bottom:80px}
 .hero-inner{max-width:900px;color:var(--bone)}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:14px;
-  font-family:var(--f-mono);
-  font-size:11px;
-  font-weight:500;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:rgba(244,241,234,.9);
-  margin:0 0 28px;
-}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(244,241,234,.9);margin:0 0 28px}
 .hero-eyebrow::before{content:'';width:40px;height:1px;background:rgba(244,241,234,.9)}
-.hero h1{
-  color:var(--bone);
-  font-family:var(--f-display);
-  font-size:clamp(80px, 16vw, 240px);
-  font-weight:400;
-  line-height:.82;
-  letter-spacing:-.03em;
-  margin:0 0 24px;
-}
+.hero h1{color:var(--bone);font-family:var(--f-display);font-size:clamp(80px, 16vw, 240px);font-weight:400;line-height:.82;letter-spacing:-.03em;margin:0 0 24px}
 .hero h1 em{font-style:italic;color:var(--bone-2)}
-.hero-sub{
-  font-family:var(--f-mono);
-  font-size:12px;
-  font-weight:500;
-  letter-spacing:5px;
-  text-transform:uppercase;
-  color:rgba(244,241,234,.85);
-  margin:0 0 40px;
-}
+.hero-sub{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:rgba(244,241,234,.85);margin:0 0 40px}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-.hero-foot{
-  position:absolute;
-  bottom:32px;right:48px;
-  z-index:2;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  gap:8px;
-  font-family:var(--f-mono);
-  font-size:10px;
-  font-weight:500;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:rgba(244,241,234,.7);
-  text-align:right;
-}
+.hero-foot{position:absolute;bottom:32px;right:48px;z-index:2;display:flex;flex-direction:column;align-items:flex-end;gap:8px;font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(244,241,234,.7);text-align:right}
 .hero-foot .line{width:36px;height:1px;background:rgba(244,241,234,.4)}
 
-/* ================= INTRO ================= */
-.intro{
-  padding:120px 0;
-  background:var(--bone);
-  text-align:center;
-  border-bottom:1px solid var(--line-2);
-}
+.intro{padding:120px 0;background:var(--bone);text-align:center;border-bottom:1px solid var(--line-2)}
 .intro-inner{max-width:820px;margin:0 auto}
-.intro h2{
-  font-family:var(--f-display);
-  font-size:clamp(36px, 5vw, 68px);
-  font-weight:400;
-  line-height:1.12;
-  letter-spacing:-.02em;
-  margin:0 0 28px;
-}
+.intro h2{font-family:var(--f-display);font-size:clamp(36px, 5vw, 68px);font-weight:400;line-height:1.12;letter-spacing:-.02em;margin:0 0 28px}
 .intro h2 em{font-style:italic;color:var(--plum)}
-.intro p{
-  font-family:var(--f-body);
-  font-size:17px;
-  line-height:1.75;
-  color:var(--muted);
-  margin:0 auto;
-  max-width:580px;
-}
+.intro p{font-family:var(--f-body);font-size:17px;line-height:1.75;color:var(--muted);margin:0 auto;max-width:580px}
 
-/* ================= MENÚ ================= */
-.menu-section{
-  padding:140px 0;
-  border-bottom:1px solid var(--line-2);
-  position:relative;
-}
+.menu-section{padding:140px 0;border-bottom:1px solid var(--line-2);position:relative}
 .menu-section:nth-of-type(odd){background:var(--bone)}
 .menu-section:nth-of-type(even){background:var(--bone-2)}
-
-.section-head{
-  display:grid;
-  grid-template-columns:auto 1fr;
-  gap:60px;
-  align-items:end;
-  padding-bottom:48px;
-  margin-bottom:60px;
-  border-bottom:1px solid var(--ink);
-}
-.section-num{
-  font-family:var(--f-display);
-  font-size:clamp(80px, 10vw, 140px);
-  font-style:italic;
-  font-weight:400;
-  line-height:.85;
-  color:var(--plum);
-  letter-spacing:-.03em;
-}
-.section-title h2{
-  font-size:clamp(40px, 6vw, 80px);
-  letter-spacing:-.025em;
-  line-height:.92;
-}
+.section-head{display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:end;padding-bottom:48px;margin-bottom:60px;border-bottom:1px solid var(--ink)}
+.section-num{font-family:var(--f-display);font-size:clamp(80px, 10vw, 140px);font-style:italic;font-weight:400;line-height:.85;color:var(--plum);letter-spacing:-.03em}
+.section-title h2{font-size:clamp(40px, 6vw, 80px);letter-spacing:-.025em;line-height:.92}
 .section-title h2 em{font-style:italic;color:var(--plum)}
-.section-sub{
-  font-family:var(--f-mono);
-  font-size:11px;
-  font-weight:500;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-top:14px;
-  display:block;
-}
-
-.menu-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:100px;
-  align-items:start;
-}
-.menu-col h3{
-  font-family:var(--f-display);
-  font-size:34px;
-  font-weight:400;
-  letter-spacing:-.01em;
-  margin:0 0 8px;
-  padding-bottom:20px;
-  border-bottom:1px solid var(--line);
-  position:relative;
-}
-.menu-col h3::before{
-  content:'';
-  position:absolute;
-  bottom:-1px;left:0;
-  width:40px;height:2px;
-  background:var(--plum);
-}
+.section-sub{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:14px;display:block}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+.menu-col h3{font-family:var(--f-display);font-size:34px;font-weight:400;letter-spacing:-.01em;margin:0 0 8px;padding-bottom:20px;border-bottom:1px solid var(--line);position:relative}
+.menu-col h3::before{content:'';position:absolute;bottom:-1px;left:0;width:40px;height:2px;background:var(--plum)}
 .menu-col h3 em{color:var(--plum)}
-
 .price-list{list-style:none;padding:0;margin:0}
-.price-item{
-  padding:22px 0;
-  border-bottom:1px dashed var(--line);
-}
+.price-item{padding:22px 0;border-bottom:1px dashed var(--line)}
 .price-item:last-child{border-bottom:0}
-.price-head{
-  display:flex;
-  align-items:baseline;
-  gap:8px;
-  margin-bottom:6px;
-}
-.price-name{
-  font-family:var(--f-display);
-  font-size:22px;
-  font-weight:400;
-  color:var(--ink);
-  letter-spacing:-.005em;
-  line-height:1.2;
-}
+.price-head{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+.price-name{font-family:var(--f-display);font-size:22px;font-weight:400;color:var(--ink);letter-spacing:-.005em;line-height:1.2}
 .price-name em{font-style:italic;color:var(--muted)}
-.price-dots{
-  flex:1;
-  border-bottom:1px dotted var(--line);
-  height:1em;
-  min-width:20px;
-}
-.price-amount{
-  font-family:var(--f-mono);
-  font-size:14px;
-  font-weight:500;
-  color:var(--ink);
-  white-space:nowrap;
-}
-.price-desc{
-  font-family:var(--f-body);
-  font-size:13px;
-  line-height:1.6;
-  color:var(--muted);
-  margin:0;
-}
+.price-dots{flex:1;border-bottom:1px dotted var(--line);height:1em;min-width:20px}
+.price-amount{font-family:var(--f-mono);font-size:14px;font-weight:500;color:var(--ink);white-space:nowrap}
+.price-desc{font-family:var(--f-body);font-size:13px;line-height:1.6;color:var(--muted);margin:0}
+.menu-banner{position:relative;height:340px;overflow:hidden;margin-top:80px}
+.menu-banner img{width:100%;height:100%;object-fit:cover;filter:sepia(.1) saturate(.95)}
+.menu-banner-label{position:absolute;bottom:24px;left:24px;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:8px 14px}
 
-.menu-banner{
-  position:relative;
-  height:340px;
-  overflow:hidden;
-  margin-top:80px;
-}
-.menu-banner img{
-  width:100%;height:100%;
-  object-fit:cover;
-  filter:sepia(.1) saturate(.95);
-}
-.menu-banner-label{
-  position:absolute;
-  bottom:24px;left:24px;
-  font-family:var(--f-mono);
-  font-size:10px;
-  font-weight:600;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:var(--bone);
-  background:var(--ink);
-  padding:8px 14px;
-}
-
-/* ================= PEDIDO ================= */
-.pedido{
-  padding:140px 0;
-  background:var(--ink);
-  color:var(--bone);
-  position:relative;
-  overflow:hidden;
-}
-.pedido::before{
-  content:'';
-  position:absolute;inset:0;
-  background:repeating-linear-gradient(90deg, transparent 0 100px, rgba(244,241,234,.02) 100px 101px);
-  pointer-events:none;
-}
+.pedido{padding:140px 0;background:var(--ink);color:var(--bone);position:relative;overflow:hidden}
+.pedido::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 100px,rgba(244,241,234,.02) 100px 101px);pointer-events:none}
 .pedido .container{position:relative;z-index:1}
-.pedido-inner{
-  display:grid;
-  grid-template-columns:1fr 1.1fr;
-  gap:100px;
-  align-items:start;
-}
+.pedido-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:100px;align-items:start}
 .pedido-lead .tag{color:var(--plum-soft)}
 .pedido-lead .tag::before{background:var(--plum-soft)}
-.pedido-lead h2{
-  color:var(--bone);
-  font-size:clamp(40px, 5.5vw, 80px);
-  line-height:.95;
-  margin:0 0 24px;
-}
+.pedido-lead h2{color:var(--bone);font-size:clamp(40px, 5.5vw, 80px);line-height:.95;margin:0 0 24px}
 .pedido-lead h2 em{font-style:italic;color:var(--plum-soft)}
-.pedido-lead p{
-  font-family:var(--f-body);
-  font-size:16px;
-  line-height:1.7;
-  color:rgba(244,241,234,.75);
-  margin:0 0 40px;
-  max-width:440px;
-}
-.pedido-info{
-  list-style:none;padding:0;margin:0;
-  border-top:1px solid rgba(244,241,234,.15);
-}
-.pedido-info li{
-  display:grid;
-  grid-template-columns:130px 1fr;
-  gap:16px;
-  padding:16px 0;
-  border-bottom:1px solid rgba(244,241,234,.15);
-  font-family:var(--f-mono);
-  font-size:13px;
-  color:rgba(244,241,234,.85);
-}
-.pedido-info .key{
-  color:var(--plum-soft);
-  font-size:10px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
+.pedido-lead p{font-family:var(--f-body);font-size:16px;line-height:1.7;color:rgba(244,241,234,.75);margin:0 0 40px;max-width:440px}
+.pedido-info{list-style:none;padding:0;margin:0;border-top:1px solid rgba(244,241,234,.15)}
+.pedido-info li{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(244,241,234,.15);font-family:var(--f-mono);font-size:13px;color:rgba(244,241,234,.85)}
+.pedido-info .key{color:var(--plum-soft);font-size:10px;letter-spacing:2px;text-transform:uppercase}
 
-.form{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:20px;
-  padding:44px 40px 36px;
-  border:1px solid rgba(244,241,234,.2);
-  background:rgba(244,241,234,.02);
-  position:relative;
-}
-.form::before{
-  content:'PAUSA';
-  position:absolute;
-  top:16px;right:20px;
-  font-family:var(--f-mono);
-  font-size:9px;
-  font-weight:600;
-  letter-spacing:4px;
-  color:var(--plum-soft);
-  opacity:.6;
-}
-.form-title{
-  font-family:var(--f-display);
-  font-size:26px;
-  font-weight:400;
-  font-style:italic;
-  color:var(--bone);
-  margin:0 0 6px;
-}
-.form-sub{
-  font-family:var(--f-mono);
-  font-size:10px;
-  font-weight:500;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:rgba(244,241,234,.55);
-  margin:0 0 22px;
-}
-.field-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
+.form{display:grid;grid-template-columns:1fr;gap:20px;padding:44px 40px 36px;border:1px solid rgba(244,241,234,.2);background:rgba(244,241,234,.02);position:relative}
+.form::before{content:'PAUSA';position:absolute;top:16px;right:20px;font-family:var(--f-mono);font-size:9px;font-weight:600;letter-spacing:4px;color:var(--plum-soft);opacity:.6}
+.form-title{font-family:var(--f-display);font-size:26px;font-weight:400;font-style:italic;color:var(--bone);margin:0 0 6px}
+.form-sub{font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(244,241,234,.55);margin:0 0 22px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field.full{grid-column:1/-1}
-.field label{
-  font-family:var(--f-mono);
-  font-size:10px;
-  font-weight:600;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--plum-soft);
-}
-.field label .opt{
-  color:var(--muted-2);
-  font-weight:400;
-  letter-spacing:.5px;
-  text-transform:none;
-  margin-left:4px;
-}
-.field input,
-.field select,
-.field textarea{
-  width:100%;
-  font-family:var(--f-body);
-  font-size:16px;
-  font-weight:500;
-  color:var(--bone);
-  background:transparent;
-  border:0;
-  border-bottom:1px solid rgba(244,241,234,.3);
-  border-radius:0;
-  padding:9px 0 11px;
-  outline:none;
-  appearance:none;
-  -webkit-appearance:none;
-  transition:border-color .25s var(--ease);
-  line-height:1.4;
-}
-.field select{
-  background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b4557' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 2px center;
-  background-size:14px;
-  padding-right:24px;
-  cursor:pointer;
-}
+.field label{font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--plum-soft)}
+.field label .opt{color:var(--muted-2);font-weight:400;letter-spacing:.5px;text-transform:none;margin-left:4px}
+.field input,.field select,.field textarea{width:100%;font-family:var(--f-body);font-size:16px;font-weight:500;color:var(--bone);background:transparent;border:0;border-bottom:1px solid rgba(244,241,234,.3);border-radius:0;padding:9px 0 11px;outline:none;appearance:none;-webkit-appearance:none;transition:border-color .25s var(--ease);line-height:1.4}
+.field select{background:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b4557' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 2px center/14px;padding-right:24px;cursor:pointer}
 .field select option{background:var(--ink);color:var(--bone)}
-.field input:focus,
-.field select:focus,
-.field textarea:focus{border-bottom-color:var(--plum-soft)}
-.field input::placeholder,
-.field textarea::placeholder{color:rgba(244,241,234,.35)}
+.field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--plum-soft)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(244,241,234,.35)}
 .field textarea{resize:vertical;min-height:60px;padding-top:10px}
 .form-submit{margin-top:8px}
-.form-submit button{
-  width:100%;
-  padding:18px 24px;
-  font-family:var(--f-body);
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  background:var(--plum);
-  color:var(--bone);
-  border:1px solid var(--plum);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  transition:all .25s var(--ease);
-  cursor:pointer;
-}
+.form-submit button{width:100%;padding:18px 24px;font-family:var(--f-body);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--plum);color:var(--bone);border:1px solid var(--plum);display:flex;align-items:center;justify-content:center;gap:10px;transition:all .25s var(--ease);cursor:pointer}
 .form-submit button:hover{background:var(--bone);color:var(--ink);border-color:var(--bone)}
-.form-status{
-  font-family:var(--f-mono);
-  font-size:12px;
-  font-weight:500;
-  letter-spacing:1px;
-  text-align:center;
-  min-height:1.4em;
-  margin:8px 0 0;
-  color:rgba(244,241,234,.85);
-}
+.form-status{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:1px;text-align:center;min-height:1.4em;margin:8px 0 0;color:rgba(244,241,234,.85)}
 .form-status.ok{color:#a8c47a}
 .form-status.err{color:#e09b8a}
-.form-privacy{
-  font-size:11px;
-  color:rgba(244,241,234,.5);
-  text-align:center;
-  margin:8px 0 0;
-  line-height:1.55;
-}
+.form-privacy{font-size:11px;color:rgba(244,241,234,.5);text-align:center;margin:8px 0 0;line-height:1.55}
 
-/* ================= FOOTER ================= */
-.footer{
-  background:var(--bone);
-  border-top:1px solid var(--line);
-  padding:80px 0 30px;
-}
-.footer-top{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:60px;
-  padding-bottom:50px;
-  border-bottom:1px solid var(--line);
-}
+.footer{background:var(--bone);border-top:1px solid var(--line);padding:80px 0 30px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;padding-bottom:50px;border-bottom:1px solid var(--line)}
 .footer-brand .logo{color:var(--ink);font-size:36px;margin-bottom:16px;line-height:1}
 .footer-brand .logo em{color:var(--plum)}
-.footer-brand p{
-  font-size:14px;
-  line-height:1.7;
-  color:var(--muted);
-  margin:0 0 24px;
-  max-width:340px;
-}
-.footer h5{
-  font-family:var(--f-mono);
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--plum);
-  margin:0 0 20px;
-}
+.footer-brand p{font-size:14px;line-height:1.7;color:var(--muted);margin:0 0 24px;max-width:340px}
+.footer h5{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--plum);margin:0 0 20px}
 .footer ul{list-style:none;padding:0;margin:0}
 .footer ul li{margin-bottom:10px;font-size:14px}
 .footer ul a{color:var(--ink-2)}
 .footer ul a:hover{color:var(--plum)}
 .footer-social{display:flex;gap:8px;margin-top:4px}
-.footer-social a{
-  width:40px;height:40px;
-  border:1px solid var(--line);
-  display:inline-flex;align-items:center;justify-content:center;
-  color:var(--ink);
-  font-size:14px;
-  transition:all .25s var(--ease);
-}
+.footer-social a{width:40px;height:40px;border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;color:var(--ink);font-size:14px;transition:all .25s var(--ease)}
 .footer-social a:hover{background:var(--plum);border-color:var(--plum);color:var(--bone)}
-.footer-bottom{
-  padding-top:26px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:12px;
-  font-family:var(--f-mono);
-  font-size:10px;
-  font-weight:500;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--muted);
-}
+.footer-bottom{padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 
-/* ================= WHATSAPP FLOAT ================= */
-.wa-float{
-  position:fixed;
-  right:24px;bottom:24px;
-  z-index:50;
-  display:flex;align-items:center;gap:10px;
-  background:#25d366;
-  color:var(--ink);
-  font-family:var(--f-body);
-  font-size:12px;font-weight:700;
-  letter-spacing:1px;
-  padding:14px 20px 14px 18px;
-  border-radius:50px;
-  box-shadow:0 12px 30px -8px rgba(37,211,102,.55);
-  transition:all .25s var(--ease);
-}
-.wa-float:hover{
-  transform:translateY(-3px);
-  box-shadow:0 18px 35px -8px rgba(37,211,102,.75);
-}
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:50;display:flex;align-items:center;gap:10px;background:#25d366;color:var(--ink);font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:1px;padding:14px 20px 14px 18px;border-radius:50px;box-shadow:0 12px 30px -8px rgba(37,211,102,.55);transition:all .25s var(--ease)}
+.wa-float:hover{transform:translateY(-3px);box-shadow:0 18px 35px -8px rgba(37,211,102,.75)}
 .wa-float i{font-size:20px}
 
-/* ================= REVEAL ================= */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
-/* ================= POPUP OFERTA ================= */
-.popup-overlay{
-  position:fixed;inset:0;
-  z-index:9999;
-  background:rgba(26,26,26,.78);
-  backdrop-filter:blur(6px);
-  -webkit-backdrop-filter:blur(6px);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  overflow-y:auto;
-}
-.popup-overlay.open{
-  display:flex;
-  animation:popupFadeIn .35s var(--ease);
-}
-.popup-overlay.open .popup-card{
-  animation:popupSlideUp .5s var(--ease);
-}
+/* POPUP */
+.popup-overlay{position:fixed;inset:0;z-index:9999;background:rgba(26,26,26,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+.popup-overlay.open{display:flex;animation:popupFadeIn .35s var(--ease)}
+.popup-overlay.open .popup-card{animation:popupSlideUp .5s var(--ease)}
 @keyframes popupFadeIn{from{opacity:0}to{opacity:1}}
-@keyframes popupSlideUp{
-  from{opacity:0;transform:translateY(24px) scale(.97)}
-  to{opacity:1;transform:translateY(0) scale(1)}
-}
-
-.popup-card{
-  background:var(--bone);
-  max-width:520px;
-  width:100%;
-  padding:48px 44px 36px;
-  position:relative;
-  box-shadow:0 40px 80px -20px rgba(0,0,0,.55);
-  border:1px solid rgba(26,26,26,.1);
-  margin:auto;
-}
-
-.popup-close{
-  position:absolute;
-  top:14px;right:14px;
-  width:36px;height:36px;
-  background:transparent;
-  border:1px solid var(--line);
-  color:var(--ink);
-  font-size:22px;
-  line-height:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  transition:all .2s var(--ease);
-  padding:0;
-}
-.popup-close:hover,
-.popup-close:focus-visible{
-  background:var(--ink);
-  color:var(--bone);
-  border-color:var(--ink);
-}
-
-.popup-tag{
-  display:inline-block;
-  font-family:var(--f-mono);
-  font-size:10px;
-  font-weight:600;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:var(--plum);
-  padding:6px 12px;
-  border:1px solid var(--plum);
-  margin-bottom:22px;
-}
-.popup-tag::before{
-  content:'';
-  display:inline-block;
-  width:5px;height:5px;
-  background:var(--plum);
-  border-radius:50%;
-  margin-right:8px;
-  vertical-align:middle;
-  animation:pulseDot 1.6s ease-in-out infinite;
-}
-@keyframes pulseDot{
-  0%,100%{opacity:1;transform:scale(1)}
-  50%{opacity:.4;transform:scale(.7)}
-}
-
-.popup-title{
-  font-family:var(--f-display);
-  font-size:44px;
-  font-weight:400;
-  line-height:.95;
-  letter-spacing:-.025em;
-  margin:0 0 18px;
-  color:var(--ink);
-}
+@keyframes popupSlideUp{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.popup-card{background:var(--bone);max-width:520px;width:100%;padding:48px 44px 36px;position:relative;box-shadow:0 40px 80px -20px rgba(0,0,0,.55);border:1px solid rgba(26,26,26,.1);margin:auto}
+.popup-close{position:absolute;top:14px;right:14px;width:36px;height:36px;background:transparent;border:1px solid var(--line);color:var(--ink);font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s var(--ease);padding:0}
+.popup-close:hover,.popup-close:focus-visible{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+.popup-tag{display:inline-block;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--plum);padding:6px 12px;border:1px solid var(--plum);margin-bottom:22px}
+.popup-tag::before{content:'';display:inline-block;width:5px;height:5px;background:var(--plum);border-radius:50%;margin-right:8px;vertical-align:middle;animation:pulseDot 1.6s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.popup-title{font-family:var(--f-display);font-size:44px;font-weight:400;line-height:.95;letter-spacing:-.025em;margin:0 0 18px;color:var(--ink)}
 .popup-title em{font-style:italic;color:var(--plum)}
-
-.popup-body{
-  font-family:var(--f-body);
-  font-size:15px;
-  line-height:1.65;
-  color:var(--ink-2);
-  margin:0 0 26px;
-}
+.popup-body{font-family:var(--f-body);font-size:15px;line-height:1.65;color:var(--ink-2);margin:0 0 26px}
 .popup-body strong{color:var(--plum);font-weight:700}
-
-.popup-countdown{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  padding:20px 16px;
-  background:var(--paper);
-  border:1px solid var(--line);
-  margin-bottom:22px;
-}
-.countdown-item{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  min-width:62px;
-}
-.countdown-num{
-  font-family:var(--f-mono);
-  font-size:32px;
-  font-weight:600;
-  color:var(--ink);
-  line-height:1;
-  font-variant-numeric:tabular-nums;
-}
-.countdown-label{
-  font-family:var(--f-mono);
-  font-size:9px;
-  font-weight:500;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-top:8px;
-}
-.countdown-colon{
-  font-family:var(--f-mono);
-  font-size:26px;
-  font-weight:400;
-  color:var(--muted-2);
-  transform:translateY(-6px);
-  user-select:none;
-}
-
-.popup-code{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:16px 20px;
-  border:2px dashed var(--plum);
-  background:rgba(107,45,60,.06);
-  margin-bottom:20px;
-}
-.popup-code-label{
-  font-family:var(--f-mono);
-  font-size:10px;
-  font-weight:500;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--plum);
-}
-.popup-code-value{
-  font-family:var(--f-mono);
-  font-size:20px;
-  font-weight:700;
-  letter-spacing:4px;
-  color:var(--plum);
-  padding-left:8px;
-}
-
-.popup-cta{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  width:100%;
-  padding:18px 20px;
-  background:var(--plum);
-  color:var(--bone);
-  font-family:var(--f-body);
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  border:1px solid var(--plum);
-  transition:all .25s var(--ease);
-  margin-bottom:12px;
-  cursor:pointer;
-  text-decoration:none;
-}
-.popup-cta:hover,
-.popup-cta:focus-visible{
-  background:var(--ink);
-  border-color:var(--ink);
-  color:var(--bone);
-}
+.popup-countdown{display:flex;align-items:center;justify-content:center;gap:6px;padding:20px 16px;background:var(--paper);border:1px solid var(--line);margin-bottom:22px}
+.countdown-item{display:flex;flex-direction:column;align-items:center;min-width:62px}
+.countdown-num{font-family:var(--f-mono);font-size:32px;font-weight:600;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
+.countdown-label{font-family:var(--f-mono);font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.countdown-colon{font-family:var(--f-mono);font-size:26px;font-weight:400;color:var(--muted-2);transform:translateY(-6px);user-select:none}
+.popup-code{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border:2px dashed var(--plum);background:rgba(107,45,60,.06);margin-bottom:20px}
+.popup-code-label{font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--plum)}
+.popup-code-value{font-family:var(--f-mono);font-size:20px;font-weight:700;letter-spacing:4px;color:var(--plum);padding-left:8px}
+.popup-cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px 20px;background:var(--plum);color:var(--bone);font-family:var(--f-body);font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--plum);transition:all .25s var(--ease);margin-bottom:12px;cursor:pointer;text-decoration:none}
+.popup-cta:hover,.popup-cta:focus-visible{background:var(--ink);border-color:var(--ink);color:var(--bone)}
 .popup-cta i{font-size:16px}
-
-.popup-dismiss{
-  display:block;
-  width:100%;
-  background:transparent;
-  border:0;
-  color:var(--muted);
-  font-family:var(--f-body);
-  font-size:12px;
-  text-decoration:underline;
-  text-underline-offset:3px;
-  padding:8px;
-  cursor:pointer;
-  transition:color .2s var(--ease);
-}
+.popup-dismiss{display:block;width:100%;background:transparent;border:0;color:var(--muted);font-family:var(--f-body);font-size:12px;text-decoration:underline;text-underline-offset:3px;padding:8px;cursor:pointer;transition:color .2s var(--ease)}
 .popup-dismiss:hover{color:var(--ink)}
 
-/* ================= RESPONSIVE ================= */
 @media (max-width:1024px){
   .container{padding:0 32px}
   .hero h1{font-size:clamp(72px, 16vw, 160px)}
@@ -932,23 +209,16 @@ h4{font-size:22px; font-weight:400;}
   .footer-top{grid-template-columns:1fr 1fr;gap:40px}
   .footer-brand{grid-column:1/-1}
 }
-
 @media (max-width:767px){
   .container{padding:0 22px}
   .site-header{padding:16px 0}
-  .nav{display:none;position:absolute;top:100%;left:16px;right:16px;
-    flex-direction:column;align-items:stretch;gap:0;
-    background:var(--bone);border:1px solid var(--line);
-    padding:8px 0;
-    box-shadow:0 20px 40px -10px rgba(0,0,0,.15);
-  }
+  .nav{display:none;position:absolute;top:100%;left:16px;right:16px;flex-direction:column;align-items:stretch;gap:0;background:var(--bone);border:1px solid var(--line);padding:8px 0;box-shadow:0 20px 40px -10px rgba(0,0,0,.15)}
   .nav.open{display:flex}
   .nav a{padding:14px 24px;font-size:12px;color:var(--ink)!important}
   .nav a::after{display:none}
   .nav-cta{margin:8px 20px 6px;text-align:center;background:var(--ink)!important;color:var(--bone)!important}
   .menu-toggle{display:block}
   .logo{font-size:24px}
-
   .hero .container{padding-bottom:60px}
   .hero h1{font-size:clamp(64px, 20vw, 120px)}
   .hero-sub{font-size:10px;letter-spacing:3px}
@@ -956,11 +226,9 @@ h4{font-size:22px; font-weight:400;}
   .hero-actions{flex-direction:column;align-items:stretch;width:100%;max-width:280px}
   .hero-actions .btn{width:100%}
   .hero-foot{display:none}
-
   .intro{padding:70px 0}
   .intro h2{font-size:30px;line-height:1.2}
   .intro p{font-size:15px}
-
   .menu-section{padding:70px 0}
   .section-num{font-size:64px}
   .section-title h2{font-size:44px}
@@ -972,7 +240,6 @@ h4{font-size:22px; font-weight:400;}
   .price-item{padding:18px 0}
   .menu-banner{height:200px;margin-top:50px}
   .menu-banner-label{font-size:9px;padding:6px 10px;bottom:14px;left:14px}
-
   .pedido{padding:70px 0}
   .pedido-lead h2{font-size:40px}
   .pedido-lead p{font-size:15px}
@@ -981,17 +248,14 @@ h4{font-size:22px; font-weight:400;}
   .field-row{grid-template-columns:1fr;gap:18px}
   .form-title{font-size:22px}
   .field input,.field select,.field textarea{font-size:15px}
-
   .footer{padding:50px 0 24px}
   .footer-top{grid-template-columns:1fr;gap:32px;padding-bottom:32px}
   .footer-brand{grid-column:auto}
   .footer-brand .logo{font-size:28px}
   .footer-bottom{flex-direction:column;text-align:center}
-
   .wa-float{padding:12px;border-radius:50%}
   .wa-float span{display:none}
   .wa-float i{font-size:22px;margin:0}
-
   .popup-card{padding:38px 24px 28px}
   .popup-title{font-size:34px}
   .popup-body{font-size:14px}
@@ -1001,23 +265,15 @@ h4{font-size:22px; font-weight:400;}
   .popup-code-value{font-size:17px;letter-spacing:3px}
   .popup-tag{font-size:9px;letter-spacing:2px}
 }
-
 @media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{
-    animation-duration:.01ms!important;
-    transition-duration:.01ms!important;
-    scroll-behavior:auto!important;
-  }
-  .popup-overlay.open,
-  .popup-overlay.open .popup-card,
-  .popup-tag::before{animation:none!important}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .popup-overlay.open,.popup-overlay.open .popup-card,.popup-tag::before{animation:none!important}
 }
 :focus-visible{outline:2px solid var(--plum);outline-offset:3px}
 </style>
 </head>
 <body>
 
-<!-- ============ HEADER ============ -->
 <header class="site-header" id="siteHeader">
   <div class="container">
     <a href="#inicio" class="logo">Paus<em>a</em></a>
@@ -1033,7 +289,6 @@ h4{font-size:22px; font-weight:400;}
   </div>
 </header>
 
-<!-- ============ HERO ============ -->
 <section id="inicio" class="hero">
   <div class="hero-bg"></div>
   <div class="container">
@@ -1059,22 +314,16 @@ h4{font-size:22px; font-weight:400;}
   </div>
 </section>
 
-<!-- ============ INTRO ============ -->
 <section class="intro">
   <div class="container">
     <div class="intro-inner reveal">
       <p class="tag" style="justify-content:center;display:inline-flex">Nuestra carta</p>
       <h2>Tres <em>momentos</em> del día.<br>Una misma pausa.</h2>
-      <p>
-        Todo se prepara en casa, con ingredientes locales de temporada y
-        café de origen boliviano. Cambiamos la carta con el año, pero
-        siempre hay algo que vale la pena probar.
-      </p>
+      <p>Todo se prepara en casa, con ingredientes locales de temporada y café de origen boliviano. Cambiamos la carta con el año, pero siempre hay algo que vale la pena probar.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ SECCIÓN 01 · DESAYUNOS ============ -->
 <section id="desayunos" class="menu-section">
   <div class="container">
     <div class="section-head reveal">
@@ -1088,51 +337,21 @@ h4{font-size:22px; font-weight:400;}
       <div class="menu-col reveal">
         <h3>Dulces</h3>
         <ul class="price-list">
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Tostadas francesas</span><span class="price-dots"></span><span class="price-amount">Bs. 42</span></div>
-            <p class="price-desc">Pan brioche, frutos rojos, miel de caña y crema chantilly.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Pancakes de la casa</span><span class="price-dots"></span><span class="price-amount">Bs. 38</span></div>
-            <p class="price-desc">Con mantequilla de maple y bananas caramelizadas.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Granola &amp; yogur</span><span class="price-dots"></span><span class="price-amount">Bs. 32</span></div>
-            <p class="price-desc">Granola tostada en casa, yogur griego, frutas de estación.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Croissant de almendra</span><span class="price-dots"></span><span class="price-amount">Bs. 22</span></div>
-            <p class="price-desc">Hojaldre de mantequilla, crema de almendra, azúcar glas.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Bowl de frutas <em>y semillas</em></span><span class="price-dots"></span><span class="price-amount">Bs. 28</span></div>
-            <p class="price-desc">Frutas del valle, chía, coco tostado, miel de abeja.</p>
-          </li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Tostadas francesas</span><span class="price-dots"></span><span class="price-amount">Bs. 42</span></div><p class="price-desc">Pan brioche, frutos rojos, miel de caña y crema chantilly.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Pancakes de la casa</span><span class="price-dots"></span><span class="price-amount">Bs. 38</span></div><p class="price-desc">Con mantequilla de maple y bananas caramelizadas.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Granola &amp; yogur</span><span class="price-dots"></span><span class="price-amount">Bs. 32</span></div><p class="price-desc">Granola tostada en casa, yogur griego, frutas de estación.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Croissant de almendra</span><span class="price-dots"></span><span class="price-amount">Bs. 22</span></div><p class="price-desc">Hojaldre de mantequilla, crema de almendra, azúcar glas.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Bowl de frutas <em>y semillas</em></span><span class="price-dots"></span><span class="price-amount">Bs. 28</span></div><p class="price-desc">Frutas del valle, chía, coco tostado, miel de abeja.</p></li>
         </ul>
       </div>
       <div class="menu-col reveal">
         <h3>Salados</h3>
         <ul class="price-list">
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Huevos benedictinos</span><span class="price-dots"></span><span class="price-amount">Bs. 48</span></div>
-            <p class="price-desc">Muffin inglés, jamón serrano, huevo poché, salsa holandesa.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Avocado toast <em>+ huevo</em></span><span class="price-dots"></span><span class="price-amount">Bs. 38</span></div>
-            <p class="price-desc">Pan de masa madre, palta, huevo escalfado, chile en hojuelas.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Tortilla española</span><span class="price-dots"></span><span class="price-amount">Bs. 34</span></div>
-            <p class="price-desc">Papa, cebolla, huevo de campo, pan de campo y alioli.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Huevos revueltos <em>al gusto</em></span><span class="price-dots"></span><span class="price-amount">Bs. 36</span></div>
-            <p class="price-desc">Con tocineta, queso fresco o salmón. Pan de masa madre.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Sándwich de desayuno</span><span class="price-dots"></span><span class="price-amount">Bs. 32</span></div>
-            <p class="price-desc">Croissant, huevo, queso cheddar, palta y tomate.</p>
-          </li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Huevos benedictinos</span><span class="price-dots"></span><span class="price-amount">Bs. 48</span></div><p class="price-desc">Muffin inglés, jamón serrano, huevo poché, salsa holandesa.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Avocado toast <em>+ huevo</em></span><span class="price-dots"></span><span class="price-amount">Bs. 38</span></div><p class="price-desc">Pan de masa madre, palta, huevo escalfado, chile en hojuelas.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Tortilla española</span><span class="price-dots"></span><span class="price-amount">Bs. 34</span></div><p class="price-desc">Papa, cebolla, huevo de campo, pan de campo y alioli.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Huevos revueltos <em>al gusto</em></span><span class="price-dots"></span><span class="price-amount">Bs. 36</span></div><p class="price-desc">Con tocineta, queso fresco o salmón. Pan de masa madre.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Sándwich de desayuno</span><span class="price-dots"></span><span class="price-amount">Bs. 32</span></div><p class="price-desc">Croissant, huevo, queso cheddar, palta y tomate.</p></li>
         </ul>
       </div>
     </div>
@@ -1143,7 +362,6 @@ h4{font-size:22px; font-weight:400;}
   </div>
 </section>
 
-<!-- ============ SECCIÓN 02 · ALMUERZOS ============ -->
 <section id="almuerzos" class="menu-section">
   <div class="container">
     <div class="section-head reveal">
@@ -1157,43 +375,19 @@ h4{font-size:22px; font-weight:400;}
       <div class="menu-col reveal">
         <h3>Bowls &amp; ensaladas</h3>
         <ul class="price-list">
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Bowl mediterráneo</span><span class="price-dots"></span><span class="price-amount">Bs. 52</span></div>
-            <p class="price-desc">Quinoa, garbanzos, hummus, pepino, tomate, feta y limón.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Poke bowl de salmón</span><span class="price-dots"></span><span class="price-amount">Bs. 68</span></div>
-            <p class="price-desc">Arroz de sushi, salmón fresco, palta, edamame y sésamo.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Bowl de pollo <em>y verduras</em></span><span class="price-dots"></span><span class="price-amount">Bs. 48</span></div>
-            <p class="price-desc">Pollo asado, camote, brócoli, arroz integral, aderezo de tahini.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Ensalada césar clásica</span><span class="price-dots"></span><span class="price-amount">Bs. 44</span></div>
-            <p class="price-desc">Lechuga romana, pollo grillado, parmesano, croutons de la casa.</p>
-          </li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Bowl mediterráneo</span><span class="price-dots"></span><span class="price-amount">Bs. 52</span></div><p class="price-desc">Quinoa, garbanzos, hummus, pepino, tomate, feta y limón.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Poke bowl de salmón</span><span class="price-dots"></span><span class="price-amount">Bs. 68</span></div><p class="price-desc">Arroz de sushi, salmón fresco, palta, edamame y sésamo.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Bowl de pollo <em>y verduras</em></span><span class="price-dots"></span><span class="price-amount">Bs. 48</span></div><p class="price-desc">Pollo asado, camote, brócoli, arroz integral, aderezo de tahini.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Ensalada césar clásica</span><span class="price-dots"></span><span class="price-amount">Bs. 44</span></div><p class="price-desc">Lechuga romana, pollo grillado, parmesano, croutons de la casa.</p></li>
         </ul>
       </div>
       <div class="menu-col reveal">
         <h3>Sándwiches &amp; tostadas</h3>
         <ul class="price-list">
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Sándwich de pollo <em>al pesto</em></span><span class="price-dots"></span><span class="price-amount">Bs. 42</span></div>
-            <p class="price-desc">Pollo desmenuzado, pesto de albahaca, rúcula, pan ciabatta.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Baguette caprese</span><span class="price-dots"></span><span class="price-amount">Bs. 38</span></div>
-            <p class="price-desc">Mozzarella fresca, tomate, albahaca, aceite de oliva.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Sándwich de salmón <em>ahumado</em></span><span class="price-dots"></span><span class="price-amount">Bs. 56</span></div>
-            <p class="price-desc">Pan de centeno, queso crema, eneldo, cebolla morada, alcaparras.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Grilled cheese <em>+ tomate</em></span><span class="price-dots"></span><span class="price-amount">Bs. 34</span></div>
-            <p class="price-desc">Pan de masa madre, tres quesos, tomate asado, mantequilla.</p>
-          </li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Sándwich de pollo <em>al pesto</em></span><span class="price-dots"></span><span class="price-amount">Bs. 42</span></div><p class="price-desc">Pollo desmenuzado, pesto de albahaca, rúcula, pan ciabatta.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Baguette caprese</span><span class="price-dots"></span><span class="price-amount">Bs. 38</span></div><p class="price-desc">Mozzarella fresca, tomate, albahaca, aceite de oliva.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Sándwich de salmón <em>ahumado</em></span><span class="price-dots"></span><span class="price-amount">Bs. 56</span></div><p class="price-desc">Pan de centeno, queso crema, eneldo, cebolla morada, alcaparras.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Grilled cheese <em>+ tomate</em></span><span class="price-dots"></span><span class="price-amount">Bs. 34</span></div><p class="price-desc">Pan de masa madre, tres quesos, tomate asado, mantequilla.</p></li>
         </ul>
       </div>
     </div>
@@ -1204,7 +398,6 @@ h4{font-size:22px; font-weight:400;}
   </div>
 </section>
 
-<!-- ============ SECCIÓN 03 · CAFETERÍA ============ -->
 <section id="cafeteria" class="menu-section">
   <div class="container">
     <div class="section-head reveal">
@@ -1218,88 +411,45 @@ h4{font-size:22px; font-weight:400;}
       <div class="menu-col reveal">
         <h3>Café caliente</h3>
         <ul class="price-list">
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Espresso</span><span class="price-dots"></span><span class="price-amount">Bs. 15</span></div>
-            <p class="price-desc">Origen Caranavi · tostado medio. Doble si lo pedís.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Americano</span><span class="price-dots"></span><span class="price-amount">Bs. 18</span></div>
-            <p class="price-desc">Espresso con agua caliente. Largo o corto.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Cappuccino</span><span class="price-dots"></span><span class="price-amount">Bs. 24</span></div>
-            <p class="price-desc">Espresso, leche al vapor, espuma aterciopelada.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Latte <em>o flat white</em></span><span class="price-dots"></span><span class="price-amount">Bs. 26</span></div>
-            <p class="price-desc">Con leche entera, deslactosada o de almendra (+Bs. 4).</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Mocha de la casa</span><span class="price-dots"></span><span class="price-amount">Bs. 30</span></div>
-            <p class="price-desc">Espresso, chocolate 70%, leche, crema batida.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Matcha latte</span><span class="price-dots"></span><span class="price-amount">Bs. 32</span></div>
-            <p class="price-desc">Matcha ceremonial, leche al vapor. Caliente o frío.</p>
-          </li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Espresso</span><span class="price-dots"></span><span class="price-amount">Bs. 15</span></div><p class="price-desc">Origen Caranavi · tostado medio. Doble si lo pedís.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Americano</span><span class="price-dots"></span><span class="price-amount">Bs. 18</span></div><p class="price-desc">Espresso con agua caliente. Largo o corto.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Cappuccino</span><span class="price-dots"></span><span class="price-amount">Bs. 24</span></div><p class="price-desc">Espresso, leche al vapor, espuma aterciopelada.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Latte <em>o flat white</em></span><span class="price-dots"></span><span class="price-amount">Bs. 26</span></div><p class="price-desc">Con leche entera, deslactosada o de almendra (+Bs. 4).</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Mocha de la casa</span><span class="price-dots"></span><span class="price-amount">Bs. 30</span></div><p class="price-desc">Espresso, chocolate 70%, leche, crema batida.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Matcha latte</span><span class="price-dots"></span><span class="price-amount">Bs. 32</span></div><p class="price-desc">Matcha ceremonial, leche al vapor. Caliente o frío.</p></li>
         </ul>
       </div>
       <div class="menu-col reveal">
         <h3>Bebidas frías</h3>
         <ul class="price-list">
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Cold brew</span><span class="price-dots"></span><span class="price-amount">Bs. 26</span></div>
-            <p class="price-desc">Extracción en frío 18 horas. Suave, intenso, sin amargor.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Iced latte</span><span class="price-dots"></span><span class="price-amount">Bs. 28</span></div>
-            <p class="price-desc">Doble espresso sobre leche fría y hielo.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Frappé de la casa</span><span class="price-dots"></span><span class="price-amount">Bs. 34</span></div>
-            <p class="price-desc">Café, leche, hielo, caramelo. Con crema opcional.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Limonada de hierbabuena</span><span class="price-dots"></span><span class="price-amount">Bs. 22</span></div>
-            <p class="price-desc">Limón fresco, hierbabuena, endulzada al punto.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Té helado de jazmín</span><span class="price-dots"></span><span class="price-amount">Bs. 22</span></div>
-            <p class="price-desc">Infusión fría, rodajas de naranja, sirope de la casa.</p>
-          </li>
-          <li class="price-item">
-            <div class="price-head"><span class="price-name">Jugo natural del día</span><span class="price-dots"></span><span class="price-amount">Bs. 20</span></div>
-            <p class="price-desc">Fruta fresca de temporada. Consultá por la del día.</p>
-          </li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Cold brew</span><span class="price-dots"></span><span class="price-amount">Bs. 26</span></div><p class="price-desc">Extracción en frío 18 horas. Suave, intenso, sin amargor.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Iced latte</span><span class="price-dots"></span><span class="price-amount">Bs. 28</span></div><p class="price-desc">Doble espresso sobre leche fría y hielo.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Frappé de la casa</span><span class="price-dots"></span><span class="price-amount">Bs. 34</span></div><p class="price-desc">Café, leche, hielo, caramelo. Con crema opcional.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Limonada de hierbabuena</span><span class="price-dots"></span><span class="price-amount">Bs. 22</span></div><p class="price-desc">Limón fresco, hierbabuena, endulzada al punto.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Té helado de jazmín</span><span class="price-dots"></span><span class="price-amount">Bs. 22</span></div><p class="price-desc">Infusión fría, rodajas de naranja, sirope de la casa.</p></li>
+          <li class="price-item"><div class="price-head"><span class="price-name">Jugo natural del día</span><span class="price-dots"></span><span class="price-amount">Bs. 20</span></div><p class="price-desc">Fruta fresca de temporada. Consultá por la del día.</p></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PEDIDO ============ -->
 <section id="pedido" class="pedido">
   <div class="container">
     <div class="pedido-inner">
       <div class="pedido-lead reveal">
         <p class="tag">Pedidos &amp; reservas</p>
         <h2>Hacé tu <em>pedido</em>.</h2>
-        <p>
-          Completá el formulario y te escribimos por WhatsApp para coordinar
-          tu pedido, reserva de mesa o evento privado. Respondemos en menos
-          de 1 hora en horario de atención.
-        </p>
+        <p>Completá el formulario y te escribimos por WhatsApp para coordinar tu pedido, reserva de mesa o evento privado. Respondemos en menos de 1 hora en horario de atención.</p>
         <ul class="pedido-info">
           <li><span class="key">Dirección</span><span>Calle 20 de Octubre #2456 · Sopocachi</span></li>
           <li><span class="key">WhatsApp</span><span>+591 73913409</span></li>
           <li><span class="key">Horario</span><span>Lun a Dom · 8:00 – 20:00</span></li>
         </ul>
       </div>
-
       <form class="form reveal" id="pedidoForm" novalidate>
         <h3 class="form-title">Tu pedido</h3>
         <p class="form-sub">— te respondemos por WhatsApp —</p>
-
         <div class="field-row">
           <div class="field">
             <label for="f-nombre">Nombre</label>
@@ -1319,7 +469,6 @@ h4{font-size:22px; font-weight:400;}
             </select>
           </div>
         </div>
-
         <div class="field-row">
           <div class="field">
             <label for="f-personas">Personas <span class="opt">(opcional)</span></label>
@@ -1341,20 +490,17 @@ h4{font-size:22px; font-weight:400;}
             </select>
           </div>
         </div>
-
         <div class="field full">
           <label for="f-mensaje">Mensaje <span class="opt">(opcional)</span></label>
           <textarea id="f-mensaje" name="mensaje" rows="3"
             placeholder="Ej: Quiero reservar para 4 personas, sábado al mediodía..."></textarea>
         </div>
-
         <div class="form-submit">
           <button type="submit">
             <i class="fa fa-whatsapp" aria-hidden="true"></i>
             Enviar por WhatsApp
           </button>
         </div>
-
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         <p class="form-privacy">Al enviar se abrirá WhatsApp con tu pedido listo. No guardamos datos.</p>
       </form>
@@ -1362,7 +508,6 @@ h4{font-size:22px; font-weight:400;}
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="container">
     <div class="footer-top">
@@ -1401,7 +546,6 @@ h4{font-size:22px; font-weight:400;}
   </div>
 </footer>
 
-<!-- ============ WHATSAPP FLOAT ============ -->
 <a class="wa-float"
    href="https://wa.me/59173913409?text=Hola%20PAUSA%2C%20quiero%20hacer%20un%20pedido."
    target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
@@ -1409,7 +553,7 @@ h4{font-size:22px; font-weight:400;}
   <span>Pedir</span>
 </a>
 
-<!-- ============ POPUP OFERTA (con countdown persistente) ============ -->
+<!-- POPUP OFERTA -->
 <div class="popup-overlay" id="timedPopup" role="dialog" aria-modal="true" aria-labelledby="timedTitle" aria-hidden="true">
   <div class="popup-card">
     <button class="popup-close" data-close aria-label="Cerrar oferta">×</button>
@@ -1419,21 +563,12 @@ h4{font-size:22px; font-weight:400;}
       <strong>10% off</strong> en tu primer pedido de brunch o cafetería.
       Válido mientras el contador esté activo.
     </p>
-    <div class="popup-countdown" id="timedCountdown" aria-live="polite" aria-label="Tiempo restante de la oferta">
-      <div class="countdown-item">
-        <span class="countdown-num" data-cd="h">02</span>
-        <span class="countdown-label">Hs</span>
-      </div>
+    <div class="popup-countdown" aria-live="polite" aria-label="Tiempo restante de la oferta">
+      <div class="countdown-item"><span class="countdown-num" data-cd="h">02</span><span class="countdown-label">Hs</span></div>
       <span class="countdown-colon">:</span>
-      <div class="countdown-item">
-        <span class="countdown-num" data-cd="m">00</span>
-        <span class="countdown-label">Min</span>
-      </div>
+      <div class="countdown-item"><span class="countdown-num" data-cd="m">00</span><span class="countdown-label">Min</span></div>
       <span class="countdown-colon">:</span>
-      <div class="countdown-item">
-        <span class="countdown-num" data-cd="s">00</span>
-        <span class="countdown-label">Seg</span>
-      </div>
+      <div class="countdown-item"><span class="countdown-num" data-cd="s">00</span><span class="countdown-label">Seg</span></div>
     </div>
     <div class="popup-code">
       <span class="popup-code-label">Tu código</span>
@@ -1454,7 +589,7 @@ h4{font-size:22px; font-weight:400;}
 <script>
 const WHATSAPP = '59173913409';
 
-/* ================= HEADER SCROLL ================= */
+/* Header scroll */
 (function(){
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => {
@@ -1464,7 +599,7 @@ const WHATSAPP = '59173913409';
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ================= MENÚ MÓVIL ================= */
+/* Menú móvil */
 (function(){
   const btn = document.getElementById('menuToggle');
   const nav = document.getElementById('mainNav');
@@ -1475,7 +610,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
   );
 })();
 
-/* ================= REVEAL ================= */
+/* Reveal */
 (function(){
   const els = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {
@@ -1493,7 +628,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
   els.forEach(el => io.observe(el));
 })();
 
-/* ================= SALUDO DINÁMICO ================= */
+/* Saludo dinámico */
 function saludo(){
   const h = new Date().getHours();
   if (h >= 5 && h < 12) return 'Buenos días';
@@ -1501,17 +636,15 @@ function saludo(){
   return 'Buenas noches';
 }
 
-/* ================= FORMULARIO → WHATSAPP ================= */
+/* Formulario → WhatsApp */
 (function(){
   const form = document.getElementById('pedidoForm');
   const status = document.getElementById('formStatus');
   if (!form) return;
-
   function setStatus(txt, cls){
     status.textContent = txt;
     status.className = 'form-status ' + (cls || '');
   }
-
   form.addEventListener('submit', function(e){
     e.preventDefault();
     const data = {
@@ -1523,7 +656,6 @@ function saludo(){
     };
     if (!data.nombre) { setStatus('Escribí tu nombre para continuar.', 'err'); form.nombre.focus(); return; }
     if (!data.tipo)   { setStatus('Elegí qué necesitás.', 'err'); form.tipo.focus(); return; }
-
     const lineas = [];
     lineas.push('*Nuevo pedido desde la web* ☕');
     lineas.push('');
@@ -1540,7 +672,6 @@ function saludo(){
     }
     lineas.push('');
     lineas.push('_Pedido enviado desde pausa.bo_');
-
     const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lineas.join('\n'))}`;
     setStatus('Abriendo WhatsApp…', 'ok');
     setTimeout(() => {
@@ -1553,37 +684,45 @@ function saludo(){
 })();
 
 /* ============================================================
-   POPUP OFERTA — deadline real + trigger en CADA intento de salida
+   POPUP OFERTA — trigger SOLO botón atrás (PC + mobile) + 50% scroll
    ------------------------------------------------------------
-   • Desktop: mouse sale del viewport por arriba
-   • Mobile: botón "atrás" del navegador (popstate)
-   • Cooldown 800ms entre cierres (anti-spam)
-   • Máx 15 popups por sesión (safety)
-   • Min 3s en página antes de disparar
-   • Countdown basado en deadline guardado en localStorage
-     (persiste 24h si no expira; se renueva si expira)
+   • Aparece cuando el usuario presiona ATRÁS (popstate)
+   • O cuando scrollea al 50%
+   • SOLO UNA VEZ por visita (el primero que dispare gana)
+   • Una vez mostrado, ya no aparece en esa visita → lo deja salir
+   • Próxima visita (nueva navegación) → se repite el ciclo
+   • Countdown persistente real (localStorage, se respeta el tiempo)
    ============================================================ */
 (function () {
   'use strict';
 
-  const DEADLINE_KEY = 'pausa_offer_deadline';
+  const DEADLINE_KEY    = 'pausa_offer_deadline';
+  const VISIT_FLAG_KEY  = 'pausa_offer_shown_visit';
   const COUNTDOWN_HOURS = 2;
-  const COOLDOWN_MS = 800;
-  const MIN_TIME_ON_PAGE = 3000;
-  const MAX_PER_SESSION = 15;
+  const MIN_TIME_ON_PAGE = 2000;      // 2s mínimo (anti-brusco)
+  const SCROLL_TRIGGER   = 0.5;       // 50% del scroll
 
   const popup = document.getElementById('timedPopup');
   if (!popup) return;
 
+  /* -------- Detectar tipo de navegación -------- */
+  let navType = 'navigate';
+  try {
+    const entries = performance.getEntriesByType('navigation');
+    if (entries && entries[0] && entries[0].type) navType = entries[0].type;
+  } catch (e) {}
+
+  // Nueva visita → limpiamos el flag (recarga NO limpia)
+  if (navType === 'navigate' || navType === 'back_forward' || navType === '') {
+    try { sessionStorage.removeItem(VISIT_FLAG_KEY); } catch (e) {}
+  }
+
   const pageStart = Date.now();
   let active = false;
   let countdownInterval = null;
-  let lastClosedAt = 0;
-  let showCount = 0;
-  let lastHash = location.hash;
 
-  /* -------- Deadline real persistente -------- */
-  function getOrCreateDeadline() {
+  /* -------- Deadline persistente (countdown real) -------- */
+  function getDeadline() {
     let d = 0;
     try { d = parseInt(localStorage.getItem(DEADLINE_KEY) || '0', 10); } catch (e) {}
     if (!d || d <= Date.now()) {
@@ -1593,23 +732,23 @@ function saludo(){
     return d;
   }
 
-  function getRemaining() {
-    return Math.max(0, getOrCreateDeadline() - Date.now());
+  /* -------- Flag por visita -------- */
+  function alreadyShownThisVisit() {
+    try { return sessionStorage.getItem(VISIT_FLAG_KEY) === '1'; }
+    catch (e) { return false; }
+  }
+  function markShownThisVisit() {
+    try { sessionStorage.setItem(VISIT_FLAG_KEY, '1'); } catch (e) {}
   }
 
   /* -------- Abrir / cerrar -------- */
-  function canOpen() {
-    if (active) return false;
-    if (showCount >= MAX_PER_SESSION) return false;
-    if (Date.now() - pageStart < MIN_TIME_ON_PAGE) return false;
-    if (lastClosedAt && Date.now() - lastClosedAt < COOLDOWN_MS) return false;
-    return true;
-  }
-
   function openPopup() {
-    if (!canOpen()) return;
+    if (active) return;
+    if (alreadyShownThisVisit()) return;
+    if (Date.now() - pageStart < MIN_TIME_ON_PAGE) return;
+
+    markShownThisVisit();
     active = true;
-    showCount++;
     popup.classList.add('open');
     popup.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -1626,14 +765,13 @@ function saludo(){
     popup.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     active = false;
-    lastClosedAt = Date.now();
     if (countdownInterval) {
       clearInterval(countdownInterval);
       countdownInterval = null;
     }
   }
 
-  /* -------- Countdown basado en deadline -------- */
+  /* -------- Countdown -------- */
   function startCountdown() {
     const elH = popup.querySelector('[data-cd="h"]');
     const elM = popup.querySelector('[data-cd="m"]');
@@ -1641,18 +779,14 @@ function saludo(){
     if (!elH || !elM || !elS) return;
 
     function tick() {
-      let r = getRemaining();
+      let r = Math.max(0, getDeadline() - Date.now());
       if (r <= 0) {
-        // expiró → renovamos automáticamente
         try { localStorage.removeItem(DEADLINE_KEY); } catch (e) {}
-        r = getRemaining();
+        r = Math.max(0, getDeadline() - Date.now());
       }
-      const h = Math.floor(r / 3600000);
-      const m = Math.floor((r % 3600000) / 60000);
-      const s = Math.floor((r % 60000) / 1000);
-      elH.textContent = String(h).padStart(2, '0');
-      elM.textContent = String(m).padStart(2, '0');
-      elS.textContent = String(s).padStart(2, '0');
+      elH.textContent = String(Math.floor(r / 3600000)).padStart(2, '0');
+      elM.textContent = String(Math.floor((r % 3600000) / 60000)).padStart(2, '0');
+      elS.textContent = String(Math.floor((r % 60000) / 1000)).padStart(2, '0');
     }
     tick();
     countdownInterval = setInterval(tick, 1000);
@@ -1679,41 +813,44 @@ function saludo(){
   }
 
   /* ============================================================
-     TRIGGER 1 — DESKTOP: mouse deja el viewport por arriba
+     TRIGGER 1 — BOTÓN ATRÁS (popstate) en PC + móvil
+     ------------------------------------------------------------
+     Truco: ponemos un "guard" en el history. Cuando el usuario
+     presiona atrás, se dispara popstate ANTES de salir. Ahí
+     volvemos a poner el guard (repeliendo la salida) y mostramos
+     el popup. Como el flag por visita queda activo, la próxima
+     vez que presione atrás NO hacemos el guard y lo dejamos salir.
      ============================================================ */
-  const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-  if (isDesktop) {
-    document.addEventListener('mouseleave', (e) => {
-      if (e.clientY <= 10) openPopup();
-    });
+  if (!alreadyShownThisVisit()) {
+    try { history.pushState({ pausa: 'guard' }, '', location.href); } catch (e) {}
   }
+
+  window.addEventListener('popstate', function () {
+    // Si ya apareció esta visita → dejamos salir tranquilo
+    if (alreadyShownThisVisit()) return;
+    // Si entró hace muy poco → no lo molestamos
+    if (Date.now() - pageStart < MIN_TIME_ON_PAGE) return;
+
+    // Reponemos el guard (repelando la salida) y mostramos el popup
+    try { history.pushState({ pausa: 'guard' }, '', location.href); } catch (e) {}
+    openPopup();
+  });
 
   /* ============================================================
-     TRIGGER 2 — MOBILE: botón atrás (popstate)
+     TRIGGER 2 — 50% del scroll (una vez por visita)
      ============================================================ */
-  if (!isDesktop) {
-    try {
-      // Guard inicial para poder interceptar el back
-      history.pushState({ pausa: 'guard' }, '', location.href);
-
-      window.addEventListener('popstate', () => {
-        // Ignorar navegación entre anclas (#seccion)
-        const newHash = location.hash;
-        const hashChanged = newHash !== lastHash;
-        lastHash = newHash;
-        if (hashChanged) return;
-
-        // Es un intento real de salida
-        if (canOpen()) {
-          openPopup();
-          // Volvemos a "guardar" para interceptar el próximo back
-          try { history.pushState({ pausa: 'guard' }, '', location.href); } catch (e) {}
-        }
-        // Si canOpen() = false (cooldown o máximo), dejamos que salga
-      });
-    } catch (err) { /* Safari antiguo o file:// */ }
+  function onScroll() {
+    if (alreadyShownThisVisit()) {
+      window.removeEventListener('scroll', onScroll);
+      return;
+    }
+    const pct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+    if (pct >= SCROLL_TRIGGER) {
+      window.removeEventListener('scroll', onScroll);
+      openPopup();
+    }
   }
+  window.addEventListener('scroll', onScroll, { passive: true });
 })();
 </script>
 </body>
