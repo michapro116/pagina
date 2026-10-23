@@ -3,31 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Tinta & Alma — Estudio de tatuajes en La Paz, Bolivia. Blackwork, realismo, neotradicional y fineline. Reservá tu sesión por WhatsApp.">
-<meta name="theme-color" content="#0a0a0a">
-<title>Tinta & Alma — Estudio de Tatuajes · La Paz</title>
+<meta name="description" content="PAUSA — Café de especialidad y brunch en La Paz. Desayunos, bowls, sándwiches, café de origen y bebidas frías. Reservá por WhatsApp.">
+<meta name="theme-color" content="#f4f1ea">
+<title>PAUSA — Café & Brunch · La Paz</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
 /* ================= VARIABLES ================= */
 :root{
-  --ink:#0a0a0a;
-  --ink-2:#141414;
-  --bone:#f5f1eb;
-  --bone-2:#e8e2d8;
-  --blood:#a4243b;
-  --blood-2:#7a1a2c;
-  --gold:#d4af37;
-  --ash:#8a8580;
-  --line:rgba(245,241,235,.15);
-  --f-display:'Anton', 'Impact', sans-serif;
+  --bone:#f4f1ea;
+  --bone-2:#ebe6db;
+  --paper:#ffffff;
+  --ink:#1a1a1a;
+  --ink-2:#2c2c2c;
+  --muted:#8a8378;
+  --muted-2:#a8a298;
+  --plum:#6b2d3c;
+  --plum-soft:#8b4557;
+  --sage:#8a9a7b;
+  --line:rgba(26,26,26,.14);
+  --line-2:rgba(26,26,26,.07);
+  --f-display:'Instrument Serif', Georgia, serif;
+  --f-mono:'IBM Plex Mono', ui-monospace, monospace;
   --f-body:'Inter', -apple-system, sans-serif;
-  --f-mono:'Space Mono', ui-monospace, monospace;
-  --ease:cubic-bezier(.65,.05,.36,1);
+  --ease:cubic-bezier(.4,.14,.3,1);
 }
 
 /* ================= RESET ================= */
@@ -36,1144 +39,1671 @@ html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:var(--f-body);
-  background:var(--ink);
-  color:var(--bone);
+  font-size:15px;
+  font-weight:400;
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--bone);
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
-  line-height:1.6;
-}
-/* Grano de película sutil */
-body::before{
-  content:'';
-  position:fixed;inset:0;pointer-events:none;z-index:9998;
-  opacity:.05;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode:overlay;
 }
 img{max-width:100%;height:auto;display:block}
-a{text-decoration:none;color:inherit}
+a{text-decoration:none;color:inherit;transition:color .25s var(--ease)}
 button{font-family:inherit;cursor:pointer}
-::selection{background:var(--blood);color:var(--bone)}
+::selection{background:var(--plum);color:var(--bone)}
 
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.container{width:100%;max-width:1280px;margin:0 auto;padding:0 32px}
+.container{width:100%;max-width:1320px;margin:0 auto;padding:0 48px}
 
-/* ================= BOTONES BRUTALISTAS ================= */
-.btn{
-  display:inline-flex;align-items:center;gap:12px;
-  font-family:var(--f-mono);font-size:13px;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;
-  padding:16px 28px;border:2px solid var(--bone);
-  background:transparent;color:var(--bone);
-  position:relative;
-  transition:transform .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease), color .2s var(--ease);
+/* ================= TIPOGRAFÍA ================= */
+h1,h2,h3,h4{
+  font-family:var(--f-display);
+  font-weight:400;
+  line-height:1.02;
+  letter-spacing:-.015em;
+  color:var(--ink);
+  margin:0;
 }
-.btn:hover{transform:translate(3px,3px);box-shadow:none}
-.btn-fill{background:var(--bone);color:var(--ink);box-shadow:6px 6px 0 var(--blood)}
-.btn-fill:hover{background:var(--bone);color:var(--ink);box-shadow:3px 3px 0 var(--blood)}
-.btn-blood{background:var(--blood);border-color:var(--blood);color:var(--bone);box-shadow:6px 6px 0 var(--gold)}
-.btn-blood:hover{background:var(--blood);border-color:var(--blood);box-shadow:3px 3px 0 var(--gold)}
-.btn-ghost{box-shadow:6px 6px 0 var(--bone)}
-.btn-ghost:hover{box-shadow:3px 3px 0 var(--bone)}
-.btn-wa{background:#25d366;border-color:#25d366;color:#0a0a0a;box-shadow:6px 6px 0 var(--bone);font-weight:700}
-.btn-wa:hover{background:#25d366;border-color:#25d366;box-shadow:3px 3px 0 var(--bone)}
+h1{font-size:clamp(64px, 13vw, 200px); font-weight:400;}
+h2{font-size:clamp(40px, 6vw, 96px); font-weight:400;}
+h3{font-size:32px; font-weight:400;}
+h4{font-size:22px; font-weight:400;}
+
+.italic{font-style:italic}
+
+.mono{
+  font-family:var(--f-mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.tag{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--f-mono);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--plum);
+  margin:0 0 22px;
+}
+.tag::before{content:'';width:28px;height:1px;background:var(--plum)}
+
+/* ================= BOTONES ================= */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--f-body);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.5px;
+  padding:16px 30px;
+  border:1px solid var(--ink);
+  background:var(--ink);
+  color:var(--bone);
+  border-radius:0;
+  transition:all .3s var(--ease);
+  cursor:pointer;
+}
+.btn:hover{background:var(--plum);border-color:var(--plum);color:var(--bone)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--bone)}
+.btn-wa{background:#25d366;border-color:#25d366;color:var(--ink)}
+.btn-wa:hover{background:var(--ink);color:#25d366;border-color:var(--ink)}
+
+.link-arrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--f-mono);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--ink);
+  padding-bottom:6px;
+  border-bottom:1px solid var(--ink);
+  transition:all .3s var(--ease);
+}
+.link-arrow:hover{gap:22px;color:var(--plum);border-color:var(--plum)}
 
 /* ================= HEADER ================= */
 .site-header{
-  position:absolute;top:0;left:0;right:0;z-index:20;
-  padding:24px 0;
-  border-bottom:1px solid var(--line);
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  padding:22px 0;
+  transition:all .3s var(--ease);
+}
+.site-header.scrolled{
+  background:rgba(244,241,234,.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line-2);
+  padding:14px 0;
 }
 .site-header .container{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .logo{
   font-family:var(--f-display);
-  font-size:26px;letter-spacing:2px;
-  text-transform:uppercase;color:var(--bone);
+  font-size:28px;
+  letter-spacing:.01em;
+  color:var(--bone);
+  transition:color .3s var(--ease);
   line-height:1;
-  display:flex;align-items:baseline;gap:2px;
 }
-.logo .amp{color:var(--blood)}
-.nav{display:flex;gap:30px;align-items:center}
+.site-header.scrolled .logo{color:var(--ink)}
+.logo em{color:var(--plum);font-style:italic}
+.site-header.scrolled .logo em{color:var(--plum)}
+.nav{display:flex;gap:34px;align-items:center}
 .nav a{
-  font-family:var(--f-mono);font-size:12px;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;
-  color:var(--bone);opacity:.85;
-  transition:opacity .2s, color .2s;
+  font-family:var(--f-mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--bone);
   position:relative;
+  padding:4px 0;
+  transition:color .3s var(--ease);
 }
-.nav a:hover{opacity:1;color:var(--gold)}
+.site-header.scrolled .nav a{color:var(--ink)}
+.nav a::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;
+  height:1px;background:currentColor;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease);
+}
+.nav a:hover::after{transform:scaleX(1)}
 .nav-cta{
-  padding:10px 18px;
-  border:1px solid var(--bone);
-  opacity:1!important;
+  padding:10px 20px!important;
+  background:var(--bone);
+  color:var(--ink)!important;
+  transition:all .25s var(--ease)!important;
 }
-.nav-cta:hover{background:var(--blood);border-color:var(--blood);color:var(--bone)!important}
+.site-header.scrolled .nav-cta{background:var(--ink);color:var(--bone)!important}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--plum)!important;color:var(--bone)!important}
 .menu-toggle{
-  display:none;background:none;border:0;color:var(--bone);
-  font-size:24px;padding:6px;
+  display:none;background:none;border:0;
+  color:var(--bone);font-size:22px;padding:6px;
+  transition:color .3s var(--ease);
 }
+.site-header.scrolled .menu-toggle{color:var(--ink)}
 
-/* ================= 1. HERO ================= */
+/* ================= HERO ================= */
 .hero{
   position:relative;
   min-height:100vh;
-  display:flex;align-items:flex-end;
-  padding:140px 0 80px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
   overflow:hidden;
-  background:var(--ink);
 }
 .hero-bg{
-  position:absolute;inset:0;
-  background:
-    linear-gradient(120deg, rgba(10,10,10,.95) 0%, rgba(10,10,10,.75) 45%, rgba(10,10,10,.35) 100%),
-    url('https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=1920&q=80')
-    center / cover no-repeat;
-  filter:contrast(1.1) saturate(.85);
-  z-index:0;
+  position:absolute;inset:0;z-index:0;
+  background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80');
+  background-position:center 35%;
+  background-size:cover;
+  background-repeat:no-repeat;
 }
 .hero-bg::after{
   content:'';
   position:absolute;inset:0;
-  background:
-    linear-gradient(180deg, transparent 60%, rgba(10,10,10,1) 100%),
-    repeating-linear-gradient(45deg, transparent 0 40px, rgba(164,36,59,.05) 40px 41px);
+  background:linear-gradient(180deg, rgba(26,26,26,.35) 0%, rgba(26,26,26,.15) 40%, rgba(26,26,26,.75) 100%);
 }
-.hero-inner{
+.hero .container{
   position:relative;z-index:1;
-  width:100%;
-  display:grid;
-  grid-template-columns: 1fr auto;
-  align-items:flex-end;
-  gap:40px;
+  padding-bottom:80px;
 }
-.hero-content{max-width:780px}
+.hero-inner{max-width:900px;color:var(--bone)}
 .hero-eyebrow{
-  font-family:var(--f-mono);font-size:12px;font-weight:700;
-  letter-spacing:4px;text-transform:uppercase;
-  color:var(--gold);
-  margin:0 0 28px;
-  display:flex;align-items:center;gap:14px;
-}
-.hero-eyebrow::before{
-  content:'';width:40px;height:2px;background:var(--gold);
-}
-.hero h1{
-  font-family:var(--f-display);
-  font-size:clamp(56px, 9vw, 132px);
-  line-height:.88;
-  letter-spacing:-.02em;
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--f-mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:3px;
   text-transform:uppercase;
-  margin:0 0 30px;
-  color:var(--bone);
+  color:rgba(244,241,234,.9);
+  margin:0 0 28px;
 }
-.hero h1 .accent{color:var(--blood);display:block}
-.hero h1 .outline{
-  color:transparent;
-  -webkit-text-stroke:2px var(--bone);
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:rgba(244,241,234,.9)}
+.hero h1{
+  color:var(--bone);
+  font-family:var(--f-display);
+  font-size:clamp(80px, 16vw, 240px);
+  font-weight:400;
+  line-height:.82;
+  letter-spacing:-.03em;
+  margin:0 0 24px;
+}
+.hero h1 em{
+  font-style:italic;
+  color:var(--bone-2);
 }
 .hero-sub{
-  font-size:17px;font-weight:300;line-height:1.7;
-  color:rgba(245,241,235,.8);
-  max-width:520px;
-  margin:0 0 36px;
-}
-.hero-buttons{
-  display:flex;gap:16px;flex-wrap:wrap;
-}
-.hero-side{
   font-family:var(--f-mono);
-  font-size:11px;font-weight:700;
-  letter-spacing:3px;text-transform:uppercase;
-  color:rgba(245,241,235,.5);
-  writing-mode:vertical-rl;
-  transform:rotate(180deg);
-  padding-bottom:6px;
-  border-left:1px solid var(--line);
-  padding-left:14px;
-  height:180px;
-}
-
-/* ================= MARQUEE ================= */
-.marquee{
-  background:var(--blood);color:var(--bone);
-  border-top:2px solid var(--bone);
-  border-bottom:2px solid var(--bone);
-  overflow:hidden;padding:14px 0;
-}
-.marquee-track{
-  display:inline-block;white-space:nowrap;
-  animation:marquee 34s linear infinite;
-}
-.marquee-track span{
-  font-family:var(--f-display);
-  font-size:20px;letter-spacing:4px;text-transform:uppercase;
-  padding:0 20px;
-}
-.marquee-track .dot{color:var(--gold)}
-@keyframes marquee{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
-}
-
-/* ================= SECTION HEADER COMPARTIDO ================= */
-.section{
-  padding:120px 0;
-  position:relative;
-}
-.section-bone{background:var(--bone);color:var(--ink)}
-.section-ink{background:var(--ink);color:var(--bone)}
-
-.section-tag{
-  display:flex;align-items:center;gap:16px;
-  font-family:var(--f-mono);font-size:12px;font-weight:700;
-  letter-spacing:4px;text-transform:uppercase;
-  margin:0 0 24px;
-}
-.section-tag .num{
-  padding:4px 10px;
-  border:1px solid currentColor;
-}
-.section-bone .section-tag{color:var(--blood)}
-.section-ink .section-tag{color:var(--gold)}
-
-.section-title{
-  font-family:var(--f-display);
-  font-size:clamp(40px, 6vw, 84px);
-  line-height:.92;letter-spacing:-.01em;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:5px;
   text-transform:uppercase;
-  margin:0 0 24px;
-}
-.section-lead{
-  font-size:17px;font-weight:300;line-height:1.7;
-  max-width:600px;
-  margin:0;
-  opacity:.8;
-}
-.section-head{
-  display:grid;
-  grid-template-columns:1fr auto;
-  align-items:end;
-  gap:40px;
-  margin-bottom:80px;
-}
-
-/* ================= 2. PROCESO ================= */
-.process-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:0;
-  border-top:2px solid var(--ink);
-  border-bottom:2px solid var(--ink);
-}
-.process-step{
-  padding:40px 30px;
-  border-right:1px solid rgba(10,10,10,.15);
-  position:relative;
-  transition:background .3s var(--ease);
-}
-.process-step:last-child{border-right:0}
-.process-step:hover{background:var(--ink);color:var(--bone)}
-.process-step:hover .step-num{-webkit-text-stroke:2px var(--gold);color:transparent}
-.step-num{
-  font-family:var(--f-display);
-  font-size:clamp(64px, 8vw, 108px);
-  line-height:.85;letter-spacing:-.04em;
-  color:transparent;
-  -webkit-text-stroke:2px var(--ink);
-  transition:color .3s var(--ease), -webkit-text-stroke-color .3s var(--ease);
-  margin:0 0 24px;
-  display:block;
-}
-.step-title{
-  font-family:var(--f-display);
-  font-size:22px;letter-spacing:1px;text-transform:uppercase;
-  margin:0 0 14px;
-  line-height:1.1;
-}
-.step-desc{
-  font-size:14px;font-weight:400;line-height:1.7;
-  opacity:.7;
-  margin:0;
-}
-.process-step:hover .step-desc{opacity:.9}
-
-/* ================= 3. ARTISTAS ================= */
-.artists-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:32px;
-}
-.artist-card{
-  border:2px solid var(--bone);
-  background:var(--ink-2);
-  padding:0;
-  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
-  box-shadow:8px 8px 0 var(--blood);
-  overflow:hidden;
-}
-.artist-card:hover{
-  transform:translate(-3px, -3px);
-  box-shadow:12px 12px 0 var(--gold);
-}
-.artist-photo{
-  width:100%;aspect-ratio:4/5;
-  overflow:hidden;
-  border-bottom:2px solid var(--bone);
-  position:relative;
-  background:#000;
-}
-.artist-photo img{
-  width:100%;height:100%;object-fit:cover;
-  filter:grayscale(1) contrast(1.15);
-  transition:filter .4s var(--ease), transform .4s var(--ease);
-}
-.artist-card:hover .artist-photo img{
-  filter:grayscale(0) contrast(1.05);
-  transform:scale(1.03);
-}
-.artist-photo .tag{
-  position:absolute;top:12px;left:12px;
-  background:var(--blood);color:var(--bone);
-  font-family:var(--f-mono);font-size:10px;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;
-  padding:5px 10px;
-}
-.artist-body{padding:28px 26px 30px}
-.artist-name{
-  font-family:var(--f-display);
-  font-size:32px;line-height:1;letter-spacing:1px;
-  text-transform:uppercase;
-  margin:0 0 6px;
-}
-.artist-specialty{
-  font-family:var(--f-mono);font-size:11px;font-weight:700;
-  letter-spacing:3px;text-transform:uppercase;
-  color:var(--gold);
-  margin:0 0 18px;
-}
-.artist-bio{
-  font-size:14px;font-weight:300;line-height:1.75;
-  color:rgba(245,241,235,.72);
-  margin:0 0 22px;
-}
-.artist-meta{
-  display:flex;justify-content:space-between;align-items:center;
-  padding-top:16px;
-  border-top:1px solid var(--line);
-  font-family:var(--f-mono);font-size:11px;
-  letter-spacing:2px;text-transform:uppercase;
-  color:rgba(245,241,235,.55);
-}
-.artist-meta a{color:var(--bone);border-bottom:1px solid var(--blood);transition:color .2s}
-.artist-meta a:hover{color:var(--gold)}
-
-/* ================= 4. TESTIMONIO ================= */
-.testimonial{
-  background:var(--bone);color:var(--ink);
-  padding:140px 0;
-  position:relative;
-  overflow:hidden;
-}
-.testimonial::before{
-  content:'“';
-  font-family:var(--f-display);
-  font-size:480px;line-height:.7;
-  color:var(--blood);
-  position:absolute;top:20px;left:-30px;
-  opacity:.12;pointer-events:none;
-}
-.testimonial-inner{
-  max-width:900px;margin:0 auto;
-  text-align:center;position:relative;z-index:1;
-}
-.testimonial-quote{
-  font-family:var(--f-display);
-  font-size:clamp(28px, 4.4vw, 54px);
-  line-height:1.08;
-  letter-spacing:-.01em;
-  text-transform:uppercase;
+  color:rgba(244,241,234,.85);
   margin:0 0 40px;
 }
-.testimonial-quote em{color:var(--blood);font-style:normal}
-.testimonial-author{
-  font-family:var(--f-mono);font-size:12px;font-weight:700;
-  letter-spacing:4px;text-transform:uppercase;
-  color:var(--ash);
-}
-.testimonial-author::before,.testimonial-author::after{content:'— ';color:var(--blood)}
-.testimonial-author::after{content:' —'}
-
-/* ================= 5. ESTILOS ================= */
-.styles-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:0;
-  border-top:2px solid var(--line);
-  border-left:2px solid var(--line);
-}
-.style-item{
-  padding:32px 26px;
-  border-right:2px solid var(--line);
-  border-bottom:2px solid var(--line);
-  position:relative;
-  transition:background .3s var(--ease);
-  min-height:220px;
-  display:flex;flex-direction:column;
-}
-.style-item:hover{background:var(--ink-2)}
-.style-item:hover .style-num{color:var(--blood)}
-.style-item:hover .style-name{color:var(--gold)}
-.style-num{
-  font-family:var(--f-mono);font-size:12px;font-weight:700;
-  letter-spacing:3px;color:var(--ash);
-  margin-bottom:auto;
-  transition:color .3s var(--ease);
-}
-.style-name{
-  font-family:var(--f-display);
-  font-size:30px;line-height:1;letter-spacing:1px;
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-foot{
+  position:absolute;
+  bottom:32px;right:48px;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+  font-family:var(--f-mono);
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:3px;
   text-transform:uppercase;
-  margin:20px 0 12px;
-  transition:color .3s var(--ease);
+  color:rgba(244,241,234,.7);
+  text-align:right;
 }
-.style-desc{
-  font-size:13px;font-weight:300;line-height:1.6;
-  color:rgba(245,241,235,.6);
+.hero-foot .line{width:36px;height:1px;background:rgba(244,241,234,.4)}
+
+/* ================= INTRO ================= */
+.intro{
+  padding:120px 0;
+  background:var(--bone);
+  text-align:center;
+  border-bottom:1px solid var(--line-2);
+}
+.intro-inner{max-width:820px;margin:0 auto}
+.intro h2{
+  font-family:var(--f-display);
+  font-size:clamp(36px, 5vw, 68px);
+  font-weight:400;
+  line-height:1.12;
+  letter-spacing:-.02em;
+  margin:0 0 28px;
+}
+.intro h2 em{font-style:italic;color:var(--plum)}
+.intro p{
+  font-family:var(--f-body);
+  font-size:17px;
+  line-height:1.75;
+  color:var(--muted);
+  margin:0 auto;
+  max-width:580px;
+}
+
+/* ================= MENÚ ================= */
+.menu-section{
+  padding:140px 0;
+  border-bottom:1px solid var(--line-2);
+  position:relative;
+}
+.menu-section:nth-of-type(odd){background:var(--bone)}
+.menu-section:nth-of-type(even){background:var(--bone-2)}
+
+.section-head{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:60px;
+  align-items:end;
+  padding-bottom:48px;
+  margin-bottom:60px;
+  border-bottom:1px solid var(--ink);
+}
+.section-num{
+  font-family:var(--f-display);
+  font-size:clamp(80px, 10vw, 140px);
+  font-style:italic;
+  font-weight:400;
+  line-height:.85;
+  color:var(--plum);
+  letter-spacing:-.03em;
+}
+.section-title h2{
+  font-size:clamp(40px, 6vw, 80px);
+  letter-spacing:-.025em;
+  line-height:.92;
+}
+.section-title h2 em{font-style:italic;color:var(--plum)}
+.section-sub{
+  font-family:var(--f-mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:14px;
+  display:block;
+}
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:100px;
+  align-items:start;
+}
+.menu-col h3{
+  font-family:var(--f-display);
+  font-size:34px;
+  font-weight:400;
+  letter-spacing:-.01em;
+  margin:0 0 8px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+.menu-col h3::before{
+  content:'';
+  position:absolute;
+  bottom:-1px;left:0;
+  width:40px;height:2px;
+  background:var(--plum);
+}
+.menu-col h3 em{color:var(--plum)}
+
+.price-list{list-style:none;padding:0;margin:0}
+.price-item{
+  padding:22px 0;
+  border-bottom:1px dashed var(--line);
+}
+.price-item:last-child{border-bottom:0}
+.price-head{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  margin-bottom:6px;
+}
+.price-name{
+  font-family:var(--f-display);
+  font-size:22px;
+  font-weight:400;
+  color:var(--ink);
+  letter-spacing:-.005em;
+  line-height:1.2;
+}
+.price-name em{font-style:italic;color:var(--muted)}
+.price-dots{
+  flex:1;
+  border-bottom:1px dotted var(--line);
+  height:1em;
+  min-width:20px;
+}
+.price-amount{
+  font-family:var(--f-mono);
+  font-size:14px;
+  font-weight:500;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.price-desc{
+  font-family:var(--f-body);
+  font-size:13px;
+  line-height:1.6;
+  color:var(--muted);
   margin:0;
 }
 
-/* ================= 6. ABOUT / MISIÓN / OFERTA ================= */
-.about{
-  background:var(--ink-2);color:var(--bone);
-  padding:120px 0;
+.menu-banner{
+  position:relative;
+  height:340px;
+  overflow:hidden;
+  margin-top:80px;
 }
-.about-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:0;
-  border-top:2px solid var(--bone);
+.menu-banner img{
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:sepia(.1) saturate(.95);
 }
-.about-col{
-  padding:50px 40px;
-  border-right:1px solid var(--line);
-}
-.about-col:last-child{border-right:0}
-.about-col h3{
-  font-family:var(--f-display);
-  font-size:36px;line-height:1;letter-spacing:1px;
+.menu-banner-label{
+  position:absolute;
+  bottom:24px;left:24px;
+  font-family:var(--f-mono);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:3px;
   text-transform:uppercase;
-  margin:0 0 24px;
-  display:flex;align-items:baseline;gap:14px;
-}
-.about-col h3 .n{
-  font-family:var(--f-mono);font-size:14px;font-weight:700;
-  color:var(--gold);letter-spacing:2px;
-}
-.about-col p{
-  font-size:15px;font-weight:300;line-height:1.8;
-  color:rgba(245,241,235,.78);
-  margin:0 0 14px;
-}
-.offer-list{list-style:none;padding:0;margin:0}
-.offer-list li{
-  display:flex;align-items:flex-start;gap:12px;
-  font-size:14px;font-weight:300;line-height:1.8;
-  color:rgba(245,241,235,.85);
-  padding:8px 0;
-  border-bottom:1px dashed rgba(245,241,235,.12);
-}
-.offer-list li:last-child{border-bottom:0}
-.offer-list i{
-  color:var(--blood);margin-top:7px;font-size:10px;
+  color:var(--bone);
+  background:var(--ink);
+  padding:8px 14px;
 }
 
-/* ================= 7. CONTACTO ================= */
-.contact{
-  background:var(--ink);color:var(--bone);
-  padding:120px 0 100px;
+/* ================= PEDIDO ================= */
+.pedido{
+  padding:140px 0;
+  background:var(--ink);
+  color:var(--bone);
   position:relative;
+  overflow:hidden;
 }
-.contact::before{
+.pedido::before{
   content:'';
   position:absolute;inset:0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(164,36,59,.15) 0%, transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(212,175,55,.10) 0%, transparent 40%);
+  background:repeating-linear-gradient(90deg, transparent 0 100px, rgba(244,241,234,.02) 100px 101px);
   pointer-events:none;
 }
-.contact-inner{
-  position:relative;z-index:1;
+.pedido .container{position:relative;z-index:1}
+.pedido-inner{
   display:grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap:80px;
+  grid-template-columns:1fr 1.1fr;
+  gap:100px;
   align-items:start;
 }
-.contact-lead h2{
-  font-family:var(--f-display);
-  font-size:clamp(44px, 6vw, 88px);
-  line-height:.9;letter-spacing:-.01em;
-  text-transform:uppercase;
-  margin:0 0 28px;
+.pedido-lead .tag{color:var(--plum-soft)}
+.pedido-lead .tag::before{background:var(--plum-soft)}
+.pedido-lead h2{
+  color:var(--bone);
+  font-size:clamp(40px, 5.5vw, 80px);
+  line-height:.95;
+  margin:0 0 24px;
 }
-.contact-lead h2 .accent{color:var(--blood);display:block}
-.contact-lead p{
-  font-size:16px;font-weight:300;line-height:1.7;
-  color:rgba(245,241,235,.75);
-  margin:0 0 30px;
-  max-width:420px;
+.pedido-lead h2 em{
+  font-style:italic;
+  color:var(--plum-soft);
 }
-.contact-info{
+.pedido-lead p{
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.7;
+  color:rgba(244,241,234,.75);
+  margin:0 0 40px;
+  max-width:440px;
+}
+.pedido-info{
   list-style:none;padding:0;margin:0;
-  font-family:var(--f-mono);font-size:12px;
-  letter-spacing:2px;text-transform:uppercase;
+  border-top:1px solid rgba(244,241,234,.15);
 }
-.contact-info li{
-  display:flex;align-items:center;gap:12px;
-  padding:14px 0;
-  border-top:1px solid var(--line);
-  color:rgba(245,241,235,.7);
+.pedido-info li{
+  display:grid;
+  grid-template-columns:130px 1fr;
+  gap:16px;
+  padding:16px 0;
+  border-bottom:1px solid rgba(244,241,234,.15);
+  font-family:var(--f-mono);
+  font-size:13px;
+  color:rgba(244,241,234,.85);
 }
-.contact-info li:last-child{border-bottom:1px solid var(--line)}
-.contact-info i{color:var(--blood);font-size:14px;width:18px}
+.pedido-info .key{
+  color:var(--plum-soft);
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
 
-/* Formulario */
 .form{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px;
+  grid-template-columns:1fr;
+  gap:20px;
+  padding:44px 40px 36px;
+  border:1px solid rgba(244,241,234,.2);
+  background:rgba(244,241,234,.02);
+  position:relative;
 }
-.field-full{grid-column:1/-1}
-.field{position:relative}
+.form::before{
+  content:'PAUSA';
+  position:absolute;
+  top:16px;right:20px;
+  font-family:var(--f-mono);
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:4px;
+  color:var(--plum-soft);
+  opacity:.6;
+}
+.form-title{
+  font-family:var(--f-display);
+  font-size:26px;
+  font-weight:400;
+  font-style:italic;
+  color:var(--bone);
+  margin:0 0 6px;
+}
+.form-sub{
+  font-family:var(--f-mono);
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(244,241,234,.55);
+  margin:0 0 22px;
+}
+.field-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
 .field label{
-  display:block;
-  font-family:var(--f-mono);font-size:11px;font-weight:700;
-  letter-spacing:3px;text-transform:uppercase;
-  color:var(--gold);
-  margin-bottom:8px;
+  font-family:var(--f-mono);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--plum-soft);
 }
 .field label .opt{
-  color:var(--ash);font-weight:400;
-  letter-spacing:1px;text-transform:none;
+  color:var(--muted-2);
+  font-weight:400;
+  letter-spacing:.5px;
+  text-transform:none;
   margin-left:4px;
 }
-.form input,
-.form select,
-.form textarea{
+.field input,
+.field select,
+.field textarea{
   width:100%;
   font-family:var(--f-body);
-  font-size:15px;font-weight:400;
+  font-size:16px;
+  font-weight:500;
   color:var(--bone);
   background:transparent;
   border:0;
-  border-bottom:2px solid rgba(245,241,235,.25);
-  padding:10px 0;
-  outline:none;
-  transition:border-color .25s var(--ease);
+  border-bottom:1px solid rgba(244,241,234,.3);
   border-radius:0;
+  padding:9px 0 11px;
+  outline:none;
   appearance:none;
+  -webkit-appearance:none;
+  transition:border-color .25s var(--ease);
+  line-height:1.4;
 }
-.form select{
-  background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 0 center;background-size:16px;
+.field select{
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b4557' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 2px center;
+  background-size:14px;
   padding-right:24px;
+  cursor:pointer;
 }
-.form select option{background:var(--ink);color:var(--bone)}
-.form input:focus,
-.form select:focus,
-.form textarea:focus{border-bottom-color:var(--gold)}
-.form input::placeholder,
-.form textarea::placeholder{color:rgba(245,241,235,.3)}
-.form textarea{resize:vertical;min-height:110px}
-
-.form-submit{
-  grid-column:1/-1;
-  margin-top:12px;
+.field select option{background:var(--ink);color:var(--bone)}
+.field input:focus,
+.field select:focus,
+.field textarea:focus{border-bottom-color:var(--plum-soft)}
+.field input::placeholder,
+.field textarea::placeholder{color:rgba(244,241,234,.35)}
+.field textarea{resize:vertical;min-height:60px;padding-top:10px}
+.form-submit{margin-top:8px}
+.form-submit button{
+  width:100%;
+  padding:18px 24px;
+  font-family:var(--f-body);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  background:var(--plum);
+  color:var(--bone);
+  border:1px solid var(--plum);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition:all .25s var(--ease);
+  cursor:pointer;
 }
-.form-submit .btn{width:100%;justify-content:center;padding:18px 24px;font-size:13px}
+.form-submit button:hover{background:var(--bone);color:var(--ink);border-color:var(--bone)}
 .form-status{
-  grid-column:1/-1;
-  font-family:var(--f-mono);font-size:12px;
-  letter-spacing:2px;text-transform:uppercase;
+  font-family:var(--f-mono);
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:1px;
   text-align:center;
   min-height:1.4em;
-  margin:6px 0 0;
+  margin:8px 0 0;
+  color:rgba(244,241,234,.85);
 }
-.form-status.ok{color:#7fdd8f}
-.form-status.err{color:#ff6b6b}
+.form-status.ok{color:#a8c47a}
+.form-status.err{color:#e09b8a}
+.form-privacy{
+  font-size:11px;
+  color:rgba(244,241,234,.5);
+  text-align:center;
+  margin:8px 0 0;
+  line-height:1.55;
+}
 
-/* ================= 8. FOOTER ================= */
+/* ================= FOOTER ================= */
 .footer{
-  background:var(--ink-2);
-  border-top:2px solid var(--bone);
-  padding:60px 0 24px;
+  background:var(--bone);
+  border-top:1px solid var(--line);
+  padding:80px 0 30px;
 }
 .footer-top{
-  display:flex;justify-content:space-between;align-items:center;
-  gap:30px;flex-wrap:wrap;
-  padding-bottom:40px;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:60px;
+  padding-bottom:50px;
   border-bottom:1px solid var(--line);
 }
-.footer-logo{
-  font-family:var(--f-display);
-  font-size:36px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--bone);line-height:1;
+.footer-brand .logo{color:var(--ink);font-size:36px;margin-bottom:16px;line-height:1}
+.footer-brand .logo em{color:var(--plum)}
+.footer-brand p{
+  font-size:14px;
+  line-height:1.7;
+  color:var(--muted);
+  margin:0 0 24px;
+  max-width:340px;
 }
-.footer-logo .amp{color:var(--blood)}
-.footer-social{display:flex;gap:12px}
+.footer h5{
+  font-family:var(--f-mono);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--plum);
+  margin:0 0 20px;
+}
+.footer ul{list-style:none;padding:0;margin:0}
+.footer ul li{margin-bottom:10px;font-size:14px}
+.footer ul a{color:var(--ink-2)}
+.footer ul a:hover{color:var(--plum)}
+.footer-social{display:flex;gap:8px;margin-top:4px}
 .footer-social a{
-  width:42px;height:42px;
+  width:40px;height:40px;
+  border:1px solid var(--line);
   display:inline-flex;align-items:center;justify-content:center;
-  border:1px solid rgba(245,241,235,.3);
-  color:var(--bone);
-  transition:background .2s, border-color .2s, color .2s;
+  color:var(--ink);
+  font-size:14px;
+  transition:all .25s var(--ease);
 }
-.footer-social a:hover{background:var(--blood);border-color:var(--blood);color:var(--bone)}
-.footer-meta{
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:14px;
+.footer-social a:hover{background:var(--plum);border-color:var(--plum);color:var(--bone)}
+.footer-bottom{
   padding-top:26px;
-  font-family:var(--f-mono);font-size:11px;
-  letter-spacing:2px;text-transform:uppercase;
-  color:rgba(245,241,235,.45);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  font-family:var(--f-mono);
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
 }
-.footer-meta a{color:rgba(245,241,235,.75);transition:color .2s}
-.footer-meta a:hover{color:var(--gold)}
 
-/* ================= WHATSAPP FLOTANTE ================= */
+/* ================= WHATSAPP FLOAT ================= */
 .wa-float{
-  position:fixed;right:22px;bottom:22px;z-index:50;
+  position:fixed;
+  right:24px;bottom:24px;
+  z-index:50;
   display:flex;align-items:center;gap:10px;
-  background:#25d366;color:#0a0a0a;
-  font-family:var(--f-mono);font-size:12px;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;
-  padding:14px 18px;border:2px solid #0a0a0a;
-  box-shadow:5px 5px 0 var(--bone);
-  transition:transform .2s var(--ease), box-shadow .2s var(--ease);
+  background:#25d366;
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:12px;font-weight:700;
+  letter-spacing:1px;
+  padding:14px 20px 14px 18px;
+  border-radius:50px;
+  box-shadow:0 12px 30px -8px rgba(37,211,102,.55);
+  transition:all .25s var(--ease);
 }
-.wa-float:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--bone)}
+.wa-float:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 35px -8px rgba(37,211,102,.75);
+}
 .wa-float i{font-size:20px}
 
 /* ================= REVEAL ================= */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
-/* ================= TABLET ================= */
+/* ================= RESPONSIVE ================= */
 @media (max-width:1024px){
-  .hero-inner{grid-template-columns:1fr}
-  .hero-side{display:none}
-  .hero h1{font-size:clamp(48px, 8vw, 88px)}
-
-  .section{padding:90px 0}
-  .section-head{grid-template-columns:1fr;margin-bottom:50px}
-  .section-title{font-size:clamp(34px, 6vw, 56px)}
-
-  .process-grid{grid-template-columns:1fr 1fr}
-  .process-step:nth-child(2){border-right:0}
-  .process-step:nth-child(1),
-  .process-step:nth-child(2){border-bottom:1px solid rgba(10,10,10,.15)}
-
-  .artists-grid{grid-template-columns:1fr 1fr;gap:24px}
-  .artists-grid .artist-card:last-child{grid-column:1/-1;max-width:520px;margin:0 auto}
-
-  .styles-grid{grid-template-columns:repeat(2,1fr)}
-  .about-grid{grid-template-columns:1fr;border-top:0}
-  .about-col{border-right:0;border-top:2px solid var(--bone);padding:36px 0}
-  .about-col:first-child{border-top:0}
-
-  .contact-inner{grid-template-columns:1fr;gap:50px}
+  .container{padding:0 32px}
+  .hero h1{font-size:clamp(72px, 16vw, 160px)}
+  .section-head{grid-template-columns:1fr;gap:20px;padding-bottom:32px;margin-bottom:44px}
+  .section-num{font-size:80px}
+  .menu-grid{grid-template-columns:1fr;gap:60px}
+  .menu-col h3{font-size:28px}
+  .menu-banner{height:260px;margin-top:60px}
+  .menu-section{padding:100px 0}
+  .pedido{padding:100px 0}
+  .pedido-inner{grid-template-columns:1fr;gap:56px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:40px}
+  .footer-brand{grid-column:1/-1}
 }
 
-/* ================= MÓVIL ================= */
 @media (max-width:767px){
-  .container{padding:0 20px}
+  .container{padding:0 22px}
   .site-header{padding:16px 0}
-  .nav{display:none;position:absolute;top:100%;left:0;right:0;
-    flex-direction:column;gap:0;padding:8px 0;
-    background:var(--ink);border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
+  .nav{display:none;position:absolute;top:100%;left:16px;right:16px;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--bone);border:1px solid var(--line);
+    padding:8px 0;
+    box-shadow:0 20px 40px -10px rgba(0,0,0,.15);
   }
   .nav.open{display:flex}
-  .nav a{padding:14px 20px;font-size:12px}
-  .nav-cta{margin:8px 20px 12px;text-align:center}
+  .nav a{padding:14px 24px;font-size:12px;color:var(--ink)!important}
+  .nav a::after{display:none}
+  .nav-cta{margin:8px 20px 6px;text-align:center;background:var(--ink)!important;color:var(--bone)!important}
   .menu-toggle{display:block}
+  .logo{font-size:24px}
 
-  .hero{padding:110px 0 60px;min-height:auto}
-  .hero h1{font-size:clamp(38px, 11vw, 64px)}
-  .hero-sub{font-size:15px;margin-bottom:28px}
-  .hero-buttons{flex-direction:column;align-items:stretch}
-  .hero-buttons .btn{justify-content:center}
+  .hero .container{padding-bottom:60px}
+  .hero h1{font-size:clamp(64px, 20vw, 120px)}
+  .hero-sub{font-size:10px;letter-spacing:3px}
+  .hero-eyebrow{font-size:10px;letter-spacing:2px;margin-bottom:20px}
+  .hero-actions{flex-direction:column;align-items:stretch;width:100%;max-width:280px}
+  .hero-actions .btn{width:100%}
+  .hero-foot{display:none}
 
-  .section{padding:70px 0}
-  .section-title{font-size:clamp(30px, 9vw, 44px)}
-  .section-tag{font-size:10px;letter-spacing:3px}
+  .intro{padding:70px 0}
+  .intro h2{font-size:30px;line-height:1.2}
+  .intro p{font-size:15px}
 
-  .process-grid{grid-template-columns:1fr;border-bottom:0}
-  .process-step{border-right:0;border-bottom:2px solid var(--ink);padding:32px 22px}
-  .step-num{font-size:80px;margin-bottom:16px}
+  .menu-section{padding:70px 0}
+  .section-num{font-size:64px}
+  .section-title h2{font-size:44px}
+  .section-sub{font-size:10px}
+  .menu-col h3{font-size:24px;padding-bottom:16px}
+  .price-name{font-size:18px}
+  .price-amount{font-size:13px}
+  .price-desc{font-size:12px}
+  .price-item{padding:18px 0}
+  .menu-banner{height:200px;margin-top:50px}
+  .menu-banner-label{font-size:9px;padding:6px 10px;bottom:14px;left:14px}
 
-  .artists-grid{grid-template-columns:1fr}
-  .artists-grid .artist-card:last-child{grid-column:auto;max-width:none}
-  .artist-name{font-size:28px}
+  .pedido{padding:70px 0}
+  .pedido-lead h2{font-size:40px}
+  .pedido-lead p{font-size:15px}
+  .pedido-info li{grid-template-columns:100px 1fr;gap:12px;font-size:12px}
+  .form{padding:32px 24px 26px}
+  .field-row{grid-template-columns:1fr;gap:18px}
+  .form-title{font-size:22px}
+  .field input,.field select,.field textarea{font-size:15px}
 
-  .testimonial{padding:80px 0}
-  .testimonial::before{font-size:280px;top:-10px;left:-20px}
-  .testimonial-quote{font-size:clamp(22px, 6vw, 32px)}
+  .footer{padding:50px 0 24px}
+  .footer-top{grid-template-columns:1fr;gap:32px;padding-bottom:32px}
+  .footer-brand{grid-column:auto}
+  .footer-brand .logo{font-size:28px}
+  .footer-bottom{flex-direction:column;text-align:center}
 
-  .styles-grid{grid-template-columns:1fr}
-  .style-item{min-height:auto;padding:24px 20px}
-
-  .about{padding:70px 0}
-  .about-col{padding:32px 0}
-
-  .contact{padding:80px 0 70px}
-  .form{grid-template-columns:1fr}
-  .contact-lead h2{font-size:clamp(34px, 10vw, 52px)}
-
-  .footer{padding:40px 0 22px}
-  .footer-logo{font-size:28px}
-  .footer-top{justify-content:flex-start;gap:20px}
-
-  .wa-float{padding:12px;border-radius:0}
+  .wa-float{padding:12px;border-radius:50%}
   .wa-float span{display:none}
   .wa-float i{font-size:22px;margin:0}
 }
 
-/* ================= ACCESIBILIDAD ================= */
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+/* ================= POPUPS: OFERTA LIMITADA + EXIT INTENT ================= */
+.popup-overlay {
+  position: fixed; inset: 0;
+  z-index: 9999;
+  background: rgba(26, 26, 26, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
 }
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.popup-overlay.open {
+  display: flex;
+  animation: popupFadeIn .35s var(--ease);
+}
+.popup-overlay.open .popup-card {
+  animation: popupSlideUp .5s var(--ease);
+}
+@keyframes popupFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes popupSlideUp {
+  from { opacity: 0; transform: translateY(24px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.popup-card {
+  background: var(--bone);
+  max-width: 520px;
+  width: 100%;
+  padding: 48px 44px 36px;
+  position: relative;
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, .55);
+  border: 1px solid rgba(26, 26, 26, .1);
+  margin: auto;
+}
+
+.popup-close {
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 36px; height: 36px;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .2s var(--ease);
+  padding: 0;
+}
+.popup-close:hover,
+.popup-close:focus-visible {
+  background: var(--ink);
+  color: var(--bone);
+  border-color: var(--ink);
+}
+
+.popup-tag {
+  display: inline-block;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--plum);
+  padding: 6px 12px;
+  border: 1px solid var(--plum);
+  margin-bottom: 22px;
+}
+.popup-tag::before {
+  content: '';
+  display: inline-block;
+  width: 5px; height: 5px;
+  background: var(--plum);
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+  animation: pulseDot 1.6s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.7); }
+}
+
+.popup-title {
+  font-family: var(--f-display);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: .95;
+  letter-spacing: -.025em;
+  margin: 0 0 18px;
+  color: var(--ink);
+}
+.popup-title em {
+  font-style: italic;
+  color: var(--plum);
+}
+
+.popup-body {
+  font-family: var(--f-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin: 0 0 26px;
+}
+.popup-body strong {
+  color: var(--plum);
+  font-weight: 700;
+}
+
+.popup-countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 20px 16px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 62px;
+}
+.countdown-num {
+  font-family: var(--f-mono);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.countdown-label {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.countdown-colon {
+  font-family: var(--f-mono);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--muted-2);
+  transform: translateY(-6px);
+  user-select: none;
+}
+
+.popup-code {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  border: 2px dashed var(--plum);
+  background: rgba(107, 45, 60, 0.06);
+  margin-bottom: 20px;
+}
+.popup-code-label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--plum);
+}
+.popup-code-value {
+  font-family: var(--f-mono);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--plum);
+  padding-left: 8px;
+}
+
+.popup-highlight {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--bone-2);
+  margin-bottom: 22px;
+  font-family: var(--f-body);
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.popup-highlight-icon {
+  font-size: 26px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.popup-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 18px 20px;
+  background: var(--plum);
+  color: var(--bone);
+  font-family: var(--f-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: 1px solid var(--plum);
+  transition: all .25s var(--ease);
+  margin-bottom: 12px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.popup-cta:hover,
+.popup-cta:focus-visible {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bone);
+}
+.popup-cta i { font-size: 16px; }
+
+.popup-dismiss {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  font-family: var(--f-body);
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 8px;
+  cursor: pointer;
+  transition: color .2s var(--ease);
+}
+.popup-dismiss:hover { color: var(--ink); }
+
+@media (max-width: 600px) {
+  .popup-card {
+    padding: 38px 24px 28px;
+  }
+  .popup-title {
+    font-size: 34px;
+  }
+  .popup-body {
+    font-size: 14px;
+  }
+  .countdown-num {
+    font-size: 26px;
+  }
+  .countdown-item {
+    min-width: 50px;
+  }
+  .countdown-colon {
+    font-size: 22px;
+  }
+  .popup-code-value {
+    font-size: 17px;
+    letter-spacing: 3px;
+  }
+  .popup-tag {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popup-overlay.open,
+  .popup-overlay.open .popup-card,
+  .popup-tag::before {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+:focus-visible{outline:2px solid var(--plum);outline-offset:3px}
 </style>
 </head>
 <body>
 
 <!-- ============ HEADER ============ -->
-<header class="site-header">
+<header class="site-header" id="siteHeader">
   <div class="container">
-    <a href="#inicio" class="logo">Tinta<span class="amp"> & </span>Alma</a>
+    <a href="#inicio" class="logo">Paus<em>a</em></a>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
       <i class="fa fa-bars"></i>
     </button>
     <nav class="nav" id="mainNav" aria-label="Navegación principal">
-      <a href="#proceso">Proceso</a>
-      <a href="#artistas">Artistas</a>
-      <a href="#estilos">Estilos</a>
-      <a href="#estudio">Estudio</a>
-      <a href="#reservar" class="nav-cta"><i class="fa fa-whatsapp" aria-hidden="true"></i> Reservar</a>
+      <a href="#desayunos">Desayunos</a>
+      <a href="#almuerzos">Almuerzos</a>
+      <a href="#cafeteria">Cafetería</a>
+      <a href="#pedido" class="nav-cta">Reservar</a>
     </nav>
   </div>
 </header>
 
-<!-- ============ 1. HERO ============ -->
+<!-- ============ HERO ============ -->
 <section id="inicio" class="hero">
   <div class="hero-bg"></div>
   <div class="container">
     <div class="hero-inner">
-      <div class="hero-content">
-        <p class="hero-eyebrow">Estudio de tatuajes · La Paz · Est. 2024</p>
-        <h1>
-          Tinta que<br>
-          <span class="outline">cuenta</span>
-          <span class="accent">historias.</span>
-        </h1>
-        <p class="hero-sub">
-          No hacemos tatuajes: trazamos memoria sobre la piel.
-          Diseño personalizado, artistas con oficio y una experiencia
-          pensada para que vuelvas con la misma confianza con la que entraste.
-        </p>
-        <div class="hero-buttons">
-          <a href="#estilos" class="btn btn-ghost">
-            <i class="fa fa-arrow-right" aria-hidden="true"></i> Ver estilos
-          </a>
-          <a href="https://wa.me/59173913409?text=Hola%20Tinta%20%26%20Alma%2C%20quiero%20cotizar%20un%20tatuaje."
-             class="btn btn-blood" target="_blank" rel="noopener">
-            <i class="fa fa-whatsapp" aria-hidden="true"></i> Cotizar por WhatsApp
-          </a>
-        </div>
+      <p class="hero-eyebrow">Café de especialidad · Sopocachi</p>
+      <h1>Paus<em>a</em></h1>
+      <p class="hero-sub">— café &amp; brunch · desde 2021 —</p>
+      <div class="hero-actions">
+        <a href="#desayunos" class="btn">Ver la carta</a>
+        <a href="https://wa.me/59173913409?text=Hola%20PAUSA%2C%20quiero%20hacer%20un%20pedido."
+           class="btn btn-ghost" target="_blank" rel="noopener"
+           style="color:var(--bone);border-color:rgba(244,241,234,.4);">
+          <i class="fa fa-whatsapp" aria-hidden="true"></i>
+          Pedir por WhatsApp
+        </a>
       </div>
-      <div class="hero-side">Tinta · Piel · Ofício</div>
     </div>
+  </div>
+  <div class="hero-foot">
+    <span>La Paz · Bolivia</span>
+    <div class="line"></div>
+    <span>Est. 2021</span>
   </div>
 </section>
 
-<!-- ============ MARQUEE ============ -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Blackwork <em class="dot">·</em> Realismo <em class="dot">·</em> Neotradicional <em class="dot">·</em> Fineline <em class="dot">·</em> Lettering <em class="dot">·</em> Ornamental <em class="dot">·</em> Black & Grey <em class="dot">·</em> Anime <em class="dot">·</em></span>
-    <span>Blackwork <em class="dot">·</em> Realismo <em class="dot">·</em> Neotradicional <em class="dot">·</em> Fineline <em class="dot">·</em> Lettering <em class="dot">·</em> Ornamental <em class="dot">·</em> Black & Grey <em class="dot">·</em> Anime <em class="dot">·</em></span>
-  </div>
-</div>
-
-<!-- ============ 2. PROCESO ============ -->
-<section id="proceso" class="section section-bone">
+<!-- ============ INTRO ============ -->
+<section class="intro">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="section-tag"><span class="num">01</span> El proceso</p>
-        <h2 class="section-title">Cómo<br>trabajamos</h2>
-      </div>
-      <p class="section-lead">
-        Cuatro pasos claros, sin sorpresas y sin vueltas.
-        Así te acompañamos desde la idea hasta el cuidado de tu tatuaje.
+    <div class="intro-inner reveal">
+      <p class="tag" style="justify-content:center;display:inline-flex">Nuestra carta</p>
+      <h2>Tres <em>momentos</em> del día.<br>Una misma pausa.</h2>
+      <p>
+        Todo se prepara en casa, con ingredientes locales de temporada y
+        café de origen boliviano. Cambiamos la carta con el año, pero
+        siempre hay algo que vale la pena probar.
       </p>
     </div>
+  </div>
+</section>
 
-    <div class="process-grid">
-      <div class="process-step reveal">
-        <span class="step-num">01</span>
-        <h3 class="step-title">Consulta</h3>
-        <p class="step-desc">Nos contás tu idea, la zona del cuerpo y el tamaño. Charlamos referencias y presupuesto sin compromiso.</p>
+<!-- ============ SECCIÓN 01 · DESAYUNOS ============ -->
+<section id="desayunos" class="menu-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-num">01</span>
+      <div class="section-title">
+        <h2>Desayunos &amp; <em>brunch</em></h2>
+        <span class="section-sub">Todos los días · 8:00 – 12:30</span>
       </div>
-      <div class="process-step reveal">
-        <span class="step-num">02</span>
-        <h3 class="step-title">Diseño</h3>
-        <p class="step-desc">Tu artista crea un boceto exclusivo. Lo ajustamos juntos hasta que sea exactamente lo que imaginaste.</p>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-col reveal">
+        <h3>Dulces</h3>
+        <ul class="price-list">
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Tostadas francesas</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 42</span>
+            </div>
+            <p class="price-desc">Pan brioche, frutos rojos, miel de caña y crema chantilly.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Pancakes de la casa</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 38</span>
+            </div>
+            <p class="price-desc">Con mantequilla de maple y bananas caramelizadas.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Granola &amp; yogur</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 32</span>
+            </div>
+            <p class="price-desc">Granola tostada en casa, yogur griego, frutas de estación.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Croissant de almendra</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 22</span>
+            </div>
+            <p class="price-desc">Hojaldre de mantequilla, crema de almendra, azúcar glas.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Bowl de frutas <em>y semillas</em></span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 28</span>
+            </div>
+            <p class="price-desc">Frutas del valle, chía, coco tostado, miel de abeja.</p>
+          </li>
+        </ul>
       </div>
-      <div class="process-step reveal">
-        <span class="step-num">03</span>
-        <h3 class="step-title">Sesión</h3>
-        <p class="step-desc">Ambiente privado, higiene certificada y materiales descartables. Sin apuro: la piel manda.</p>
+
+      <div class="menu-col reveal">
+        <h3>Salados</h3>
+        <ul class="price-list">
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Huevos benedictinos</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 48</span>
+            </div>
+            <p class="price-desc">Muffin inglés, jamón serrano, huevo poché, salsa holandesa.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Avocado toast <em>+ huevo</em></span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 38</span>
+            </div>
+            <p class="price-desc">Pan de masa madre, palta, huevo escalfado, chile en hojuelas.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Tortilla española</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 34</span>
+            </div>
+            <p class="price-desc">Papa, cebolla, huevo de campo, pan de campo y alioli.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Huevos revueltos <em>al gusto</em></span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 36</span>
+            </div>
+            <p class="price-desc">Con tocineta, queso fresco o salmón. Pan de masa madre.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Sándwich de desayuno</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 32</span>
+            </div>
+            <p class="price-desc">Croissant, huevo, queso cheddar, palta y tomate.</p>
+          </li>
+        </ul>
       </div>
-      <div class="process-step reveal">
-        <span class="step-num">04</span>
-        <h3 class="step-title">Cuidado</h3>
-        <p class="step-desc">Te damos la guía de cuidados y seguimiento por WhatsApp durante las primeras dos semanas.</p>
-      </div>
+    </div>
+
+    <div class="menu-banner reveal">
+      <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=1600&q=80"
+           alt="Mesa de brunch en PAUSA" loading="lazy">
+      <span class="menu-banner-label">Mesa de brunch · PAUSA</span>
     </div>
   </div>
 </section>
 
-<!-- ============ 3. ARTISTAS ============ -->
-<section id="artistas" class="section section-ink">
+<!-- ============ SECCIÓN 02 · ALMUERZOS ============ -->
+<section id="almuerzos" class="menu-section">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="section-tag"><span class="num">02</span> Artistas</p>
-        <h2 class="section-title">Manos que<br>dejan huella</h2>
+    <div class="section-head reveal">
+      <span class="section-num">02</span>
+      <div class="section-title">
+        <h2>Almuerzos &amp; <em>bowls</em></h2>
+        <span class="section-sub">Lun a Sáb · 12:30 – 16:00</span>
       </div>
-      <p class="section-lead">
-        Tres artistas, tres lenguajes. Cada uno con un estilo propio y
-        años de oficio. Elegí con quién querés trabajar.
-      </p>
     </div>
 
-    <div class="artists-grid">
-      <article class="artist-card reveal">
-        <div class="artist-photo">
-          <span class="tag">Blackwork</span>
-          <img src="https://images.unsplash.com/photo-1614289371518-722f2615943d?auto=format&fit=crop&w=600&q=80" alt="Killa Mamani, artista blackwork" loading="lazy">
-        </div>
-        <div class="artist-body">
-          <h3 class="artist-name">Killa Mamani</h3>
-          <p class="artist-specialty">Blackwork · Ornamental</p>
-          <p class="artist-bio">Precisa, geométrica y obsesiva con el detalle. Sus piezas combinan símbolos andinos con líneas contemporáneas.</p>
-          <div class="artist-meta">
-            <span>8 años</span>
-            <a href="#reservar">Reservar →</a>
-          </div>
-        </div>
-      </article>
+    <div class="menu-grid">
+      <div class="menu-col reveal">
+        <h3>Bowls &amp; ensaladas</h3>
+        <ul class="price-list">
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Bowl mediterráneo</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 52</span>
+            </div>
+            <p class="price-desc">Quinoa, garbanzos, hummus, pepino, tomate, feta y limón.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Poke bowl de salmón</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 68</span>
+            </div>
+            <p class="price-desc">Arroz de sushi, salmón fresco, palta, edamame y sésamo.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Bowl de pollo <em>y verduras</em></span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 48</span>
+            </div>
+            <p class="price-desc">Pollo asado, camote, brócoli, arroz integral, aderezo de tahini.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Ensalada césar clásica</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 44</span>
+            </div>
+            <p class="price-desc">Lechuga romana, pollo grillado, parmesano, croutons de la casa.</p>
+          </li>
+        </ul>
+      </div>
 
-      <article class="artist-card reveal">
-        <div class="artist-photo">
-          <span class="tag">Realismo</span>
-          <img src="https://images.unsplash.com/photo-1531891570158-e71b35a485bc?auto=format&fit=crop&w=600&q=80" alt="Renzo Choque, artista realista" loading="lazy">
-        </div>
-        <div class="artist-body">
-          <h3 class="artist-name">Renzo Choque</h3>
-          <p class="artist-specialty">Realismo · Black & Grey</p>
-          <p class="artist-bio">Convierte retratos y referencias en tinta. Domina luces, sombras y textura como nadie en el estudio.</p>
-          <div class="artist-meta">
-            <span>10 años</span>
-            <a href="#reservar">Reservar →</a>
-          </div>
-        </div>
-      </article>
+      <div class="menu-col reveal">
+        <h3>Sándwiches &amp; tostadas</h3>
+        <ul class="price-list">
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Sándwich de pollo <em>al pesto</em></span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 42</span>
+            </div>
+            <p class="price-desc">Pollo desmenuzado, pesto de albahaca, rúcula, pan ciabatta.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Baguette caprese</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 38</span>
+            </div>
+            <p class="price-desc">Mozzarella fresca, tomate, albahaca, aceite de oliva.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Sándwich de salmón <em>ahumado</em></span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 56</span>
+            </div>
+            <p class="price-desc">Pan de centeno, queso crema, eneldo, cebolla morada, alcaparras.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Grilled cheese <em>+ tomate</em></span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 34</span>
+            </div>
+            <p class="price-desc">Pan de masa madre, tres quesos, tomate asado, mantequilla.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-      <article class="artist-card reveal">
-        <div class="artist-photo">
-          <span class="tag">Fineline</span>
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Sofía Quispe, artista fineline" loading="lazy">
-        </div>
-        <div class="artist-body">
-          <h3 class="artist-name">Sofía Quispe</h3>
-          <p class="artist-specialty">Fineline · Lettering</p>
-          <p class="artist-bio">Trazos finos, botanical y caligrafía. Ideal si buscás algo delicado, íntimo y minimalista.</p>
-          <div class="artist-meta">
-            <span>5 años</span>
-            <a href="#reservar">Reservar →</a>
-          </div>
-        </div>
-      </article>
+    <div class="menu-banner reveal">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1600&q=80"
+           alt="Bowl saludable de PAUSA" loading="lazy">
+      <span class="menu-banner-label">Cocina de temporada · PAUSA</span>
     </div>
   </div>
 </section>
 
-<!-- ============ 4. TESTIMONIO ============ -->
-<section class="testimonial">
+<!-- ============ SECCIÓN 03 · CAFETERÍA ============ -->
+<section id="cafeteria" class="menu-section">
   <div class="container">
-    <div class="testimonial-inner reveal">
-      <blockquote class="testimonial-quote">
-        Llegué con una idea vaga y una foto de Pinterest. Salí con una pieza que
-        <em>no me saqué de encima en tres días</em> de tanto mirarla al espejo.
-        Killa entendió lo que ni yo sabía explicar.
-      </blockquote>
-      <p class="testimonial-author">Camila R. · Sopocachi, La Paz</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 5. ESTILOS ============ -->
-<section id="estilos" class="section section-ink">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="section-tag"><span class="num">03</span> Estilos</p>
-        <h2 class="section-title">Lo que<br>dominamos</h2>
-      </div>
-      <p class="section-lead">
-        Ocho lenguajes, un mismo estándar de calidad. Si tu idea no encaja
-        en ninguno, escribinos igual: casi siempre encontramos la vuelta.
-      </p>
-    </div>
-
-    <div class="styles-grid">
-      <div class="style-item reveal">
-        <span class="style-num">01</span>
-        <h3 class="style-name">Blackwork</h3>
-        <p class="style-desc">Sólidos negros, contraste alto y geometría. Piezas grandes con impacto visual inmediato.</p>
-      </div>
-      <div class="style-item reveal">
-        <span class="style-num">02</span>
-        <h3 class="style-name">Realismo</h3>
-        <p class="style-desc">Retratos y objetos con volumen, luz y textura. Nuestro sello de precisión técnica.</p>
-      </div>
-      <div class="style-item reveal">
-        <span class="style-num">03</span>
-        <h3 class="style-name">Neotradicional</h3>
-        <p class="style-desc">Líneas gruesas, color saturado y composición moderna. Clásico con actitud.</p>
-      </div>
-      <div class="style-item reveal">
-        <span class="style-num">04</span>
-        <h3 class="style-name">Fineline</h3>
-        <p class="style-desc">Trazos finos y delicados. Ideal para piezas pequeñas, lettering y detalles botánicos.</p>
-      </div>
-      <div class="style-item reveal">
-        <span class="style-num">05</span>
-        <h3 class="style-name">Lettering</h3>
-        <p class="style-desc">Caligrafía, tipografía y frases. Cada letra dibujada a mano antes de pasar a la piel.</p>
-      </div>
-      <div class="style-item reveal">
-        <span class="style-num">06</span>
-        <h3 class="style-name">Ornamental</h3>
-        <p class="style-desc">Mandala, floral y simbología andina. Composición simétrica sobre cuerpo o zonas grandes.</p>
-      </div>
-      <div class="style-item reveal">
-        <span class="style-num">07</span>
-        <h3 class="style-name">Black & Grey</h3>
-        <p class="style-desc">Degradados suaves, atmósferas y sombras. El estilo más fotográfico y atemporal.</p>
-      </div>
-      <div class="style-item reveal">
-        <span class="style-num">08</span>
-        <h3 class="style-name">Anime / Manga</h3>
-        <p class="style-desc">Personajes, escenas y guiños otaku. Traducimos tu fanatismo a una pieza sólida.</p>
+    <div class="section-head reveal">
+      <span class="section-num">03</span>
+      <div class="section-title">
+        <h2>Cafetería &amp; <em>bebidas</em></h2>
+        <span class="section-sub">Todo el día · 8:00 – 20:00</span>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ============ 6. ABOUT / MISIÓN / OFERTA ============ -->
-<section id="estudio" class="about">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="section-tag"><span class="num">04</span> El estudio</p>
-        <h2 class="section-title">Tinta con<br>conciencia</h2>
+    <div class="menu-grid">
+      <div class="menu-col reveal">
+        <h3>Café caliente</h3>
+        <ul class="price-list">
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Espresso</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 15</span>
+            </div>
+            <p class="price-desc">Origen Caranavi · tostado medio. Doble si lo pedís.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Americano</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 18</span>
+            </div>
+            <p class="price-desc">Espresso con agua caliente. Largo o corto.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Cappuccino</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 24</span>
+            </div>
+            <p class="price-desc">Espresso, leche al vapor, espuma aterciopelada.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Latte <em>o flat white</em></span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 26</span>
+            </div>
+            <p class="price-desc">Con leche entera, deslactosada o de almendra (+Bs. 4).</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Mocha de la casa</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 30</span>
+            </div>
+            <p class="price-desc">Espresso, chocolate 70%, leche, crema batida.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Matcha latte</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 32</span>
+            </div>
+            <p class="price-desc">Matcha ceremonial, leche al vapor. Caliente o frío.</p>
+          </li>
+        </ul>
       </div>
-      <p class="section-lead">
-        Un espacio privado, limpio y seguro, pensado para que la sesión
-        sea tan buena como el resultado.
-      </p>
-    </div>
 
-    <div class="about-grid">
-      <div class="about-col reveal">
-        <h3><span class="n">/ 01</span> Sobre nosotros</h3>
-        <p>
-          Tinta & Alma nació en 2024 como un estudio independiente en el corazón
-          de Sopocachi. Somos tres artistas con recorridos distintos y una misma
-          obsesión: hacer tatuajes que se sostengan con los años.
-        </p>
-        <p>
-          Trabajamos con turnos limitados para darle a cada pieza el tiempo
-          que necesita.
-        </p>
-      </div>
-      <div class="about-col reveal">
-        <h3><span class="n">/ 02</span> Nuestra filosofía</h3>
-        <p>
-          Creemos que un tatuaje no es un producto: es un ritual. Por eso
-          priorizamos la conversación, el diseño a medida y la honestidad
-          sobre lo que funciona y lo que no.
-        </p>
-        <p>
-          Si tu idea no nos convence, te lo decimos. Preferimos perder una
-          sesión antes que marcarte para siempre algo que no te representa.
-        </p>
-      </div>
-      <div class="about-col reveal">
-        <h3><span class="n">/ 03</span> Lo que ofrecemos</h3>
-        <ul class="offer-list">
-          <li><i class="fa fa-square" aria-hidden="true"></i> Diseño personalizado incluido en cada sesión</li>
-          <li><i class="fa fa-square" aria-hidden="true"></i> Materiales descartables y esterilización certificada</li>
-          <li><i class="fa fa-square" aria-hidden="true"></i> Sesiones de 2 a 8 horas, con pausas</li>
-          <li><i class="fa fa-square" aria-hidden="true"></i> Retoques gratuitos dentro de los 3 meses</li>
-          <li><i class="fa fa-square" aria-hidden="true"></i> Guía de cuidados y seguimiento post-sesión</li>
+      <div class="menu-col reveal">
+        <h3>Bebidas frías</h3>
+        <ul class="price-list">
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Cold brew</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 26</span>
+            </div>
+            <p class="price-desc">Extracción en frío 18 horas. Suave, intenso, sin amargor.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Iced latte</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 28</span>
+            </div>
+            <p class="price-desc">Doble espresso sobre leche fría y hielo.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Frappé de la casa</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 34</span>
+            </div>
+            <p class="price-desc">Café, leche, hielo, caramelo. Con crema opcional.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Limonada de hierbabuena</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 22</span>
+            </div>
+            <p class="price-desc">Limón fresco, hierbabuena, endulzada al punto.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Té helado de jazmín</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 22</span>
+            </div>
+            <p class="price-desc">Infusión fría, rodajas de naranja, sirope de la casa.</p>
+          </li>
+          <li class="price-item">
+            <div class="price-head">
+              <span class="price-name">Jugo natural del día</span>
+              <span class="price-dots"></span>
+              <span class="price-amount">Bs. 20</span>
+            </div>
+            <p class="price-desc">Fruta fresca de temporada. Consultá por la del día.</p>
+          </li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 7. CONTACTO ============ -->
-<section id="reservar" class="contact">
+<!-- ============ PEDIDO ============ -->
+<section id="pedido" class="pedido">
   <div class="container">
-    <div class="contact-inner">
-
-      <div class="contact-lead reveal">
-        <p class="section-tag"><span class="num">05</span> Reservar</p>
-        <h2>Tu idea.<br><span class="accent">Nuestra aguja.</span></h2>
+    <div class="pedido-inner">
+      <div class="pedido-lead reveal">
+        <p class="tag">Pedidos &amp; reservas</p>
+        <h2>Hacé tu <em>pedido</em>.</h2>
         <p>
           Completá el formulario y te escribimos por WhatsApp para coordinar
-          artista, fecha y presupuesto. Respondemos en menos de 24 horas.
+          tu pedido, reserva de mesa o evento privado. Respondemos en menos
+          de 1 hora en horario de atención.
         </p>
-        <ul class="contact-info">
-          <li><i class="fa fa-whatsapp" aria-hidden="true"></i> +591 73913409</li>
-          <li><i class="fa fa-map-marker" aria-hidden="true"></i> Sopocachi · La Paz</li>
-          <li><i class="fa fa-clock-o" aria-hidden="true"></i> Mar a Sáb · 11:00 – 20:00</li>
+
+        <ul class="pedido-info">
+          <li>
+            <span class="key">Dirección</span>
+            <span>Calle 20 de Octubre #2456 · Sopocachi</span>
+          </li>
+          <li>
+            <span class="key">WhatsApp</span>
+            <span>+591 73913409</span>
+          </li>
+          <li>
+            <span class="key">Horario</span>
+            <span>Lun a Dom · 8:00 – 20:00</span>
+          </li>
         </ul>
       </div>
 
-      <form class="form reveal" id="contactForm" novalidate>
-        <div class="field">
-          <label for="f-nombre">Tu nombre</label>
-          <input type="text" id="f-nombre" name="nombre" placeholder="Ej: Camila Rojas" required autocomplete="name">
+      <form class="form reveal" id="pedidoForm" novalidate>
+        <h3 class="form-title">Tu pedido</h3>
+        <p class="form-sub">— te respondemos por WhatsApp —</p>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-nombre">Nombre</label>
+            <input type="text" id="f-nombre" name="nombre" placeholder="Tu nombre" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-tipo">¿Qué necesitás?</label>
+            <select id="f-tipo" name="tipo" required>
+              <option value="">Seleccioná</option>
+              <option>Pedido para llevar</option>
+              <option>Reserva de mesa</option>
+              <option>Desayuno / brunch</option>
+              <option>Almuerzo</option>
+              <option>Cafetería</option>
+              <option>Evento privado</option>
+              <option>Otro</option>
+            </select>
+          </div>
         </div>
 
-        <div class="field">
-          <label for="f-telefono">WhatsApp <span class="opt">(opcional)</span></label>
-          <input type="tel" id="f-telefono" name="telefono" placeholder="+591 700 00000" autocomplete="tel">
+        <div class="field-row">
+          <div class="field">
+            <label for="f-personas">Personas <span class="opt">(opcional)</span></label>
+            <select id="f-personas" name="personas">
+              <option value="">Seleccioná</option>
+              <option>1–2 personas</option>
+              <option>3–4 personas</option>
+              <option>5–8 personas</option>
+              <option>Más de 8</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-horario">Horario <span class="opt">(opcional)</span></label>
+            <select id="f-horario" name="horario">
+              <option value="">Seleccioná</option>
+              <option>Mañana (8:00 – 12:00)</option>
+              <option>Mediodía (12:00 – 16:00)</option>
+              <option>Tarde (16:00 – 20:00)</option>
+            </select>
+          </div>
         </div>
 
-        <div class="field">
-          <label for="f-zona">Zona del cuerpo</label>
-          <select id="f-zona" name="zona" required>
-            <option value="">Elegí una opción</option>
-            <option>Brazo</option>
-            <option>Antebrazo</option>
-            <option>Pierna</option>
-            <option>Espalda</option>
-            <option>Pecho</option>
-            <option>Costillas</option>
-            <option>Mano / muñeca</option>
-            <option>Tobillo / pie</option>
-            <option>Cuello / nuca</option>
-            <option>Otra</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="f-tamano">Tamaño aproximado</label>
-          <select id="f-tamano" name="tamano" required>
-            <option value="">Elegí una opción</option>
-            <option>Pequeño (hasta 10 cm)</option>
-            <option>Mediano (10–20 cm)</option>
-            <option>Grande (20–35 cm)</option>
-            <option>Muy grande (más de 35 cm)</option>
-            <option>No lo sé todavía</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="f-estilo">Estilo preferido</label>
-          <select id="f-estilo" name="estilo" required>
-            <option value="">Elegí una opción</option>
-            <option>Blackwork</option>
-            <option>Realismo</option>
-            <option>Neotradicional</option>
-            <option>Fineline</option>
-            <option>Lettering</option>
-            <option>Ornamental</option>
-            <option>Black & Grey</option>
-            <option>Anime / Manga</option>
-            <option>No lo tengo decidido</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="f-artista">Artista <span class="opt">(opcional)</span></label>
-          <select id="f-artista" name="artista">
-            <option value="">Me da igual, recomiéndenme</option>
-            <option>Killa Mamani (Blackwork · Ornamental)</option>
-            <option>Renzo Choque (Realismo · Black & Grey)</option>
-            <option>Sofía Quispe (Fineline · Lettering)</option>
-          </select>
-        </div>
-
-        <div class="field field-full">
-          <label for="f-mensaje">Contanos tu idea <span class="opt">(opcional)</span></label>
-          <textarea id="f-mensaje" name="mensaje" rows="4"
-            placeholder="Ej: Quiero un tatuaje ornamental en el antebrazo inspirado en símbolos andinos, en negro..."></textarea>
+        <div class="field full">
+          <label for="f-mensaje">Mensaje <span class="opt">(opcional)</span></label>
+          <textarea id="f-mensaje" name="mensaje" rows="3"
+            placeholder="Ej: Quiero reservar para 4 personas, sábado al mediodía..."></textarea>
         </div>
 
         <div class="form-submit">
-          <button type="submit" class="btn btn-wa">
-            <i class="fa fa-whatsapp" aria-hidden="true"></i> Enviar por WhatsApp
+          <button type="submit">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+            Enviar por WhatsApp
           </button>
         </div>
 
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        <p class="form-privacy">
+          Al enviar se abrirá WhatsApp con tu pedido listo. No guardamos datos.
+        </p>
       </form>
     </div>
   </div>
 </section>
 
-<!-- ============ 8. FOOTER ============ -->
+<!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="container">
     <div class="footer-top">
-      <a href="#inicio" class="footer-logo">Tinta<span class="amp"> & </span>Alma</a>
-      <div class="footer-social">
-        <a href="https://wa.me/59173913409" target="_blank" rel="noopener" aria-label="WhatsApp">
-          <i class="fa fa-whatsapp" aria-hidden="true"></i>
-        </a>
-        <a href="#" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-        <a href="#" aria-label="TikTok"><i class="fa fa-music" aria-hidden="true"></i></a>
-        <a href="#" aria-label="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+      <div class="footer-brand">
+        <div class="logo">Paus<em>a</em></div>
+        <p>
+          Café de especialidad y brunch en Sopocachi, La Paz. Cocina
+          honesta, café de origen y una pausa todos los días.
+        </p>
+        <div class="footer-social">
+          <a href="https://wa.me/59173913409" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+          </a>
+          <a href="#" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa fa-music" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h5>Carta</h5>
+        <ul>
+          <li><a href="#desayunos">Desayunos</a></li>
+          <li><a href="#almuerzos">Almuerzos</a></li>
+          <li><a href="#cafeteria">Cafetería</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="https://wa.me/59173913409" target="_blank" rel="noopener">+591 73913409</a></li>
+          <li>20 de Octubre #2456</li>
+          <li>Sopocachi · La Paz</li>
+          <li>Lun a Dom · 8:00 – 20:00</li>
+        </ul>
       </div>
     </div>
-    <div class="footer-meta">
-      <span>© <span id="year"></span> Tinta & Alma · La Paz, Bolivia</span>
-      <span>Diseño con tinta y oficio · <a href="#inicio">Volver arriba ↑</a></span>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> PAUSA · Café &amp; Brunch</span>
+      <span>Sopocachi · La Paz · Bolivia</span>
     </div>
   </div>
 </footer>
 
-<!-- ============ WHATSAPP FLOTANTE ============ -->
+<!-- ============ WHATSAPP FLOAT ============ -->
 <a class="wa-float"
-   href="https://wa.me/59173913409?text=Hola%20Tinta%20%26%20Alma%2C%20quiero%20cotizar%20un%20tatuaje."
+   href="https://wa.me/59173913409?text=Hola%20PAUSA%2C%20quiero%20hacer%20un%20pedido."
    target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
   <i class="fa fa-whatsapp" aria-hidden="true"></i>
-  <span>Cotizar</span>
+  <span>Pedir</span>
 </a>
+
+<!-- ============ POPUP: OFERTA LIMITADA ============ -->
+<div class="popup-overlay" id="timedPopup" role="dialog" aria-modal="true" aria-labelledby="timedTitle" aria-hidden="true">
+  <div class="popup-card">
+    <button class="popup-close" data-close aria-label="Cerrar oferta">×</button>
+    <span class="popup-tag">Oferta por tiempo limitado</span>
+    <h3 class="popup-title" id="timedTitle">Tu pausa<br>tiene <em>premio</em>.</h3>
+    <p class="popup-body">
+      <strong>10% off</strong> en tu primer pedido de brunch o cafetería.
+      Válido por las próximas 2 horas.
+    </p>
+    <div class="popup-countdown" id="timedCountdown" aria-live="polite" aria-label="Tiempo restante de la oferta">
+      <div class="countdown-item">
+        <span class="countdown-num" data-cd="h">02</span>
+        <span class="countdown-label">Hs</span>
+      </div>
+      <span class="countdown-colon">:</span>
+      <div class="countdown-item">
+        <span class="countdown-num" data-cd="m">00</span>
+        <span class="countdown-label">Min</span>
+      </div>
+      <span class="countdown-colon">:</span>
+      <div class="countdown-item">
+        <span class="countdown-num" data-cd="s">00</span>
+        <span class="countdown-label">Seg</span>
+      </div>
+    </div>
+    <div class="popup-code">
+      <span class="popup-code-label">Tu código</span>
+      <strong class="popup-code-value">PAUSA10</strong>
+    </div>
+    <a class="popup-cta"
+       href="https://wa.me/59173913409?text=Hola%20PAUSA%2C%20quiero%20aprovechar%20la%20oferta%20del%2010%25%20off%20con%20el%20c%C3%B3digo%20PAUSA10."
+       data-offer="el 10% off"
+       data-code="PAUSA10"
+       target="_blank" rel="noopener">
+      <i class="fa fa-whatsapp" aria-hidden="true"></i>
+      Reservar con mi descuento
+    </a>
+    <button class="popup-dismiss" data-close>Ahora no, gracias</button>
+  </div>
+</div>
+
+<!-- ============ POPUP: EXIT INTENT ============ -->
+<div class="popup-overlay" id="exitPopup" role="dialog" aria-modal="true" aria-labelledby="exitTitle" aria-hidden="true">
+  <div class="popup-card">
+    <button class="popup-close" data-close aria-label="Cerrar">×</button>
+    <span class="popup-tag">Antes de irte</span>
+    <h3 class="popup-title" id="exitTitle">Espera<br><em>un segundo</em>.</h3>
+    <p class="popup-body">
+      Un <strong>café de especialidad gratis</strong> con tu primer brunch.
+      Solo por hoy, para nuevos clientes.
+    </p>
+    <div class="popup-highlight">
+      <span class="popup-highlight-icon" aria-hidden="true">☕</span>
+      <span>Mencioná este mensaje al escribirnos y te lo reservamos.</span>
+    </div>
+    <a class="popup-cta"
+       href="https://wa.me/59173913409?text=Hola%20PAUSA%2C%20quiero%20reclamar%20el%20caf%C3%A9%20de%20especialidad%20gratis%20con%20mi%20primer%20brunch."
+       data-offer="el café de especialidad gratis con mi primer brunch"
+       target="_blank" rel="noopener">
+      <i class="fa fa-whatsapp" aria-hidden="true"></i>
+      Reclamar mi café gratis
+    </a>
+    <button class="popup-dismiss" data-close>No, gracias</button>
+  </div>
+</div>
 
 <script>
 const WHATSAPP = '59173913409';
 
-/* Año footer */
+/* Header scroll */
+(function(){
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+})();
+
+/* Año */
 document.getElementById('year').textContent = new Date().getFullYear();
 
 /* Menú móvil */
-(function () {
+(function(){
   const btn = document.getElementById('menuToggle');
   const nav = document.getElementById('mainNav');
   if (!btn || !nav) return;
@@ -1183,8 +1713,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
   );
 })();
 
-/* Reveal on scroll */
-(function () {
+/* Reveal */
+(function(){
   const els = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {
     els.forEach(el => el.classList.add('in'));
@@ -1197,887 +1727,212 @@ document.getElementById('year').textContent = new Date().getFullYear();
         io.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
   els.forEach(el => io.observe(el));
 })();
 
 /* Saludo dinámico */
-function saludo() {
+function saludo(){
   const h = new Date().getHours();
   if (h >= 5 && h < 12) return 'Buenos días';
   if (h >= 12 && h < 19) return 'Buenas tardes';
   return 'Buenas noches';
 }
 
-/* Formulario a WhatsApp */
-(function () {
-  const form = document.getElementById('contactForm');
+/* Formulario → WhatsApp (sin email, sin teléfono) */
+(function(){
+  const form = document.getElementById('pedidoForm');
   const status = document.getElementById('formStatus');
   if (!form) return;
 
-  function setStatus(text, cls) {
-    status.textContent = text;
+  function setStatus(txt, cls){
+    status.textContent = txt;
     status.className = 'form-status ' + (cls || '');
   }
 
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', function(e){
     e.preventDefault();
-
     const data = {
       nombre:  form.nombre.value.trim(),
-      telefono:form.telefono.value.trim(),
-      zona:    form.zona.value,
-      tamano:  form.tamano.value,
-      estilo:  form.estilo.value,
-      artista: form.artista.value,
+      tipo:    form.tipo.value,
+      personas:form.personas.value,
+      horario: form.horario.value,
       mensaje: form.mensaje.value.trim(),
     };
 
     if (!data.nombre) { setStatus('Escribí tu nombre para continuar.', 'err'); form.nombre.focus(); return; }
-    if (!data.zona)   { setStatus('Elegí la zona del cuerpo.', 'err'); form.zona.focus(); return; }
-    if (!data.tamano) { setStatus('Elegí el tamaño aproximado.', 'err'); form.tamano.focus(); return; }
-    if (!data.estilo) { setStatus('Elegí un estilo (o "no lo tengo decidido").', 'err'); form.estilo.focus(); return; }
+    if (!data.tipo)   { setStatus('Elegí qué necesitás.', 'err'); form.tipo.focus(); return; }
 
     const lineas = [];
-    lineas.push('*Nueva consulta desde la web* 🖤');
+    lineas.push('*Nuevo pedido desde la web* ☕');
     lineas.push('');
     lineas.push(`${saludo()} 👋`);
     lineas.push('');
     lineas.push(`• *Nombre:* ${data.nombre}`);
-    if (data.telefono) lineas.push(`• *WhatsApp:* ${data.telefono}`);
-    lineas.push(`• *Zona:* ${data.zona}`);
-    lineas.push(`• *Tamaño:* ${data.tamano}`);
-    lineas.push(`• *Estilo:* ${data.estilo}`);
-    if (data.artista) lineas.push(`• *Artista:* ${data.artista}`);
+    lineas.push(`• *Pedido:* ${data.tipo}`);
+    if (data.personas) lineas.push(`• *Personas:* ${data.personas}`);
+    if (data.horario)  lineas.push(`• *Horario:* ${data.horario}`);
     if (data.mensaje) {
       lineas.push('');
-      lineas.push('*Idea:*');
+      lineas.push('*Mensaje:*');
       lineas.push(data.mensaje);
     }
     lineas.push('');
-    lineas.push('_Consulta enviada desde tinta-alma.com_');
+    lineas.push('_Pedido enviado desde pausa.bo_');
 
     const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lineas.join('\n'))}`;
 
-    setStatus('Abriendo WhatsApp… ✨', 'ok');
+    setStatus('Abriendo WhatsApp…', 'ok');
     setTimeout(() => {
       window.open(url, '_blank', 'noopener');
-      setStatus('Listo. Si no se abrió WhatsApp, revisá el bloqueo de ventanas.', 'ok');
+      setStatus('Listo. Si no se abrió, revisá el bloqueo de ventanas.', 'ok');
       form.reset();
       setTimeout(() => setStatus('', ''), 6000);
     }, 400);
   });
 })();
+
+/* ============================================================
+   POPUPS: oferta limitada + exit intent
+   ============================================================ */
+(function () {
+  'use strict';
+
+  const SESSION_KEY = 'pausa_popup_shown';
+  const TIMED_KEY = 'pausa_timed_shown_at';
+  const EXIT_KEY = 'pausa_exit_shown_at';
+  const DAY = 24 * 60 * 60 * 1000;
+  const EXIT_MIN_TIME = 15000;
+  const TIMED_DELAY = 25000;
+  const SCROLL_TRIGGER = 0.55;
+  const COUNTDOWN_HOURS = 2;
+
+  const timedPopup = document.getElementById('timedPopup');
+  const exitPopup = document.getElementById('exitPopup');
+  if (!timedPopup || !exitPopup) return;
+
+  if (sessionStorage.getItem(SESSION_KEY) === '1') return;
+
+  const pageStart = Date.now();
+  let activePopup = null;
+  let countdownInterval = null;
+  let triggered = false;
+
+  function markShown(key) {
+    try { localStorage.setItem(key, String(Date.now())); } catch (e) {}
+    try { sessionStorage.setItem(SESSION_KEY, '1'); } catch (e) {}
+  }
+
+  function shouldShow(key) {
+    try {
+      const last = parseInt(localStorage.getItem(key) || '0', 10);
+      return Date.now() - last > DAY;
+    } catch (e) { return true; }
+  }
+
+  function openPopup(popup, type) {
+    if (triggered || activePopup) return;
+    triggered = true;
+    activePopup = type;
+    popup.classList.add('open');
+    popup.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    markShown(type === 'timed' ? TIMED_KEY : EXIT_KEY);
+    if (type === 'timed') startCountdown();
+    setTimeout(() => {
+      const first = popup.querySelector('.popup-close');
+      if (first) first.focus();
+    }, 120);
+  }
+
+  function closePopup() {
+    if (!activePopup) return;
+    const popup = activePopup === 'timed' ? timedPopup : exitPopup;
+    popup.classList.remove('open');
+    popup.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    activePopup = null;
+    if (countdownInterval) {
+      clearInterval(countdownInterval);
+      countdownInterval = null;
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && activePopup) closePopup();
+  });
+
+  [timedPopup, exitPopup].forEach((popup) => {
+    popup.querySelectorAll('[data-close]').forEach((btn) => {
+      btn.addEventListener('click', closePopup);
+    });
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) closePopup();
+    });
+  });
+
+  function startCountdown() {
+    const deadline = Date.now() + COUNTDOWN_HOURS * 60 * 60 * 1000;
+    const elH = timedPopup.querySelector('[data-cd="h"]');
+    const elM = timedPopup.querySelector('[data-cd="m"]');
+    const elS = timedPopup.querySelector('[data-cd="s"]');
+    if (!elH || !elM || !elS) return;
+
+    function tick() {
+      let diff = deadline - Date.now();
+      if (diff < 0) diff = 0;
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      elH.textContent = String(h).padStart(2, '0');
+      elM.textContent = String(m).padStart(2, '0');
+      elS.textContent = String(s).padStart(2, '0');
+    }
+    tick();
+    countdownInterval = setInterval(tick, 1000);
+  }
+
+  [timedPopup, exitPopup].forEach((popup) => {
+    const cta = popup.querySelector('.popup-cta');
+    if (!cta) return;
+    const offer = cta.dataset.offer;
+    const code = cta.dataset.code;
+    if (!offer) return;
+    let msg = '¡Hola PAUSA! Quiero aprovechar ' + offer;
+    if (code) msg += ' (código: ' + code + ')';
+    msg += '. ¿Me ayudan?';
+    cta.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+  });
+
+  // 1) OFERTA LIMITADA
+  if (shouldShow(TIMED_KEY)) {
+    const triggerTimed = () => openPopup(timedPopup, 'timed');
+    const timer = setTimeout(triggerTimed, TIMED_DELAY);
+
+    const onScroll = () => {
+      if (triggered) return;
+      const pct = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (pct >= SCROLL_TRIGGER) {
+        clearTimeout(timer);
+        window.removeEventListener('scroll', onScroll);
+        triggerTimed();
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // 2) EXIT INTENT (solo desktop)
+  const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (isDesktop && shouldShow(EXIT_KEY)) {
+    document.addEventListener('mouseleave', (e) => {
+      if (triggered) return;
+      if (e.clientY > 10) return;
+      if (Date.now() - pageStart < EXIT_MIN_TIME) return;
+      if (sessionStorage.getItem(SESSION_KEY) === '1') return;
+      openPopup(exitPopup, 'exit');
+    });
+  }
+})();
 </script>
-
-<!-- TYPESOUND_STUDIO:START v4 -->
-<script data-typesound-runtime="v4">(function(){try{var core=(function typesoundCore(){
-'use strict';
-var SEP='\u0001', WS=/\s/;
-var SILENT={SCRIPT:1,STYLE:1,NOSCRIPT:1,TEMPLATE:1,HEAD:1,TITLE:1,DATALIST:1};
-var SKIP={TEXTAREA:1,SELECT:1,OPTION:1,OPTGROUP:1,SVG:1,MATH:1,CANVAS:1,IFRAME:1,OBJECT:1,EMBED:1,VIDEO:1,AUDIO:1,IMG:1,INPUT:1,PICTURE:1,METER:1,PROGRESS:1};
-var BLOCK={};
-('ADDRESS ARTICLE ASIDE BLOCKQUOTE BODY BUTTON CAPTION CENTER COL COLGROUP DD DETAILS DIALOG DIR DIV DL DT FIELDSET FIGCAPTION FIGURE FOOTER FORM H1 H2 H3 H4 H5 H6 HEADER HGROUP HR HTML LEGEND LI MAIN MENU NAV OL P PRE SECTION SUMMARY TABLE TBODY TD TFOOT TH THEAD TR UL').split(' ').forEach(function(t){BLOCK[t]=1;});
-var BLOCK_STYLE=/(?:^|;)\s*display\s*:\s*(?:block|flex|grid|list-item|table|flow-root)/i;
-var HIDDEN_STYLE=/(?:^|;)\s*(?:display\s*:\s*none|visibility\s*:\s*hidden)/i;
-
-function fold(ch){
-  if(ch==='\u2018'||ch==='\u2019'||ch==='\u201b'||ch==='\u02bc') return "'";
-  if(ch==='\u201c'||ch==='\u201d'||ch==='\u201e') return '"';
-  var l=ch.toLowerCase();
-  return l.length===1?l:ch;
-}
-function ignorable(ch){return ch==='\u00ad'||ch==='\u200b'||ch==='\u2060'||ch==='\ufeff';}
-function hiddenEl(el){
-  if(el.hasAttribute('hidden')) return true;
-  if(el.nodeName.toUpperCase()==='DIALOG'&&!el.hasAttribute('open')) return true;
-  var st=el.getAttribute('style');
-  return !!(st&&HIDDEN_STYLE.test(st));
-}
-function isBlock(el,nm){
-  if(BLOCK[nm]) return true;
-  var st=el.getAttribute('style');
-  return !!(st&&BLOCK_STYLE.test(st));
-}
-/* Texto visible aplanado: H (cadena), N (nodo de texto por caracter), O (offset UTF-16). */
-function collect(doc){
-  var root=doc.body||doc.documentElement, H=[], N=[], O=[];
-  function last(){return H.length?H[H.length-1]:null;}
-  function sep(){var l=last(); if(l!==null&&l!==SEP){H.push(SEP);N.push(null);O.push(-1);}}
-  function ws(node,off){
-    var l=last();
-    if(l===' '){var i=H.length-1; if(N[i]===null&&node){N[i]=node;O[i]=off;} return;}
-    H.push(' ');N.push(node);O.push(node?off:-1);
-  }
-  function walk(n){
-    var t=n.nodeType;
-    if(t===3){
-      var v=n.nodeValue;
-      for(var i=0;i<v.length;i++){
-        var ch=v.charAt(i);
-        if(ignorable(ch)) continue;
-        if(WS.test(ch)) ws(n,i); else {H.push(fold(ch));N.push(n);O.push(i);}
-      }
-      return;
-    }
-    if(t!==1) return;
-    var nm=n.nodeName.toUpperCase();
-    if(SILENT[nm]) return;
-    if(SKIP[nm]){sep();return;}
-    if(hiddenEl(n)) return;
-    if(nm==='BR'){ws(null,-1);return;}
-    var b=isBlock(n,nm);
-    if(b) sep();
-    for(var c=n.firstChild;c;c=c.nextSibling) walk(c);
-    if(b) sep();
-  }
-  walk(root);
-  return {H:H.join(''),N:N,O:O};
-}
-function normPhrase(s){
-  s=String(s); var out='';
-  for(var i=0;i<s.length;i++){
-    var ch=s.charAt(i);
-    if(ignorable(ch)||ch===SEP) continue;
-    if(WS.test(ch)){ if(out.length&&out.charAt(out.length-1)!==' ') out+=' '; }
-    else out+=fold(ch);
-  }
-  return out.replace(/ $/,'');
-}
-function ancestorOf(n1,n2){
-  var a=n1.parentNode;
-  while(a){ if(a.nodeType===1&&a.contains(n2)) return a; a=a.parentNode; }
-  return null;
-}
-function pathOf(el,doc){
-  var p=[];
-  while(el&&el!==doc.documentElement){
-    var i=0;
-    for(var s=el.previousElementSibling;s;s=s.previousElementSibling) i++;
-    p.unshift(i); el=el.parentNode;
-  }
-  return p.join('/');
-}
-function mk(ctx,a,b,loose){
-  var fa=a; while(fa<b&&ctx.N[fa]===null) fa++;
-  var lb=b-1; while(lb>fa&&ctx.N[lb]===null) lb--;
-  return {a:a,b:b,loose:loose,container:ancestorOf(ctx.N[fa],ctx.N[lb]),
-    before:ctx.H.slice(Math.max(0,a-24),a),after:ctx.H.slice(b,b+24)};
-}
-function find(doc,phrase,ctx0){
-  var ctx=ctx0||collect(doc), needle=normPhrase(phrase), res={ctx:ctx,needle:needle,matches:[],loose:false};
-  if(!needle) return res;
-  var H=ctx.H, i=0, at;
-  while((at=H.indexOf(needle,i))>=0){res.matches.push(mk(ctx,at,at+needle.length,false)); i=at+needle.length;}
-  if(!res.matches.length){
-    var cn=needle.replace(/ /g,'');
-    if(cn){
-      var cH=[], map=[];
-      for(var k=0;k<H.length;k++){var c=H.charAt(k); if(c!==' '){cH.push(c);map.push(k);}}
-      var CH=cH.join(''), j=0;
-      while((at=CH.indexOf(cn,j))>=0){res.matches.push(mk(ctx,map[at],map[at+cn.length-1]+1,true)); j=at+cn.length;}
-      res.loose=res.matches.length>0;
-    }
-  }
-  var counts={};
-  res.matches.forEach(function(m,idx){
-    m.ordinal=idx; m.path=pathOf(m.container,doc);
-    m.k=counts[m.path]=(counts[m.path]===undefined?0:counts[m.path]+1);
-  });
-  return res;
-}
-function segment(s){
-  if(typeof Intl!=='undefined'&&Intl.Segmenter){
-    try{return Array.from(new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(s),function(x){return x.segment;});}catch(e){}
-  }
-  var out=[], prev='', ri=0, RI=/^[\u{1f1e6}-\u{1f1ff}]$/u;
-  Array.from(s).forEach(function(cp){
-    var attach=false;
-    if(out.length){
-      if(/^[\u200d\ufe0e\ufe0f\u{1f3fb}-\u{1f3ff}]$/u.test(cp)||/^\p{M}$/u.test(cp)) attach=true;
-      else if(prev==='\u200d') attach=true;
-      else if(RI.test(cp)&&RI.test(prev)&&ri%2===1) attach=true;
-    }
-    ri=RI.test(cp)?ri+1:0;
-    if(attach) out[out.length-1]+=cp; else out.push(cp);
-    prev=cp;
-  });
-  return out;
-}
-/* Unidades de revelado (grafemas) de una coincidencia, con sus trozos {n,s,e} en nodos originales. */
-function units(ctx,m){
-  var ks=[], raw='';
-  for(var k=m.a;k<m.b;k++){
-    if(ctx.N[k]===null) continue;
-    ks.push(k);
-    raw+=ctx.H.charAt(k)===' '?' ':ctx.N[k].nodeValue.charAt(ctx.O[k]);
-  }
-  var out=[], pos=0;
-  segment(raw).forEach(function(sg){
-    var u={text:sg,pieces:[]};
-    for(var q=0;q<sg.length;q++){
-      var kk=ks[pos+q], n=ctx.N[kk], o=ctx.O[kk], l=u.pieces[u.pieces.length-1];
-      if(l&&l.n===n&&l.e===o) l.e=o+1; else u.pieces.push({n:n,s:o,e:o+1});
-    }
-    pos+=sg.length; out.push(u);
-  });
-  return out;
-}
-/* Texto original (sin plegar) de un tramo, para mostrar contexto. */
-function rawText(ctx,a,b){
-  var s='';
-  for(var k=Math.max(0,a);k<Math.min(b,ctx.H.length);k++){
-    var c=ctx.H.charAt(k);
-    if(c===SEP) s+=' \u00b6 ';
-    else if(c===' '||ctx.N[k]===null) s+=' ';
-    else s+=ctx.N[k].nodeValue.charAt(ctx.O[k]);
-  }
-  return s;
-}
-function delay(text,speed){
-  var base=speed==='fast'?24:speed==='slow'?105:52;
-  if(/^\s+$/.test(text)) return base*0.7;
-  if(/[.,;:!?\u2026]/.test(text)) return base*5;
-  return base;
-}
-/* Sonidos sintetizados con Web Audio: [onda, f0, f1, duracion, volumen]; f='N' = nota pentatonica al azar */
-var PRESETS={
-  soft:[['sine',520,520,0.045,0.035]],
-  typewriter:[['triangle',720,260,0.045,0.055]],
-  digital:[['square',1050,1050,0.045,0.025]],
-  drop:[['sine',950,380,0.09,0.05]],
-  bubble:[['sine',320,950,0.09,0.045]],
-  bell:[['sine',1320,1320,0.35,0.03],['sine',1980,1980,0.22,0.015]],
-  glass:[['sine',2200,2200,0.2,0.025],['triangle',3300,3300,0.12,0.01]],
-  marimba:[['sine','N','N',0.16,0.06]],
-  pulse:[['sine',170,110,0.09,0.09]]
-};
-var NOTES=[523,587,659,784,880,1047];
-function makeAudio(){
-  var ctx=null, noise=null;
-  function Ctor(){return typeof window!=='undefined'?(window.AudioContext||window.webkitAudioContext):null;}
-  function unlock(){
-    var C=Ctor(); if(!C) return Promise.resolve(false);
-    try{
-      if(!ctx||ctx.state==='closed'){ctx=new C();noise=null;}
-      if(ctx.state==='running') return Promise.resolve(true);
-      return Promise.resolve(ctx.resume()).then(function(){return ctx.state==='running';},function(){return false;});
-    }catch(e){return Promise.resolve(false);}
-  }
-  function running(){return !!ctx&&ctx.state==='running';}
-  function tick(kind){
-    if(!running()||!kind||kind==='none') return;
-    try{
-      var n=ctx.currentTime, r=0.97+Math.random()*0.06;
-      if(kind==='feather'){
-        if(!noise){noise=ctx.createBuffer(1,Math.floor(ctx.sampleRate*0.05),ctx.sampleRate);var d=noise.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;}
-        var s=ctx.createBufferSource(), f=ctx.createBiquadFilter(), g0=ctx.createGain();
-        s.buffer=noise; f.type='highpass'; f.frequency.value=3500+Math.random()*1500;
-        g0.gain.setValueAtTime(0.0001,n); g0.gain.exponentialRampToValueAtTime(0.05,n+0.006); g0.gain.exponentialRampToValueAtTime(0.0001,n+0.045);
-        s.connect(f); f.connect(g0); g0.connect(ctx.destination); s.start(n); s.stop(n+0.05);
-        return;
-      }
-      var P=PRESETS[kind]; if(!P) return;
-      var note=NOTES[Math.floor(Math.random()*NOTES.length)];
-      P.forEach(function(q){
-        var o=ctx.createOscillator(), g=ctx.createGain();
-        var f0=q[1]==='N'?note:q[1], f1=q[2]==='N'?note:q[2];
-        o.type=q[0]; o.frequency.setValueAtTime(f0*r,n);
-        if(f1!==f0) o.frequency.exponentialRampToValueAtTime(f1*r,n+q[3]*0.55);
-        g.gain.setValueAtTime(0.0001,n); g.gain.exponentialRampToValueAtTime(q[4],n+0.004); g.gain.exponentialRampToValueAtTime(0.0001,n+q[3]);
-        o.connect(g); g.connect(ctx.destination); o.start(n); o.stop(n+q[3]+0.02);
-      });
-    }catch(e){}
-  }
-  function close(){try{if(ctx&&ctx.state!=='closed') ctx.close();}catch(e){} ctx=null;}
-  return {unlock:unlock,running:running,tick:tick,close:close,supported:function(){return !!Ctor();}};
-}
-return {SEP:SEP,collect:collect,find:find,units:units,raw:rawText,segment:segment,normPhrase:normPhrase,delay:delay,makeAudio:makeAudio};
-})();(function typesoundRunner(core,cfg,doc,win){
-'use strict';
-var NS='__typesoundStudio';
-if(win[NS]) return;
-var audio;
-try{audio=(cfg.parentAudio&&win.parent&&win.parent.__tsStudioAudio)||core.makeAudio();}catch(e){audio=core.makeAudio();}
-var G={ready:false,dead:false,styleEl:null,btn:null,aEvents:null,aHandler:null,io:null,listening:false,raf:0,pal:undefined,seed:11,needScroll:false,hover:false};
-var items=[], FX={};
-win[NS]={version:4,destroy:destroy};
-
-/* ---------- utilidades ---------- */
-function clamp(x,a,b){return x<a?a:x>b?b:x;}
-function reduced(){try{return !!(win.matchMedia&&win.matchMedia('(prefers-reduced-motion: reduce)').matches);}catch(e){return false;}}
-function canHL(){return !!(win.CSS&&win.CSS.highlights&&typeof win.Highlight==='function'&&doc.createRange);}
-function nowMs(){return win.performance&&win.performance.now?win.performance.now():Date.now();}
-function later(it,fn,ms){var id=win.setTimeout(function(){delete it.tm[id];fn();},ms);it.tm[id]=1;return id;}
-function clearT(it){for(var k in it.tm) win.clearTimeout(+k); it.tm={}; it.token++;}
-function tickIt(it,text){if(it.snd&&(!text||!/^\s+$/.test(text))) audio.tick(it.cfg.sound);}
-function tickGate(it,ms){var t=nowMs(); if(it.snd&&t-it.lt>ms){it.lt=t;audio.tick(it.cfg.sound);}}
-function rectOf(it){try{return it.full.getBoundingClientRect();}catch(e){return null;}}
-function setHid(it,k,on){(it.spans[k]||[]).forEach(function(el){if(on) el.setAttribute('data-typesound-hidden',''); else el.removeAttribute('data-typesound-hidden');});}
-function eachSpan(it,fn){it.spans.forEach(function(l,k){l.forEach(function(el){fn(el,k);});});}
-function clearInline(it){eachSpan(it,function(el){el.removeAttribute('style');});}
-function speedMs(it,a,b,c){return it.cfg.speed==='fast'?a:it.cfg.speed==='slow'?c:b;}
-function choose(res,c){
-  if(res.matches.length===1) return res.matches[0];
-  var h=c.hint||{}, best=null, bs=0;
-  res.matches.forEach(function(m){
-    var s=0;
-    if(m.path===h.path){s+=4; if(m.k===h.k) s+=4;}
-    if(m.before===h.before&&m.after===h.after) s+=2;
-    if(m.ordinal===h.ordinal) s+=1;
-    if(s>bs){bs=s;best=m;}
-  });
-  return bs>=2?best:null;
-}
-function needsWrap(it){
-  var seen=new Set();
-  for(var i=0;i<it.units.length;i++){
-    var el=it.units[i].r.startContainer.parentElement;
-    if(!el||seen.has(el)) continue; seen.add(el);
-    for(var e=el;e&&e.nodeType===1;e=e.parentElement){
-      var cs=win.getComputedStyle(e);
-      if(e===el){
-        var fill=cs.getPropertyValue('-webkit-text-fill-color');
-        if(fill&&fill!==cs.color) return true;
-        if(parseFloat(cs.getPropertyValue('-webkit-text-stroke-width'))>0) return true;
-      }
-      var bc=cs.getPropertyValue('background-clip')||cs.getPropertyValue('-webkit-background-clip');
-      if(bc==='text') return true;
-      var td=cs.getPropertyValue('text-decoration-line');
-      if(td&&td!=='none') return true;
-    }
-  }
-  return false;
-}
-function addStyle(){
-  var s=doc.createElement('style'); s.setAttribute('data-typesound-style','');
-  var css='ts-char[data-typesound-hidden]{visibility:hidden!important}'+
-    'ts-char[data-typesound-scr]{visibility:hidden;position:relative}'+
-    'ts-char[data-typesound-scr]::after{content:attr(data-g);visibility:visible;position:absolute;left:0;right:0;top:0;text-align:center;line-height:normal;white-space:pre}'+
-    'ts-char[data-typesound-glow]{text-shadow:0 0 .35em currentColor,0 0 .12em currentColor}';
-  items.forEach(function(it){
-    css+='::highlight('+it.hn+'){color:transparent;background-color:transparent;text-shadow:none;text-decoration-color:transparent}'+
-      '::highlight('+it.sn+'){text-shadow:0 0 .35em currentColor,0 0 .12em currentColor}';
-  });
-  s.textContent=css; (doc.head||doc.documentElement).appendChild(s); G.styleEl=s;
-}
-/* ---------- envoltura de caracteres/palabras (una sola pasada para todas las frases) ---------- */
-function pieceList(u){
-  var r=u.r, sc=r.startContainer, ec=r.endContainer;
-  if(sc===ec) return [{n:sc,s:r.startOffset,e:r.endOffset}];
-  var out=[], w=doc.createTreeWalker(r.commonAncestorContainer,4), nd;
-  while((nd=w.nextNode())){
-    if(!r.intersectsNode(nd)) continue;
-    var s=nd===sc?r.startOffset:0, e=nd===ec?r.endOffset:nd.nodeValue.length;
-    if(e>s) out.push({n:nd,s:s,e:e});
-  }
-  return out;
-}
-function firstOf(l){return l.reduce(function(a,b){return (a.compareDocumentPosition(b)&4)?a:b;});}
-function lastOf(l){return l.reduce(function(a,b){return (a.compareDocumentPosition(b)&2)?a:b;});}
-function wrapAll(reqs){
-  var map=new Map();
-  reqs.forEach(function(rq){
-    var it=rq.it; it.spans=rq.groups.map(function(){return [];});
-    rq.groups.forEach(function(g,gi){
-      var ps=[];
-      g.forEach(function(ui){pieceList(it.units[ui]).forEach(function(p){
-        var l=ps[ps.length-1];
-        if(l&&l.n===p.n&&l.e===p.s) l.e=p.e; else ps.push({n:p.n,s:p.s,e:p.e});
-      });});
-      ps.forEach(function(p){var l=map.get(p.n)||[]; l.push({s:p.s,e:p.e,it:it,gi:gi}); map.set(p.n,l);});
-    });
-  });
-  map.forEach(function(list,node){
-    list.sort(function(a,b){return b.s-a.s;});
-    list.forEach(function(x){
-      var mid=node.splitText(x.s); mid.splitText(x.e-x.s);
-      var el=doc.createElement(x.it.fx.tag||'ts-char'); mid.parentNode.insertBefore(el,mid); el.appendChild(mid);
-      x.it.spans[x.gi].push(el);
-    });
-  });
-  reqs.forEach(function(rq){
-    var all=[]; rq.it.spans.forEach(function(l){all=all.concat(l);});
-    if(all.length){rq.it.full.setStartBefore(firstOf(all)); rq.it.full.setEndAfter(lastOf(all));}
-  });
-}
-function charGroups(it){return it.units.map(function(u,k){return [k];});}
-function wordGroups(it){
-  var out=[], cur=null;
-  it.units.forEach(function(u,k){
-    if(/^\s+$/.test(u.text)){cur=null;return;}
-    if(!cur){cur=[];out.push(cur);} cur.push(k);
-  });
-  return out;
-}
-/* ---------- resaltado (glow) ---------- */
-function glowSet(it,arr){
-  if(it.mode==='highlight'){
-    if(!arr.length){win.CSS.highlights.delete(it.sn);return;}
-    var h=new win.Highlight(), i=0; h.priority=900;
-    while(i<arr.length){
-      var j=i; while(j+1<arr.length&&arr[j+1]===arr[j]+1) j++;
-      var a=it.units[arr[i]].r, z=it.units[arr[j]].r, r=doc.createRange();
-      r.setStart(a.startContainer,a.startOffset); r.setEnd(z.endContainer,z.endOffset); h.add(r); i=j+1;
-    }
-    win.CSS.highlights.set(it.sn,h);
-  }else{
-    var set={}; arr.forEach(function(k){set[k]=1;});
-    eachSpan(it,function(el,k){if(set[k]) el.setAttribute('data-typesound-glow',''); else el.removeAttribute('data-typesound-glow');});
-  }
-}
-function band(a,b,n){var o=[]; for(var k=Math.max(0,a);k<=Math.min(n-1,b);k++) o.push(k); return o;}
-function glowMode(it){if(canHL()){it.mode='highlight';return null;} it.mode='wrap'; return charGroups(it);}
-
-/* ================= EFECTOS ================= */
-/* --- escritura --- */
-function hideFrom(it,i){
-  var n=it.units.length;
-  if(it.mode==='highlight'){
-    if(i>=n){win.CSS.highlights.delete(it.hn);return;}
-    var a=it.units[i].r, z=it.units[n-1].r, r=doc.createRange();
-    r.setStart(a.startContainer,a.startOffset); r.setEnd(z.endContainer,z.endOffset);
-    var h=new win.Highlight(r); h.priority=1000; win.CSS.highlights.set(it.hn,h);
-  }else for(var k=0;k<it.spans.length;k++) setHid(it,k,k>=i);
-}
-FX.type={tag:'ts-char',trig:true,
-  wrap:function(it){if(canHL()&&!needsWrap(it)){it.mode='highlight';return null;} it.mode='wrap'; return charGroups(it);},
-  prep:function(it){hideFrom(it,0);},
-  play:function(it){it.done=false; clearT(it); it.index=0; hideFrom(it,0); var tk=it.token; typeStep(it,tk);},
-  reveal:function(it){try{if(it.mode==='highlight') win.CSS.highlights.delete(it.hn); else for(var k=0;k<it.spans.length;k++) setHid(it,k,false);}catch(e){}}
-};
-function typeStep(it,tk){
-  if(tk!==it.token||it.dead) return;
-  try{
-    var i=it.index, u=it.units[i];
-    if(!it.container.isConnected) throw new Error('detached');
-    if(it.mode==='highlight') hideFrom(it,i+1); else setHid(it,i,false);
-    it.index=i+1; tickIt(it,u.text);
-    if(it.index>=it.units.length){it.done=true;return;}
-    later(it,function(){typeStep(it,tk);},core.delay(u.text,it.cfg.speed));
-  }catch(e){killItem(it);}
-}
-/* --- revelado con el scroll (opacidad: conserva el color original) --- */
-FX.scroll={tag:'ts-w',
-  wrap:function(it){it.mode='wrap'; return wordGroups(it);},
-  prep:function(it){it.p=-1; it.shown=0; this.update(it);},
-  update:function(it){
-    var r=rectOf(it); if(!r) return;
-    var vh=win.innerHeight||doc.documentElement.clientHeight;
-    var span=vh*speedMs(it,0.3,0.45,0.6)+r.height*0.3;
-    var p=clamp((vh*0.92-r.top)/span,0,1);
-    if(Math.abs(p-it.p)<0.002) return;
-    var up=p>it.p; it.p=p;
-    var n=it.spans.length, done=0;
-    it.spans.forEach(function(l,k){
-      var o=clamp((p*(n+3)-k)/3,0,1);
-      l.forEach(function(el){if(o>=1) el.removeAttribute('style'); else el.style.opacity=(0.15+0.85*o).toFixed(3);});
-      if(o>=1) done++;
-    });
-    if(up&&done>it.shown) tickGate(it,70);
-    it.shown=done;
-  },
-  reveal:function(it){clearInline(it);}
-};
-/* --- frases que rotan --- */
-FX.rotate={trig:true,
-  need:function(it){return !!(it.cfg.alts&&it.cfg.alts.length);},
-  wrap:function(it){it.mode='none';return null;},
-  prep:function(it){
-    var frag=it.full.extractContents(), el=doc.createElement('ts-rot');
-    el.appendChild(frag); it.full.insertNode(el); it.full.selectNode(el);
-    it.rot=el; it.origText=el.textContent; it.vars=[null].concat(it.cfg.alts); it.vi=0; it.arr=null; it.tgt=null; it.ph='hold'; it.running=false;
-  },
-  enter:function(it){
-    if(it.running) return; it.running=true; var tk=++it.token;
-    later(it,function(){rotStep(it,tk);},it.ph==='hold'?speedMs(it,1300,2000,3200):120);
-  },
-  leave:function(it){clearT(it); it.running=false;},
-  reveal:function(it){clearT(it);}
-};
-function rotStep(it,tk){
-  if(tk!==it.token||it.dead) return;
-  if(!it.container.isConnected){killItem(it);return;}
-  var base=core.delay('a',it.cfg.speed), wait=base;
-  if(it.ph==='hold'){it.ph='erase'; wait=0;}
-  else if(it.ph==='erase'){
-    if(it.arr===null) it.arr=core.segment(it.rot.textContent);
-    if(it.arr.length){it.arr.pop(); it.rot.textContent=it.arr.join(''); wait=base*0.55;}
-    else{it.vi=(it.vi+1)%it.vars.length; var v=it.vars[it.vi]; it.tgt=core.segment(v===null?it.origText:v); it.ph='type'; wait=base*3;}
-  }else{
-    if(it.arr.length<it.tgt.length){
-      var ch=it.tgt[it.arr.length]; it.arr.push(ch); it.rot.textContent=it.arr.join(''); tickIt(it,ch); wait=core.delay(ch,it.cfg.speed);
-    }else{it.ph='hold'; wait=speedMs(it,1300,2000,3200);}
-  }
-  later(it,function(){rotStep(it,tk);},wait);
-}
-/* --- descifrado: el caracter original no cambia de sitio; el s\u00edmbolo se dibuja encima --- */
-FX.decipher={tag:'ts-char',trig:true,
-  wrap:function(it){it.mode='wrap'; return charGroups(it);},
-  prep:function(it){
-    var seen={}, pool=''; it.units.forEach(function(u){if(!/^\s+$/.test(u.text)&&!seen[u.text]){seen[u.text]=1;pool+=u.text;}});
-    it.pool=core.segment(pool+'#%&*+=?'); this.hideAll(it);
-  },
-  hideAll:function(it){it.units.forEach(function(u,k){if(/^\s+$/.test(u.text)) return; (it.spans[k]||[]).forEach(function(el){el.setAttribute('data-typesound-scr','');el.setAttribute('data-g','');});});},
-  play:function(it){
-    clearT(it); it.done=false; var tk=it.token, t0=nowMs(), step=speedMs(it,24,48,90), self=this;
-    this.hideAll(it); var locked={};
-    (function loop(){
-      if(tk!==it.token||it.dead) return;
-      var el=nowMs()-t0, left=0;
-      it.units.forEach(function(u,k){
-        if(/^\s+$/.test(u.text)||locked[k]) return;
-        if(el>=k*step+320){
-          locked[k]=1; (it.spans[k]||[]).forEach(function(s){s.removeAttribute('data-typesound-scr');s.removeAttribute('data-g');}); tickIt(it,u.text);
-        }else{
-          left++; var g=it.pool[Math.floor(Math.random()*it.pool.length)];
-          (it.spans[k]||[]).forEach(function(s){s.setAttribute('data-g',g);});
-        }
-      });
-      if(left){later(it,loop,40);} else it.done=true;
-    })();
-  },
-  reveal:function(it){eachSpan(it,function(el){el.removeAttribute('data-typesound-scr');el.removeAttribute('data-g');});}
-};
-/* --- enfoque a nitidez / palabras que suben --- */
-function wordReveal(it,hideCss,showCss,hold,endFn){
-  clearT(it); it.done=false; var tk=it.token, stag=speedMs(it,60,110,200), last=0;
-  eachSpan(it,function(el){el.style.cssText=hideCss;});
-  void doc.documentElement.offsetWidth;
-  it.spans.forEach(function(l,k){
-    later(it,function(){
-      if(tk!==it.token||it.dead) return;
-      l.forEach(function(el){el.style.cssText=showCss;}); tickGate(it,30);
-    },k*stag); last=k*stag;
-  });
-  later(it,function(){ if(tk!==it.token||it.dead) return; clearInline(it); it.done=true; },last+hold);
-}
-FX.blur={tag:'ts-w',trig:true,
-  wrap:function(it){it.mode='wrap';return wordGroups(it);},
-  prep:function(it){eachSpan(it,function(el){el.style.cssText='opacity:0;filter:blur(.3em)';});},
-  play:function(it){wordReveal(it,'opacity:0;filter:blur(.3em);transition:none','opacity:1;filter:blur(0);transition:opacity .7s ease,filter .7s ease',800);},
-  reveal:function(it){clearInline(it);}
-};
-FX.rise={tag:'ts-w',trig:true,
-  wrap:function(it){it.mode='wrap';return wordGroups(it);},
-  prep:function(it){eachSpan(it,function(el){el.style.cssText='display:inline-block;opacity:0;transform:translateY(.6em)';});},
-  play:function(it){wordReveal(it,'display:inline-block;opacity:0;transform:translateY(.6em);transition:none','display:inline-block;opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)',700);},
-  reveal:function(it){clearInline(it);}
-};
-/* --- subrayador a mano (capa superpuesta, color de la paleta de la p\u00e1gina) --- */
-function parseColor(s){
-  if(!s) return null; s=String(s).trim();
-  var m=/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/i.exec(s);
-  if(m){var a=m[4]===undefined?1:(m[4].slice(-1)==='%'?parseFloat(m[4])/100:parseFloat(m[4])); return [+m[1],+m[2],+m[3],a];}
-  m=/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(s);
-  if(m){var h=m[1]; if(h.length===3) h=h.replace(/./g,'$&$&'); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16),1];}
-  return null;
-}
-function paletteColor(){
-  if(G.pal!==undefined) return G.pal;
-  var score={}, first={}, best=null, bs=0;
-  function add(c,w){
-    var p=parseColor(c); if(!p||p[3]<0.5) return;
-    var mx=Math.max(p[0],p[1],p[2]), mn=Math.min(p[0],p[1],p[2]);
-    if(mx<40||mn>235||(mx-mn)/mx<0.3) return;
-    var k=Math.round(p[0]/24)+','+Math.round(p[1]/24)+','+Math.round(p[2]/24);
-    score[k]=(score[k]||0)+w; if(!first[k]) first[k]='rgb('+p[0]+','+p[1]+','+p[2]+')';
-  }
-  try{
-    var rs=win.getComputedStyle(doc.documentElement);
-    ['--accent','--primary','--brand','--color-accent','--color-primary','--accent-color','--main-color'].forEach(function(v){add(rs.getPropertyValue(v),6);});
-    var els=doc.querySelectorAll('a,button,h1,h2,h3,em,strong,[class*="btn"],[class*="button"],[class*="accent"],[class*="primary"],[class*="cta"]');
-    for(var i=0;i<els.length&&i<500;i++){
-      var cs=win.getComputedStyle(els[i]); add(cs.backgroundColor,3); add(cs.color,1);
-      if(parseFloat(cs.borderTopWidth)>0) add(cs.borderTopColor,2);
-    }
-  }catch(e){}
-  for(var k in score) if(score[k]>bs){bs=score[k];best=first[k];}
-  G.pal=best; return best;
-}
-function ulColor(it){
-  var c=it.cfg.ulColor||'auto';
-  if(c!=='auto'&&c!=='text') return c;
-  var txt=win.getComputedStyle(it.container).color;
-  return c==='text'?txt:(paletteColor()||txt);
-}
-function rnd(){G.seed=(G.seed*1103515245+12345)&0x7fffffff; return G.seed/0x7fffffff;}
-function lineRects(it){
-  var rs=[].slice.call(it.full.getClientRects()).filter(function(r){return r.width>1&&r.height>1;});
-  var lines=[];
-  rs.forEach(function(r){
-    var L=lines[lines.length-1];
-    if(L&&Math.abs(r.bottom-L.bottom)<r.height*0.5){L.left=Math.min(L.left,r.left);L.right=Math.max(L.right,r.right);L.bottom=Math.max(L.bottom,r.bottom);}
-    else lines.push({left:r.left,right:r.right,bottom:r.bottom});
-  });
-  return lines;
-}
-function ulBuild(it,animate){
-  var lines=lineRects(it), sx=win.pageXOffset||0, sy=win.pageYOffset||0, col=ulColor(it);
-  var fs=parseFloat(win.getComputedStyle(it.container).fontSize)||16, sw=Math.max(2,fs*0.07), NSV='http://www.w3.org/2000/svg';
-  if(!it.host){
-    it.host=doc.createElement('div'); it.host.setAttribute('data-typesound-ui','');
-    it.host.style.cssText='position:absolute;left:0;top:0;width:0;height:0;overflow:visible;pointer-events:none;z-index:2147483000';
-    doc.documentElement.appendChild(it.host);
-  }
-  it.host.textContent=''; it.paths=[]; G.seed=17+it.i*31;
-  lines.forEach(function(L){
-    var w=L.right-L.left+8, h=Math.max(8,sw*3), y=h/2, seg=Math.max(2,Math.round(w/45));
-    var svg=doc.createElementNS(NSV,'svg'); svg.setAttribute('width',w); svg.setAttribute('height',h); svg.setAttribute('viewBox','0 0 '+w+' '+h);
-    svg.style.cssText='position:absolute;overflow:visible;left:'+(L.left+sx-4)+'px;top:'+(L.bottom+sy-h*0.35)+'px';
-    var d='M0 '+(y+(rnd()-0.5)*sw*0.8).toFixed(1);
-    for(var i=1;i<=seg;i++) d+=' Q '+(w*(i-0.5)/seg).toFixed(1)+' '+(y+(i%2?-1:1)*sw*0.9+(rnd()-0.5)*sw*0.6).toFixed(1)+' '+(w*i/seg).toFixed(1)+' '+(y+(rnd()-0.5)*sw*0.8).toFixed(1);
-    var p=doc.createElementNS(NSV,'path'); p.setAttribute('d',d); p.setAttribute('fill','none'); p.setAttribute('stroke',col);
-    p.setAttribute('stroke-width',sw); p.setAttribute('stroke-linecap','round'); p.setAttribute('stroke-linejoin','round');
-    svg.appendChild(p); it.host.appendChild(svg);
-    var len=p.getTotalLength?p.getTotalLength():w; p.style.strokeDasharray=len; p.style.strokeDashoffset=animate?len:0; p.__len=len;
-    it.paths.push(p);
-  });
-  it.drawn=true;
-}
-FX.underline={trig:true,
-  wrap:function(it){it.mode='none';return null;},
-  prep:function(it){},
-  play:function(it){
-    clearT(it); it.done=false; var tk=it.token;
-    ulBuild(it,true); void it.host.offsetWidth;
-    var dur=speedMs(it,450,800,1400), total=it.paths.length*dur;
-    it.paths.forEach(function(p,li){
-      later(it,function(){ if(tk!==it.token||it.dead) return; p.style.transition='stroke-dashoffset '+dur+'ms ease-out'; p.style.strokeDashoffset=0; },li*dur);
-      for(var t=0;t<4;t++) later(it,function(){tickGate(it,40);},li*dur+t*dur/4);
-    });
-    later(it,function(){it.done=true;},total+50);
-  },
-  relayout:function(it){if(it.drawn&&it.done) ulBuild(it,false);},
-  reveal:function(it){}
-};
-/* --- brillo que recorre el texto --- */
-FX.shine={tag:'ts-char',trig:true,
-  wrap:glowMode,
-  prep:function(it){},
-  play:function(it){
-    clearT(it); it.done=false; var tk=it.token, n=it.units.length, w=Math.max(3,Math.round(n*0.2)), pos=-w, d=speedMs(it,16,28,50), c=0;
-    (function step(){
-      if(tk!==it.token||it.dead) return;
-      try{ glowSet(it,band(pos,pos+w-1,n)); }catch(e){killItem(it);return;}
-      if(c++%4===0) tickGate(it,30);
-      if(pos>n){glowSet(it,[]); it.done=true; return;}
-      pos++; later(it,step,d);
-    })();
-  },
-  reveal:function(it){try{glowSet(it,[]);}catch(e){}}
-};
-/* --- letras que se iluminan al tocar o pasar el rat\u00f3n --- */
-FX.hover={tag:'ts-char',
-  wrap:glowMode,
-  prep:function(it){G.hover=true;},
-  reveal:function(it){try{glowSet(it,[]);}catch(e){}}
-};
-function nearestUnit(it,x,y){
-  var best=-1, bd=1e9;
-  for(var k=0;k<it.units.length;k++){
-    var el=it.mode==='wrap'&&it.spans[k]&&it.spans[k][0], r=el?el.getBoundingClientRect():it.units[k].r.getBoundingClientRect();
-    if(!r.width&&!r.height) continue;
-    var dx=x<r.left?r.left-x:x>r.right?x-r.right:0, dy=y<r.top?r.top-y:y>r.bottom?y-r.bottom:0, d=dx*dx+dy*dy*4;
-    if(d<bd){bd=d;best=k;}
-  }
-  return bd<1600?best:-1;
-}
-function ripple(it,i){
-  clearT(it); var tk=it.token, n=it.units.length, maxR=Math.max(i,n-1-i)+3, r=0;
-  (function step(){
-    if(tk!==it.token||it.dead) return;
-    var arr=band(i-r-2,i-r,n).concat(band(i+r,i+r+2,n)).filter(function(v,j,a){return a.indexOf(v)===j;}).sort(function(a,b){return a-b;});
-    try{glowSet(it,arr);}catch(e){killItem(it);return;}
-    if(r%2===0) tickGate(it,40);
-    if(r>=maxR){glowSet(it,[]);return;}
-    r++; later(it,step,32);
-  })();
-}
-function onPtr(e){
-  if(G.dead) return;
-  items.forEach(function(it){
-    if(it.dead||it.fx!==FX.hover) return;
-    var r=rectOf(it); if(!r) return;
-    var pad=14;
-    if(e.clientX<r.left-pad||e.clientX>r.right+pad||e.clientY<r.top-pad||e.clientY>r.bottom+pad){
-      if(it.hov){it.hov=false; clearT(it); try{glowSet(it,[]);}catch(x){}} return;
-    }
-    var idx=nearestUnit(it,e.clientX,e.clientY); if(idx<0) return;
-    if(e.type==='pointerdown'){it.hov=true; ripple(it,idx);}
-    else if(e.pointerType==='mouse'&&idx!==it.last){
-      it.last=idx; it.hov=true; clearT(it); var tk=it.token;
-      try{glowSet(it,band(idx-2,idx+2,it.units.length));}catch(x){killItem(it);return;}
-      tickGate(it,60);
-      later(it,function(){ if(tk===it.token){it.hov=false;it.last=-1;try{glowSet(it,[]);}catch(x){}} },600);
-    }
-  });
-}
-
-/* ================= disparo al entrar en pantalla ================= */
-function isVisible(it){
-  var r=rectOf(it);
-  if(!r||(!r.width&&!r.height)) return false;
-  var vh=win.innerHeight||doc.documentElement.clientHeight, vw=win.innerWidth||doc.documentElement.clientWidth;
-  return r.bottom>0&&r.top<vh*0.95&&r.right>0&&r.left<vw;
-}
-function enter(it){
-  if(it.fx.enter) return it.fx.enter(it);
-  if(!it.started){it.started=true; it.fx.play(it);}
-  else if(it.cfg.repeat&&it.armed&&it.done) it.fx.play(it);
-  if(!it.cfg.repeat&&it.fx!==FX.rotate) it.watching=false;
-}
-function checkTrig(it){
-  var v=isVisible(it);
-  if(v&&!it.visible){it.visible=true; enter(it); it.armed=false;}
-  else if(!v&&it.visible){it.visible=false; it.armed=true; if(it.fx.leave) it.fx.leave(it);}
-}
-function checkAll(){
-  G.raf=0; if(G.dead) return;
-  items.forEach(function(it){
-    if(it.dead) return;
-    try{
-      if(it.fx.update) it.fx.update(it);
-      if(it.fx.trig&&it.watching) checkTrig(it);
-    }catch(e){killItem(it);}
-  });
-  sync();
-}
-function schedule(){
-  if(G.raf||G.dead) return;
-  G.raf=win.requestAnimationFrame?win.requestAnimationFrame(checkAll):win.setTimeout(checkAll,16);
-}
-function listen(on){
-  if(on===G.listening) return; G.listening=on;
-  if(on){win.addEventListener('scroll',schedule,{passive:true,capture:true}); win.addEventListener('resize',schedule,{passive:true});}
-  else{win.removeEventListener('scroll',schedule,true); win.removeEventListener('resize',schedule);}
-}
-function sync(){
-  var watching=items.some(function(it){return !it.dead&&it.watching;});
-  if(!watching&&G.io){G.io.disconnect();G.io=null;}
-  listen(G.needScroll||items.some(function(it){return !it.dead&&it.watching&&(it.inter||!G.io);}));
-}
-function targetOf(it){
-  var t=it.container;
-  try{while(t.parentElement&&win.getComputedStyle(t).display==='contents') t=t.parentElement;}catch(e){}
-  return t;
-}
-function observeAll(){
-  var watch=items.filter(function(it){return !it.dead&&it.fx.trig;});
-  G.needScroll=items.some(function(it){return !it.dead&&it.fx.update;});
-  if(watch.length){
-    if('IntersectionObserver' in win){
-      var map=new Map();
-      watch.forEach(function(it){var t=targetOf(it), l=map.get(t)||[]; l.push(it); map.set(t,l);});
-      G.io=new win.IntersectionObserver(function(es){
-        es.forEach(function(e){(map.get(e.target)||[]).forEach(function(it){it.inter=e.isIntersecting;});});
-        sync(); schedule();
-      },{threshold:[0,0.01]});
-      map.forEach(function(l,t){G.io.observe(t);});
-    }else watch.forEach(function(it){it.inter=true;});
-  }
-  sync(); schedule();
-}
-/* ================= audio ================= */
-function showBtn(){
-  if(G.btn) return;
-  var b=doc.createElement('button'); b.type='button'; b.textContent='\uD83D\uDD0A Activar sonido';
-  b.setAttribute('data-typesound-ui','');
-  b.style.cssText='position:fixed;right:12px;bottom:12px;z-index:2147483647;font:600 14px/1 system-ui,sans-serif;padding:12px 14px;border-radius:999px;border:1px solid rgba(0,0,0,.25);background:#fff;color:#111;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.2)';
-  b.addEventListener('click',function(){audio.unlock().then(function(ok){if(ok) removeBtn();});});
-  (doc.body||doc.documentElement).appendChild(b); G.btn=b;
-}
-function removeBtn(){if(G.btn&&G.btn.parentNode) G.btn.parentNode.removeChild(G.btn); G.btn=null;}
-function unbindAudio(){
-  if(!G.aEvents) return;
-  G.aEvents.forEach(function(e){doc.removeEventListener(e,G.aHandler,true);});
-  G.aEvents=null;
-}
-function bindAudio(){
-  if(!items.some(function(it){return !it.dead&&it.snd;})||!audio.supported()) return;
-  G.aEvents=['pointerup','click','keydown','touchend'];
-  G.aHandler=function(){audio.unlock().then(function(ok){if(ok){unbindAudio();removeBtn();}});};
-  G.aEvents.forEach(function(e){doc.addEventListener(e,G.aHandler,{capture:true,passive:true});});
-  if(win.navigator&&win.navigator.userActivation&&win.navigator.userActivation.hasBeenActive) audio.unlock();
-  if(cfg.audioPrompt&&!audio.running()) showBtn();
-}
-/* ================= ciclo de vida ================= */
-function killItem(it){
-  try{if(it.fx&&it.fx.reveal) it.fx.reveal(it);}catch(e){}
-  it.dead=true; clearT(it);
-}
-function revealAll(){items.forEach(killItem); G.dead=true; if(G.io){G.io.disconnect();G.io=null;} listen(false);}
-function relayout(){items.forEach(function(it){if(!it.dead&&it.fx.relayout) try{it.fx.relayout(it);}catch(e){}});}
-function reassess(){
-  items.forEach(function(it){
-    if(it.dead||it.fx!==FX.type||it.mode!=='highlight') return;
-    try{
-      if(!needsWrap(it)) return;
-      win.CSS.highlights.delete(it.hn);
-      var upto=it.started?(it.done?it.units.length:it.index):0;
-      wrapAll([{it:it,groups:charGroups(it)}]); it.mode='wrap'; hideFrom(it,upto);
-    }catch(e){killItem(it);}
-  });
-  relayout();
-}
-function setup(){
-  if(G.ready) return;
-  var ctx=core.collect(doc);
-  cfg.items.forEach(function(c,i){
-    var res=core.find(doc,c.phrase,ctx), m=res.matches.length?choose(res,c):null;
-    if(!m) return;
-    var u=core.units(ctx,m); if(!u.length) return;
-    var it={cfg:c,i:i,hn:'ts-h'+i,sn:'ts-s'+i,units:u,container:m.container,mode:'',spans:[],tm:{},token:0,lt:0,
-      started:false,done:true,armed:false,visible:false,watching:false,inter:false,dead:false,index:0,hov:false,last:-1};
-    u.forEach(function(x){
-      var f=x.pieces[0], l=x.pieces[x.pieces.length-1];
-      x.r=doc.createRange(); x.r.setStart(f.n,f.s); x.r.setEnd(l.n,l.e);
-    });
-    var f0=u[0].pieces[0], lu=u[u.length-1], l0=lu.pieces[lu.pieces.length-1];
-    it.full=doc.createRange(); it.full.setStart(f0.n,f0.s); it.full.setEnd(l0.n,l0.e);
-    it.snd=!!cfg.soundEnabled&&c.sound!=='none';
-    it.fx=FX[c.effect]||FX.type;
-    items.push(it);
-  });
-  if(!items.length) return;
-  G.ready=true;
-  if(reduced()) return;
-  addStyle();
-  var reqs=[];
-  items.forEach(function(it){
-    if(it.fx.need&&!it.fx.need(it)){it.dead=true;return;}
-    var groups=null;
-    try{groups=it.fx.wrap(it);}catch(e){it.dead=true;return;}
-    if(groups) reqs.push({it:it,groups:groups});
-  });
-  try{wrapAll(reqs);}catch(e){revealAll();return;}
-  items.forEach(function(it){
-    if(it.dead) return;
-    try{it.fx.prep(it); it.watching=!!it.fx.trig;}catch(e){killItem(it);}
-  });
-  observeAll(); bindAudio();
-  if(G.hover){doc.addEventListener('pointermove',onPtr,{passive:true,capture:true}); doc.addEventListener('pointerdown',onPtr,{passive:true,capture:true});}
-  win.addEventListener('resize',relayout,{passive:true});
-  win.addEventListener('beforeprint',revealAll);
-  if(doc.readyState!=='complete') win.addEventListener('load',reassess,{once:true});
-  else relayout();
-}
-function destroy(){
-  revealAll(); unbindAudio(); removeBtn(); audio.close();
-  doc.removeEventListener('pointermove',onPtr,true); doc.removeEventListener('pointerdown',onPtr,true);
-  win.removeEventListener('resize',relayout); win.removeEventListener('beforeprint',revealAll);
-  items.forEach(function(it){if(it.host&&it.host.parentNode) it.host.parentNode.removeChild(it.host);});
-  if(G.styleEl&&G.styleEl.parentNode) G.styleEl.parentNode.removeChild(G.styleEl);
-  try{delete win[NS];}catch(e){win[NS]=undefined;}
-}
-function attempt(){try{setup();}catch(e){G.ready=true;revealAll();}}
-attempt();
-if(!G.ready){
-  if(doc.readyState==='loading') doc.addEventListener('DOMContentLoaded',attempt,{once:true});
-  if(doc.readyState!=='complete') win.addEventListener('load',attempt,{once:true});
-  win.setTimeout(attempt,600);
-}
-})(core,{"v":4,"soundEnabled":true,"audioPrompt":true,"items":[{"phrase":"Tinta que\ncuenta\nhistorias.","effect":"shine","speed":"natural","sound":"soft","repeat":true,"alts":[],"ulColor":"auto","hint":{"path":"1/1/1/0/0/1","k":0,"ordinal":0,"before":"\u00b7 la paz \u00b7 est. 2024\u0001 \u0001 ","after":" \u0001 \u0001 no hacemos tatuajes"}}]},document,window);}catch(e){if(window.console&&console.warn)console.warn("TypeSound:",e);}})();</script>
-<!-- TYPESOUND_STUDIO:END -->
 </body>
 </html>
