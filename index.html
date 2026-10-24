@@ -44,11 +44,12 @@
   .logo{font-size:1.2rem;font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:.5rem;}
   .logo span{color:var(--fuego);text-shadow:0 0 15px var(--fuego-glow);}
   .nav-links{display:flex;gap:2rem;font-size:.9rem;font-weight:400;color:var(--gris);}
-  .nav-links a{transition:color .3s;}
+  .nav-links a{transition:color .3s; text-decoration: none; color: inherit;}
   .nav-links a:hover{color:var(--texto);}
   .btn-nav{
     background:var(--texto);color:var(--carbon);padding:.5rem 1.2rem;
     border-radius:999px;font-weight:600;font-size:.85rem;transition:transform .2s;
+    text-decoration: none;
   }
   .btn-nav:hover{transform:scale(1.05);}
 
@@ -70,7 +71,7 @@
   .btn-hero{
     background:var(--fuego);color:#fff;padding:1rem 2.5rem;border-radius:999px;
     font-size:1.1rem;font-weight:600;box-shadow:0 10px 30px var(--fuego-glow);
-    transition:all .3s;
+    transition:all .3s; text-decoration: none;
   }
   .btn-hero:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(255,59,48,.6);}
 
@@ -86,14 +87,14 @@
   .section-sub{color:var(--gris);text-align:center;margin-bottom:4rem;font-size:1.1rem;}
 
   .phones-grid{
-    display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;
+    display:flex;justify-content:center;align-items:center;gap:4rem;flex-wrap:wrap;
     perspective:1000px;
   }
 
   /* --- EL IPHONE 17 PRO --- */
   .iphone {
-    width: 320px;
-    height: 660px;
+    width: 330px;
+    height: 680px;
     background: var(--titanio);
     border-radius: 55px;
     padding: 12px;
@@ -139,6 +140,7 @@
     align-items: center;
     justify-content: flex-end;
     padding-right: 10px;
+    pointer-events: none; /* Para que no bloquee el video */
   }
   .island-camera {
     width: 10px; height: 10px;
@@ -156,14 +158,17 @@
     left: 0;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding-top: 50px; /* Para que no choque con la isla dinámica */
-    background: #000;
+    align-items: center;
   }
+
+  /* FORZAR AL IFRAME DE TIKTOK A LLENAR LA PANTALLA */
   .tiktok-container iframe {
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
     border: none;
+    border-radius: 45px;
   }
 
   /* --- BOTONES LATERALES DEL IPHONE --- */
@@ -192,6 +197,7 @@
     box-shadow:0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255,59,48,0.1);
     border:1px solid var(--borde);
     position:relative;
+    background: #000;
   }
   .video-wrapper iframe{
     position:absolute;inset:0;width:100%;height:100%;border:none;
@@ -206,9 +212,10 @@
   /* Responsive */
   @media (max-width: 800px) {
     .nav-links { display: none; }
-    .phones-grid { flex-direction: column; }
-    .iphone { width: 280px; height: 580px; border-radius: 45px; padding: 10px;}
+    .phones-grid { flex-direction: column; gap: 2rem; }
+    .iphone { width: 300px; height: 620px; border-radius: 45px; padding: 10px;}
     .screen { border-radius: 35px; }
+    .tiktok-container iframe { border-radius: 35px; }
     .hero h1 { font-size: 2.5rem; }
   }
 </style>
@@ -222,7 +229,6 @@
     <div class="nav-links">
       <a href="#experiencia">La Experiencia</a>
       <a href="#videos">Videos</a>
-      <a href="#contacto">Contacto</a>
     </div>
     <a href="#" class="btn-nav">Pedir Ahora</a>
   </div>
@@ -246,9 +252,8 @@
     <div class="iphone">
       <div class="screen">
         <div class="dynamic-island"><div class="island-camera"></div></div>
-        <div class="tiktok-container">
+        <div class="tiktok-container" id="tiktok-1">
           <!-- Se inyecta vía JS -->
-          <div id="tiktok-1"></div>
         </div>
       </div>
     </div>
@@ -257,9 +262,8 @@
     <div class="iphone">
       <div class="screen">
         <div class="dynamic-island"><div class="island-camera"></div></div>
-        <div class="tiktok-container">
+        <div class="tiktok-container" id="tiktok-2">
           <!-- Se inyecta vía JS -->
-          <div id="tiktok-2"></div>
         </div>
       </div>
     </div>
@@ -272,10 +276,12 @@
   <h2 class="section-title">Detrás de la parrilla.</h2>
   <p class="section-sub">Conoce nuestra historia en alta definición.</p>
   <div class="video-wrapper">
+    <!-- Se agregó referrerpolicy para evitar el error 153 -->
     <iframe 
-      src="https://www.youtube.com/embed/alIRDysk3jk?rel=0&modestbranding=1&color=white" 
+      src="https://www.youtube.com/embed/alIRDysk3jk?rel=0&modestbranding=1" 
       title="Video de YouTube El Fuego"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen>
     </iframe>
   </div>
@@ -288,7 +294,6 @@
 
 <!-- LÓGICA DE TIKTOK -->
 <script>
-  // URLs de los videos
   const tiktokUrls = [
     "https://www.tiktok.com/@ktaial/video/7670110751599643918",
     "https://www.tiktok.com/@albertinasacaca1/video/7670488447102078229"
@@ -299,22 +304,22 @@
     return match ? match[1] : '';
   }
 
-  // Inyectar el Blockquote oficial de TikTok en los teléfonos
   tiktokUrls.forEach((url, index) => {
     const id = extractTikTokId(url);
     const container = document.getElementById(`tiktok-${index + 1}`);
     if(container) {
+      // Insertamos el blockquote oficial
       container.innerHTML = `
-        <blockquote class="tiktok-embed" cite="${url}" data-video-id="${id}" style="max-width: 100%; min-width: 100%; margin:0;">
+        <blockquote class="tiktok-embed" cite="${url}" data-video-id="${id}" style="margin:0; width:100%; height:100%;">
           <section>
-            <a target="_blank" href="${url}">Ver en TikTok</a>
+            <a target="_blank" href="${url}">Ver video en TikTok</a>
           </section>
         </blockquote>
       `;
     }
   });
 
-  // Cargar el script de TikTok después de insertar los blockquotes
+  // Cargar el script de TikTok
   const script = document.createElement('script');
   script.src = "https://www.tiktok.com/embed.js";
   script.async = true;
