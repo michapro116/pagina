@@ -1,752 +1,325 @@
 <!DOCTYPE html>
-<html lang="es"><head>
+<html lang="es">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Taquería El Fuego · Tacos al carbón en CDMX</title>
-<meta name="description" content="Taquería El Fuego: tacos al carbón, quesadillas y salsas de la casa en la Roma Norte, CDMX. Pide a domicilio por WhatsApp.">
+<title>El Fuego · Experiencia Premium</title>
+<meta name="description" content="La experiencia definitiva de Taquería El Fuego. Tacos al carbón en la Roma Norte.">
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
   :root{
-    --fuego:#e8452c;
-    --fuego-oscuro:#b52f1b;
-    --carbon:#1a1614;
-    --carbon-2:#241f1c;
-    --crema:#fdf6ec;
-    --texto:#2b2320;
-    --gris:#6b5f58;
-    --borde:#e8ddd0;
-    --sombra:0 12px 32px rgba(26,22,20,.12);
-    --radio:18px;
+    --fuego:#ff3b30;
+    --fuego-glow:rgba(255,59,48,.4);
+    --carbon:#050505;
+    --carbon-claro:#121212;
+    --texto:#f5f5f7;
+    --gris:#86868b;
+    --borde:rgba(255,255,255,.1);
+    --titanio:linear-gradient(145deg, #2a2a2a, #555, #1a1a1a);
   }
 
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter', sans-serif;}
+  html{scroll-behavior:smooth;}
   body{
-    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-    background:var(--crema);
+    background-color:var(--carbon);
     color:var(--texto);
-    line-height:1.6;
+    line-height:1.5;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
-  img{max-width:100%;display:block}
-  a{color:inherit;text-decoration:none}
-  .contenedor{width:min(1120px,92%);margin-inline:auto}
 
-  /* ---------- HEADER ---------- */
+  /* ---------- NAVBAR CRISTAL ---------- */
   header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(253,246,236,.88);
-    backdrop-filter:blur(12px);
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(5,5,5,.7);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border-bottom:1px solid var(--borde);
   }
   .nav{
     display:flex;align-items:center;justify-content:space-between;
-    gap:1rem;padding:.85rem 0;
+    padding:1rem 5%;max-width:1400px;margin:0 auto;
   }
-  .logo{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
-  .logo span.fuego{
-    display:grid;place-items:center;width:38px;height:38px;border-radius:12px;
-    background:linear-gradient(135deg,var(--fuego),#f7a03c);
-    color:#fff;font-size:1.1rem;
+  .logo{font-size:1.2rem;font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:.5rem;}
+  .logo span{color:var(--fuego);text-shadow:0 0 15px var(--fuego-glow);}
+  .nav-links{display:flex;gap:2rem;font-size:.9rem;font-weight:400;color:var(--gris);}
+  .nav-links a{transition:color .3s;}
+  .nav-links a:hover{color:var(--texto);}
+  .btn-nav{
+    background:var(--texto);color:var(--carbon);padding:.5rem 1.2rem;
+    border-radius:999px;font-weight:600;font-size:.85rem;transition:transform .2s;
   }
-  .nav ul{display:flex;gap:1.6rem;list-style:none;font-weight:600;font-size:.94rem}
-  .nav ul a{position:relative;padding:.25rem 0;color:var(--gris);transition:color .2s}
-  .nav ul a:hover{color:var(--fuego)}
-  .nav ul a::after{
-    content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
-    background:var(--fuego);transition:width .25s;
-  }
-  .nav ul a:hover::after{width:100%}
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-    padding:.75rem 1.4rem;border-radius:999px;font-weight:700;font-size:.92rem;
-    border:none;cursor:pointer;transition:transform .18s, box-shadow .18s, background .18s;
-  }
-  .btn-primario{background:var(--fuego);color:#fff;box-shadow:0 6px 18px rgba(232,69,44,.32)}
-  .btn-primario:hover{background:var(--fuego-oscuro);transform:translateY(-2px)}
-  .btn-ghost{background:transparent;color:var(--texto);border:2px solid var(--borde)}
-  .btn-ghost:hover{border-color:var(--fuego);color:var(--fuego);transform:translateY(-2px)}
-  .menu-toggle{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--texto)}
+  .btn-nav:hover{transform:scale(1.05);}
 
-  /* ---------- HERO ---------- */
+  /* ---------- HERO ESPECTACULAR ---------- */
   .hero{
-    position:relative;overflow:hidden;
-    background:radial-gradient(circle at 82% 18%, #3a2d26 0%, var(--carbon) 55%);
-    color:#fff;padding:clamp(3.5rem,9vw,6.5rem) 0;
-  }
-  .hero::after{
-    content:"";position:absolute;inset:0;
-    background:
-      radial-gradient(circle at 12% 85%, rgba(232,69,44,.30), transparent 42%),
-      radial-gradient(circle at 90% 10%, rgba(247,160,60,.18), transparent 40%);
-    pointer-events:none;
-  }
-  .hero-grid{
-    position:relative;z-index:1;
-    display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4rem);align-items:center;
-  }
-  .etiqueta{
-    display:inline-flex;align-items:center;gap:.5rem;
-    background:rgba(232,69,44,.16);border:1px solid rgba(232,69,44,.4);
-    color:#ffb4a3;padding:.4rem .95rem;border-radius:999px;
-    font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;position:relative;padding-top:60px;
+    background:radial-gradient(circle at 50% 0%, rgba(255,59,48,.15) 0%, transparent 60%);
   }
   .hero h1{
-    font-size:clamp(2.2rem,5.2vw,3.6rem);line-height:1.08;
-    letter-spacing:-.03em;margin:1.1rem 0 .9rem;font-weight:800;
+    font-size:clamp(3rem, 8vw, 6rem);font-weight:800;letter-spacing:-.05em;
+    line-height:1.05;margin-bottom:1rem;
   }
-  .hero h1 em{font-style:normal;color:#ff7a5c}
-  .hero p{color:#cfc3bb;font-size:1.05rem;max-width:46ch}
-  .hero-acciones{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.9rem}
-  .hero-datos{display:flex;flex-wrap:wrap;gap:1.8rem;margin-top:2.2rem;font-size:.88rem;color:#b8a9a0}
-  .hero-datos strong{display:block;color:#fff;font-size:1.15rem;font-weight:800}
-  .hero-img{
-    border-radius:24px;overflow:hidden;aspect-ratio:4/5;
-    box-shadow:0 30px 60px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1);
+  .hero h1 span{
+    background:linear-gradient(90deg, #ff8a00, #ff3b30);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   }
-  .hero-img img{width:100%;height:100%;object-fit:cover}
+  .hero p{color:var(--gris);font-size:1.2rem;max-width:600px;margin-bottom:2rem;font-weight:300;}
+  .btn-hero{
+    background:var(--fuego);color:#fff;padding:1rem 2.5rem;border-radius:999px;
+    font-size:1.1rem;font-weight:600;box-shadow:0 10px 30px var(--fuego-glow);
+    transition:all .3s;
+  }
+  .btn-hero:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(255,59,48,.6);}
 
-  /* ---------- SECCIONES ---------- */
-  section{padding:clamp(3.5rem,7vw,5.5rem) 0}
-  .cabecera-seccion{max-width:640px;margin-bottom:2.8rem}
-  .cabecera-seccion h2{
-    font-size:clamp(1.7rem,3.6vw,2.4rem);letter-spacing:-.02em;
-    line-height:1.15;margin-bottom:.7rem;font-weight:800;
+  /* ---------- SECCIÓN DE TELÉFONOS ---------- */
+  .showcase{
+    padding:6rem 5% 8rem;
+    max-width:1400px;margin:0 auto;
+    display:flex;flex-direction:column;align-items:center;
   }
-  .cabecera-seccion p{color:var(--gris);font-size:1.02rem}
-  .kicker{
-    color:var(--fuego);font-weight:800;font-size:.8rem;
-    letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;display:block;
+  .section-title{
+    font-size:2.5rem;font-weight:800;text-align:center;margin-bottom:1rem;letter-spacing:-.03em;
   }
+  .section-sub{color:var(--gris);text-align:center;margin-bottom:4rem;font-size:1.1rem;}
 
-  /* ---------- SOBRE ---------- */
-  .sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
-  .sobre-img{border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);aspect-ratio:5/4}
-  .sobre-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-  .sobre-img:hover img{transform:scale(1.05)}
-  .valores{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
-  .valor{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:1.1rem;text-align:center}
-  .valor span{font-size:1.5rem;display:block;margin-bottom:.3rem}
-  .valor strong{display:block;font-size:.88rem}
-  .valor small{color:var(--gris);font-size:.75rem}
-
-  /* ---------- MENÚ ---------- */
-  #menu{background:#fff;border-block:1px solid var(--borde)}
-  .menu-categorias{display:grid;gap:2.5rem}
-  .categoria h3{
-    font-size:1.25rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:.7rem;font-weight:800;
-  }
-  .categoria h3::after{content:"";flex:1;height:1px;background:var(--borde)}
-  .items-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:.9rem}
-  .item{
-    display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;
-    background:var(--crema);border:1px solid var(--borde);border-radius:14px;
-    padding:1rem 1.15rem;transition:transform .2s, box-shadow .2s, border-color .2s;
-  }
-  .item:hover{transform:translateY(-3px);box-shadow:var(--sombra);border-color:#f0c9bd}
-  .item h4{font-size:.98rem;font-weight:700;margin-bottom:.15rem}
-  .item p{font-size:.83rem;color:var(--gris);line-height:1.45}
-  .precio{
-    font-weight:800;color:var(--fuego);white-space:nowrap;
-    font-size:1rem;background:#fff;border-radius:10px;padding:.15rem .6rem;
+  .phones-grid{
+    display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;
+    perspective:1000px;
   }
 
-  /* ---------- GALERÍA ---------- */
-  .galeria{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem}
-  .galeria figure{
-    border-radius:14px;overflow:hidden;aspect-ratio:1;position:relative;
+  /* --- EL IPHONE 17 PRO --- */
+  .iphone {
+    width: 320px;
+    height: 660px;
+    background: var(--titanio);
+    border-radius: 55px;
+    padding: 12px;
+    position: relative;
+    box-shadow: 
+      inset 0 0 0 2px rgba(255,255,255,0.2),
+      inset 0 0 0 6px #000,
+      0 30px 60px rgba(0,0,0,0.8),
+      0 0 50px rgba(255,59,48,0.1);
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
   }
-  .galeria figure:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
-  .galeria img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
-  .galeria figure:hover img{transform:scale(1.08)}
-
-  /* ---------- VIDEOS ---------- */
-  #videos{background:var(--carbon);color:#fff}
-  #videos .cabecera-seccion h2{color:#fff}
-  #videos .cabecera-seccion p{color:#b8a9a0}
-  .videos-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);
-    gap:1.5rem;align-items:start;justify-items:center;
+  .iphone:hover {
+    transform: translateY(-15px) rotateY(5deg) rotateX(5deg);
+    box-shadow: 
+      inset 0 0 0 2px rgba(255,255,255,0.3),
+      inset 0 0 0 6px #000,
+      0 40px 80px rgba(0,0,0,0.9),
+      0 0 80px rgba(255,59,48,0.2);
   }
-  .video-card{
-    width:100%;background:var(--carbon-2);border:1px solid rgba(255,255,255,.09);
-    border-radius:var(--radio);overflow:hidden;
-    box-shadow:0 20px 45px rgba(0,0,0,.45);
-    transition:transform .25s, border-color .25s;
-  }
-  .video-card:hover{transform:translateY(-6px);border-color:rgba(232,69,44,.6)}
-  .video-marco{position:relative;width:100%;background:#000}
-  .video-marco.vertical{aspect-ratio:9/16}
-  .video-marco.horizontal{aspect-ratio:16/9}
-  .video-marco iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   
-  /* Contenedor especial para el blockquote de TikTok */
-  .tiktok-wrapper {
+  .screen {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 45px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* La Isla Dinámica */
+  .dynamic-island {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 30px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+  }
+  .island-camera {
+    width: 10px; height: 10px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px rgba(255,255,255,0.3);
+  }
+
+  /* Contenedor de TikTok dentro del celular */
+  .tiktok-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
-    width: 100%;
-    min-height: 500px; /* Asegura espacio para que el script de TikTok lo renderice */
+    align-items: flex-start;
+    padding-top: 50px; /* Para que no choque con la isla dinámica */
     background: #000;
   }
+  .tiktok-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
 
-  .video-pie{padding:.9rem 1.1rem;display:flex;align-items:center;gap:.6rem;font-size:.85rem}
-  .video-pie .plataforma{
-    font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
-    padding:.2rem .55rem;border-radius:6px;
+  /* --- BOTONES LATERALES DEL IPHONE --- */
+  .iphone::before, .iphone::after {
+    content: '';
+    position: absolute;
+    background: #333;
+    border-radius: 2px;
   }
-  .plataforma.tiktok{background:#000;color:#25f4ee;border:1px solid #25f4ee}
-  .plataforma.youtube{background:#ff0000;color:#fff}
-  .video-pie span.titulo{color:#cfc3bb}
+  .iphone::before { /* Botón de encendido */
+    right: -4px; top: 150px; width: 4px; height: 80px;
+  }
+  .iphone::after { /* Botones de volumen */
+    left: -4px; top: 130px; width: 4px; height: 50px;
+    box-shadow: 0 60px 0 #333;
+  }
 
-  /* ---------- CONTACTO / HORARIOS ---------- */
-  .contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-  .tarjeta{
-    background:#fff;border:1px solid var(--borde);border-radius:var(--radio);
-    padding:clamp(1.5rem,3vw,2.2rem);box-shadow:var(--sombra);
+  /* ---------- SECCIÓN YOUTUBE (CINE) ---------- */
+  .youtube-section{
+    padding:6rem 5%;background:var(--carbon-claro);
+    display:flex;flex-direction:column;align-items:center;
   }
-  .tarjeta h3{font-size:1.15rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.55rem}
-  .horario-fila{
-    display:flex;justify-content:space-between;padding:.65rem 0;
-    border-bottom:1px dashed var(--borde);font-size:.92rem;
+  .video-wrapper{
+    width:100%;max-width:1000px;aspect-ratio:16/9;
+    border-radius:24px;overflow:hidden;
+    box-shadow:0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255,59,48,0.1);
+    border:1px solid var(--borde);
+    position:relative;
   }
-  .horario-fila:last-child{border-bottom:none}
-  .horario-fila .dia{font-weight:600}
-  .horario-fila .hora{color:var(--gris)}
-  .horario-fila.hoy{color:var(--fuego);font-weight:700}
-  .horario-fila.hoy .hora{color:var(--fuego)}
-  .dato{display:flex;gap:.85rem;margin-bottom:1.15rem;font-size:.93rem}
-  .dato .icono{
-    flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
-    background:var(--crema);border:1px solid var(--borde);font-size:1.05rem;
+  .video-wrapper iframe{
+    position:absolute;inset:0;width:100%;height:100%;border:none;
   }
-  .dato strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gris)}
-  .redes{display:flex;gap:.6rem;margin-top:1.4rem;flex-wrap:wrap}
-  .redes a{
-    padding:.55rem 1.1rem;border-radius:999px;border:1px solid var(--borde);
-    font-size:.85rem;font-weight:600;transition:.2s;
-  }
-  .redes a:hover{background:var(--fuego);color:#fff;border-color:var(--fuego)}
-
-  /* ---------- TESTIMONIOS ---------- */
-  .testimonios{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-  .testimonio{
-    background:#fff;border:1px solid var(--borde);border-radius:var(--radio);
-    padding:1.5rem;box-shadow:0 4px 14px rgba(26,22,20,.05);
-  }
-  .estrellas{color:#f7a03c;letter-spacing:2px;margin-bottom:.6rem;font-size:.95rem}
-  .testimonio p{font-size:.93rem;color:#4a3f39;font-style:italic;margin-bottom:.9rem}
-  .testimonio .autor{font-size:.83rem;font-weight:700}
-  .testimonio .autor small{display:block;font-weight:500;color:var(--gris)}
 
   /* ---------- FOOTER ---------- */
-  footer{background:var(--carbon);color:#a89a92;padding:3rem 0 2rem;font-size:.88rem}
-  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
-  footer h4{color:#fff;font-size:.95rem;margin-bottom:.9rem}
-  footer ul{list-style:none;display:grid;gap:.55rem}
-  footer a:hover{color:var(--fuego)}
-  .footer-bottom{
-    border-top:1px solid rgba(255,255,255,.09);padding-top:1.5rem;
-    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.8rem;
+  footer{
+    padding:3rem;text-align:center;border-top:1px solid var(--borde);
+    color:var(--gris);font-size:.9rem;
   }
-  footer .logo{color:#fff;margin-bottom:.7rem}
 
-  /* ---------- WHATSAPP FLOTANTE ---------- */
-  .wa-flotante{
-    position:fixed;right:20px;bottom:20px;z-index:60;
-    width:58px;height:58px;border-radius:50%;
-    background:#25d366;color:#fff;display:grid;place-items:center;
-    box-shadow:0 8px 24px rgba(37,211,102,.45);
-    transition:transform .2s;font-size:1.7rem;
-  }
-  .wa-flotante:hover{transform:scale(1.08)}
-
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width:900px){
-    .hero-grid,.sobre-grid,.contacto-grid{grid-template-columns:1fr}
-    .hero-img{aspect-ratio:16/10;max-width:100%}
-    .videos-grid{grid-template-columns:1fr 1fr}
-    .videos-grid .video-card:last-child{grid-column:1/-1;max-width:560px}
-    .footer-grid{grid-template-columns:1fr 1fr}
-  }
-  @media (max-width:680px){
-    .nav ul{
-      display:none;position:absolute;top:100%;left:0;right:0;
-      flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--borde);
-      padding:.5rem 0;box-shadow:var(--sombra);
-    }
-    .nav ul.abierto{display:flex}
-    .nav ul li a{display:block;padding:.85rem 6%}
-    .menu-toggle{display:block}
-    .nav .btn{display:none}
-    .videos-grid{grid-template-columns:1fr}
-    .videos-grid .video-card:last-child{max-width:100%}
-    .galeria{grid-template-columns:repeat(2,1fr)}
-    .galeria figure:first-child{grid-column:span 2;grid-row:auto;aspect-ratio:16/10}
-    .valores{grid-template-columns:1fr}
-    .footer-grid{grid-template-columns:1fr}
+  /* Responsive */
+  @media (max-width: 800px) {
+    .nav-links { display: none; }
+    .phones-grid { flex-direction: column; }
+    .iphone { width: 280px; height: 580px; border-radius: 45px; padding: 10px;}
+    .screen { border-radius: 35px; }
+    .hero h1 { font-size: 2.5rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-     DATOS DEL NEGOCIO  ·  edita SOLO este JSON
-     ============================================================ -->
-<script type="application/json" id="datos-negocio">
-{
-  "negocio": {
-    "nombre": "Taquería El Fuego",
-    "eslogan": "Tacos al carbón desde 1998",
-    "descripcion": "Somos una taquería familiar en el corazón de la Roma Norte. Nuestra carne se marina 24 horas, el carbón es de mezquite y las salsas se muelen a mano cada mañana. Nada congelado, nada industrial: puro fuego y sabor de barrio.",
-    "telefono": "+52 55 4821 7730",
-    "whatsapp": "525548217730",
-    "email": "hola@taqueriaelfuego.mx",
-    "direccion": "Calle Orizaba 148, Roma Norte, CDMX, 06700",
-    "mapa": "https://maps.google.com/?q=Orizaba+148+Roma+Norte+CDMX",
-    "rating": "4.8",
-    "reseñas": "1,240"
-  },
-
-  "horarios": [
-    { "dia": "Lunes",     "hora": "Cerrado" },
-    { "dia": "Martes",    "hora": "13:00 – 22:00" },
-    { "dia": "Miércoles", "hora": "13:00 – 22:00" },
-    { "dia": "Jueves",    "hora": "13:00 – 23:00" },
-    { "dia": "Viernes",   "hora": "13:00 – 01:00" },
-    { "dia": "Sábado",    "hora": "13:00 – 01:00" },
-    { "dia": "Domingo",   "hora": "13:00 – 20:00" }
-  ],
-
-  "menu": [
-    {
-      "categoria": "Tacos al carbón",
-      "items": [
-        { "nombre": "Taco al pastor",        "descripcion": "Cerdo marinado, piña asada, cebolla y cilantro", "precio": 22 },
-        { "nombre": "Taco de suadero",       "descripcion": "Suadero confitado 6 horas, salsa verde cruda",   "precio": 24 },
-        { "nombre": "Taco de arrachera",     "descripcion": "Arrachera de Sonora, nopales y chimichurri",     "precio": 32 },
-        { "nombre": "Taco de costilla",      "descripcion": "Costilla de cerdo al carbón, cebollitas",        "precio": 30 }
-      ]
-    },
-    {
-      "categoria": "Especialidades",
-      "items": [
-        { "nombre": "Quesadilla volcán",     "descripcion": "Queso Oaxaca, trompo, piña y salsa habanero",    "precio": 48 },
-        { "nombre": "Gringa de pastor",      "descripcion": "Tortilla de harina, queso, pastor y aguacate",   "precio": 52 },
-        { "nombre": "Volcán de suadero",     "descripcion": "Tostada dorada, suadero y queso gratinado",      "precio": 44 }
-      ]
-    },
-    {
-      "categoria": "Para compartir",
-      "items": [
-        { "nombre": "Orden de 8 tacos",      "descripcion": "Surtidos: pastor, suadero, costilla y arrachera", "precio": 180 },
-        { "nombre": "Nachos El Fuego",       "descripcion": "Totopos, frijol, queso, jalapeño y crema",         "precio": 95 },
-        { "nombre": "Guacamole de la casa",  "descripcion": "Aguacate, jitomate, cebolla y chile serrano",      "precio": 78 }
-      ]
-    },
-    {
-      "categoria": "Bebidas",
-      "items": [
-        { "nombre": "Aguas frescas",         "descripcion": "Horchata, jamaica o tamarindo (1 L)",            "precio": 35 },
-        { "nombre": "Refresco artesanal",    "descripcion": "Sabores de temporada, endulzado con piloncillo",  "precio": 42 },
-        { "nombre": "Cerveza artesanal",     "descripcion": "Selección local rotativa, 355 ml",                "precio": 65 }
-      ]
-    }
-  ],
-
-  "galeria": [
-    { "img": "https://picsum.photos/seed/tacos1/800/800", "alt": "Tacos al pastor recién hechos" },
-    { "img": "https://picsum.photos/seed/tacos2/600/600", "alt": "Trompo de pastor girando" },
-    { "img": "https://picsum.photos/seed/tacos3/600/600", "alt": "Quesadillas en el comal" },
-    { "img": "https://picsum.photos/seed/tacos4/600/600", "alt": "Salsas de la casa" },
-    { "img": "https://picsum.photos/seed/tacos5/600/600", "alt": "Interior de la taquería" }
-  ],
-
-  "videos": [
-    {
-      "plataforma": "tiktok",
-      "url": "https://www.tiktok.com/@albertinasacaca1/video/7677634694216715541",
-      "titulo": "Short drama review · @ktaial"
-    },
-    {
-      "plataforma": "tiktok",
-      "url": "https://www.tiktok.com/@albertinasacaca1/video/7670488447102078229",
-      "titulo": "¿Creen que mi mamá se enoje?"
-    },
-    {
-      "plataforma": "youtube",
-      "url": "https://youtu.be/alIRDysk3jk?si=QUjkgju1T9tm4Ph1",
-      "titulo": "Video de YouTube"
-    }
-  ],
-
-  "testimonios": [
-    { "texto": "El mejor suadero de la Roma, sin discusión. La salsa verde es otro nivel.", "autor": "Mariana G.", "detalle": "Google Reviews" },
-    { "texto": "Vine por un taco y me quedé tres horas. Ambiente de barrio auténtico.", "autor": "Carlos R.", "detalle": "TripAdvisor" },
-    { "texto": "Pedimos a domicilio cada viernes. Llega caliente y con todo completo.", "autor": "Familia Ortega", "detalle": "Cliente frecuente" }
-  ],
-
-  "redes": [
-    { "nombre": "Instagram", "url": "https://instagram.com/taqueriaelfuego" },
-    { "nombre": "TikTok",    "url": "https://tiktok.com/@taqueriaelfuego" },
-    { "nombre": "Facebook",  "url": "https://facebook.com/taqueriaelfuego" },
-    { "nombre": "YouTube",   "url": "https://youtube.com/@taqueriaelfuego" }
-  ]
-}
-</script>
-
-<!-- ================= HEADER ================= -->
+<!-- NAVEGACIÓN -->
 <header>
-  <div class="contenedor nav">
-    <a href="#" class="logo"><span class="fuego">🔥</span><span id="logo-texto">El Fuego</span></a>
-    <ul id="nav-lista">
-      <li><a href="#sobre">Nosotros</a></li>
-      <li><a href="#menu">Menú</a></li>
-      <li><a href="#galeria">Galería</a></li>
-      <li><a href="#videos">Videos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-    <a href="#" class="btn btn-primario" id="btn-pedir">Pedir ahora</a>
-    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
+  <div class="nav">
+    <div class="logo"><span>🔥</span> El Fuego</div>
+    <div class="nav-links">
+      <a href="#experiencia">La Experiencia</a>
+      <a href="#videos">Videos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="#" class="btn-nav">Pedir Ahora</a>
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 <section class="hero">
-  <div class="contenedor hero-grid">
-    <div>
-      <span class="etiqueta">📍 Roma Norte · CDMX</span>
-      <h1 id="hero-titulo">Tacos al carbón<br>que <em>saben a barrio</em></h1>
-      <p id="hero-desc"></p>
-      <div class="hero-acciones">
-        <a href="#menu" class="btn btn-primario">Ver el menú</a>
-        <a href="#" class="btn btn-ghost" id="btn-wa-hero" style="color:#fff;border-color:rgba(255,255,255,.3)">Pedir por WhatsApp</a>
-      </div>
-      <div class="hero-datos">
-        <div><strong id="dato-rating">4.8 ★</strong><span>Google Reviews</span></div>
-        <div><strong id="dato-horario">13:00 – 22:00</strong><span>Abierto hoy</span></div>
-        <div><strong>+25 años</strong><span>En el mismo barrio</span></div>
-      </div>
-    </div>
-    <div class="hero-img">
-      <img src="https://picsum.photos/seed/herotaqueria/800/1000" alt="Tacos al carbón de Taquería El Fuego">
-    </div>
-  </div>
+  <h1>El sabor del barrio.<br><span>La experiencia premium.</span></h1>
+  <p>Descubre Taquería El Fuego a través de una nueva perspectiva. Fuego, tradición y el mejor ambiente de la Roma Norte.</p>
+  <a href="#experiencia" class="btn-hero">Ver Videos</a>
 </section>
 
-<!-- ================= SOBRE NOSOTROS ================= -->
-<section id="sobre">
-  <div class="contenedor">
-    <div class="sobre-grid">
-      <div class="sobre-img">
-        <img src="https://picsum.photos/seed/sobrefuego/900/720" alt="Cocina de Taquería El Fuego">
-      </div>
-      <div>
-        <span class="kicker">Nuestra historia</span>
-        <h2 class="cabecera-seccion" style="margin-bottom:1rem">Fuego lento,<br>sabor de siempre</h2>
-        <p id="sobre-texto" style="color:var(--gris)"></p>
-        <div class="valores">
-          <div class="valor"><span>🌿</span><strong>Producto fresco</strong><small>Compra diaria</small></div>
-          <div class="valor"><span>🔥</span><strong>Carbón de mezquite</strong><small>Sabor real</small></div>
-          <div class="valor"><span>👨‍🍳</span><strong>Receta familiar</strong><small>Desde 1998</small></div>
+<!-- SECCIÓN DE IPHONES Y TIKTOK -->
+<section id="experiencia" class="showcase">
+  <h2 class="section-title">Vívelo en tu pantalla.</h2>
+  <p class="section-sub">Nuestros momentos más virales, directo desde TikTok.</p>
+
+  <div class="phones-grid">
+    
+    <!-- IPHONE 1 (TikTok 1) -->
+    <div class="iphone">
+      <div class="screen">
+        <div class="dynamic-island"><div class="island-camera"></div></div>
+        <div class="tiktok-container">
+          <!-- Se inyecta vía JS -->
+          <div id="tiktok-1"></div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ================= MENÚ ================= -->
-<section id="menu">
-  <div class="contenedor">
-    <div class="cabecera-seccion">
-      <span class="kicker">Menú</span>
-      <h2>Lo que sale de la parrilla</h2>
-      <p>Precios en pesos mexicanos. Todos los tacos se sirven con cebolla, cilantro y limón.</p>
-    </div>
-    <div class="menu-categorias" id="menu-contenedor"></div>
-  </div>
-</section>
-
-<!-- ================= GALERÍA ================= -->
-<section id="galeria">
-  <div class="contenedor">
-    <div class="cabecera-seccion">
-      <span class="kicker">Galería</span>
-      <h2>Puro antojo</h2>
-    </div>
-    <div class="galeria" id="galeria-contenedor"></div>
-  </div>
-</section>
-
-<!-- ================= VIDEOS ================= -->
-<section id="videos">
-  <div class="contenedor">
-    <div class="cabecera-seccion">
-      <span class="kicker" style="color:#ff7a5c">Síguenos</span>
-      <h2>El Fuego en video</h2>
-      <p>Detrás de la parrilla, retos de salsa y el proceso completo. Síguenos en TikTok y YouTube.</p>
-    </div>
-    <div class="videos-grid" id="videos-contenedor"></div>
-  </div>
-</section>
-
-<!-- ================= CONTACTO ================= -->
-<section id="contacto">
-  <div class="contenedor">
-    <div class="cabecera-seccion">
-      <span class="kicker">Visítanos</span>
-      <h2>Horarios y ubicación</h2>
-    </div>
-    <div class="contacto-grid">
-      <div class="tarjeta">
-        <h3>🕒 Horarios</h3>
-        <div id="horarios-contenedor"></div>
-      </div>
-      <div class="tarjeta">
-        <h3>📍 Dónde estamos</h3>
-        <div id="contacto-contenedor"></div>
-        <div class="redes" id="redes-contenedor"></div>
+    <!-- IPHONE 2 (TikTok 2) -->
+    <div class="iphone">
+      <div class="screen">
+        <div class="dynamic-island"><div class="island-camera"></div></div>
+        <div class="tiktok-container">
+          <!-- Se inyecta vía JS -->
+          <div id="tiktok-2"></div>
+        </div>
       </div>
     </div>
-  </div>
-</section><div class="hvs-vw" style="flex:1 1 100%;grid-column:1/-1;width:100%;min-width:0"><div class="hvs-tt" style="width:100%;max-width:605px;min-height:500px;margin:0 auto"><blockquote class="tiktok-embed" cite="https://www.tiktok.com/@albertinasacaca1/video/7677634694216715541" data-video-id="7677634694216715541" style="max-width: 605px; min-width: 325px; margin: 0px auto; background-size: contain; font-size: 30px; border-radius: 30px; padding: 30px;"><section><a target="_blank" href="https://www.tiktok.com/@albertinasacaca1/video/7677634694216715541">Ver video en TikTok</a></section></blockquote><script async="" src="https://www.tiktok.com/embed.js"></script></div></div>
 
-<!-- ================= TESTIMONIOS ================= -->
-<section style="background:#fff;border-top:1px solid var(--borde)">
-  <div class="contenedor">
-    <div class="cabecera-seccion">
-      <span class="kicker">Reseñas</span>
-      <h2>Lo que dice la gente</h2>
-    </div>
-    <div class="testimonios" id="testimonios-contenedor"></div>
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
+<!-- SECCIÓN DE YOUTUBE -->
+<section id="videos" class="youtube-section">
+  <h2 class="section-title">Detrás de la parrilla.</h2>
+  <p class="section-sub">Conoce nuestra historia en alta definición.</p>
+  <div class="video-wrapper">
+    <iframe 
+      src="https://www.youtube.com/embed/alIRDysk3jk?rel=0&modestbranding=1&color=white" 
+      title="Video de YouTube El Fuego"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <div class="contenedor">
-    <div class="footer-grid">
-      <div>
-        <div class="logo"><span class="fuego">🔥</span><span id="footer-nombre"></span></div>
-        <p id="footer-desc" style="max-width:34ch"></p>
-      </div>
-      <div>
-        <h4>Navegación</h4>
-        <ul>
-          <li><a href="#sobre">Nosotros</a></li>
-          <li><a href="#menu">Menú</a></li>
-          <li><a href="#videos">Videos</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contacto</h4>
-        <ul id="footer-contacto"></ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span id="anio"></span> <span id="footer-nombre-2"></span>. Todos los derechos reservados.</span>
-      <span>Hecho con 🔥 en la CDMX</span>
-    </div>
-  </div>
+  <p>© 2024 Taquería El Fuego. Diseñado para impresionar.</p>
 </footer>
 
-<a href="#" class="wa-flotante" id="wa-flotante" aria-label="Escríbenos por WhatsApp" target="_blank" rel="noopener">💬</a>
-
-<!-- ============================================================
-     LÓGICA: lee el JSON y pinta la página
-     ============================================================ -->
+<!-- LÓGICA DE TIKTOK -->
 <script>
-(function () {
-  const D = JSON.parse(document.getElementById('datos-negocio').textContent);
-  const $ = (id) => document.getElementById(id);
+  // URLs de los videos
+  const tiktokUrls = [
+    "https://www.tiktok.com/@ktaial/video/7670110751599643918",
+    "https://www.tiktok.com/@albertinasacaca1/video/7670488447102078229"
+  ];
 
-  /* ---------- Utilidades ---------- */
-  const esc = (s) => String(s).replace(/[&<>"']/g, c =>
-    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  function extractTikTokId(url) {
+    const match = url.match(/\/video\/(\d+)/);
+    return match ? match[1] : '';
+  }
 
-  const money = (n) => '$' + n + ' MXN';
-
-  const waLink = (msg) =>
-    `https://wa.me/${D.negocio.whatsapp}?text=${encodeURIComponent(msg)}`;
-
-  /* Extrae el ID de un video de TikTok */
-  const tiktokId = (url) => (url.match(/\/video\/(\d+)/) || [])[1] || '';
-
-  /* Extrae el ID de YouTube en cualquiera de sus formatos */
-  const youtubeId = (url) =>
-    (url.match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/)([A-Za-z0-9_-]{11})/) || [])[1] || '';
-
-  /* ---------- Datos generales ---------- */
-  const n = D.negocio;
-  document.title = `${n.nombre} · ${n.eslogan}`;
-  $('logo-texto').textContent = n.nombre;
-  $('footer-nombre').textContent = n.nombre;
-  $('footer-nombre-2').textContent = n.nombre;
-  $('footer-desc').textContent = n.descripcion;
-  $('hero-desc').textContent = n.descripcion;
-  $('sobre-texto').textContent = n.descripcion;
-  $('dato-rating').textContent = `${n.rating} ★`;
-  $('anio').textContent = new Date().getFullYear();
-
-  /* ---------- Horario de hoy ---------- */
-  const hoy = new Date().getDay();
-  const orden = [6, 0, 1, 2, 3, 4, 5];
-  const idxHoy = orden.indexOf(hoy);
-  const horarioHoy = D.horarios[idxHoy];
-  if (horarioHoy) $('dato-horario').textContent = horarioHoy.hora;
-
-  /* ---------- Menú ---------- */
-  $('menu-contenedor').innerHTML = D.menu.map(cat => `
-    <div class="categoria">
-      <h3>${esc(cat.categoria)}</h3>
-      <div class="items-grid">
-        ${cat.items.map(it => `
-          <div class="item">
-            <div>
-              <h4>${esc(it.nombre)}</h4>
-              <p>${esc(it.descripcion)}</p>
-            </div>
-            <span class="precio">${money(it.precio)}</span>
-          </div>`).join('')}
-      </div>
-    </div>`).join('');
-
-  /* ---------- Galería ---------- */
-  $('galeria-contenedor').innerHTML = D.galeria.map(g => `
-    <figure><img src="${esc(g.img)}" alt="${esc(g.alt)}" loading="lazy"></figure>
-  `).join('');
-
-  /* ---------- VIDEOS (Carga oficial de TikTok + YouTube) ---------- */
-  $('videos-contenedor').innerHTML = D.videos.map(v => {
-    if (v.plataforma === 'tiktok') {
-      const id = tiktokId(v.url);
-      // Usamos el blockquote oficial que TikTok exige ahora
-      return `
-        <article class="video-card">
-          <div class="tiktok-wrapper">
-            <blockquote class="tiktok-embed" cite="${esc(v.url)}" data-video-id="${id}" style="max-width: 605px; min-width: 325px;">
-              <section>
-                <a target="_blank" href="${esc(v.url)}">Ver video en TikTok</a>
-              </section>
-            </blockquote>
-          </div>
-          <div class="video-pie">
-            <span class="plataforma tiktok">TikTok</span>
-            <span class="titulo">${esc(v.titulo)}</span>
-          </div>
-        </article>`;
+  // Inyectar el Blockquote oficial de TikTok en los teléfonos
+  tiktokUrls.forEach((url, index) => {
+    const id = extractTikTokId(url);
+    const container = document.getElementById(`tiktok-${index + 1}`);
+    if(container) {
+      container.innerHTML = `
+        <blockquote class="tiktok-embed" cite="${url}" data-video-id="${id}" style="max-width: 100%; min-width: 100%; margin:0;">
+          <section>
+            <a target="_blank" href="${url}">Ver en TikTok</a>
+          </section>
+        </blockquote>
+      `;
     }
-    const id = youtubeId(v.url);
-    return `
-      <article class="video-card">
-        <div class="video-marco horizontal">
-          <iframe
-            src="https://www.youtube.com/embed/${id}?rel=0&modestbranding=1"
-            title="${esc(v.titulo)}"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-        <div class="video-pie">
-          <span class="plataforma youtube">YouTube</span>
-          <span class="titulo">${esc(v.titulo)}</span>
-        </div>
-      </article>`;
-  }).join('');
+  });
 
-  /* ---------- Cargar script de TikTok (Obligatorio) ---------- */
-  // Como insertamos el HTML dinámicamente, debemos cargar el script después.
-  const tiktokScript = document.createElement('script');
-  tiktokScript.src = "https://www.tiktok.com/embed.js";
-  tiktokScript.async = true;
-  document.body.appendChild(tiktokScript);
-
-  /* ---------- Horarios ---------- */
-  $('horarios-contenedor').innerHTML = D.horarios.map((h, i) => `
-    <div class="horario-fila ${i === idxHoy ? 'hoy' : ''}">
-      <span class="dia">${esc(h.dia)}${i === idxHoy ? ' · hoy' : ''}</span>
-      <span class="hora">${esc(h.hora)}</span>
-    </div>`).join('');
-
-  /* ---------- Contacto ---------- */
-  $('contacto-contenedor').innerHTML = `
-    <div class="dato">
-      <div class="icono">📍</div>
-      <div><strong>Dirección</strong>
-        <a href="${esc(n.mapa)}" target="_blank" rel="noopener">${esc(n.direccion)}</a>
-      </div>
-    </div>
-    <div class="dato">
-      <div class="icono">📞</div>
-      <div><strong>Teléfono</strong>
-        <a href="tel:${esc(n.telefono.replace(/\s/g, ''))}">${esc(n.telefono)}</a>
-      </div>
-    </div>
-    <div class="dato">
-      <div class="icono">✉️</div>
-      <div><strong>Correo</strong>
-        <a href="mailto:${esc(n.email)}">${esc(n.email)}</a>
-      </div>
-    </div>
-    <div class="dato">
-      <div class="icono">💬</div>
-      <div><strong>WhatsApp</strong>
-        <a href="${waLink('¡Hola! Quiero hacer un pedido 🍽️')}" target="_blank" rel="noopener">Escríbenos</a>
-      </div>
-    </div>`;
-
-  $('redes-contenedor').innerHTML = D.redes.map(r => `
-    <a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.nombre)}</a>
-  `).join('');
-
-  /* ---------- Testimonios ---------- */
-  $('testimonios-contenedor').innerHTML = D.testimonios.map(t => `
-    <div class="testimonio">
-      <div class="estrellas">★★★★★</div>
-      <p>“${esc(t.texto)}”</p>
-      <div class="autor">${esc(t.autor)}<small>${esc(t.detalle)}</small></div>
-    </div>`).join('');
-
-  /* ---------- Footer contacto ---------- */
-  $('footer-contacto').innerHTML = `
-    <li><a href="${esc(n.mapa)}" target="_blank" rel="noopener">${esc(n.direccion)}</a></li>
-    <li><a href="tel:${esc(n.telefono.replace(/\s/g, ''))}">${esc(n.telefono)}</a></li>
-    <li><a href="mailto:${esc(n.email)}">${esc(n.email)}</a></li>`;
-
-  /* ---------- Botones de WhatsApp ---------- */
-  const msgPedido = `¡Hola ${n.nombre}! Quiero hacer un pedido 🍽️`;
-  $('btn-pedir').href = waLink(msgPedido);
-  $('btn-pedir').target = '_blank';
-  $('btn-wa-hero').href = waLink(msgPedido);
-  $('btn-wa-hero').target = '_blank';
-  $('wa-flotante').href = waLink(msgPedido);
-
-  /* ---------- Menú móvil ---------- */
-  const toggle = $('menu-toggle');
-  const lista = $('nav-lista');
-  toggle.addEventListener('click', () => lista.classList.toggle('abierto'));
-  lista.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => lista.classList.remove('abierto')));
-
-  /* ---------- JSON-LD para SEO local ---------- */
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": n.nombre,
-    "description": n.descripcion,
-    "telephone": n.telefono,
-    "email": n.email,
-    "address": { "@type": "PostalAddress", "streetAddress": n.direccion, "addressCountry": "MX" },
-    "servesCuisine": "Mexicana",
-    "priceRange": "$$",
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": n.rating, "reviewCount": n.reseñas }
-  };
+  // Cargar el script de TikTok después de insertar los blockquotes
   const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.textContent = JSON.stringify(schema);
-  document.head.appendChild(script);
-})();
+  script.src = "https://www.tiktok.com/embed.js";
+  script.async = true;
+  document.body.appendChild(script);
 </script>
 
-</body></html>
+</body>
+</html>
