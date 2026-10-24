@@ -3,254 +3,334 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>El Fuego · Experiencia Premium</title>
-<meta name="description" content="La experiencia definitiva de Taquería El Fuego. Tacos al carbón en la Roma Norte.">
+<title>El Fuego · Experiencia Visual</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
-
   :root{
     --fuego:#ff3b30;
-    --fuego-glow:rgba(255,59,48,.4);
+    --naranja:#ff8a00;
     --carbon:#050505;
-    --carbon-claro:#121212;
     --texto:#f5f5f7;
-    --gris:#86868b;
-    --borde:rgba(255,255,255,.1);
-    --titanio:linear-gradient(145deg, #2a2a2a, #555, #1a1a1a);
+    --gris:#a1a1a6;
+    --titanio:linear-gradient(135deg, #1c1c1e 0%, #55555a 25%, #1c1c1e 50%, #444448 75%, #111112 100%);
   }
 
-  *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter', sans-serif;}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Outfit', sans-serif;}
   html{scroll-behavior:smooth;}
   body{
     background-color:var(--carbon);
     color:var(--texto);
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
   }
 
-  /* ---------- NAVBAR CRISTAL ---------- */
+  /* ---------- FONDO CON LUCES DINÁMICAS ---------- */
+  .bg-glow {
+    position: fixed; inset: 0; z-index: -2;
+    background: #050505;
+    overflow: hidden;
+  }
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.5;
+    animation: float 10s infinite alternate;
+  }
+  .orb-1 { width: 40vw; height: 40vw; background: rgba(255,59,48,0.4); top: -10%; left: -10%; }
+  .orb-2 { width: 30vw; height: 30vw; background: rgba(255,138,0,0.3); bottom: -10%; right: -10%; animation-delay: -5s; }
+  
+  @keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.2); }
+  }
+
+  /* ---------- NAVBAR ---------- */
   header{
     position:fixed;top:0;left:0;right:0;z-index:100;
-    background:rgba(5,5,5,.7);
+    background:rgba(5,5,5,.4);
     backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-    border-bottom:1px solid var(--borde);
+    border-bottom:1px solid rgba(255,255,255,.05);
   }
   .nav{
     display:flex;align-items:center;justify-content:space-between;
-    padding:1rem 5%;max-width:1400px;margin:0 auto;
+    padding:1.2rem 5%;max-width:1400px;margin:0 auto;
   }
-  .logo{font-size:1.2rem;font-weight:800;letter-spacing:-.03em;display:flex;align-items:center;gap:.5rem;}
-  .logo span{color:var(--fuego);text-shadow:0 0 15px var(--fuego-glow);}
-  .nav-links{display:flex;gap:2rem;font-size:.9rem;font-weight:400;color:var(--gris);}
+  .logo{font-size:1.4rem;font-weight:900;letter-spacing:-.04em;display:flex;align-items:center;gap:.5rem;}
+  .logo span{color:var(--fuego);text-shadow:0 0 20px var(--fuego);}
+  .nav-links{display:flex;gap:2.5rem;font-size:.95rem;font-weight:400;color:var(--gris);}
   .nav-links a{transition:color .3s; text-decoration: none; color: inherit;}
-  .nav-links a:hover{color:var(--texto);}
+  .nav-links a:hover{color:#fff; text-shadow: 0 0 10px rgba(255,255,255,0.5);}
   .btn-nav{
-    background:var(--texto);color:var(--carbon);padding:.5rem 1.2rem;
-    border-radius:999px;font-weight:600;font-size:.85rem;transition:transform .2s;
-    text-decoration: none;
+    background:#fff;color:#000;padding:.6rem 1.5rem;border-radius:999px;
+    font-weight:700;font-size:.85rem;transition:all .3s;text-decoration:none;
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
   }
-  .btn-nav:hover{transform:scale(1.05);}
+  .btn-nav:hover{transform:scale(1.05); box-shadow: 0 0 25px rgba(255,255,255,0.4);}
 
-  /* ---------- HERO ESPECTACULAR ---------- */
+  /* ---------- HERO SECTION ---------- */
   .hero{
-    height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
-    text-align:center;position:relative;padding-top:60px;
-    background:radial-gradient(circle at 50% 0%, rgba(255,59,48,.15) 0%, transparent 60%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+    gap: 4rem;
   }
-  .hero h1{
-    font-size:clamp(3rem, 8vw, 6rem);font-weight:800;letter-spacing:-.05em;
-    line-height:1.05;margin-bottom:1rem;
+  .hero-text {
+    max-width: 550px;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s forwards 0.2s;
   }
-  .hero h1 span{
+  
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .tagline {
+    color: var(--naranja);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .hero-text h1{
+    font-size: clamp(3.5rem, 6vw, 5.5rem);font-weight:900;letter-spacing:-.04em;
+    line-height:1.05;margin-bottom:1.5rem;
+  }
+  .hero-text h1 span{
     background:linear-gradient(90deg, #ff8a00, #ff3b30);
     -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    filter: drop-shadow(0 0 20px rgba(255,59,48,0.4));
   }
-  .hero p{color:var(--gris);font-size:1.2rem;max-width:600px;margin-bottom:2rem;font-weight:300;}
-  .btn-hero{
-    background:var(--fuego);color:#fff;padding:1rem 2.5rem;border-radius:999px;
-    font-size:1.1rem;font-weight:600;box-shadow:0 10px 30px var(--fuego-glow);
-    transition:all .3s; text-decoration: none;
-  }
-  .btn-hero:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(255,59,48,.6);}
-
-  /* ---------- SECCIÓN DE TELÉFONOS ---------- */
-  .showcase{
-    padding:6rem 5% 8rem;
-    max-width:1400px;margin:0 auto;
-    display:flex;flex-direction:column;align-items:center;
-  }
-  .section-title{
-    font-size:2.5rem;font-weight:800;text-align:center;margin-bottom:1rem;letter-spacing:-.03em;
-  }
-  .section-sub{color:var(--gris);text-align:center;margin-bottom:4rem;font-size:1.1rem;}
-
-  .phones-grid{
-    display:flex;justify-content:center;align-items:center;gap:4rem;flex-wrap:wrap;
-    perspective:1000px;
-  }
-
-  /* --- EL IPHONE 17 PRO --- */
-  .iphone {
-    width: 330px;
-    height: 680px;
-    background: var(--titanio);
-    border-radius: 55px;
-    padding: 12px;
-    position: relative;
-    box-shadow: 
-      inset 0 0 0 2px rgba(255,255,255,0.2),
-      inset 0 0 0 6px #000,
-      0 30px 60px rgba(0,0,0,0.8),
-      0 0 50px rgba(255,59,48,0.1);
-    transition: transform 0.5s ease;
-    transform-style: preserve-3d;
-  }
-  .iphone:hover {
-    transform: translateY(-15px) rotateY(5deg) rotateX(5deg);
-    box-shadow: 
-      inset 0 0 0 2px rgba(255,255,255,0.3),
-      inset 0 0 0 6px #000,
-      0 40px 80px rgba(0,0,0,0.9),
-      0 0 80px rgba(255,59,48,0.2);
-  }
+  .hero-text p{color:var(--gris);font-size:1.15rem;margin-bottom:2.5rem;line-height: 1.6;}
   
-  .screen {
-    width: 100%;
-    height: 100%;
-    background: #000;
-    border-radius: 45px;
-    overflow: hidden;
+  .btn-hero{
+    background:linear-gradient(90deg, var(--naranja), var(--fuego));
+    color:#fff;padding:1.1rem 2.8rem;border-radius:999px;
+    font-size:1.1rem;font-weight:700;box-shadow:0 10px 30px rgba(255,59,48,0.4);
+    transition:all .3s; text-decoration: none; display: inline-block;
     position: relative;
+    overflow: hidden;
   }
+  .btn-hero::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+  }
+  .btn-hero:hover::before { left: 100%; }
+  .btn-hero:hover{transform:translateY(-3px); box-shadow:0 15px 40px rgba(255,59,48,0.6);}
 
-  /* La Isla Dinámica */
-  .dynamic-island {
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 30px;
-    background: #000;
-    border-radius: 20px;
+  /* ---------- EL IPHONE CON EFECTO KEN BURNS ---------- */
+  .phone-container {
+    perspective: 1500px;
     z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 10px;
-    pointer-events: none;
-  }
-  .island-camera {
-    width: 10px; height: 10px;
-    background: #1a1a1a;
-    border-radius: 50%;
-    box-shadow: inset 0 0 2px rgba(255,255,255,0.3);
-  }
-
-  /* Pantalla de carga (Miniatura) */
-  .video-facade {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-    background-size: cover;
-    background-position: center;
+    flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    border-radius: 45px;
-    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards 0.5s;
   }
   
-  /* Diseño para las miniaturas de TikTok (Fondo oscuro degradado) */
-  .facade-tiktok {
-    background: linear-gradient(45deg, #1a1a1a, #000);
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .facade-tiktok svg {
-    width: 60px; height: 60px; fill: #fff;
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-    transition: transform 0.3s;
-  }
-  .facade-tiktok span {
-    font-weight: 600; font-size: 0.9rem; color: #fff;
-    background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 20px;
-  }
-  .video-facade:hover svg { transform: scale(1.1); }
+  @keyframes fadeIn { to { opacity: 1; } }
 
-  /* Botón de Play para YouTube */
-  .facade-youtube {
-    background-image: url('https://img.youtube.com/vi/alIRDysk3jk/maxresdefault.jpg');
+  .iphone-real {
+    width: 350px;
+    height: 720px;
+    position: relative;
+    border-radius: 55px;
+    background: var(--titanio);
+    padding: 10px;
+    box-shadow: 
+      inset 0 0 0 2px #666,
+      inset 0 0 0 4px #111,
+      0 40px 80px rgba(0,0,0,0.9),
+      0 0 100px rgba(255,59,48,0.2);
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out;
   }
-  .play-btn {
-    width: 68px; height: 48px;
-    background: rgba(0,0,0,0.7);
-    border-radius: 12px;
-    display: flex; justify-content: center; align-items: center;
-    transition: background 0.2s;
-  }
-  .play-btn::after {
-    content: '';
-    display: block;
-    border-style: solid;
-    border-width: 10px 0 10px 16px;
-    border-color: transparent transparent transparent #fff;
-  }
-  .video-facade:hover .play-btn { background: var(--fuego); }
 
-  /* Iframe dinámico (cuando se da clic) */
-  .video-iframe {
+  /* Aura de fuego detrás del teléfono */
+  .iphone-real::after {
+    content: ''; position: absolute; inset: -20px;
+    background: linear-gradient(45deg, var(--fuego), var(--naranja));
+    border-radius: 70px; z-index: -1;
+    filter: blur(40px); opacity: 0.3;
+    animation: pulseAura 3s infinite alternate;
+  }
+
+  @keyframes pulseAura {
+    0% { opacity: 0.2; filter: blur(30px); }
+    100% { opacity: 0.5; filter: blur(50px); }
+  }
+
+  .iphone-screen {
     width: 100%;
     height: 100%;
-    border: none;
-  }
-
-  /* --- BOTONES LATERALES DEL IPHONE --- */
-  .iphone::before, .iphone::after {
-    content: '';
-    position: absolute;
-    background: #333;
-    border-radius: 2px;
-  }
-  .iphone::before { right: -4px; top: 150px; width: 4px; height: 80px; }
-  .iphone::after { left: -4px; top: 130px; width: 4px; height: 50px; box-shadow: 0 60px 0 #333; }
-
-  /* ---------- SECCIÓN YOUTUBE ---------- */
-  .youtube-section{
-    padding:6rem 5%;background:var(--carbon-claro);
-    display:flex;flex-direction:column;align-items:center;
-  }
-  .video-wrapper{
-    width:100%;max-width:1000px;aspect-ratio:16/9;
-    border-radius:24px;overflow:hidden;
-    box-shadow:0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255,59,48,0.1);
-    border:1px solid var(--borde);
-    position:relative;
     background: #000;
+    border-radius: 45px;
+    border: 6px solid #000;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(0,0,0,1);
   }
+
+  /* Reflejo de cristal en la pantalla */
+  .screen-glare {
+    position: absolute;
+    top: 0; left: -100%;
+    width: 200%; height: 100%;
+    background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.1) 40%, rgba(255,255,255,0.2) 45%, transparent 60%);
+    pointer-events: none;
+    z-index: 20;
+    transform: skewX(-20deg);
+  }
+
+  .dynamic-island {
+    position: absolute;
+    top: 15px; left: 50%; transform: translateX(-50%);
+    width: 110px; height: 32px;
+    background: #000; border-radius: 20px;
+    z-index: 15;
+    display: flex; align-items: center; justify-content: flex-end; padding-right: 12px;
+    box-shadow: inset 0 0 4px rgba(255,255,255,0.1);
+  }
+  .island-camera {
+    width: 12px; height: 12px; background: #111; border-radius: 50%;
+    box-shadow: inset 0 0 3px rgba(255,255,255,0.3);
+  }
+
+  /* Efecto Ken Burns (zoom y movimiento lento en la imagen) */
+  .video-content {
+    width: 100%; height: 100%;
+    position: absolute; top: 0; left: 0;
+    background: #000;
+    overflow: hidden;
+  }
+  .video-thumbnail {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    animation: kenBurns 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes kenBurns {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.15) translate(-2%, 2%); }
+  }
+  
+  .video-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 50%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 25px;
+    z-index: 5;
+  }
+
+  /* UI Falsa de TikTok */
+  .fake-ui { color: #fff; }
+  .fake-ui-user { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .fake-ui-avatar { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; background: url('https://i.pravatar.cc/150?img=11') center/cover; }
+  .fake-ui-name { font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 5px;}
+  .fake-ui-name svg { width: 16px; height: 16px; fill: #20d5ec; } /* Check azul */
+  .fake-ui-desc { font-size: 0.95rem; line-height: 1.4; margin-bottom: 15px; }
+  .fake-ui-music { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; }
+  .fake-ui-music svg { width: 16px; height: 16px; fill: #fff; animation: spin 3s linear infinite; }
+  
+  @keyframes spin { 100% { transform: rotate(360deg); } }
+
+  /* Botones laterales metálicos */
+  .iphone-real::before { right: -3px; top: 180px; width: 4px; height: 90px; background: #333; border-radius: 4px; position: absolute; content: '';}
+  
+  /* ---------- SECCIÓN GALERÍA (GLASSMORPHISM) ---------- */
+  .gallery-section {
+    padding: 8rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .section-header { text-align: center; margin-bottom: 4rem; }
+  .section-header h2 { font-size: 3rem; font-weight: 900; margin-bottom: 1rem; }
+  .section-header p { color: var(--gris); font-size: 1.1rem; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .glass-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    aspect-ratio: 4/5;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(255,59,48,0.2), inset 0 0 0 1px rgba(255,255,255,0.2);
+  }
+
+  .glass-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+
+  .glass-card:hover img {
+    transform: scale(1.1);
+  }
+
+  .glass-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 2rem;
+    opacity: 0.8;
+    transition: opacity 0.4s ease;
+  }
+  
+  .glass-card:hover .glass-overlay { opacity: 1; }
+  
+  .glass-overlay h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; transform: translateY(10px); transition: transform 0.4s ease; }
+  .glass-overlay p { font-size: 0.9rem; color: #ccc; transform: translateY(10px); transition: transform 0.4s ease; }
+  .glass-card:hover .glass-overlay h3, .glass-card:hover .glass-overlay p { transform: translateY(0); }
 
   /* ---------- FOOTER ---------- */
-  footer{
-    padding:3rem;text-align:center;border-top:1px solid var(--borde);
-    color:var(--gris);font-size:.9rem;
-  }
+  footer { padding: 4rem; text-align: center; color: var(--gris); font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); }
+
+  /* ---------- SCROLL REVEAL ANIMATION ---------- */
+  .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease; }
+  .reveal.active { opacity: 1; transform: translateY(0); }
 
   /* Responsive */
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
+    .hero { flex-direction: column; justify-content: center; padding-top: 120px; text-align: center; gap: 3rem; }
+    .hero-text { max-width: 100%; }
     .nav-links { display: none; }
-    .phones-grid { flex-direction: column; gap: 2rem; }
-    .iphone { width: 300px; height: 620px; border-radius: 45px; padding: 10px;}
-    .screen { border-radius: 35px; }
-    .hero h1 { font-size: 2.5rem; }
+    .iphone-real { width: 300px; height: 620px; border-radius: 45px; }
+    .iphone-screen { border-radius: 35px; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .section-header h2 { font-size: 2.2rem; }
   }
 </style>
 </head>
 <body>
+
+<!-- Luces de fondo -->
+<div class="bg-glow">
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+</div>
 
 <!-- NAVEGACIÓN -->
 <header>
@@ -258,117 +338,132 @@
     <div class="logo"><span>🔥</span> El Fuego</div>
     <div class="nav-links">
       <a href="#experiencia">La Experiencia</a>
-      <a href="#videos">Videos</a>
+      <a href="#galeria">Galería</a>
     </div>
     <a href="#" class="btn-nav">Pedir Ahora</a>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>El sabor del barrio.<br><span>La experiencia premium.</span></h1>
-  <p>Descubre Taquería El Fuego a través de una nueva perspectiva. Fuego, tradición y el mejor ambiente de la Roma Norte.</p>
-  <a href="#experiencia" class="btn-hero">Ver Videos</a>
-</section>
-
-<!-- SECCIÓN DE IPHONES Y TIKTOK -->
-<section id="experiencia" class="showcase">
-  <h2 class="section-title">Vívelo en tu pantalla.</h2>
-  <p class="section-sub">Nuestros momentos más virales, directo desde TikTok.</p>
-
-  <div class="phones-grid">
-    
-    <!-- IPHONE 1 (TikTok 1) -->
-    <div class="iphone">
-      <div class="screen">
-        <div class="dynamic-island"><div class="island-camera"></div></div>
-        <!-- Miniatura que se convierte en iframe -->
-        <div class="video-facade facade-tiktok" data-type="tiktok" data-id="7670110751599643918" data-url="https://www.tiktok.com/@ktaial/video/7670110751599643918">
-          <svg viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-          <span>Ver en TikTok</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- IPHONE 2 (TikTok 2) -->
-    <div class="iphone">
-      <div class="screen">
-        <div class="dynamic-island"><div class="island-camera"></div></div>
-        <!-- Miniatura que se convierte en iframe -->
-        <div class="video-facade facade-tiktok" data-type="tiktok" data-id="7670488447102078229" data-url="https://www.tiktok.com/@albertinasacaca1/video/7670488447102078229">
-          <svg viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-          <span>Ver en TikTok</span>
-        </div>
-      </div>
-    </div>
-
+<!-- HERO SECTION CON EL IPHONE 3D -->
+<section class="hero" id="experiencia">
+  <div class="hero-text">
+    <span class="tagline">Tacos al carbón desde 1998</span>
+    <h1>El sabor del barrio.<br><span>La experiencia real.</span></h1>
+    <p>No es solo un taco, es un ritual. Descubre por qué Taquería El Fuego es el secreto mejor guardado de la Roma Norte.</p>
+    <a href="#" class="btn-hero">Ordenar ahora</a>
   </div>
-</section>
 
-<!-- SECCIÓN DE YOUTUBE -->
-<section id="videos" class="youtube-section">
-  <h2 class="section-title">Detrás de la parrilla.</h2>
-  <p class="section-sub">Conoce nuestra historia en alta definición.</p>
-  <div class="video-wrapper">
-    <!-- Miniatura que se convierte en iframe -->
-    <div class="video-facade facade-youtube" data-type="youtube" data-id="alIRDysk3jk">
-      <div class="play-btn"></div>
+  <!-- EL IPHONE 3D -->
+  <div class="phone-container">
+    <div class="iphone-real" id="3d-phone">
+      <div class="iphone-screen">
+        <div class="screen-glare"></div>
+        <div class="dynamic-island"><div class="island-camera"></div></div>
+        
+        <!-- CONTENIDO VISUAL (Imagen con efecto de movimiento) -->
+        <div class="video-content">
+          <!-- Imagen de altísima calidad (Tacos) -->
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop" alt="Tacos El Fuego" class="video-thumbnail">
+          
+          <!-- UI Falsa de TikTok para dar el efecto WOW -->
+          <div class="video-overlay">
+            <div class="fake-ui">
+              <div class="fake-ui-user">
+                <div class="fake-ui-avatar"></div>
+                <div class="fake-ui-name">
+                  @taqueriaelfuego 
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"/></svg>
+                </div>
+              </div>
+              <div class="fake-ui-desc">El secreto mejor guardado de la Roma. 🔥🌮 #tacos #cdmx #fuego #parrilla</div>
+              <div class="fake-ui-music">
+                <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                <span>original sound - El Fuego</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- SECCIÓN GALERÍA (GLASSMORPHISM) -->
+<section class="gallery-section" id="galeria">
+  <div class="section-header reveal">
+    <h2>Puro Anotojo Visual</h2>
+    <p>Imágenes que saben a fuego. Sin filtros, sin trucos.</p>
+  </div>
+  
+  <div class="gallery-grid">
+    <!-- Tarjeta 1 -->
+    <div class="glass-card reveal">
+      <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?q=80&w=600&auto=format&fit=crop" alt="Trompo de Pastor">
+      <div class="glass-overlay">
+        <h3>Trompo de Pastor</h3>
+        <p>Marinado 24 horas, piña asada y el corte perfecto.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 2 -->
+    <div class="glass-card reveal" style="transition-delay: 0.1s;">
+      <img src="https://images.unsplash.com/photo-1613514785940-daed07799d9b?q=80&w=600&auto=format&fit=crop" alt="Suadero">
+      <div class="glass-overlay">
+        <h3>Suadero Confitado</h3>
+        <p>6 horas de cocción lenta al carbón de mezquite.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 3 -->
+    <div class="glass-card reveal" style="transition-delay: 0.2s;">
+      <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=600&auto=format&fit=crop" alt="Salsas">
+      <div class="glass-overlay">
+        <h3>Salsas de la Casa</h3>
+        <p>Molidas a mano en molcajete cada mañana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <p>© 2024 Taquería El Fuego. Diseñado para impresionar.</p>
 </footer>
 
-<!-- LÓGICA DE CARGA DIFERIDA (LITE EMBED) -->
+<!-- LÓGICA: EFECTO 3D Y SCROLL REVEAL -->
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const facades = document.querySelectorAll('.video-facade');
-
-    facades.forEach(facade => {
-      facade.addEventListener('click', function() {
-        const type = this.getAttribute('data-type');
-        const id = this.getAttribute('data-id');
-        const url = this.getAttribute('data-url');
-
-        // 1. Si es YouTube
-        if (type === 'youtube') {
-          this.innerHTML = `<iframe class="video-iframe" 
-            src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" 
-            title="YouTube video player" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen></iframe>`;
-        } 
-        
-        // 2. Si es TikTok
-        else if (type === 'tiktok') {
-          // Inyectamos el blockquote oficial de TikTok
-          this.innerHTML = `
-            <blockquote class="tiktok-embed" cite="${url}" data-video-id="${id}" style="margin:0; width:100%; height:100%;">
-              <section><a target="_blank" href="${url}">Ver video</a></section>
-            </blockquote>
-          `;
-          
-          // Cargamos el script de TikTok EN ESE MOMENTO (solo la primera vez)
-          if (!window.tiktokScriptLoaded) {
-            const script = document.createElement('script');
-            script.src = "https://www.tiktok.com/embed.js";
-            script.async = true;
-            document.body.appendChild(script);
-            window.tiktokScriptLoaded = true;
-          } else {
-            // Si el script ya se cargó antes, forzamos a TikTok a escanear el nuevo bloque
-            if (window.tiktok && window.tiktok.embed) {
-               // En versiones recientes no hace falta hacer nada más, el script observa el DOM
-            }
-          }
-        }
-      });
-    });
+  // 1. EFECTO 3D PARALLAX (Mueve el teléfono con el mouse)
+  const phone = document.getElementById('3d-phone');
+  
+  document.addEventListener('mousemove', (e) => {
+    if(window.innerWidth > 1000) { // Solo en PC para no consumir batería en móvil
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+      const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+      phone.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+    }
   });
+
+  document.addEventListener('mouseleave', () => {
+    phone.style.transform = `rotateY(0deg) rotateX(0deg)`;
+  });
+
+  // 2. ANIMACIÓN AL HACER SCROLL (Scroll Reveal)
+  const reveals = document.querySelectorAll('.reveal');
+
+  const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    const elementVisible = 100;
+
+    reveals.forEach((reveal) => {
+      const elementTop = reveal.getBoundingClientRect().top;
+      if (elementTop < windowHeight - elementVisible) {
+        reveal.classList.add('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll(); // Ejecutar al cargar la página
 </script>
 
 </body>
