@@ -3,590 +3,1507 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="PAUSA — Café de especialidad y brunch en La Paz. Desayunos, bowls, sándwiches, café de origen y bebidas frías. Reservá por WhatsApp.">
-<meta name="theme-color" content="#f4f1ea">
-<title>PAUSA — Café & Brunch · La Paz</title>
+<meta name="description" content="Bistró Aurora — Cocina de mercado en La Paz, Bolivia. Desayunos, cenas de autor y eventos privados. Reservá tu mesa por WhatsApp.">
+<meta name="theme-color" content="#2a2522">
+<title>Bistró Aurora — Cocina de mercado · La Paz</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Shadows+Into+Light&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
+/* ================= VARIABLES ================= */
 :root{
-  --bone:#f4f1ea;--bone-2:#ebe6db;--paper:#ffffff;--ink:#1a1a1a;--ink-2:#2c2c2c;
-  --muted:#8a8378;--muted-2:#a8a298;--plum:#6b2d3c;--plum-soft:#8b4557;--sage:#8a9a7b;
-  --line:rgba(26,26,26,.14);--line-2:rgba(26,26,26,.07);
-  --f-display:'Instrument Serif', Georgia, serif;
-  --f-mono:'IBM Plex Mono', ui-monospace, monospace;
-  --f-body:'Inter', -apple-system, sans-serif;
+  --oro:#c9a961;
+  --oro-dark:#a8874a;
+  --oro-light:#e0c887;
+  --dark:#2a2522;
+  --dark-soft:#3a3532;
+  --cream:#f7f2ea;
+  --cream-2:#ede4d3;
+  --text:#3a3532;
+  --text-muted:#8a8580;
+  --burgundy:#7a2e2e;
+  --border:rgba(201,169,97,.25);
+  --f-display:'Playfair Display', Georgia, serif;
+  --f-body:'Lora', Georgia, serif;
+  --f-script:'Shadows Into Light', cursive;
   --ease:cubic-bezier(.4,.14,.3,1);
 }
+
+/* ================= RESET ================= */
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--f-body);font-size:15px;font-weight:400;line-height:1.65;color:var(--ink);background:var(--bone);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{
+  margin:0;
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.7;
+  color:var(--text);
+  background:var(--cream);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
 img{max-width:100%;height:auto;display:block}
-a{text-decoration:none;color:inherit;transition:color .25s var(--ease)}
+a{text-decoration:none;color:inherit;transition:color .3s var(--ease)}
 button{font-family:inherit;cursor:pointer}
-::selection{background:var(--plum);color:var(--bone)}
-.container{width:100%;max-width:1320px;margin:0 auto;padding:0 48px}
+::selection{background:var(--oro);color:var(--dark)}
 
-h1,h2,h3,h4{font-family:var(--f-display);font-weight:400;line-height:1.02;letter-spacing:-.015em;color:var(--ink);margin:0}
-h1{font-size:clamp(64px, 13vw, 200px);font-weight:400}
-h2{font-size:clamp(40px, 6vw, 96px);font-weight:400}
-h3{font-size:32px;font-weight:400}
-h4{font-size:22px;font-weight:400}
-.tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--plum);margin:0 0 22px}
-.tag::before{content:'';width:28px;height:1px;background:var(--plum)}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.container{width:100%;max-width:1120px;margin:0 auto;padding:0 32px}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--f-body);font-size:13px;font-weight:600;letter-spacing:.5px;padding:16px 30px;border:1px solid var(--ink);background:var(--ink);color:var(--bone);border-radius:0;transition:all .3s var(--ease);cursor:pointer}
-.btn:hover{background:var(--plum);border-color:var(--plum);color:var(--bone)}
-.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
-.btn-ghost:hover{background:var(--ink);color:var(--bone)}
+/* ================= TIPOGRAFÍA ================= */
+h1,h2,h3,h4{
+  font-family:var(--f-display);
+  color:var(--dark);
+  font-weight:500;
+  line-height:1.15;
+  letter-spacing:-.005em;
+  margin:0;
+}
+.script{
+  font-family:var(--f-script);
+  font-weight:400;
+  color:var(--oro);
+  letter-spacing:1px;
+}
 
-.site-header{position:fixed;top:0;left:0;right:0;z-index:50;padding:22px 0;transition:all .3s var(--ease)}
-.site-header.scrolled{background:rgba(244,241,234,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-2);padding:14px 0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--f-body);
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--oro-dark);
+  margin:0 0 24px;
+}
+.eyebrow::before,.eyebrow::after{
+  content:'';width:30px;height:1px;background:var(--oro);
+}
+.eyebrow.before-only::after{display:none}
+
+/* ================= BOTONES ================= */
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--f-body);
+  font-size:12px;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  padding:16px 36px;
+  border-radius:0;
+  border:1px solid var(--oro);
+  background:transparent;
+  color:var(--oro);
+  transition:all .4s var(--ease);
+  cursor:pointer;
+  position:relative;
+}
+.btn::before{
+  content:'';
+  position:absolute;inset:0;
+  background:var(--oro);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .4s var(--ease);
+  z-index:-1;
+}
+.btn:hover{color:var(--dark)}
+.btn:hover::before{transform:scaleX(1)}
+.btn-dark{
+  border-color:var(--dark);color:var(--dark);
+}
+.btn-dark::before{background:var(--dark)}
+.btn-dark:hover{color:var(--cream)}
+.btn-solid{
+  background:var(--oro);color:var(--dark);border-color:var(--oro);
+}
+.btn-solid::before{background:var(--oro-dark)}
+.btn-solid:hover{color:var(--cream)}
+.btn-wa{
+  background:#25d366;border-color:#25d366;color:#fff;
+}
+.btn-wa::before{background:#1eb856}
+.btn-wa:hover{color:#fff}
+
+/* ================= HEADER ================= */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 0;
+  transition:all .4s var(--ease);
+  background:transparent;
+}
+.site-header.scrolled{
+  background:rgba(42,37,34,.96);
+  backdrop-filter:blur(12px);
+  padding:14px 0;
+  box-shadow:0 8px 30px rgba(0,0,0,.2);
+}
 .site-header .container{display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{font-family:var(--f-display);font-size:28px;letter-spacing:.01em;color:var(--bone);transition:color .3s var(--ease);line-height:1}
-.site-header.scrolled .logo{color:var(--ink)}
-.logo em{color:var(--plum);font-style:italic}
-.nav{display:flex;gap:34px;align-items:center}
-.nav a{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--bone);position:relative;padding:4px 0;transition:color .3s var(--ease)}
-.site-header.scrolled .nav a{color:var(--ink)}
-.nav a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.logo{
+  display:flex;align-items:center;gap:14px;
+  color:var(--oro);
+}
+.logo-badge{width:44px;height:44px;flex-shrink:0}
+.logo-text{
+  display:flex;flex-direction:column;line-height:1;
+}
+.logo-text .top{
+  font-family:var(--f-body);
+  font-size:9px;font-weight:500;
+  letter-spacing:5px;
+  color:var(--oro);
+  opacity:.85;
+  margin-bottom:2px;
+}
+.logo-text .bottom{
+  font-family:var(--f-script);
+  font-size:26px;
+  color:var(--oro);
+}
+.nav{display:flex;gap:32px;align-items:center}
+.nav a{
+  font-family:var(--f-body);
+  font-size:11px;font-weight:500;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--cream);
+  position:relative;
+  padding:4px 0;
+}
+.nav a::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;
+  height:1px;background:var(--oro);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s var(--ease);
+}
 .nav a:hover::after{transform:scaleX(1)}
-.nav-cta{padding:10px 20px!important;background:var(--bone);color:var(--ink)!important;transition:all .25s var(--ease)!important}
-.site-header.scrolled .nav-cta{background:var(--ink);color:var(--bone)!important}
-.nav-cta::after{display:none!important}
-.nav-cta:hover{background:var(--plum)!important;color:var(--bone)!important}
-.menu-toggle{display:none;background:none;border:0;color:var(--bone);font-size:22px;padding:6px;transition:color .3s var(--ease)}
-.site-header.scrolled .menu-toggle{color:var(--ink)}
+.nav a:hover{color:var(--oro)}
+.nav-cta{
+  padding:10px 20px;
+  border:1px solid var(--oro);
+  color:var(--oro)!important;
+  transition:all .3s var(--ease);
+}
+.nav-cta::after{display:none}
+.nav-cta:hover{background:var(--oro);color:var(--dark)!important}
+.menu-toggle{
+  display:none;background:none;border:0;
+  color:var(--oro);font-size:22px;padding:6px;
+}
 
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80') center 35%/cover no-repeat}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,.35) 0%,rgba(26,26,26,.15) 40%,rgba(26,26,26,.75) 100%)}
-.hero .container{position:relative;z-index:1;padding-bottom:80px}
-.hero-inner{max-width:900px;color:var(--bone)}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(244,241,234,.9);margin:0 0 28px}
-.hero-eyebrow::before{content:'';width:40px;height:1px;background:rgba(244,241,234,.9)}
-.hero h1{color:var(--bone);font-family:var(--f-display);font-size:clamp(80px, 16vw, 240px);font-weight:400;line-height:.82;letter-spacing:-.03em;margin:0 0 24px}
-.hero h1 em{font-style:italic;color:var(--bone-2)}
-.hero-sub{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:rgba(244,241,234,.85);margin:0 0 40px}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-.hero-foot{position:absolute;bottom:32px;right:48px;z-index:2;display:flex;flex-direction:column;align-items:flex-end;gap:8px;font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(244,241,234,.7);text-align:right}
-.hero-foot .line{width:36px;height:1px;background:rgba(244,241,234,.4)}
+/* ================= 1. HERO ================= */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:140px 24px 80px;
+  overflow:hidden;
+  color:var(--cream);
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    linear-gradient(180deg, rgba(42,37,34,.75) 0%, rgba(42,37,34,.6) 50%, rgba(42,37,34,.85) 100%),
+    url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=80')
+    center center / cover no-repeat;
+}
+.hero-bg::after{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(201,169,97,.1) 0%, transparent 60%);
+  pointer-events:none;
+}
+.hero-inner{
+  position:relative;z-index:1;
+  max-width:820px;
+}
+.hero-badge{
+  width:180px;height:180px;
+  margin:0 auto 40px;
+  animation:fadeUp 1.4s var(--ease);
+}
+.hero-badge svg{width:100%;height:100%}
+.hero h1{
+  color:var(--cream);
+  font-family:var(--f-display);
+  font-size:clamp(52px, 8vw, 108px);
+  font-weight:400;
+  line-height:.98;
+  letter-spacing:-.02em;
+  margin:0 0 20px;
+  animation:fadeUp 1.4s .2s var(--ease) both;
+}
+.hero h1 em{
+  font-style:italic;
+  color:var(--oro);
+  font-weight:500;
+}
+.hero-sub{
+  font-size:17px;
+  font-family:var(--f-body);
+  font-style:italic;
+  color:rgba(247,242,234,.85);
+  max-width:600px;
+  margin:0 auto 12px;
+  animation:fadeUp 1.4s .4s var(--ease) both;
+}
+.hero-script{
+  font-family:var(--f-script);
+  font-size:26px;
+  color:var(--oro);
+  margin:0 0 44px;
+  animation:fadeUp 1.4s .5s var(--ease) both;
+}
+.hero-buttons{
+  display:flex;gap:16px;flex-wrap:wrap;
+  justify-content:center;
+  animation:fadeUp 1.4s .6s var(--ease) both;
+}
+.hero-scroll{
+  position:absolute;bottom:28px;left:50%;
+  transform:translateX(-50%);
+  color:var(--oro);
+  font-size:20px;
+  z-index:2;
+  animation:bounce 2.4s infinite;
+  opacity:.7;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes bounce{
+  0%,100%{transform:translate(-50%,0)}
+  50%{transform:translate(-50%,10px)}
+}
 
-.intro{padding:120px 0;background:var(--bone);text-align:center;border-bottom:1px solid var(--line-2)}
-.intro-inner{max-width:820px;margin:0 auto}
-.intro h2{font-family:var(--f-display);font-size:clamp(36px, 5vw, 68px);font-weight:400;line-height:1.12;letter-spacing:-.02em;margin:0 0 28px}
-.intro h2 em{font-style:italic;color:var(--plum)}
-.intro p{font-family:var(--f-body);font-size:17px;line-height:1.75;color:var(--muted);margin:0 auto;max-width:580px}
+/* ================= 2. NUESTRA COCINA ================= */
+.cocina{
+  padding:120px 0;
+  background:var(--cream);
+  position:relative;
+}
+.cocina-grid{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:80px;
+  align-items:center;
+}
+.cocina-text .eyebrow{margin-bottom:16px}
+.cocina-text h2{
+  font-size:clamp(36px, 4.5vw, 58px);
+  font-weight:500;
+  line-height:1.1;
+  margin:0 0 24px;
+}
+.cocina-text h2 em{color:var(--oro);font-style:italic}
+.cocina-text p{
+  font-size:16px;
+  color:var(--text-muted);
+  line-height:1.85;
+  margin:0 0 20px;
+}
+.cocina-signature{
+  font-family:var(--f-script);
+  font-size:28px;
+  color:var(--oro-dark);
+  margin:32px 0 0;
+}
+.cocina-signature small{
+  display:block;
+  font-family:var(--f-body);
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  margin-top:4px;
+}
+.cocina-gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:repeat(2, 1fr);
+  gap:16px;
+}
+.cocina-gallery figure{
+  margin:0;
+  overflow:hidden;
+  aspect-ratio:1;
+  position:relative;
+  cursor:zoom-in;
+}
+.cocina-gallery img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform 1s var(--ease), filter .6s var(--ease);
+  filter:saturate(.95);
+}
+.cocina-gallery figure:hover img{
+  transform:scale(1.06);
+  filter:saturate(1.1) contrast(1.05);
+}
+.cocina-gallery figure:nth-child(1){grid-row:span 2}
+.cocina-gallery figure:nth-child(1) img{aspect-ratio:1/2}
+.cocina-gallery figure:nth-child(2){grid-column:2 / span 2}
 
-.menu-section{padding:140px 0;border-bottom:1px solid var(--line-2);position:relative}
-.menu-section:nth-of-type(odd){background:var(--bone)}
-.menu-section:nth-of-type(even){background:var(--bone-2)}
-.section-head{display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:end;padding-bottom:48px;margin-bottom:60px;border-bottom:1px solid var(--ink)}
-.section-num{font-family:var(--f-display);font-size:clamp(80px, 10vw, 140px);font-style:italic;font-weight:400;line-height:.85;color:var(--plum);letter-spacing:-.03em}
-.section-title h2{font-size:clamp(40px, 6vw, 80px);letter-spacing:-.025em;line-height:.92}
-.section-title h2 em{font-style:italic;color:var(--plum)}
-.section-sub{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:14px;display:block}
-.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
-.menu-col h3{font-family:var(--f-display);font-size:34px;font-weight:400;letter-spacing:-.01em;margin:0 0 8px;padding-bottom:20px;border-bottom:1px solid var(--line);position:relative}
-.menu-col h3::before{content:'';position:absolute;bottom:-1px;left:0;width:40px;height:2px;background:var(--plum)}
-.menu-col h3 em{color:var(--plum)}
-.price-list{list-style:none;padding:0;margin:0}
-.price-item{padding:22px 0;border-bottom:1px dashed var(--line)}
-.price-item:last-child{border-bottom:0}
-.price-head{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
-.price-name{font-family:var(--f-display);font-size:22px;font-weight:400;color:var(--ink);letter-spacing:-.005em;line-height:1.2}
-.price-name em{font-style:italic;color:var(--muted)}
-.price-dots{flex:1;border-bottom:1px dotted var(--line);height:1em;min-width:20px}
-.price-amount{font-family:var(--f-mono);font-size:14px;font-weight:500;color:var(--ink);white-space:nowrap}
-.price-desc{font-family:var(--f-body);font-size:13px;line-height:1.6;color:var(--muted);margin:0}
-.menu-banner{position:relative;height:340px;overflow:hidden;margin-top:80px}
-.menu-banner img{width:100%;height:100%;object-fit:cover;filter:sepia(.1) saturate(.95)}
-.menu-banner-label{position:absolute;bottom:24px;left:24px;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:8px 14px}
+/* ================= 3. TESTIMONIO ================= */
+.testimonial{
+  padding:120px 0;
+  background:var(--dark);
+  color:var(--cream);
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+.testimonial::before{
+  content:'';
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80')
+    center / cover no-repeat;
+  opacity:.06;
+  pointer-events:none;
+}
+.testimonial-inner{
+  position:relative;z-index:1;
+  max-width:880px;margin:0 auto;
+}
+.testimonial-mark{
+  font-family:var(--f-display);
+  font-size:140px;
+  line-height:.6;
+  color:var(--oro);
+  opacity:.4;
+  margin:0 0 -10px;
+  font-style:italic;
+}
+.testimonial-quote{
+  font-family:var(--f-display);
+  font-size:clamp(26px, 3.5vw, 42px);
+  font-style:italic;
+  font-weight:400;
+  line-height:1.4;
+  color:var(--cream);
+  margin:0 0 40px;
+  letter-spacing:-.005em;
+}
+.testimonial-quote em{color:var(--oro);font-style:italic}
+.testimonial-divider{
+  width:60px;height:1px;
+  background:var(--oro);
+  margin:0 auto 24px;
+}
+.testimonial-name{
+  font-family:var(--f-body);
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:var(--oro);
+}
+.testimonial-role{
+  font-family:var(--f-body);
+  font-size:12px;
+  font-style:italic;
+  color:rgba(247,242,234,.5);
+  margin-top:8px;
+}
 
-.pedido{padding:140px 0;background:var(--ink);color:var(--bone);position:relative;overflow:hidden}
-.pedido::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 100px,rgba(244,241,234,.02) 100px 101px);pointer-events:none}
-.pedido .container{position:relative;z-index:1}
-.pedido-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:100px;align-items:start}
-.pedido-lead .tag{color:var(--plum-soft)}
-.pedido-lead .tag::before{background:var(--plum-soft)}
-.pedido-lead h2{color:var(--bone);font-size:clamp(40px, 5.5vw, 80px);line-height:.95;margin:0 0 24px}
-.pedido-lead h2 em{font-style:italic;color:var(--plum-soft)}
-.pedido-lead p{font-family:var(--f-body);font-size:16px;line-height:1.7;color:rgba(244,241,234,.75);margin:0 0 40px;max-width:440px}
-.pedido-info{list-style:none;padding:0;margin:0;border-top:1px solid rgba(244,241,234,.15)}
-.pedido-info li{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(244,241,234,.15);font-family:var(--f-mono);font-size:13px;color:rgba(244,241,234,.85)}
-.pedido-info .key{color:var(--plum-soft);font-size:10px;letter-spacing:2px;text-transform:uppercase}
+/* ================= 4. TRES EXPERIENCIAS ================= */
+.experiencias{
+  padding:120px 0;
+  background:var(--cream-2);
+}
+.exp-head{
+  text-align:center;
+  max-width:640px;
+  margin:0 auto 80px;
+}
+.exp-head h2{
+  font-size:clamp(36px, 4.5vw, 58px);
+  font-weight:500;
+  margin:0 0 20px;
+  line-height:1.1;
+}
+.exp-head h2 em{color:var(--oro);font-style:italic}
+.exp-head p{
+  font-size:16px;color:var(--text-muted);
+  line-height:1.85;margin:0;
+}
 
-.form{display:grid;grid-template-columns:1fr;gap:20px;padding:44px 40px 36px;border:1px solid rgba(244,241,234,.2);background:rgba(244,241,234,.02);position:relative}
-.form::before{content:'PAUSA';position:absolute;top:16px;right:20px;font-family:var(--f-mono);font-size:9px;font-weight:600;letter-spacing:4px;color:var(--plum-soft);opacity:.6}
-.form-title{font-family:var(--f-display);font-size:26px;font-weight:400;font-style:italic;color:var(--bone);margin:0 0 6px}
-.form-sub{font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(244,241,234,.55);margin:0 0 22px}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.field{display:flex;flex-direction:column;gap:6px}
-.field.full{grid-column:1/-1}
-.field label{font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--plum-soft)}
-.field label .opt{color:var(--muted-2);font-weight:400;letter-spacing:.5px;text-transform:none;margin-left:4px}
-.field input,.field select,.field textarea{width:100%;font-family:var(--f-body);font-size:16px;font-weight:500;color:var(--bone);background:transparent;border:0;border-bottom:1px solid rgba(244,241,234,.3);border-radius:0;padding:9px 0 11px;outline:none;appearance:none;-webkit-appearance:none;transition:border-color .25s var(--ease);line-height:1.4}
-.field select{background:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b4557' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 2px center/14px;padding-right:24px;cursor:pointer}
-.field select option{background:var(--ink);color:var(--bone)}
-.field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--plum-soft)}
-.field input::placeholder,.field textarea::placeholder{color:rgba(244,241,234,.35)}
-.field textarea{resize:vertical;min-height:60px;padding-top:10px}
-.form-submit{margin-top:8px}
-.form-submit button{width:100%;padding:18px 24px;font-family:var(--f-body);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--plum);color:var(--bone);border:1px solid var(--plum);display:flex;align-items:center;justify-content:center;gap:10px;transition:all .25s var(--ease);cursor:pointer}
-.form-submit button:hover{background:var(--bone);color:var(--ink);border-color:var(--bone)}
-.form-status{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:1px;text-align:center;min-height:1.4em;margin:8px 0 0;color:rgba(244,241,234,.85)}
-.form-status.ok{color:#a8c47a}
-.form-status.err{color:#e09b8a}
-.form-privacy{font-size:11px;color:rgba(244,241,234,.5);text-align:center;margin:8px 0 0;line-height:1.55}
+.exp-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+  margin-bottom:120px;
+}
+.exp-row:last-child{margin-bottom:0}
+.exp-row.reverse .exp-text{order:2}
+.exp-row.reverse .exp-media{order:1}
 
-.footer{background:var(--bone);border-top:1px solid var(--line);padding:80px 0 30px}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;padding-bottom:50px;border-bottom:1px solid var(--line)}
-.footer-brand .logo{color:var(--ink);font-size:36px;margin-bottom:16px;line-height:1}
-.footer-brand .logo em{color:var(--plum)}
-.footer-brand p{font-size:14px;line-height:1.7;color:var(--muted);margin:0 0 24px;max-width:340px}
-.footer h5{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--plum);margin:0 0 20px}
+.exp-media{
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 30px 60px -30px rgba(42,37,34,.4);
+  aspect-ratio:4/5;
+}
+.exp-media img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform 1.2s var(--ease);
+}
+.exp-media:hover img{transform:scale(1.04)}
+.exp-media::before{
+  content:'';
+  position:absolute;inset:14px;
+  border:1px solid rgba(247,242,234,.4);
+  z-index:1;
+  pointer-events:none;
+}
+
+.exp-text .eyebrow{margin-bottom:14px}
+.exp-text h3{
+  font-size:clamp(28px, 3.4vw, 42px);
+  font-weight:500;
+  line-height:1.15;
+  margin:0 0 22px;
+}
+.exp-text h3 em{color:var(--oro);font-style:italic}
+.exp-text p{
+  font-size:15px;
+  color:var(--text-muted);
+  line-height:1.85;
+  margin:0 0 20px;
+}
+.exp-hours{
+  list-style:none;
+  padding:0;margin:24px 0 0;
+  font-family:var(--f-body);
+  font-size:13px;
+}
+.exp-hours li{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid rgba(42,37,34,.08);
+  color:var(--text);
+}
+.exp-hours li:last-child{border-bottom:0}
+.exp-hours li span{
+  color:var(--oro-dark);
+  font-weight:500;
+  letter-spacing:1px;
+}
+.link-arrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--f-body);
+  font-size:12px;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--oro-dark);
+  padding-bottom:6px;
+  border-bottom:1px solid var(--oro);
+  transition:all .3s var(--ease);
+  margin-top:20px;
+}
+.link-arrow:hover{gap:20px;color:var(--oro);border-color:var(--oro)}
+.link-arrow i{font-size:10px}
+
+/* Video */
+.exp-video{
+  position:relative;
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  box-shadow:0 30px 60px -30px rgba(42,37,34,.5);
+  cursor:pointer;
+  background:var(--dark);
+}
+.exp-video img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s var(--ease);
+  opacity:.75;
+}
+.exp-video:hover img{transform:scale(1.05)}
+.exp-video iframe{
+  width:100%;height:100%;border:0;display:block;
+}
+.exp-video-play{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  z-index:2;
+  background:rgba(42,37,34,.3);
+  transition:background .3s var(--ease);
+}
+.exp-video:hover .exp-video-play{background:rgba(42,37,34,.15)}
+.exp-video-play i{
+  width:88px;height:88px;
+  border-radius:50%;
+  background:rgba(201,169,97,.95);
+  color:var(--dark);
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:26px;
+  padding-left:6px;
+  transition:all .4s var(--ease);
+  box-shadow:0 10px 40px rgba(0,0,0,.3);
+}
+.exp-video:hover .exp-video-play i{
+  transform:scale(1.1);
+  background:var(--oro);
+}
+
+/* ================= 5. CARTA / PARALLAX ================= */
+.carta-cta{
+  position:relative;
+  padding:120px 0;
+  background:
+    linear-gradient(180deg, rgba(42,37,34,.85) 0%, rgba(42,37,34,.9) 100%),
+    url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1920&q=80')
+    center center / cover fixed no-repeat;
+  color:var(--cream);
+  text-align:center;
+}
+.carta-cta .eyebrow{color:var(--oro);justify-content:center}
+.carta-cta .eyebrow::before,.carta-cta .eyebrow::after{background:var(--oro)}
+.carta-cta h2{
+  color:var(--cream);
+  font-size:clamp(36px, 5vw, 62px);
+  font-weight:400;
+  line-height:1.1;
+  margin:0 0 20px;
+}
+.carta-cta h2 em{color:var(--oro);font-style:italic}
+.carta-cta p{
+  font-size:16px;
+  color:rgba(247,242,234,.8);
+  max-width:560px;
+  margin:0 auto 40px;
+  line-height:1.85;
+}
+.carta-carousel{
+  position:relative;
+  max-width:1000px;
+  margin:0 auto 50px;
+  overflow:hidden;
+}
+.carta-track{
+  display:flex;
+  gap:24px;
+  transition:transform .7s var(--ease);
+  will-change:transform;
+}
+.carta-item{
+  flex:0 0 calc((100% - 48px) / 3);
+  aspect-ratio:4/5;
+  overflow:hidden;
+  position:relative;
+  background:var(--dark-soft);
+}
+.carta-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s var(--ease);
+}
+.carta-item:hover img{transform:scale(1.06)}
+.carta-item::after{
+  content:'';position:absolute;inset:10px;
+  border:1px solid rgba(247,242,234,.25);
+  pointer-events:none;
+}
+.carta-nav{
+  display:flex;justify-content:center;gap:10px;
+  margin-top:10px;
+}
+.carta-dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:rgba(247,242,234,.3);
+  border:0;padding:0;
+  cursor:pointer;
+  transition:all .3s var(--ease);
+}
+.carta-dot.active{background:var(--oro);transform:scale(1.3)}
+
+/* ================= 6. RESERVAR / VISITANOS ================= */
+.reservar{
+  padding:120px 0;
+  background:var(--cream);
+  position:relative;
+}
+.reservar-grid{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:80px;
+  align-items:start;
+}
+.reservar-text .eyebrow{margin-bottom:14px}
+.reservar-text h2{
+  font-size:clamp(36px, 4.5vw, 54px);
+  font-weight:500;
+  line-height:1.1;
+  margin:0 0 20px;
+}
+.reservar-text h2 em{color:var(--oro);font-style:italic}
+.reservar-text > p{
+  font-size:16px;
+  color:var(--text-muted);
+  line-height:1.85;
+  margin:0 0 32px;
+}
+.reservar-info{
+  list-style:none;padding:0;margin:0 0 32px;
+}
+.reservar-info li{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:14px 0;
+  border-bottom:1px solid rgba(42,37,34,.08);
+  font-size:14px;
+}
+.reservar-info li:last-child{border-bottom:0}
+.reservar-info i{
+  width:32px;height:32px;flex-shrink:0;
+  background:var(--oro);
+  color:var(--dark);
+  border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:13px;
+}
+.reservar-info strong{
+  display:block;
+  font-family:var(--f-body);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--oro-dark);
+  margin-bottom:2px;
+}
+
+/* Form */
+.form-card{
+  background:var(--cream-2);
+  padding:48px 44px;
+  border:1px solid var(--border);
+  position:relative;
+}
+.form-card::before{
+  content:'';
+  position:absolute;inset:8px;
+  border:1px solid var(--border);
+  pointer-events:none;
+}
+.form-card h3{
+  font-family:var(--f-display);
+  font-size:26px;
+  font-weight:500;
+  margin:0 0 6px;
+  color:var(--dark);
+}
+.form-card .form-sub{
+  font-family:var(--f-script);
+  font-size:22px;
+  color:var(--oro-dark);
+  margin:0 0 28px;
+}
+.form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  position:relative;
+  z-index:1;
+}
+.form-full{grid-column:1/-1}
+.field label{
+  display:block;
+  font-family:var(--f-body);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--oro-dark);
+  margin-bottom:6px;
+}
+.field label .opt{
+  font-weight:400;text-transform:none;
+  letter-spacing:0;
+  color:var(--text-muted);
+  margin-left:4px;
+}
+.form input,
+.form select,
+.form textarea{
+  width:100%;
+  font-family:var(--f-body);
+  font-size:15px;
+  color:var(--dark);
+  background:transparent;
+  border:0;
+  border-bottom:1px solid rgba(42,37,34,.3);
+  border-radius:0;
+  padding:9px 0;
+  outline:none;
+  transition:border-color .3s var(--ease);
+  appearance:none;
+  -webkit-appearance:none;
+}
+.form select{
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a8874a' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 4px center;
+  background-size:14px;
+  padding-right:24px;
+}
+.form input:focus,
+.form select:focus,
+.form textarea:focus{border-bottom-color:var(--oro)}
+.form input::placeholder,
+.form textarea::placeholder{color:rgba(58,53,50,.35);font-style:italic}
+.form textarea{resize:vertical;min-height:80px;padding-top:10px}
+.form-submit{
+  grid-column:1/-1;
+  margin-top:8px;
+}
+.form-submit .btn{
+  width:100%;justify-content:center;
+  padding:18px 24px;
+}
+.form-status{
+  grid-column:1/-1;
+  font-family:var(--f-body);
+  font-size:13px;
+  font-style:italic;
+  text-align:center;
+  min-height:1.4em;
+  margin:6px 0 0;
+}
+.form-status.ok{color:#4a7a4a}
+.form-status.err{color:var(--burgundy)}
+.form-privacy{
+  grid-column:1/-1;
+  font-size:11px;
+  color:var(--text-muted);
+  line-height:1.6;
+  text-align:center;
+  margin:4px 0 0;
+  font-style:italic;
+}
+
+/* Map */
+.map-wrap{
+  margin-top:80px;
+  position:relative;
+  height:340px;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+.map-wrap iframe{
+  width:100%;height:100%;border:0;display:block;
+  filter:grayscale(.3) sepia(.15);
+}
+
+/* ================= 7. FOOTER ================= */
+.footer{
+  background:var(--dark);
+  color:var(--cream);
+  padding:80px 0 30px;
+  position:relative;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:60px;
+  padding-bottom:60px;
+  border-bottom:1px solid rgba(201,169,97,.2);
+}
+.footer-brand .footer-logo{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:20px;
+}
+.footer-brand .footer-logo .badge{width:52px;height:52px}
+.footer-brand .footer-logo-text{
+  font-family:var(--f-script);
+  font-size:32px;
+  color:var(--oro);
+  line-height:1;
+}
+.footer-brand .footer-logo-text small{
+  display:block;
+  font-family:var(--f-body);
+  font-size:9px;
+  letter-spacing:5px;
+  color:var(--oro);
+  opacity:.7;
+  margin-bottom:2px;
+}
+.footer-brand p{
+  color:rgba(247,242,234,.7);
+  font-size:14px;
+  line-height:1.8;
+  margin:0 0 20px;
+  max-width:340px;
+}
+.footer h5{
+  font-family:var(--f-body);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--oro);
+  margin:0 0 22px;
+}
 .footer ul{list-style:none;padding:0;margin:0}
-.footer ul li{margin-bottom:10px;font-size:14px}
-.footer ul a{color:var(--ink-2)}
-.footer ul a:hover{color:var(--plum)}
-.footer-social{display:flex;gap:8px;margin-top:4px}
-.footer-social a{width:40px;height:40px;border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;color:var(--ink);font-size:14px;transition:all .25s var(--ease)}
-.footer-social a:hover{background:var(--plum);border-color:var(--plum);color:var(--bone)}
-.footer-bottom{padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.footer ul li{margin-bottom:12px}
+.footer ul a{
+  color:rgba(247,242,234,.75);
+  font-size:14px;
+}
+.footer ul a:hover{color:var(--oro)}
+.footer-social{display:flex;gap:12px;margin-top:6px}
+.footer-social a{
+  width:40px;height:40px;
+  border-radius:50%;
+  border:1px solid rgba(201,169,97,.35);
+  display:inline-flex;align-items:center;justify-content:center;
+  color:var(--oro);
+  font-size:14px;
+  transition:all .3s var(--ease);
+}
+.footer-social a:hover{
+  background:var(--oro);
+  color:var(--dark);
+  border-color:var(--oro);
+  transform:translateY(-2px);
+}
+.footer-bottom{
+  padding-top:28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  font-family:var(--f-body);
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(247,242,234,.45);
+}
+.footer-bottom .script-inline{
+  font-family:var(--f-script);
+  font-size:16px;
+  letter-spacing:1px;
+  color:var(--oro);
+  text-transform:none;
+}
 
-.wa-float{position:fixed;right:24px;bottom:24px;z-index:50;display:flex;align-items:center;gap:10px;background:#25d366;color:var(--ink);font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:1px;padding:14px 20px 14px 18px;border-radius:50px;box-shadow:0 12px 30px -8px rgba(37,211,102,.55);transition:all .25s var(--ease)}
-.wa-float:hover{transform:translateY(-3px);box-shadow:0 18px 35px -8px rgba(37,211,102,.75)}
+/* ================= WHATSAPP FLOAT ================= */
+.wa-float{
+  position:fixed;right:24px;bottom:24px;z-index:50;
+  display:flex;align-items:center;gap:10px;
+  background:#25d366;color:#fff;
+  font-family:var(--f-body);
+  font-size:12px;font-weight:500;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:14px 20px 14px 18px;
+  border-radius:40px;
+  box-shadow:0 12px 30px -8px rgba(37,211,102,.55);
+  transition:all .4s var(--ease);
+}
+.wa-float:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 35px -8px rgba(37,211,102,.7);
+}
 .wa-float i{font-size:20px}
 
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+/* ================= REVEAL ================= */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
-.popup-overlay{position:fixed;inset:0;z-index:9999;background:rgba(26,26,26,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
-.popup-overlay.open{display:flex;animation:popupFadeIn .35s var(--ease)}
-.popup-overlay.open .popup-card{animation:popupSlideUp .5s var(--ease)}
-@keyframes popupFadeIn{from{opacity:0}to{opacity:1}}
-@keyframes popupSlideUp{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
-.popup-card{background:var(--bone);max-width:520px;width:100%;padding:48px 44px 36px;position:relative;box-shadow:0 40px 80px -20px rgba(0,0,0,.55);border:1px solid rgba(26,26,26,.1);margin:auto}
-.popup-close{position:absolute;top:14px;right:14px;width:36px;height:36px;background:transparent;border:1px solid var(--line);color:var(--ink);font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s var(--ease);padding:0}
-.popup-close:hover,.popup-close:focus-visible{background:var(--ink);color:var(--bone);border-color:var(--ink)}
-.popup-tag{display:inline-block;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--plum);padding:6px 12px;border:1px solid var(--plum);margin-bottom:22px}
-.popup-tag::before{content:'';display:inline-block;width:5px;height:5px;background:var(--plum);border-radius:50%;margin-right:8px;vertical-align:middle;animation:pulseDot 1.6s ease-in-out infinite}
-@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-.popup-title{font-family:var(--f-display);font-size:44px;font-weight:400;line-height:.95;letter-spacing:-.025em;margin:0 0 18px;color:var(--ink)}
-.popup-title em{font-style:italic;color:var(--plum)}
-.popup-body{font-family:var(--f-body);font-size:15px;line-height:1.65;color:var(--ink-2);margin:0 0 26px}
-.popup-body strong{color:var(--plum);font-weight:700}
-.popup-countdown{display:flex;align-items:center;justify-content:center;gap:6px;padding:20px 16px;background:var(--paper);border:1px solid var(--line);margin-bottom:22px}
-.countdown-item{display:flex;flex-direction:column;align-items:center;min-width:62px}
-.countdown-num{font-family:var(--f-mono);font-size:32px;font-weight:600;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
-.countdown-label{font-family:var(--f-mono);font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:8px}
-.countdown-colon{font-family:var(--f-mono);font-size:26px;font-weight:400;color:var(--muted-2);transform:translateY(-6px);user-select:none}
-.popup-code{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border:2px dashed var(--plum);background:rgba(107,45,60,.06);margin-bottom:20px}
-.popup-code-label{font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--plum)}
-.popup-code-value{font-family:var(--f-mono);font-size:20px;font-weight:700;letter-spacing:4px;color:var(--plum);padding-left:8px}
-.popup-cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px 20px;background:var(--plum);color:var(--bone);font-family:var(--f-body);font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--plum);transition:all .25s var(--ease);margin-bottom:12px;cursor:pointer;text-decoration:none}
-.popup-cta:hover,.popup-cta:focus-visible{background:var(--ink);border-color:var(--ink);color:var(--bone)}
-.popup-cta i{font-size:16px}
-.popup-dismiss{display:block;width:100%;background:transparent;border:0;color:var(--muted);font-family:var(--f-body);font-size:12px;text-decoration:underline;text-underline-offset:3px;padding:8px;cursor:pointer;transition:color .2s var(--ease)}
-.popup-dismiss:hover{color:var(--ink)}
-
+/* ================= RESPONSIVE ================= */
 @media (max-width:1024px){
-  .container{padding:0 32px}
-  .hero h1{font-size:clamp(72px, 16vw, 160px)}
-  .section-head{grid-template-columns:1fr;gap:20px;padding-bottom:32px;margin-bottom:44px}
-  .section-num{font-size:80px}
-  .menu-grid{grid-template-columns:1fr;gap:60px}
-  .menu-col h3{font-size:28px}
-  .menu-banner{height:260px;margin-top:60px}
-  .menu-section{padding:100px 0}
-  .pedido{padding:100px 0}
-  .pedido-inner{grid-template-columns:1fr;gap:56px}
-  .footer-top{grid-template-columns:1fr 1fr;gap:40px}
+  .container{padding:0 28px}
+  .hero h1{font-size:clamp(44px, 7vw, 76px)}
+  .hero-badge{width:140px;height:140px;margin-bottom:32px}
+
+  .cocina{padding:90px 0}
+  .cocina-grid{grid-template-columns:1fr;gap:50px}
+
+  .testimonial{padding:90px 0}
+  .testimonial-mark{font-size:100px}
+
+  .experiencias{padding:90px 0}
+  .exp-row{gap:50px;margin-bottom:80px}
+  .exp-head{margin-bottom:60px}
+
+  .carta-cta{padding:90px 0;background-attachment:scroll}
+  .carta-item{flex:0 0 calc((100% - 24px) / 2)}
+
+  .reservar{padding:90px 0}
+  .reservar-grid{grid-template-columns:1fr;gap:50px}
+  .map-wrap{margin-top:60px}
+
+  .footer-grid{grid-template-columns:1fr 1fr;gap:44px}
   .footer-brand{grid-column:1/-1}
 }
+
 @media (max-width:767px){
-  .container{padding:0 22px}
-  .site-header{padding:16px 0}
-  .nav{display:none;position:absolute;top:100%;left:16px;right:16px;flex-direction:column;align-items:stretch;gap:0;background:var(--bone);border:1px solid var(--line);padding:8px 0;box-shadow:0 20px 40px -10px rgba(0,0,0,.15)}
+  .container{padding:0 20px}
+
+  .site-header{padding:14px 0}
+  .nav{
+    display:none;
+    position:absolute;
+    top:100%;left:0;right:0;
+    flex-direction:column;align-items:stretch;
+    gap:0;
+    background:rgba(42,37,34,.98);
+    backdrop-filter:blur(12px);
+    padding:8px 0;
+    border-top:1px solid rgba(201,169,97,.2);
+  }
   .nav.open{display:flex}
-  .nav a{padding:14px 24px;font-size:12px;color:var(--ink)!important}
+  .nav a{
+    padding:14px 24px;
+    font-size:12px;
+    text-align:left;
+  }
   .nav a::after{display:none}
-  .nav-cta{margin:8px 20px 6px;text-align:center;background:var(--ink)!important;color:var(--bone)!important}
+  .nav-cta{margin:10px 20px 6px;text-align:center}
   .menu-toggle{display:block}
-  .logo{font-size:24px}
-  .hero .container{padding-bottom:60px}
-  .hero h1{font-size:clamp(64px, 20vw, 120px)}
-  .hero-sub{font-size:10px;letter-spacing:3px}
-  .hero-eyebrow{font-size:10px;letter-spacing:2px;margin-bottom:20px}
-  .hero-actions{flex-direction:column;align-items:stretch;width:100%;max-width:280px}
-  .hero-actions .btn{width:100%}
-  .hero-foot{display:none}
-  .intro{padding:70px 0}
-  .intro h2{font-size:30px;line-height:1.2}
-  .intro p{font-size:15px}
-  .menu-section{padding:70px 0}
-  .section-num{font-size:64px}
-  .section-title h2{font-size:44px}
-  .section-sub{font-size:10px}
-  .menu-col h3{font-size:24px;padding-bottom:16px}
-  .price-name{font-size:18px}
-  .price-amount{font-size:13px}
-  .price-desc{font-size:12px}
-  .price-item{padding:18px 0}
-  .menu-banner{height:200px;margin-top:50px}
-  .menu-banner-label{font-size:9px;padding:6px 10px;bottom:14px;left:14px}
-  .pedido{padding:70px 0}
-  .pedido-lead h2{font-size:40px}
-  .pedido-lead p{font-size:15px}
-  .pedido-info li{grid-template-columns:100px 1fr;gap:12px;font-size:12px}
-  .form{padding:32px 24px 26px}
-  .field-row{grid-template-columns:1fr;gap:18px}
-  .form-title{font-size:22px}
-  .field input,.field select,.field textarea{font-size:15px}
-  .footer{padding:50px 0 24px}
-  .footer-top{grid-template-columns:1fr;gap:32px;padding-bottom:32px}
+  .logo-text .bottom{font-size:22px}
+  .logo-badge{width:38px;height:38px}
+
+  .hero{padding:120px 20px 70px;min-height:auto}
+  .hero-badge{width:120px;height:120px;margin-bottom:24px}
+  .hero h1{font-size:clamp(38px, 11vw, 58px)}
+  .hero-sub{font-size:15px}
+  .hero-script{font-size:20px;margin-bottom:32px}
+  .hero-buttons{flex-direction:column;align-items:stretch;width:100%;max-width:280px;margin:0 auto}
+  .hero-buttons .btn{width:100%;justify-content:center;padding:14px 22px;font-size:11px}
+  .hero-scroll{display:none}
+
+  .cocina{padding:70px 0}
+  .cocina-text h2{font-size:clamp(30px, 8vw, 42px)}
+  .cocina-gallery{gap:10px}
+
+  .testimonial{padding:70px 0}
+  .testimonial-mark{font-size:70px}
+  .testimonial-quote{font-size:clamp(20px, 5.5vw, 28px)}
+
+  .experiencias{padding:70px 0}
+  .exp-head{margin-bottom:50px}
+  .exp-head h2{font-size:clamp(30px, 8vw, 42px)}
+  .exp-row{
+    grid-template-columns:1fr;
+    gap:32px;
+    margin-bottom:60px;
+  }
+  .exp-row.reverse .exp-text,
+  .exp-row.reverse .exp-media{order:unset}
+  .exp-media{aspect-ratio:4/3}
+  .exp-text h3{font-size:clamp(24px, 7vw, 34px)}
+  .exp-video-play i{width:64px;height:64px;font-size:20px}
+
+  .carta-cta{padding:70px 0}
+  .carta-cta h2{font-size:clamp(30px, 8vw, 42px)}
+  .carta-item{flex:0 0 100%}
+  .carta-track{gap:16px}
+  .carta-carousel{margin-bottom:36px}
+
+  .reservar{padding:70px 0}
+  .reservar-text h2{font-size:clamp(30px, 8vw, 42px)}
+  .form-card{padding:32px 22px}
+  .form{grid-template-columns:1fr;gap:16px}
+  .map-wrap{margin-top:44px;height:260px}
+
+  .footer{padding:60px 0 24px}
+  .footer-grid{grid-template-columns:1fr;gap:36px;padding-bottom:36px}
   .footer-brand{grid-column:auto}
-  .footer-brand .logo{font-size:28px}
   .footer-bottom{flex-direction:column;text-align:center}
+
   .wa-float{padding:12px;border-radius:50%}
   .wa-float span{display:none}
   .wa-float i{font-size:22px;margin:0}
-  .popup-card{padding:38px 24px 28px}
-  .popup-title{font-size:34px}
-  .popup-body{font-size:14px}
-  .countdown-num{font-size:26px}
-  .countdown-item{min-width:50px}
-  .countdown-colon{font-size:22px}
-  .popup-code-value{font-size:17px;letter-spacing:3px}
-  .popup-tag{font-size:9px;letter-spacing:2px}
 }
+
+/* ================= ACCESIBILIDAD ================= */
 @media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
-  .popup-overlay.open,.popup-overlay.open .popup-card,.popup-tag::before{animation:none!important}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
 }
-:focus-visible{outline:2px solid var(--plum);outline-offset:3px}
+:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
 </style>
 </head>
 <body>
 
+<!-- ============ HEADER ============ -->
 <header class="site-header" id="siteHeader">
   <div class="container">
-    <a href="#inicio" class="logo">Paus<em>a</em></a>
+    <a href="#inicio" class="logo">
+      <svg class="logo-badge" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="94" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="82" fill="none" stroke="#c9a961" stroke-width=".7" opacity=".5"/>
+        <text x="100" y="88" text-anchor="middle" fill="#c9a961" font-family="Playfair Display, serif" font-weight="500" font-size="26" letter-spacing="1">Bistró</text>
+        <text x="100" y="122" text-anchor="middle" fill="#c9a961" font-family="Shadows Into Light, cursive" font-size="40">Aurora</text>
+        <line x1="55" y1="134" x2="145" y2="134" stroke="#c9a961" stroke-width="1"/>
+        <text x="100" y="158" text-anchor="middle" fill="#c9a961" font-family="Lora, serif" font-size="7" letter-spacing="4">LA PAZ · BOLIVIA</text>
+      </svg>
+      <div class="logo-text">
+        <span class="top">EST. 2018</span>
+        <span class="bottom">Aurora</span>
+      </div>
+    </a>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
       <i class="fa fa-bars"></i>
     </button>
     <nav class="nav" id="mainNav" aria-label="Navegación principal">
-      <a href="#desayunos">Desayunos</a>
-      <a href="#almuerzos">Almuerzos</a>
-      <a href="#cafeteria">Cafetería</a>
-      <a href="#pedido" class="nav-cta">Reservar</a>
+      <a href="#cocina">Cocina</a>
+      <a href="#experiencias">Experiencias</a>
+      <a href="#carta">Carta</a>
+      <a href="#reservar">Reservar</a>
+      <a href="#reservar" class="nav-cta"><i class="fa fa-whatsapp" aria-hidden="true"></i> Mesa</a>
     </nav>
   </div>
 </header>
 
+<!-- ============ 1. HERO ============ -->
 <section id="inicio" class="hero">
   <div class="hero-bg"></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="94" fill="rgba(201,169,97,.08)" stroke="#c9a961" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#c9a961" stroke-width=".7" opacity=".6"/>
+        <text x="100" y="86" text-anchor="middle" fill="#c9a961" font-family="Playfair Display, serif" font-weight="500" font-size="24" letter-spacing="1">Bistró</text>
+        <text x="100" y="122" text-anchor="middle" fill="#c9a961" font-family="Shadows Into Light, cursive" font-size="42">Aurora</text>
+        <line x1="58" y1="134" x2="142" y2="134" stroke="#c9a961" stroke-width="1"/>
+        <text x="100" y="156" text-anchor="middle" fill="#c9a961" font-family="Lora, serif" font-size="7" letter-spacing="4">LA PAZ · BOLIVIA</text>
+      </svg>
+    </div>
+
+    <h1>El sabor de lo <em>hecho a mano</em></h1>
+    <p class="hero-sub">
+      Cocina de mercado con alma boliviana. Productos frescos, recetas de familia
+      y una mesa que siempre está puesta para vos.
+    </p>
+    <p class="hero-script">— desde 2018 en Sopocachi —</p>
+
+    <div class="hero-buttons">
+      <a href="#carta" class="btn">
+        <i class="fa fa-book" aria-hidden="true"></i>
+        Ver la carta
+      </a>
+      <a href="https://wa.me/59173913409?text=Hola%20Bistr%C3%B3%20Aurora%2C%20quiero%20reservar%20una%20mesa."
+         class="btn btn-solid" target="_blank" rel="noopener">
+        <i class="fa fa-whatsapp" aria-hidden="true"></i>
+        Reservar mesa
+      </a>
+    </div>
+  </div>
+
+  <a href="#cocina" class="hero-scroll" aria-label="Bajar a la siguiente sección">
+    <i class="fa fa-angle-down" aria-hidden="true"></i>
+  </a>
+</section>
+
+<!-- ============ 2. NUESTRA COCINA ============ -->
+<section id="cocina" class="cocina">
   <div class="container">
-    <div class="hero-inner">
-      <p class="hero-eyebrow">Café de especialidad · Sopocachi</p>
-      <h1>Paus<em>a</em></h1>
-      <p class="hero-sub">— café &amp; brunch · desde 2021 —</p>
-      <div class="hero-actions">
-        <a href="#desayunos" class="btn">Ver la carta</a>
-        <a href="https://wa.me/59173913409?text=Hola%20PAUSA%2C%20quiero%20hacer%20un%20pedido."
-           class="btn btn-ghost" target="_blank" rel="noopener"
-           style="color:var(--bone);border-color:rgba(244,241,234,.4);">
-          <i class="fa fa-whatsapp" aria-hidden="true"></i>
-          Pedir por WhatsApp
+    <div class="cocina-grid">
+      <div class="cocina-text reveal">
+        <p class="eyebrow before-only">Nuestra cocina</p>
+        <h2>Productos honestos,<br><em>platos con memoria</em>.</h2>
+        <p>
+          Cada mañana elegimos lo que llega a la mesa. Trabajamos con
+          productores locales, mercado de frescos y recetas que pasaron
+          de generación en generación.
+        </p>
+        <p>
+          No hay fuegos artificiales. Solo cocina bien hecha, platos
+          que reconfortan y una carta que cambia con las estaciones.
+        </p>
+        <p class="cocina-signature">
+          Beatriz Quispe
+          <small>Chef &amp; fundadora</small>
+        </p>
+      </div>
+
+      <div class="cocina-gallery reveal">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="Plato del día" loading="lazy">
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?auto=format&fit=crop&w=600&q=80" alt="Panqueques de la casa" loading="lazy">
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80" alt="Hamburguesa artesanal" loading="lazy">
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?auto=format&fit=crop&w=600&q=80" alt="Desayuno completo" loading="lazy">
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Ensalada fresca" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. TESTIMONIO ============ -->
+<section class="testimonial">
+  <div class="container">
+    <div class="testimonial-inner reveal">
+      <div class="testimonial-mark" aria-hidden="true">“</div>
+      <blockquote class="testimonial-quote">
+        Comida honesta,<em> servida con cariño</em>.
+        La clase de lugar al que volvés sin pensarlo,
+        donde cada plato sabe a algo que ya conocías
+        pero no sabías que extrañabas.
+      </blockquote>
+      <div class="testimonial-divider"></div>
+      <div class="testimonial-name">Familia Arce</div>
+      <div class="testimonial-role">— Clientes desde 2019 · Sopocachi</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. EXPERIENCIAS ============ -->
+<section id="experiencias" class="experiencias">
+  <div class="container">
+    <div class="exp-head reveal">
+      <p class="eyebrow" style="justify-content:center">Tres formas de vivir Aurora</p>
+      <h2>Desayunos, cenas<br>y <em>momentos</em></h2>
+      <p>
+        Cada turno tiene su propio ritmo. Vení cuando quieras:
+        siempre hay una mesa esperándote.
+      </p>
+    </div>
+
+    <!-- Desayunos -->
+    <div class="exp-row reveal">
+      <div class="exp-media">
+        <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=900&q=80"
+             alt="Desayuno servido en Bistró Aurora" loading="lazy">
+      </div>
+      <div class="exp-text">
+        <p class="eyebrow before-only">Turno mañana</p>
+        <h3>Desayunos <em>de verdad</em></h3>
+        <p>
+          Pan casero, café de altura, huevos de campo y frutas de
+          temporada. Nada de apuros: el desayuno acá se disfruta
+          con tiempo y con mesa puesta.
+        </p>
+        <ul class="exp-hours">
+          <li>Lunes a viernes <span>7:30 – 11:30</span></li>
+          <li>Sábados y domingos <span>8:00 – 12:30</span></li>
+        </ul>
+        <a href="https://wa.me/59173913409?text=Hola%20Bistr%C3%B3%20Aurora%2C%20quiero%20reservar%20para%20el%20desayuno."
+           class="link-arrow" target="_blank" rel="noopener">
+          Reservar desayuno <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
         </a>
       </div>
     </div>
-  </div>
-  <div class="hero-foot">
-    <span>La Paz · Bolivia</span>
-    <div class="line"></div>
-    <span>Est. 2021</span>
-  </div>
-</section>
 
-<section class="intro">
-  <div class="container">
-    <div class="intro-inner reveal">
-      <p class="tag" style="justify-content:center;display:inline-flex">Nuestra carta</p>
-      <h2>Tres <em>momentos</em> del día.<br>Una misma pausa.</h2>
-      <p>Todo se prepara en casa, con ingredientes locales de temporada y café de origen boliviano. Cambiamos la carta con el año, pero siempre hay algo que vale la pena probar.</p>
+    <!-- Cenas & eventos -->
+    <div class="exp-row reverse reveal">
+      <div class="exp-text">
+        <p class="eyebrow before-only">Turno noche</p>
+        <h3>Cenas <em>&amp; eventos</em></h3>
+        <p>
+          Platos de autor, cocina a la vista y una cava pensada para
+          acompañar. También abrimos el salón para cumpleaños,
+          aniversarios y cenas privadas de hasta 40 personas.
+        </p>
+        <ul class="exp-hours">
+          <li>Martes a sábado <span>19:00 – 23:30</span></li>
+          <li>Eventos privados <span>a coordinar</span></li>
+        </ul>
+        <a href="#reservar" class="link-arrow">
+          Reservar cena o evento <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="exp-media">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80"
+             alt="Mesa servida para cena" loading="lazy">
+      </div>
     </div>
-  </div>
-</section>
 
-<section id="desayunos" class="menu-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="section-num">01</span>
-      <div class="section-title">
-        <h2>Desayunos &amp; <em>brunch</em></h2>
-        <span class="section-sub">Todos los días · 8:00 – 12:30</span>
-      </div>
-    </div>
-    <div class="menu-grid">
-      <div class="menu-col reveal">
-        <h3>Dulces</h3>
-        <ul class="price-list">
-          <li class="price-item"><div class="price-head"><span class="price-name">Tostadas francesas</span><span class="price-dots"></span><span class="price-amount">Bs. 42</span></div><p class="price-desc">Pan brioche, frutos rojos, miel de caña y crema chantilly.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Pancakes de la casa</span><span class="price-dots"></span><span class="price-amount">Bs. 38</span></div><p class="price-desc">Con mantequilla de maple y bananas caramelizadas.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Granola &amp; yogur</span><span class="price-dots"></span><span class="price-amount">Bs. 32</span></div><p class="price-desc">Granola tostada en casa, yogur griego, frutas de estación.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Croissant de almendra</span><span class="price-dots"></span><span class="price-amount">Bs. 22</span></div><p class="price-desc">Hojaldre de mantequilla, crema de almendra, azúcar glas.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Bowl de frutas <em>y semillas</em></span><span class="price-dots"></span><span class="price-amount">Bs. 28</span></div><p class="price-desc">Frutas del valle, chía, coco tostado, miel de abeja.</p></li>
-        </ul>
-      </div>
-      <div class="menu-col reveal">
-        <h3>Salados</h3>
-        <ul class="price-list">
-          <li class="price-item"><div class="price-head"><span class="price-name">Huevos benedictinos</span><span class="price-dots"></span><span class="price-amount">Bs. 48</span></div><p class="price-desc">Muffin inglés, jamón serrano, huevo poché, salsa holandesa.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Avocado toast <em>+ huevo</em></span><span class="price-dots"></span><span class="price-amount">Bs. 38</span></div><p class="price-desc">Pan de masa madre, palta, huevo escalfado, chile en hojuelas.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Tortilla española</span><span class="price-dots"></span><span class="price-amount">Bs. 34</span></div><p class="price-desc">Papa, cebolla, huevo de campo, pan de campo y alioli.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Huevos revueltos <em>al gusto</em></span><span class="price-dots"></span><span class="price-amount">Bs. 36</span></div><p class="price-desc">Con tocineta, queso fresco o salmón. Pan de masa madre.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Sándwich de desayuno</span><span class="price-dots"></span><span class="price-amount">Bs. 32</span></div><p class="price-desc">Croissant, huevo, queso cheddar, palta y tomate.</p></li>
-        </ul>
-      </div>
-    </div>
-    <div class="menu-banner reveal">
-      <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=1600&q=80" alt="Mesa de brunch en PAUSA" loading="lazy">
-      <span class="menu-banner-label">Mesa de brunch · PAUSA</span>
-    </div>
-  </div>
-</section>
-
-<section id="almuerzos" class="menu-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="section-num">02</span>
-      <div class="section-title">
-        <h2>Almuerzos &amp; <em>bowls</em></h2>
-        <span class="section-sub">Lun a Sáb · 12:30 – 16:00</span>
-      </div>
-    </div>
-    <div class="menu-grid">
-      <div class="menu-col reveal">
-        <h3>Bowls &amp; ensaladas</h3>
-        <ul class="price-list">
-          <li class="price-item"><div class="price-head"><span class="price-name">Bowl mediterráneo</span><span class="price-dots"></span><span class="price-amount">Bs. 52</span></div><p class="price-desc">Quinoa, garbanzos, hummus, pepino, tomate, feta y limón.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Poke bowl de salmón</span><span class="price-dots"></span><span class="price-amount">Bs. 68</span></div><p class="price-desc">Arroz de sushi, salmón fresco, palta, edamame y sésamo.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Bowl de pollo <em>y verduras</em></span><span class="price-dots"></span><span class="price-amount">Bs. 48</span></div><p class="price-desc">Pollo asado, camote, brócoli, arroz integral, aderezo de tahini.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Ensalada césar clásica</span><span class="price-dots"></span><span class="price-amount">Bs. 44</span></div><p class="price-desc">Lechuga romana, pollo grillado, parmesano, croutons de la casa.</p></li>
-        </ul>
-      </div>
-      <div class="menu-col reveal">
-        <h3>Sándwiches &amp; tostadas</h3>
-        <ul class="price-list">
-          <li class="price-item"><div class="price-head"><span class="price-name">Sándwich de pollo <em>al pesto</em></span><span class="price-dots"></span><span class="price-amount">Bs. 42</span></div><p class="price-desc">Pollo desmenuzado, pesto de albahaca, rúcula, pan ciabatta.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Baguette caprese</span><span class="price-dots"></span><span class="price-amount">Bs. 38</span></div><p class="price-desc">Mozzarella fresca, tomate, albahaca, aceite de oliva.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Sándwich de salmón <em>ahumado</em></span><span class="price-dots"></span><span class="price-amount">Bs. 56</span></div><p class="price-desc">Pan de centeno, queso crema, eneldo, cebolla morada, alcaparras.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Grilled cheese <em>+ tomate</em></span><span class="price-dots"></span><span class="price-amount">Bs. 34</span></div><p class="price-desc">Pan de masa madre, tres quesos, tomate asado, mantequilla.</p></li>
-        </ul>
-      </div>
-    </div>
-    <div class="menu-banner reveal">
-      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1600&q=80" alt="Bowl saludable de PAUSA" loading="lazy">
-      <span class="menu-banner-label">Cocina de temporada · PAUSA</span>
-    </div>
-  </div>
-</section>
-
-<section id="cafeteria" class="menu-section">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="section-num">03</span>
-      <div class="section-title">
-        <h2>Cafetería &amp; <em>bebidas</em></h2>
-        <span class="section-sub">Todo el día · 8:00 – 20:00</span>
-      </div>
-    </div>
-    <div class="menu-grid">
-      <div class="menu-col reveal">
-        <h3>Café caliente</h3>
-        <ul class="price-list">
-          <li class="price-item"><div class="price-head"><span class="price-name">Espresso</span><span class="price-dots"></span><span class="price-amount">Bs. 15</span></div><p class="price-desc">Origen Caranavi · tostado medio. Doble si lo pedís.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Americano</span><span class="price-dots"></span><span class="price-amount">Bs. 18</span></div><p class="price-desc">Espresso con agua caliente. Largo o corto.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Cappuccino</span><span class="price-dots"></span><span class="price-amount">Bs. 24</span></div><p class="price-desc">Espresso, leche al vapor, espuma aterciopelada.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Latte <em>o flat white</em></span><span class="price-dots"></span><span class="price-amount">Bs. 26</span></div><p class="price-desc">Con leche entera, deslactosada o de almendra (+Bs. 4).</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Mocha de la casa</span><span class="price-dots"></span><span class="price-amount">Bs. 30</span></div><p class="price-desc">Espresso, chocolate 70%, leche, crema batida.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Matcha latte</span><span class="price-dots"></span><span class="price-amount">Bs. 32</span></div><p class="price-desc">Matcha ceremonial, leche al vapor. Caliente o frío.</p></li>
-        </ul>
-      </div>
-      <div class="menu-col reveal">
-        <h3>Bebidas frías</h3>
-        <ul class="price-list">
-          <li class="price-item"><div class="price-head"><span class="price-name">Cold brew</span><span class="price-dots"></span><span class="price-amount">Bs. 26</span></div><p class="price-desc">Extracción en frío 18 horas. Suave, intenso, sin amargor.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Iced latte</span><span class="price-dots"></span><span class="price-amount">Bs. 28</span></div><p class="price-desc">Doble espresso sobre leche fría y hielo.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Frappé de la casa</span><span class="price-dots"></span><span class="price-amount">Bs. 34</span></div><p class="price-desc">Café, leche, hielo, caramelo. Con crema opcional.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Limonada de hierbabuena</span><span class="price-dots"></span><span class="price-amount">Bs. 22</span></div><p class="price-desc">Limón fresco, hierbabuena, endulzada al punto.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Té helado de jazmín</span><span class="price-dots"></span><span class="price-amount">Bs. 22</span></div><p class="price-desc">Infusión fría, rodajas de naranja, sirope de la casa.</p></li>
-          <li class="price-item"><div class="price-head"><span class="price-name">Jugo natural del día</span><span class="price-dots"></span><span class="price-amount">Bs. 20</span></div><p class="price-desc">Fruta fresca de temporada. Consultá por la del día.</p></li>
-        </ul>
+    <!-- Video -->
+    <div class="reveal">
+      <div class="exp-video" id="videoBlock" role="button" tabindex="0" aria-label="Reproducir video del bistró">
+        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80"
+             alt="Chef cocinando en Bistró Aurora" loading="lazy">
+        <div class="exp-video-play">
+          <i class="fa fa-play" aria-hidden="true"></i>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="pedido" class="pedido">
+<!-- ============ 5. CARTA / PARALLAX ============ -->
+<section id="carta" class="carta-cta">
   <div class="container">
-    <div class="pedido-inner">
-      <div class="pedido-lead reveal">
-        <p class="tag">Pedidos &amp; reservas</p>
-        <h2>Hacé tu <em>pedido</em>.</h2>
-        <p>Completá el formulario y te escribimos por WhatsApp para coordinar tu pedido, reserva de mesa o evento privado. Respondemos en menos de 1 hora en horario de atención.</p>
-        <ul class="pedido-info">
-          <li><span class="key">Dirección</span><span>Calle 20 de Octubre #2456 · Sopocachi</span></li>
-          <li><span class="key">WhatsApp</span><span>+591 73913409</span></li>
-          <li><span class="key">Horario</span><span>Lun a Dom · 8:00 – 20:00</span></li>
+    <div class="reveal">
+      <p class="eyebrow" style="justify-content:center">Nuestra mesa</p>
+      <h2>Un menú que cambia<br><em>con la estación</em></h2>
+      <p>
+        Trabajamos con lo que la tierra da. Por eso la carta
+        no es fija: se renueva cada pocas semanas y siempre tiene
+        algo nuevo para probar.
+      </p>
+    </div>
+
+    <div class="carta-carousel reveal">
+      <div class="carta-track" id="cartaTrack">
+        <div class="carta-item">
+          <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80" alt="Plato principal" loading="lazy">
+        </div>
+        <div class="carta-item">
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Ensalada fresca" loading="lazy">
+        </div>
+        <div class="carta-item">
+          <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?auto=format&fit=crop&w=600&q=80" alt="Pizza artesanal" loading="lazy">
+        </div>
+        <div class="carta-item">
+          <img src="https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?auto=format&fit=crop&w=600&q=80" alt="Postre de la casa" loading="lazy">
+        </div>
+        <div class="carta-item">
+          <img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?auto=format&fit=crop&w=600&q=80" alt="Desayuno dulce" loading="lazy">
+        </div>
+      </div>
+      <div class="carta-nav" id="cartaNav"></div>
+    </div>
+
+    <div class="reveal">
+      <a href="https://wa.me/59173913409?text=Hola%2C%20me%20gustar%C3%ADa%20ver%20la%20carta%20completa%20de%20Bistr%C3%B3%20Aurora."
+         class="btn btn-solid" target="_blank" rel="noopener">
+        <i class="fa fa-whatsapp" aria-hidden="true"></i>
+        Pedir la carta completa
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. RESERVAR ============ -->
+<section id="reservar" class="reservar">
+  <div class="container">
+    <div class="reservar-grid">
+
+      <div class="reservar-text reveal">
+        <p class="eyebrow before-only">Reservá tu mesa</p>
+        <h2>Una mesa<br><em>para vos</em></h2>
+        <p>
+          Completá el formulario y te escribimos por WhatsApp para
+          confirmar día, hora y comensales. Respondemos en menos
+          de 2 horas en horario de atención.
+        </p>
+        <ul class="reservar-info">
+          <li>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <div>
+              <strong>Dirección</strong>
+              Calle 20 de Octubre #2456 · Sopocachi, La Paz
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+            <div>
+              <strong>WhatsApp</strong>
+              +591 73913409
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <div>
+              <strong>Horarios</strong>
+              Mar a Sáb · 7:30 – 23:30 · Dom 8:00 – 16:00
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <div>
+              <strong>Email</strong>
+              hola@bistroaurora.bo
+            </div>
+          </li>
         </ul>
       </div>
-      <form class="form reveal" id="pedidoForm" novalidate>
-        <h3 class="form-title">Tu pedido</h3>
-        <p class="form-sub">— te respondemos por WhatsApp —</p>
-        <div class="field-row">
+
+      <form class="form-card reveal" id="contactForm" novalidate>
+        <h3>Reservar mesa</h3>
+        <p class="form-sub">— te confirmamos por WhatsApp —</p>
+
+        <div class="form">
           <div class="field">
             <label for="f-nombre">Nombre</label>
             <input type="text" id="f-nombre" name="nombre" placeholder="Tu nombre" required autocomplete="name">
           </div>
+
           <div class="field">
-            <label for="f-tipo">¿Qué necesitás?</label>
-            <select id="f-tipo" name="tipo" required>
-              <option value="">Seleccioná</option>
-              <option>Pedido para llevar</option>
-              <option>Reserva de mesa</option>
-              <option>Desayuno / brunch</option>
-              <option>Almuerzo</option>
-              <option>Cafetería</option>
-              <option>Evento privado</option>
-              <option>Otro</option>
+            <label for="f-telefono">WhatsApp <span class="opt">(opcional)</span></label>
+            <input type="tel" id="f-telefono" name="telefono" placeholder="+591 700 00000" autocomplete="tel">
+          </div>
+
+          <div class="field">
+            <label for="f-fecha">Fecha</label>
+            <input type="date" id="f-fecha" name="fecha" required>
+          </div>
+
+          <div class="field">
+            <label for="f-hora">Hora</label>
+            <select id="f-hora" name="hora" required>
+              <option value="">Elegí una hora</option>
+              <option>08:00</option>
+              <option>09:00</option>
+              <option>10:00</option>
+              <option>11:00</option>
+              <option>12:00</option>
+              <option>13:00</option>
+              <option>19:00</option>
+              <option>20:00</option>
+              <option>21:00</option>
+              <option>22:00</option>
             </select>
           </div>
-        </div>
-        <div class="field-row">
+
           <div class="field">
-            <label for="f-personas">Personas <span class="opt">(opcional)</span></label>
-            <select id="f-personas" name="personas">
-              <option value="">Seleccioná</option>
-              <option>1–2 personas</option>
-              <option>3–4 personas</option>
-              <option>5–8 personas</option>
-              <option>Más de 8</option>
+            <label for="f-comensales">Comensales</label>
+            <select id="f-comensales" name="comensales" required>
+              <option value="">¿Cuántos?</option>
+              <option>1 persona</option>
+              <option>2 personas</option>
+              <option>3 personas</option>
+              <option>4 personas</option>
+              <option>5 personas</option>
+              <option>6 personas</option>
+              <option>Más de 6 (evento)</option>
             </select>
           </div>
+
           <div class="field">
-            <label for="f-horario">Horario <span class="opt">(opcional)</span></label>
-            <select id="f-horario" name="horario">
-              <option value="">Seleccioná</option>
-              <option>Mañana (8:00 – 12:00)</option>
-              <option>Mediodía (12:00 – 16:00)</option>
-              <option>Tarde (16:00 – 20:00)</option>
+            <label for="f-ocasion">Ocasión <span class="opt">(opcional)</span></label>
+            <select id="f-ocasion" name="ocasion">
+              <option value="">Ninguna en particular</option>
+              <option>Cumpleaños</option>
+              <option>Aniversario</option>
+              <option>Cena de negocios</option>
+              <option>Reunión familiar</option>
+              <option>Otra</option>
             </select>
           </div>
+
+          <div class="field form-full">
+            <label for="f-mensaje">Comentario <span class="opt">(opcional)</span></label>
+            <textarea id="f-mensaje" name="mensaje" rows="2"
+              placeholder="Ej: Somos vegetarianos, o necesitamos una mesa junto a la ventana..."></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-wa">
+              <i class="fa fa-whatsapp" aria-hidden="true"></i>
+              Enviar por WhatsApp
+            </button>
+          </div>
+
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          <p class="form-privacy">
+            Al enviar se abrirá WhatsApp con tu solicitud lista. No guardamos datos.
+          </p>
         </div>
-        <div class="field full">
-          <label for="f-mensaje">Mensaje <span class="opt">(opcional)</span></label>
-          <textarea id="f-mensaje" name="mensaje" rows="3"
-            placeholder="Ej: Quiero reservar para 4 personas, sábado al mediodía..."></textarea>
-        </div>
-        <div class="form-submit">
-          <button type="submit">
-            <i class="fa fa-whatsapp" aria-hidden="true"></i>
-            Enviar por WhatsApp
-          </button>
-        </div>
-        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-        <p class="form-privacy">Al enviar se abrirá WhatsApp con tu pedido listo. No guardamos datos.</p>
       </form>
+    </div>
+
+    <div class="map-wrap reveal">
+      <iframe
+        src="https://www.google.com/maps?q=Sopocachi,+La+Paz,+Bolivia&z=15&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación de Bistró Aurora en Sopocachi, La Paz">
+      </iframe>
     </div>
   </div>
 </section>
 
+<!-- ============ 7. FOOTER ============ -->
 <footer class="footer">
   <div class="container">
-    <div class="footer-top">
+    <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo">Paus<em>a</em></div>
-        <p>Café de especialidad y brunch en Sopocachi, La Paz. Cocina honesta, café de origen y una pausa todos los días.</p>
+        <div class="footer-logo">
+          <svg class="badge" viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="100" cy="100" r="94" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+            <text x="100" y="86" text-anchor="middle" fill="#c9a961" font-family="Playfair Display, serif" font-weight="500" font-size="24">Bistró</text>
+            <text x="100" y="122" text-anchor="middle" fill="#c9a961" font-family="Shadows Into Light, cursive" font-size="40">Aurora</text>
+            <line x1="58" y1="134" x2="142" y2="134" stroke="#c9a961" stroke-width="1"/>
+          </svg>
+          <div class="footer-logo-text">
+            <small>EST. 2018</small>
+            Aurora
+          </div>
+        </div>
+        <p>
+          Cocina de mercado con alma boliviana. Productos frescos,
+          recetas de familia y una mesa siempre puesta.
+        </p>
         <div class="footer-social">
-          <a href="https://wa.me/59173913409" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+          <a href="https://wa.me/59173913409" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+          </a>
           <a href="#" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
           <a href="#" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-          <a href="#" aria-label="TikTok"><i class="fa fa-music" aria-hidden="true"></i></a>
+          <a href="#" aria-label="TripAdvisor"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
         </div>
       </div>
+
       <div>
-        <h5>Carta</h5>
+        <h5>Explorar</h5>
         <ul>
-          <li><a href="#desayunos">Desayunos</a></li>
-          <li><a href="#almuerzos">Almuerzos</a></li>
-          <li><a href="#cafeteria">Cafetería</a></li>
+          <li><a href="#cocina">Nuestra cocina</a></li>
+          <li><a href="#experiencias">Experiencias</a></li>
+          <li><a href="#carta">Carta</a></li>
+          <li><a href="#reservar">Reservar</a></li>
         </ul>
       </div>
+
       <div>
         <h5>Contacto</h5>
         <ul>
           <li><a href="https://wa.me/59173913409" target="_blank" rel="noopener">+591 73913409</a></li>
           <li>20 de Octubre #2456</li>
           <li>Sopocachi · La Paz</li>
-          <li>Lun a Dom · 8:00 – 20:00</li>
+          <li>Mar a Sáb · 7:30 – 23:30</li>
         </ul>
       </div>
     </div>
+
     <div class="footer-bottom">
-      <span>© <span id="year"></span> PAUSA · Café &amp; Brunch</span>
-      <span>Sopocachi · La Paz · Bolivia</span>
+      <span>© <span id="year"></span> Bistró Aurora · La Paz, Bolivia</span>
+      <span class="script-inline">hecho con amor y buen fuego</span>
     </div>
   </div>
 </footer>
 
+<!-- ============ WHATSAPP FLOAT ============ -->
 <a class="wa-float"
-   href="https://wa.me/59173913409?text=Hola%20PAUSA%2C%20quiero%20hacer%20un%20pedido."
+   href="https://wa.me/59173913409?text=Hola%20Bistr%C3%B3%20Aurora%2C%20quiero%20reservar%20una%20mesa."
    target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
   <i class="fa fa-whatsapp" aria-hidden="true"></i>
-  <span>Pedir</span>
+  <span>Reservar</span>
 </a>
-
-<div class="popup-overlay" id="timedPopup" role="dialog" aria-modal="true" aria-labelledby="timedTitle" aria-hidden="true">
-  <div class="popup-card">
-    <button class="popup-close" data-close aria-label="Cerrar oferta">×</button>
-    <span class="popup-tag">Oferta por tiempo limitado</span>
-    <h3 class="popup-title" id="timedTitle">Tu pausa<br>tiene <em>premio</em>.</h3>
-    <p class="popup-body">
-      <strong>10% off</strong> en tu primer pedido de brunch o cafetería.
-      Válido mientras el contador esté activo.
-    </p>
-    <div class="popup-countdown" aria-live="polite" aria-label="Tiempo restante de la oferta">
-      <div class="countdown-item"><span class="countdown-num" data-cd="h">02</span><span class="countdown-label">Hs</span></div>
-      <span class="countdown-colon">:</span>
-      <div class="countdown-item"><span class="countdown-num" data-cd="m">00</span><span class="countdown-label">Min</span></div>
-      <span class="countdown-colon">:</span>
-      <div class="countdown-item"><span class="countdown-num" data-cd="s">00</span><span class="countdown-label">Seg</span></div>
-    </div>
-    <div class="popup-code">
-      <span class="popup-code-label">Tu código</span>
-      <strong class="popup-code-value">PAUSA10</strong>
-    </div>
-    <a class="popup-cta"
-       href="https://wa.me/59173913409?text=Hola%20PAUSA%2C%20quiero%20aprovechar%20la%20oferta%20del%2010%25%20off%20con%20el%20c%C3%B3digo%20PAUSA10."
-       data-offer="el 10% off"
-       data-code="PAUSA10"
-       target="_blank" rel="noopener">
-      <i class="fa fa-whatsapp" aria-hidden="true"></i>
-      Reservar con mi descuento
-    </a>
-    <button class="popup-dismiss" data-close>Ahora no, gracias</button>
-  </div>
-</div>
 
 <script>
 const WHATSAPP = '59173913409';
 
+/* Header scroll */
 (function(){
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => {
@@ -594,8 +1511,10 @@ const WHATSAPP = '59173913409';
   }, { passive: true });
 })();
 
+/* Año */
 document.getElementById('year').textContent = new Date().getFullYear();
 
+/* Menú móvil */
 (function(){
   const btn = document.getElementById('menuToggle');
   const nav = document.getElementById('mainNav');
@@ -606,6 +1525,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
   );
 })();
 
+/* Reveal */
 (function(){
   const els = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {
@@ -623,6 +1543,66 @@ document.getElementById('year').textContent = new Date().getFullYear();
   els.forEach(el => io.observe(el));
 })();
 
+/* Carrusel carta */
+(function(){
+  const track = document.getElementById('cartaTrack');
+  const nav = document.getElementById('cartaNav');
+  if (!track || !nav) return;
+
+  const items = track.children;
+  const total = items.length;
+
+  // Crea dots según cuántos "grupos" caben
+  function getPerView() {
+    return window.innerWidth <= 767 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
+  }
+  let current = 0;
+
+  function renderDots() {
+    nav.innerHTML = '';
+    const perView = getPerView();
+    const max = Math.max(1, total - perView + 1);
+    for (let i = 0; i < max; i++) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'carta-dot' + (i === current ? ' active' : '');
+      b.setAttribute('aria-label', 'Ir a la imagen ' + (i + 1));
+      b.addEventListener('click', () => { current = i; update(); });
+      nav.appendChild(b);
+    }
+  }
+
+  function update() {
+    const perView = getPerView();
+    const max = Math.max(1, total - perView);
+    if (current > max) current = max;
+    const gap = parseFloat(getComputedStyle(track).gap) || 24;
+    const itemW = track.clientWidth / perView;
+    track.style.transform = `translateX(-${current * (itemW + gap)}px)`;
+    [...nav.children].forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  renderDots();
+  update();
+  window.addEventListener('resize', () => { renderDots(); update(); });
+})();
+
+/* Video */
+(function(){
+  const block = document.getElementById('videoBlock');
+  if (!block) return;
+  function play(){
+    block.innerHTML = `
+      <iframe src="https://www.youtube.com/embed/9uOETcuFjbE?autoplay=1&rel=0"
+        title="Ambiente en Bistró Aurora"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen></iframe>`;
+  }
+  block.addEventListener('click', play);
+  block.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
+})();
+
+/* Saludo dinámico */
 function saludo(){
   const h = new Date().getHours();
   if (h >= 5 && h < 12) return 'Buenos días';
@@ -630,43 +1610,70 @@ function saludo(){
   return 'Buenas noches';
 }
 
+/* Formatear fecha */
+function formatearFecha(iso){
+  if (!iso) return '';
+  const [y, m, d] = iso.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+/* Formulario a WhatsApp */
 (function(){
-  const form = document.getElementById('pedidoForm');
+  const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
   if (!form) return;
+
+  // Fecha mínima: hoy
+  const fecha = document.getElementById('f-fecha');
+  if (fecha) {
+    const today = new Date().toISOString().split('T')[0];
+    fecha.min = today;
+  }
+
   function setStatus(txt, cls){
     status.textContent = txt;
     status.className = 'form-status ' + (cls || '');
   }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     const data = {
-      nombre:  form.nombre.value.trim(),
-      tipo:    form.tipo.value,
-      personas:form.personas.value,
-      horario: form.horario.value,
+      nombre: form.nombre.value.trim(),
+      telefono: form.telefono.value.trim(),
+      fecha: form.fecha.value,
+      hora: form.hora.value,
+      comensales: form.comensales.value,
+      ocasion: form.ocasion.value,
       mensaje: form.mensaje.value.trim(),
     };
-    if (!data.nombre) { setStatus('Escribí tu nombre para continuar.', 'err'); form.nombre.focus(); return; }
-    if (!data.tipo)   { setStatus('Elegí qué necesitás.', 'err'); form.tipo.focus(); return; }
+
+    if (!data.nombre) { setStatus('Escribí tu nombre para reservar.', 'err'); form.nombre.focus(); return; }
+    if (!data.fecha)  { setStatus('Elegí la fecha de tu visita.', 'err'); form.fecha.focus(); return; }
+    if (!data.hora)   { setStatus('Elegí una hora estimada.', 'err'); form.hora.focus(); return; }
+    if (!data.comensales) { setStatus('Indicá cuántas personas vienen.', 'err'); form.comensales.focus(); return; }
+
     const lineas = [];
-    lineas.push('*Nuevo pedido desde la web* ☕');
+    lineas.push('*Nueva reserva desde la web* 🍷');
     lineas.push('');
     lineas.push(`${saludo()} 👋`);
     lineas.push('');
     lineas.push(`• *Nombre:* ${data.nombre}`);
-    lineas.push(`• *Pedido:* ${data.tipo}`);
-    if (data.personas) lineas.push(`• *Personas:* ${data.personas}`);
-    if (data.horario)  lineas.push(`• *Horario:* ${data.horario}`);
+    if (data.telefono) lineas.push(`• *WhatsApp:* ${data.telefono}`);
+    lineas.push(`• *Fecha:* ${formatearFecha(data.fecha)}`);
+    lineas.push(`• *Hora:* ${data.hora}`);
+    lineas.push(`• *Comensales:* ${data.comensales}`);
+    if (data.ocasion) lineas.push(`• *Ocasión:* ${data.ocasion}`);
     if (data.mensaje) {
       lineas.push('');
-      lineas.push('*Mensaje:*');
+      lineas.push('*Comentario:*');
       lineas.push(data.mensaje);
     }
     lineas.push('');
-    lineas.push('_Pedido enviado desde pausa.bo_');
+    lineas.push('_Reserva enviada desde bistroaurora.bo_');
+
     const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lineas.join('\n'))}`;
-    setStatus('Abriendo WhatsApp…', 'ok');
+
+    setStatus('Abriendo WhatsApp… ✨', 'ok');
     setTimeout(() => {
       window.open(url, '_blank', 'noopener');
       setStatus('Listo. Si no se abrió, revisá el bloqueo de ventanas.', 'ok');
@@ -675,179 +1682,286 @@ function saludo(){
     }, 400);
   });
 })();
-
-/* ============================================================
-   POPUP OFERTA — PC + Móvil
-   Triggers (el primero que ocurra gana, solo una vez por visita):
-     1. Botón atrás (popstate) — armado tras primera interacción
-     2. Scroll al 50% de la página
-     3. Móvil: scroll rápido hacia arriba (plan B)
-   Una vez mostrado → deja salir al usuario tranquilamente.
-   Nueva visita → ciclo se repite.
-   Countdown persistente real (localStorage).
-   ============================================================ */
-(function () {
-  'use strict';
-
-  const DEADLINE_KEY        = 'pausa_offer_deadline';
-  const VISIT_FLAG_KEY      = 'pausa_offer_shown_visit';
-  const COUNTDOWN_HOURS     = 2;
-  const MIN_TIME_ON_PAGE    = 2000;
-  const SCROLL_TRIGGER_PCT  = 0.5;
-  const SCROLL_UP_THRESHOLD = 200;
-  const SCROLL_UP_TIME      = 300;
-
-  const popup = document.getElementById('timedPopup');
-  if (!popup) return;
-
-  const pageStart = Date.now();
-  let active = false;
-  let countdownInterval = null;
-  let historyArmed = false;
-  let lastScrollY = window.scrollY;
-  let lastScrollTime = Date.now();
-  let scrollUpAccum = 0;
-
-  function getDeadline() {
-    let d = 0;
-    try { d = parseInt(localStorage.getItem(DEADLINE_KEY) || '0', 10); } catch (e) {}
-    if (!d || d <= Date.now()) {
-      d = Date.now() + COUNTDOWN_HOURS * 3600 * 1000;
-      try { localStorage.setItem(DEADLINE_KEY, String(d)); } catch (e) {}
-    }
-    return d;
-  }
-
-  function alreadyShownThisVisit() {
-    try { return sessionStorage.getItem(VISIT_FLAG_KEY) === '1'; }
-    catch (e) { return false; }
-  }
-  function markShownThisVisit() {
-    try { sessionStorage.setItem(VISIT_FLAG_KEY, '1'); } catch (e) {}
-  }
-
-  function openPopup() {
-    if (active || alreadyShownThisVisit()) return;
-    if (Date.now() - pageStart < MIN_TIME_ON_PAGE) return;
-
-    markShownThisVisit();
-    active = true;
-    popup.classList.add('open');
-    popup.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    startCountdown();
-    setTimeout(() => {
-      const b = popup.querySelector('.popup-close');
-      if (b) b.focus();
-    }, 120);
-  }
-
-  function closePopup() {
-    if (!active) return;
-    popup.classList.remove('open');
-    popup.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    active = false;
-    if (countdownInterval) {
-      clearInterval(countdownInterval);
-      countdownInterval = null;
-    }
-  }
-
-  function startCountdown() {
-    const elH = popup.querySelector('[data-cd="h"]');
-    const elM = popup.querySelector('[data-cd="m"]');
-    const elS = popup.querySelector('[data-cd="s"]');
-    if (!elH || !elM || !elS) return;
-
-    function tick() {
-      let r = Math.max(0, getDeadline() - Date.now());
-      if (r <= 0) {
-        try { localStorage.removeItem(DEADLINE_KEY); } catch (e) {}
-        r = Math.max(0, getDeadline() - Date.now());
-      }
-      elH.textContent = String(Math.floor(r / 3600000)).padStart(2, '0');
-      elM.textContent = String(Math.floor((r % 3600000) / 60000)).padStart(2, '0');
-      elS.textContent = String(Math.floor((r % 60000) / 1000)).padStart(2, '0');
-    }
-    tick();
-    countdownInterval = setInterval(tick, 1000);
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && active) closePopup();
-  });
-  popup.querySelectorAll('[data-close]').forEach((b) => {
-    b.addEventListener('click', closePopup);
-  });
-  popup.addEventListener('click', (e) => {
-    if (e.target === popup) closePopup();
-  });
-
-  const cta = popup.querySelector('.popup-cta');
-  if (cta && cta.dataset.offer) {
-    let msg = '¡Hola PAUSA! Quiero aprovechar ' + cta.dataset.offer;
-    if (cta.dataset.code) msg += ' (código: ' + cta.dataset.code + ')';
-    msg += '. ¿Me ayudan?';
-    cta.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
-  }
-
-  /* Armar el history guard tras primera interacción */
-  function armHistoryGuard() {
-    if (historyArmed || alreadyShownThisVisit()) return;
-    try {
-      history.pushState({ pausaGuard: true }, '', location.href);
-      historyArmed = true;
-    } catch (e) {}
-  }
-
-  window.addEventListener('scroll', armHistoryGuard, { once: true, passive: true });
-  window.addEventListener('touchstart', armHistoryGuard, { once: true, passive: true });
-  window.addEventListener('click', armHistoryGuard, { once: true });
-
-  /* TRIGGER 1: botón atrás */
-  window.addEventListener('popstate', function () {
-    if (!historyArmed || alreadyShownThisVisit()) return;
-    try { history.pushState({ pausaGuard: true }, '', location.href); } catch (e) {}
-    openPopup();
-  });
-
-  /* TRIGGER 2: 50% de scroll */
-  function onScrollPercent() {
-    if (alreadyShownThisVisit()) {
-      window.removeEventListener('scroll', onScrollPercent);
-      return;
-    }
-    const pct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
-    if (pct >= SCROLL_TRIGGER_PCT) {
-      window.removeEventListener('scroll', onScrollPercent);
-      openPopup();
-    }
-  }
-  window.addEventListener('scroll', onScrollPercent, { passive: true });
-
-  /* TRIGGER 3 (móvil): scroll rápido hacia arriba */
-  const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-  if (isMobile) {
-    window.addEventListener('scroll', function () {
-      if (alreadyShownThisVisit()) return;
-      const now = Date.now();
-      const dt = now - lastScrollTime;
-      const dy = lastScrollY - window.scrollY;
-      if (dt < SCROLL_UP_TIME && dy > 0) {
-        scrollUpAccum += dy;
-      } else {
-        scrollUpAccum = 0;
-      }
-      lastScrollY = window.scrollY;
-      lastScrollTime = now;
-      if (scrollUpAccum > SCROLL_UP_THRESHOLD) {
-        scrollUpAccum = 0;
-        openPopup();
-      }
-    }, { passive: true });
-  }
-})();
 </script>
+
+<!-- TYPESOUND_PROMO:START v1 -->
+<script data-promo-runtime="v1">(function(){try{(function promoRuntime(cfg,doc,win){
+'use strict';
+var NS='__promoStudio';
+if(win[NS]) return;
+var P=!!cfg.preview;
+var S={host:null,root:null,dlg:null,native:false,open:false,done:false,prevFocus:null,saved:null,acted:false,retries:0,mem:null,tm:{},ls:[],iv:0,vis:0,fired:false};
+win[NS]={version:1,show:function(){showNow(true);},destroy:destroy};
+
+function hash(s){var h=5381;for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return (h>>>0).toString(36);}
+var KEY='ps1_'+hash([cfg.name,cfg.headline,cfg.cta,cfg.code].join('|'));
+function sget(){if(P) return S.mem; try{return win.sessionStorage.getItem(KEY);}catch(e){return S.mem;}}
+function sset(v){S.mem=v; if(P) return; try{win.sessionStorage.setItem(KEY,v);}catch(e){}}
+function later(fn,ms){var id=win.setTimeout(function(){delete S.tm[id];fn();},ms);S.tm[id]=1;return id;}
+function on(t,type,fn,o){t.addEventListener(type,fn,o);S.ls.push([t,type,fn,o]);}
+function offAll(){S.ls.forEach(function(x){try{x[0].removeEventListener(x[1],x[2],x[3]);}catch(e){}});S.ls=[];}
+function cs(e){return win.getComputedStyle(e);}
+function docH(){var b=doc.body,d=doc.documentElement;return Math.max(b?b.scrollHeight:0,d.scrollHeight);}
+function vh(){return win.innerHeight||doc.documentElement.clientHeight;}
+
+/* ---------- color ---------- */
+function rgb(s){
+  if(!s) return null; s=String(s).trim();
+  var m=/^rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)(?:[,\s/]+([\d.]+%?))?\s*\)$/i.exec(s);
+  if(m){var a=m[4]===undefined?1:(m[4].slice(-1)==='%'?parseFloat(m[4])/100:parseFloat(m[4]));return [Math.round(+m[1]),Math.round(+m[2]),Math.round(+m[3]),a];}
+  m=/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(s);
+  if(m){var h=m[1]; if(h.length===3) h=h.replace(/./g,'$&$&'); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16),1];}
+  return null;
+}
+function lum(c){var a=[c[0],c[1],c[2]].map(function(v){v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);});return 0.2126*a[0]+0.7152*a[1]+0.0722*a[2];}
+function contrast(a,b){var x=lum(a),y=lum(b);return (Math.max(x,y)+0.05)/(Math.min(x,y)+0.05);}
+function mix(a,b,t){return [0,1,2].map(function(i){return Math.round(a[i]*(1-t)+b[i]*t);});}
+function css(c){return 'rgb('+c[0]+','+c[1]+','+c[2]+')';}
+function pageBg(){
+  var e=doc.body;
+  for(;e&&e.nodeType===1;e=e.parentElement){
+    var c=rgb(cs(e).backgroundColor);
+    if(c&&c[3]>0.05){ if(c[3]<1) return mix([255,255,255],c,c[3]); return c; }
+  }
+  return [255,255,255];
+}
+function paletteColor(){
+  var score={}, first={}, best=null, bs=0;
+  function add(c,w){
+    var p=rgb(c); if(!p||p[3]<0.5) return;
+    var mx=Math.max(p[0],p[1],p[2]), mn=Math.min(p[0],p[1],p[2]);
+    if(mx<40||mn>235||(mx-mn)/mx<0.3) return;
+    var k=Math.round(p[0]/24)+','+Math.round(p[1]/24)+','+Math.round(p[2]/24);
+    score[k]=(score[k]||0)+w; if(!first[k]) first[k]=[p[0],p[1],p[2]];
+  }
+  try{
+    var rs=cs(doc.documentElement);
+    ['--accent','--primary','--brand','--color-accent','--color-primary','--accent-color','--main-color'].forEach(function(v){add(rs.getPropertyValue(v),6);});
+    var els=doc.querySelectorAll('a,button,h1,h2,h3,em,strong,[class*="btn"],[class*="button"],[class*="accent"],[class*="primary"],[class*="cta"]');
+    for(var i=0;i<els.length&&i<500;i++){
+      var c=cs(els[i]); add(c.backgroundColor,3); add(c.color,1);
+      if(parseFloat(c.borderTopWidth)>0) add(c.borderTopColor,2);
+    }
+  }catch(e){}
+  for(var k in score) if(score[k]>bs){bs=score[k];best=first[k];}
+  return best;
+}
+function theme(){
+  var T={}, body=doc.body, bcs=cs(body), t=cfg.theme||{mode:'auto'};
+  var text=rgb(bcs.color)||[31,41,55], bg=pageBg();
+  var h=doc.querySelector('h1')||doc.querySelector('h2'), hcs=h?cs(h):bcs;
+  T.font=bcs.fontFamily||'system-ui,sans-serif'; T.hfont=hcs.fontFamily||T.font;
+  var hw=parseInt(hcs.fontWeight,10); T.hw=(hw>=600?hw:700);
+  var r=14, bt=null;
+  try{bt=doc.querySelector('button,[class*="btn"],[class*="button"],a[class*="cta"]');}catch(e){}
+  if(bt){var br=cs(bt).borderTopLeftRadius, v=parseFloat(br); if(!isNaN(v)) r=v>40?999:Math.max(6,Math.min(28,v));}
+  T.r=r; T.cr=r>=999?24:r+6;
+  var acc, cardBg, tx;
+  if(t.mode==='custom'){acc=rgb(t.accent)||[225,29,72]; cardBg=rgb(t.bg)||[255,255,255]; tx=rgb(t.text)||[31,41,55];}
+  else{
+    tx=text; var dark=lum(bg)<0.4;
+    cardBg=dark?mix(bg,[255,255,255],0.07):(lum(bg)>0.85?[255,255,255]:mix(bg,[255,255,255],0.5));
+    var ln=doc.querySelector('a[href]'); acc=paletteColor()||(ln&&rgb(cs(ln).color))||tx;
+    if(contrast(tx,cardBg)<4.5) tx=dark?[245,245,245]:[17,17,17];
+  }
+  var dk=lum(cardBg)<0.4, n=0;
+  while(contrast(acc,cardBg)<3&&n<14){acc=mix(acc,dk?[255,255,255]:[0,0,0],0.12);n++;}
+  var on=contrast([255,255,255],acc)>=contrast([17,17,17],acc)?[255,255,255]:[17,17,17];
+  n=0; while(contrast(on,acc)<4.5&&n<14){acc=mix(acc,on[0]===255?[0,0,0]:[255,255,255],0.1);n++;}
+  T.acc=acc; T.on=on; T.card=cardBg; T.tx=tx; T.muted=mix(tx,cardBg,0.35); T.line=mix(tx,cardBg,0.82);
+  T.btnBorder=contrast(acc,cardBg)>=3?acc:tx;
+  return T;
+}
+/* ---------- destino ---------- */
+function destHref(){
+  var d=cfg.dest||{type:'none'}, enc=encodeURIComponent;
+  if(d.type==='wa'&&d.value) return {href:'https://wa.me/'+String(d.value).replace(/\D/g,'')+(d.msg?'?text='+enc(d.msg):''),blank:true,label:'WhatsApp'};
+  if(d.type==='tel'&&d.value) return {href:'tel:+'+String(d.value).replace(/\D/g,''),blank:false,label:'una llamada'};
+  if(d.type==='url'&&d.value&&/^(https?:\/\/|\/|#|\.{1,2}\/|[\w-]+(\/|\.|$))/i.test(d.value)&&!/^\s*(javascript|data|vbscript):/i.test(d.value)){
+    return {href:d.value,blank:/^https?:/i.test(d.value),label:'el enlace'};
+  }
+  return null;
+}
+/* ---------- disparadores ---------- */
+function init(){
+  if(sget()) return;
+  if(cfg.days>0&&!P){try{var t=+win.localStorage.getItem(KEY+'_t'); if(t&&Date.now()-t<cfg.days*864e5) return;}catch(e){}}
+  if(cfg.previewNow){later(function(){showNow(true);},300);return;}
+  var tr=cfg.trigger||{mode:'first',scroll:40,secs:12};
+  var useS=tr.mode==='scroll'||tr.mode==='first', useT=tr.mode==='time'||tr.mode==='first';
+  var secs=Math.max(P?1:3,+tr.secs||12), pct=+tr.scroll||40;
+  if(useS&&tr.mode==='scroll'&&docH()-vh()<=40) useT=true;
+  function act(){S.acted=true;}
+  function fire(){if(S.fired||S.done) return; S.fired=true; stopTriggers(); attempt();}
+  function check(){
+    if(!S.acted&&!P) return;
+    var h=docH()-vh(); if(h<=0) return;
+    var y=win.pageYOffset||doc.documentElement.scrollTop||0;
+    if(y/h*100>=pct) fire();
+  }
+  if(useS){
+    ['wheel','touchstart','touchmove','keydown','mousedown'].forEach(function(e){on(win,e,act,{passive:true,capture:true});});
+    on(win,'scroll',check,{passive:true});
+  }
+  if(useT){
+    S.iv=win.setInterval(function(){
+      if(doc.visibilityState==='hidden') return;
+      S.vis+=250; if(S.vis>=secs*1000) fire();
+    },250);
+  }
+}
+function stopTriggers(){offAll(); if(S.iv){win.clearInterval(S.iv);S.iv=0;}}
+function blocked(){
+  var a=doc.activeElement;
+  if(a&&(/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)||a.isContentEditable)) return true;
+  if(doc.querySelector('dialog[open]')) return true;
+  var m=doc.querySelector('[aria-modal="true"]');
+  return !!(m&&m!==S.host&&(m.offsetWidth||m.offsetHeight));
+}
+function attempt(){
+  if(P||!blocked()){showNow();return;}
+  if(S.retries++<3) later(attempt,4000);
+}
+/* ---------- ventana ---------- */
+function lock(){
+  var h=doc.documentElement, b=doc.body;
+  S.saved={h:h.getAttribute('style'),b:b.getAttribute('style')};
+  var sw=win.innerWidth-h.clientWidth, pr=parseFloat(cs(h).paddingRight)||0;
+  h.style.overflow='hidden'; b.style.overflow='hidden';
+  if(sw>0) h.style.paddingRight=(pr+sw)+'px';
+}
+function unlock(){
+  if(!S.saved) return;
+  var h=doc.documentElement, b=doc.body;
+  if(S.saved.h===null) h.removeAttribute('style'); else h.setAttribute('style',S.saved.h);
+  if(S.saved.b===null) b.removeAttribute('style'); else b.setAttribute('style',S.saved.b);
+  S.saved=null;
+}
+function el(tag,cls,txt){var e=doc.createElement(tag); if(cls) e.className=cls; if(txt!==undefined) e.textContent=txt; return e;}
+function focusables(root){return [].slice.call(root.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])'));}
+function showNow(force){
+  if(S.open||(S.done&&!force)) return;
+  try{build();}catch(e){cleanup();}
+}
+function build(){
+  var T=theme(), large=cfg.size==='large', img=cfg.img||'', dest=destHref();
+  S.prevFocus=doc.activeElement;
+  var host=doc.createElement('div'); host.setAttribute('data-promo-studio',''); host.style.cssText='all:initial;position:fixed;left:0;top:0;width:0;height:0;z-index:2147483647';
+  var root=host.attachShadow({mode:'open'});
+  var test=doc.createElement('dialog'); S.native=typeof test.showModal==='function';
+  var c=function(x){return css(x);};
+  var sheet=
+   ':host{all:initial}*{box-sizing:border-box}'+
+   '.dlg{margin:0;border:0;position:fixed;left:0;top:0;width:100%;height:100%;max-width:none;max-height:none;background:rgba(0,0,0,.58);'+
+   'padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));'+
+   'align-items:center;justify-content:center;overflow:hidden;font:16px/1.45 '+T.font+';color:'+c(T.tx)+';animation:pfade .25s ease-out}'+
+   'dialog.dlg:not([open]){display:none}dialog.dlg[open],div.dlg{display:flex}'+
+   '.card{position:relative;display:flex;flex-direction:column;width:min('+(large?'860px':'460px')+',100%);max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);'+
+   (large?'min-height:min(86vh,680px);':'')+'background:'+c(T.card)+';color:'+c(T.tx)+';border-radius:'+T.cr+'px;box-shadow:0 24px 80px rgba(0,0,0,.4);overflow:hidden;animation:prise .3s cubic-bezier(.2,.8,.2,1)}'+
+   '.sc{overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;flex:1;display:flex;flex-direction:column;justify-content:center}'+
+   '.sc.hasimg{display:flex}'+
+   '.im{display:block;width:100%;height:'+(large?'200px':'170px')+';object-fit:cover;flex:none;background:'+c(T.line)+'}'+
+   '.b{padding:clamp(28px,6vw,48px) clamp(20px,5vw,40px) clamp(22px,4vw,34px)}'+
+   '.t{margin:0 36px .5em 0;font-family:'+T.hfont+';font-weight:'+T.hw+';font-size:'+(large?'clamp(30px,6vw,48px)':'clamp(25px,6.2vw,34px)')+';line-height:1.12;color:'+c(T.tx)+';outline:0}'+
+   '.p{margin:0 0 1.1em;font-size:17px;line-height:1.5;color:'+c(T.muted)+'}'+
+   '.code{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 1.2em;padding:10px 12px;border:2px dashed '+c(T.line)+';border-radius:'+Math.min(T.r,16)+'px}'+
+   '.code b{font-size:20px;letter-spacing:.08em;word-break:break-all}'+
+   '.code button{flex:none}'+
+   '.ac{display:flex;flex-direction:column;gap:10px}'+
+   '.cta,.no,.cp{font:700 16px/1.2 '+T.font+';display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:'+T.r+'px;text-decoration:none;cursor:pointer;text-align:center}'+
+   '.cta{background:'+c(T.acc)+';color:'+c(T.on)+';border:2px solid '+c(T.btnBorder)+'}'+
+   '.no,.cp{background:transparent;color:'+c(T.tx)+';border:2px solid '+c(T.line)+'}'+
+   '.cp{min-height:44px;padding:0 14px;font-size:14px}'+
+   '.x{position:absolute;top:8px;right:8px;width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:999px;background:'+c(mix(T.card,T.tx,0.1))+';color:'+c(T.tx)+';font:400 26px/1 '+T.font+';cursor:pointer;padding:0;z-index:2}'+
+   '.note{margin:0;padding:12px 14px;border-radius:'+Math.min(T.r,14)+'px;background:'+c(mix(T.card,T.tx,0.08))+';font-size:14px;overflow-wrap:anywhere}'+
+   '.live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}'+
+   ':focus-visible{outline:3px solid '+c(T.acc)+';outline-offset:2px}'+
+   '@media(min-width:560px){.ac{flex-direction:row}.ac>*{flex:1}}'+
+   (large?'@media(min-width:760px){.sc.hasimg{flex-direction:row}.sc.hasimg .im{width:42%;height:auto;min-height:100%}.sc.hasimg .b{flex:1;display:flex;flex-direction:column;justify-content:center}}':'')+
+   '@keyframes pfade{from{background:rgba(0,0,0,0)}to{background:rgba(0,0,0,.58)}}@keyframes prise{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}'+
+   '@media(prefers-reduced-motion:reduce){.dlg,.card{animation:none}}'+
+   '@media print{:host{display:none!important}}';
+  var st=doc.createElement('style'); st.textContent=sheet; root.appendChild(st);
+  var dlg=S.native?doc.createElement('dialog'):el('div');
+  dlg.className='dlg'; dlg.setAttribute('aria-labelledby','pt'); if(cfg.text) dlg.setAttribute('aria-describedby','pd');
+  if(!S.native){dlg.setAttribute('role','dialog');dlg.setAttribute('aria-modal','true');}
+  var card=el('div','card'), sc=el('div','sc'+(img?' hasimg':''));
+  if(img){var im=el('img','im'); im.alt=''; im.src=img; sc.appendChild(im);}
+  var b=el('div','b'), h=el('h2','t',cfg.headline||''); h.id='pt'; h.tabIndex=-1; b.appendChild(h);
+  if(cfg.text){var p=el('p','p',cfg.text); p.id='pd'; b.appendChild(p);}
+  var live=el('div','live'); live.setAttribute('aria-live','polite'); live.setAttribute('role','status');
+  if(cfg.code){
+    var cd=el('div','code'), cb=el('b',null,cfg.code), cp=el('button','cp','Copiar'); cp.type='button'; cp.setAttribute('aria-label','Copiar el c\u00f3digo '+cfg.code);
+    cp.addEventListener('click',function(){copy(cfg.code,function(ok){live.textContent=ok?'C\u00f3digo copiado':'No se pudo copiar'; cp.textContent=ok?'Copiado':'Copiar'; later(function(){cp.textContent='Copiar';},1800);});});
+    cd.appendChild(cb); cd.appendChild(cp); b.appendChild(cd);
+  }
+  var ac=el('div','ac'), cta;
+  if(dest){
+    cta=el('a','cta',cfg.cta||'Aceptar'); cta.href=dest.href; if(dest.blank){cta.target='_blank';cta.rel='noopener noreferrer';}
+  }else{cta=el('button','cta',cfg.cta||'Aceptar'); cta.type='button';}
+  cta.addEventListener('click',function(e){
+    if(P){
+      e.preventDefault(); var msg=(cfg.dest&&cfg.dest.msg)||'';
+      ac.replaceChildren(); var n=el('p','note',dest?'Vista previa: se abrir\u00eda '+dest.label+(msg?' con este mensaje: '+msg:'.'):'Vista previa: el bot\u00f3n solo cierra la ventana.'); n.setAttribute('role','status'); ac.appendChild(n); return;
+    }
+    sset('aceptado'); S.done=true; later(function(){close('aceptado');},0);
+  });
+  var no=el('button','no',cfg.decline||'No, gracias'); no.type='button'; no.addEventListener('click',function(){close('cerrado');});
+  ac.appendChild(cta); ac.appendChild(no); b.appendChild(ac); b.appendChild(live); sc.appendChild(b);
+  var x=el('button','x','\u00d7'); x.type='button'; x.setAttribute('aria-label','Cerrar'); x.addEventListener('click',function(){close('cerrado');});
+  card.appendChild(sc); card.appendChild(x); dlg.appendChild(card); root.appendChild(dlg);
+  var down=null;
+  dlg.addEventListener('pointerdown',function(e){down=e.target;});
+  dlg.addEventListener('click',function(e){if(e.target===dlg&&down===dlg) close('cerrado');});
+  if(S.native) dlg.addEventListener('cancel',function(e){e.preventDefault();close('cerrado');});
+  on(doc,'keydown',function(e){
+    if(!S.open) return;
+    if(e.key==='Escape'&&!S.native){e.preventDefault();close('cerrado');return;}
+    if(e.key==='Tab'&&!S.native){
+      var f=focusables(root); if(!f.length) return; var act=root.activeElement, i=f.indexOf(act);
+      if(e.shiftKey&&(i<=0)){e.preventDefault();f[f.length-1].focus();}
+      else if(!e.shiftKey&&(i===f.length-1||i<0)){e.preventDefault();f[0].focus();}
+    }
+  },true);
+  S.host=host; S.root=root; S.dlg=dlg;
+  (doc.body||doc.documentElement).appendChild(host);
+  lock(); S.open=true; sset('visto');
+  if(cfg.days>0&&!P){try{win.localStorage.setItem(KEY+'_t',String(Date.now()));}catch(e){}}
+  if(S.native) dlg.showModal();
+  try{h.focus({preventScroll:true});}catch(e){h.focus();}
+}
+function copy(text,cb){
+  try{
+    if(win.navigator.clipboard&&win.navigator.clipboard.writeText){win.navigator.clipboard.writeText(text).then(function(){cb(true);},function(){fallbackCopy(text,cb);});return;}
+  }catch(e){}
+  fallbackCopy(text,cb);
+}
+function fallbackCopy(text,cb){
+  try{
+    var ta=el('textarea'); ta.value=text; ta.setAttribute('readonly',''); ta.style.cssText='position:fixed;left:-9999px;top:0';
+    S.root.appendChild(ta); ta.select(); var ok=doc.execCommand('copy'); ta.remove(); cb(!!ok);
+  }catch(e){cb(false);}
+}
+function close(state){
+  if(!S.open) return;
+  S.open=false; S.done=true; sset(state);
+  try{if(S.native&&S.dlg.open) S.dlg.close();}catch(e){}
+  cleanup();
+  var f=S.prevFocus;
+  try{if(f&&f!==doc.body&&doc.contains(f)&&f.focus) f.focus({preventScroll:true});}catch(e){}
+}
+function cleanup(){
+  offAll(); unlock();
+  if(S.host&&S.host.parentNode) S.host.parentNode.removeChild(S.host);
+  S.host=S.root=S.dlg=null; S.open=false;
+}
+function destroy(){
+  stopTriggers(); for(var k in S.tm) win.clearTimeout(+k); S.tm={}; cleanup(); S.done=true;
+  try{delete win[NS];}catch(e){win[NS]=undefined;}
+}
+function start(){init();}
+if(doc.readyState==='loading') doc.addEventListener('DOMContentLoaded',start,{once:true}); else start();
+})({"v":1,"name":"Bistr\u00f3 Aurora","headline":"Una bebida de regalo con tu primer pedido","text":"P\u00eddela en un minuto, sin complicaciones.","code":"","cta":"Canjear por WhatsApp","decline":"No, gracias","dest":{"type":"wa","value":"59173913409","msg":"\u00a1Hola! Quisiera aprovechar \u00abUna bebida de regalo con tu primer pedido\u00bb."},"trigger":{"mode":"first","scroll":40,"secs":12},"size":"card","theme":{"mode":"auto"},"img":"data:image/webp;base64,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","days":0},document,window);}catch(e){if(window.console&&console.warn)console.warn("PromoStudio:",e);}})();</script>
+<!-- TYPESOUND_PROMO:END -->
 </body>
 </html>
