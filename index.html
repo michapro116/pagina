@@ -1,1283 +1,736 @@
 <!DOCTYPE html>
-<html lang="es"><head>
+<html lang="es">
+<head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Raíz — Estudio de Yoga en La Paz. Clases de Hatha, Vinyasa, Yin, meditación y prenatal. Reservá tu primera clase de prueba por WhatsApp.">
-<meta name="theme-color" content="#f5f1e8">
-<title>Raíz — Estudio de Yoga &amp; Bienestar · La Paz</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taquería El Fuego · Tacos al carbón en CDMX</title>
+<meta name="description" content="Taquería El Fuego: tacos al carbón, quesadillas y salsas de la casa en la Roma Norte, CDMX. Pide a domicilio por WhatsApp.">
 
 <style>
-/* ================= VARIABLES ================= */
-:root{
-  --crema:#f5f1e8;
-  --arena:#e8dfcc;
-  --arena-osc:#d4c7a8;
-  --salvia:#7d8f6f;
-  --salvia-claro:#a8b5a0;
-  --bosque:#2e3a2b;
-  --bosque-suave:#3d4a39;
-  --texto:#3a3a35;
-  --texto-suave:#7a7a72;
-  --blanco:#ffffff;
-  --sombra:0 20px 60px -20px rgba(46,58,43,.25);
-  --sombra-suave:0 8px 30px -10px rgba(46,58,43,.15);
-  --radius:12px;
-  --radius-lg:20px;
-  --f-serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --f-sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --ease:cubic-bezier(.4,.14,.3,1);
-}
+  :root{
+    --fuego:#e8452c;
+    --fuego-oscuro:#b52f1b;
+    --carbon:#1a1614;
+    --carbon-2:#241f1c;
+    --crema:#fdf6ec;
+    --texto:#2b2320;
+    --gris:#6b5f58;
+    --borde:#e8ddd0;
+    --sombra:0 12px 32px rgba(26,22,20,.12);
+    --radio:18px;
+  }
 
-/* ================= RESET ================= */
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:var(--f-sans);
-  font-weight:400;
-  font-size:16px;
-  line-height:1.7;
-  color:var(--texto);
-  background:var(--crema);
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;height:auto;display:block}
-a{text-decoration:none;color:inherit;transition:color .3s var(--ease)}
-button{font-family:inherit;cursor:pointer}
-::selection{background:var(--salvia);color:var(--crema)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:var(--crema);
+    color:var(--texto);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .contenedor{width:min(1120px,92%);margin-inline:auto}
 
-.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.container{width:100%;max-width:1200px;margin:0 auto;padding:0 32px}
-
-/* ================= TIPOGRAFÍA ================= */
-h1,h2,h3,h4{
-  font-family:var(--f-serif);
-  font-weight:400;
-  color:var(--bosque);
-  line-height:1.1;
-  letter-spacing:-.01em;
-  margin:0;
-}
-.eyebrow{
-  font-family:var(--f-sans);
-  font-size:11px;
-  font-weight:500;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--salvia);
-  margin:0 0 24px;
-}
-
-/* ================= BOTONES ================= */
-.btn{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--f-sans);
-  font-size:13px;font-weight:500;
-  letter-spacing:2px;text-transform:uppercase;
-  padding:16px 32px;
-  border-radius:50px;
-  border:0;
-  transition:all .4s var(--ease);
-  cursor:pointer;
-}
-.btn-primary{
-  background:var(--bosque);color:var(--crema);
-  box-shadow:0 10px 30px -10px rgba(46,58,43,.45);
-}
-.btn-primary:hover{
-  background:var(--salvia);
-  transform:translateY(-2px);
-  box-shadow:0 15px 35px -10px rgba(125,143,111,.55);
-}
-.btn-outline{
-  background:transparent;color:var(--bosque);
-  border:1px solid rgba(46,58,43,.25);
-}
-.btn-outline:hover{
-  background:var(--bosque);color:var(--crema);border-color:var(--bosque);
-}
-.btn-wa{background:#25d366;color:#fff}
-.btn-wa:hover{background:#1eb856;color:#fff;transform:translateY(-2px)}
-
-/* ================= HEADER ================= */
-.site-header{
-  position:absolute;top:0;left:0;right:0;z-index:30;
-  padding:28px 0;
-}
-.site-header .container{display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{
-  display:flex;align-items:center;gap:10px;
-  font-family:var(--f-serif);
-  font-size:28px;font-weight:500;
-  letter-spacing:2px;
-  color:var(--blanco);
-}
-.logo-mark{
-  width:32px;height:32px;
-  display:inline-flex;align-items:center;justify-content:center;
-  border-radius:50%;
-  background:rgba(255,255,255,.15);
-  backdrop-filter:blur(8px);
-  font-size:16px;
-}
-.nav{display:flex;gap:36px;align-items:center}
-.nav a{
-  font-size:13px;font-weight:400;letter-spacing:1.5px;
-  color:rgba(255,255,255,.9);
-  position:relative;
-}
-.nav a::after{
-  content:'';position:absolute;left:0;right:0;bottom:-6px;
-  height:1px;background:var(--arena);
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .4s var(--ease);
-}
-.nav a:hover{color:var(--blanco)}
-.nav a:hover::after{transform:scaleX(1)}
-.nav-cta{
-  padding:10px 22px;
-  border-radius:50px;
-  background:var(--crema);
-  color:var(--bosque)!important;
-  font-weight:500;
-}
-.nav-cta::after{display:none!important}
-.nav-cta:hover{background:var(--blanco);transform:translateY(-1px)}
-.menu-toggle{
-  display:none;background:none;border:0;
-  color:var(--blanco);font-size:22px;padding:6px;
-}
-
-/* ================= 1. HERO ================= */
-.hero{
-  position:relative;
-  min-height:100vh;
-  display:flex;align-items:center;
-  overflow:hidden;
-  background:var(--bosque);
-}
-.hero-bg{
-  position:absolute;inset:0;z-index:0;
-  background:
-    linear-gradient(135deg, rgba(46,58,43,.78) 0%, rgba(46,58,43,.5) 55%, rgba(46,58,43,.3) 100%),
-    url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1920&q=80')
-    center center / cover no-repeat;
-}
-.hero-bg::after{
-  content:'';
-  position:absolute;inset:0;
-  background:
-    radial-gradient(circle at 15% 85%, rgba(168,181,160,.25) 0%, transparent 50%),
-    radial-gradient(circle at 85% 15%, rgba(212,199,168,.18) 0%, transparent 50%);
-  pointer-events:none;
-}
-.hero-inner{
-  position:relative;z-index:1;
-  padding:160px 0 100px;
-  max-width:760px;
-  color:var(--crema);
-}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:14px;
-  font-size:11px;font-weight:500;letter-spacing:5px;
-  text-transform:uppercase;
-  color:var(--arena);
-  margin:0 0 32px;
-}
-.hero-eyebrow::before{
-  content:'';width:40px;height:1px;background:var(--arena);
-}
-.hero h1{
-  color:var(--crema);
-  font-size:clamp(52px, 7vw, 96px);
-  font-weight:300;
-  line-height:1.02;
-  letter-spacing:-.015em;
-  margin:0 0 32px;
-}
-.hero h1 em{
-  font-style:italic;
-  font-weight:400;
-  color:var(--arena);
-}
-.hero-sub{
-  max-width:540px;
-  font-size:17px;
-  line-height:1.8;
-  color:rgba(245,241,232,.85);
-  margin:0 0 44px;
-}
-.hero-buttons{display:flex;gap:16px;flex-wrap:wrap}
-
-/* ================= 2. FORMACIONES / ALIADOS ================= */
-.partners{
-  padding:60px 0;
-  background:var(--arena);
-  border-bottom:1px solid rgba(46,58,43,.08);
-}
-.partners-inner{
-  display:flex;flex-direction:column;gap:28px;
-  align-items:center;text-align:center;
-}
-.partners-label{
-  font-size:11px;font-weight:500;letter-spacing:5px;
-  text-transform:uppercase;
-  color:var(--bosque);
-  opacity:.7;
-}
-.partners-list{
-  display:flex;flex-wrap:wrap;gap:50px;
-  justify-content:center;align-items:center;
-}
-.partner-name{
-  font-family:var(--f-serif);
-  font-size:22px;font-weight:400;
-  letter-spacing:1px;
-  color:var(--bosque);
-  opacity:.7;
-  transition:opacity .3s var(--ease);
-}
-.partner-name:hover{opacity:1}
-.partner-name.serif-i{font-style:italic;font-size:24px}
-.partner-name.caps{letter-spacing:4px;font-size:14px;text-transform:uppercase;font-family:var(--f-sans);font-weight:500}
-
-/* ================= 3. TESTIMONIO ================= */
-.testimonial{
-  padding:120px 0;
-  background:var(--crema);
-  position:relative;
-}
-.testimonial-inner{
-  max-width:900px;margin:0 auto;
-  text-align:center;
-  position:relative;
-}
-.quote-mark{
-  font-family:var(--f-serif);
-  font-size:120px;line-height:.7;
-  color:var(--salvia);
-  opacity:.25;
-  margin:0 0 -20px;
-}
-.testimonial-quote{
-  font-family:var(--f-serif);
-  font-size:clamp(28px, 3.8vw, 42px);
-  font-style:italic;
-  font-weight:300;
-  line-height:1.35;
-  color:var(--bosque);
-  margin:0 0 40px;
-  letter-spacing:-.005em;
-}
-.testimonial-meta{
-  display:flex;align-items:center;justify-content:center;gap:16px;
-}
-.testimonial-photo{
-  width:56px;height:56px;border-radius:50%;
-  overflow:hidden;
-  border:2px solid var(--arena-osc);
-}
-.testimonial-photo img{width:100%;height:100%;object-fit:cover}
-.testimonial-name{
-  text-align:left;
-}
-.testimonial-name strong{
-  display:block;
-  font-size:14px;font-weight:600;letter-spacing:1px;
-  color:var(--bosque);
-}
-.testimonial-name span{
-  display:block;
-  font-size:12px;font-weight:400;letter-spacing:1px;
-  color:var(--texto-suave);
-  margin-top:2px;
-}
-
-/* ================= 4. FEATURE BLOCKS ================= */
-.features-block{
-  padding:40px 0 120px;
-  background:var(--crema);
-}
-.feature-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:80px;
-  align-items:center;
-  margin-bottom:120px;
-}
-.feature-row:last-child{margin-bottom:0}
-.feature-row.reverse .feature-text{order:2}
-.feature-row.reverse .feature-media{order:1}
-.feature-media{
-  position:relative;
-  border-radius:var(--radius-lg);
-  overflow:hidden;
-  aspect-ratio:4/5;
-  box-shadow:var(--sombra);
-}
-.feature-media img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform 1.2s var(--ease);
-}
-.feature-media:hover img{transform:scale(1.04)}
-.feature-media::after{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(180deg, transparent 60%, rgba(46,58,43,.15));
-  pointer-events:none;
-}
-.feature-text .eyebrow{color:var(--salvia)}
-.feature-text h2{
-  font-size:clamp(34px, 4vw, 52px);
-  font-weight:400;
-  margin:0 0 24px;
-}
-.feature-text p{
-  font-size:17px;line-height:1.8;
-  color:var(--texto-suave);
-  margin:0 0 32px;
-  max-width:480px;
-}
-.link-arrow{
-  display:inline-flex;align-items:center;gap:12px;
-  font-size:13px;font-weight:500;
-  letter-spacing:2px;text-transform:uppercase;
-  color:var(--bosque);
-  padding-bottom:6px;
-  border-bottom:1px solid var(--bosque);
-  transition:all .3s var(--ease);
-}
-.link-arrow:hover{gap:20px;color:var(--salvia);border-color:var(--salvia)}
-.link-arrow i{font-size:12px}
-
-/* ================= 5. CLASES GRID ================= */
-.classes{
-  padding:120px 0;
-  background:var(--arena);
-}
-.classes-head{
-  text-align:center;
-  max-width:640px;
-  margin:0 auto 80px;
-}
-.classes-head h2{
-  font-size:clamp(38px, 5vw, 62px);
-  font-weight:400;
-  margin:0 0 24px;
-  line-height:1.08;
-}
-.classes-head h2 em{
-  font-style:italic;
-  color:var(--salvia);
-}
-.classes-head p{
-  font-size:17px;color:var(--texto-suave);
-  margin:0;line-height:1.8;
-}
-.classes-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:28px;
-}
-.class-card{
-  background:var(--crema);
-  border-radius:var(--radius-lg);
-  padding:36px 32px 32px;
-  transition:all .4s var(--ease);
-  position:relative;
-  overflow:hidden;
-}
-.class-card::before{
-  content:'';
-  position:absolute;top:0;left:0;right:0;
-  height:3px;
-  background:var(--salvia);
-  transform:scaleX(0);
-  transform-origin:left;
-  transition:transform .5s var(--ease);
-}
-.class-card:hover{
-  transform:translateY(-6px);
-  box-shadow:var(--sombra);
-}
-.class-card:hover::before{transform:scaleX(1)}
-.class-icon{
-  width:56px;height:56px;
-  border-radius:50%;
-  background:rgba(125,143,111,.15);
-  color:var(--salvia);
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:22px;
-  margin-bottom:24px;
-}
-.class-card h3{
-  font-size:28px;font-weight:400;
-  margin:0 0 12px;
-}
-.class-card p{
-  font-size:15px;line-height:1.75;
-  color:var(--texto-suave);
-  margin:0 0 24px;
-  min-height:80px;
-}
-.class-meta{
-  display:flex;justify-content:space-between;align-items:center;
-  padding-top:20px;
-  border-top:1px solid rgba(46,58,43,.1);
-  font-size:12px;font-weight:500;
-  letter-spacing:1px;
-  color:var(--texto-suave);
-  text-transform:uppercase;
-}
-.class-meta strong{color:var(--bosque);font-weight:600}
-
-/* ================= 6. FORMULARIO / CTA ================= */
-.book{
-  position:relative;
-  padding:120px 0;
-  overflow:hidden;
-  background:var(--bosque);
-  color:var(--crema);
-}
-.book::before{
-  content:'';
-  position:absolute;inset:0;
-  background:
-    linear-gradient(135deg, rgba(46,58,43,.92) 0%, rgba(46,58,43,.85) 100%),
-    url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1920&q=80')
-    center center / cover fixed no-repeat;
-  z-index:0;
-}
-.book .container{position:relative;z-index:1}
-.book-inner{
-  display:grid;
-  grid-template-columns:1fr 1.1fr;
-  gap:80px;
-  align-items:center;
-}
-.book-lead .eyebrow{color:var(--arena)}
-.book-lead h2{
-  color:var(--crema);
-  font-size:clamp(38px, 5vw, 62px);
-  font-weight:300;
-  line-height:1.05;
-  margin:0 0 28px;
-}
-.book-lead h2 em{
-  font-style:italic;
-  color:var(--arena);
-  font-weight:400;
-}
-.book-lead p{
-  font-size:17px;line-height:1.8;
-  color:rgba(245,241,232,.78);
-  margin:0 0 40px;
-  max-width:420px;
-}
-.book-info{
-  list-style:none;padding:0;margin:0;
-  display:flex;flex-direction:column;gap:14px;
-}
-.book-info li{
-  display:flex;align-items:center;gap:14px;
-  font-size:14px;
-  color:rgba(245,241,232,.85);
-}
-.book-info i{
-  width:36px;height:36px;
-  border-radius:50%;
-  background:rgba(245,241,232,.1);
-  display:inline-flex;align-items:center;justify-content:center;
-  color:var(--arena);font-size:14px;
-}
-
-/* Formulario */
-.form{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-  background:var(--crema);
-  border-radius:var(--radius-lg);
-  padding:44px 40px 40px;
-  box-shadow:0 30px 80px -30px rgba(0,0,0,.5);
-  color:var(--bosque);
-}
-.form-title{
-  grid-column:1/-1;
-  margin:0 0 12px;
-  font-family:var(--f-serif);
-  font-size:26px;
-  font-weight:500;
-  color:var(--bosque);
-  letter-spacing:-.01em;
-}
-.form-full{grid-column:1/-1}
-.field{position:relative}
-.field label{
-  display:block;
-  font-size:11px;font-weight:600;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  color:var(--texto-suave);
-  margin-bottom:8px;
-}
-.field label .opt{
-  font-weight:400;text-transform:none;
-  letter-spacing:0;
-  color:var(--texto-suave);
-  opacity:.7;
-  margin-left:4px;
-}
-.form input,
-.form select,
-.form textarea{
-  width:100%;
-  font-family:var(--f-sans);
-  font-size:15px;
-  color:var(--bosque);
-  background:var(--blanco);
-  border:1px solid rgba(46,58,43,.12);
-  border-radius:8px;
-  padding:12px 16px;
-  outline:none;
-  transition:border-color .25s var(--ease), box-shadow .25s var(--ease);
-  appearance:none;
-  -webkit-appearance:none;
-}
-.form select{
-  background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a7a72' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 14px center;
-  background-size:16px;
-  padding-right:40px;
-}
-.form input:focus,
-.form select:focus,
-.form textarea:focus{
-  border-color:var(--salvia);
-  box-shadow:0 0 0 3px rgba(125,143,111,.12);
-}
-.form input::placeholder,
-.form textarea::placeholder{color:rgba(58,58,53,.35)}
-.form textarea{resize:vertical;min-height:100px;padding-top:14px}
-
-.form-submit{
-  grid-column:1/-1;
-  margin-top:8px;
-}
-.form-submit .btn{
-  width:100%;justify-content:center;
-  padding:16px 24px;
-  font-size:13px;
-}
-.form-privacy{
-  grid-column:1/-1;
-  font-size:11px;
-  color:var(--texto-suave);
-  line-height:1.6;
-  text-align:center;
-  margin:0;
-}
-.form-status{
-  grid-column:1/-1;
-  margin:4px 0 0;
-  font-size:13px;
-  letter-spacing:.3px;
-  text-align:center;
-  min-height:1.4em;
-  color:var(--bosque);
-}
-.form-status.ok{color:#4c7a4c}
-.form-status.err{color:#c0392b}
-
-/* ================= 7. FOOTER ================= */
-.footer{
-  background:var(--bosque);
-  color:var(--crema);
-  padding:80px 0 30px;
-}
-.footer-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:60px;
-  padding-bottom:60px;
-  border-bottom:1px solid rgba(245,241,232,.12);
-}
-.footer-brand .logo{
-  color:var(--crema);
-  font-size:28px;
-  margin-bottom:20px;
-}
-.footer-brand p{
-  color:rgba(245,241,232,.7);
-  font-size:15px;
-  line-height:1.8;
-  margin:0 0 24px;
-  max-width:340px;
-}
-.footer h5{
-  font-family:var(--f-sans);
-  font-size:11px;font-weight:600;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--arena);
-  margin:0 0 22px;
-}
-.footer ul{list-style:none;padding:0;margin:0}
-.footer ul li{margin-bottom:12px}
-.footer ul a{
-  color:rgba(245,241,232,.78);
-  font-size:14px;
-}
-.footer ul a:hover{color:var(--arena)}
-.footer-social{display:flex;gap:12px;margin-top:4px}
-.footer-social a{
-  width:40px;height:40px;
-  border-radius:50%;
-  background:rgba(245,241,232,.08);
-  display:inline-flex;align-items:center;justify-content:center;
-  color:var(--crema);
-  font-size:14px;
-  transition:all .3s var(--ease);
-}
-.footer-social a:hover{
-  background:var(--arena);
-  color:var(--bosque);
-  transform:translateY(-2px);
-}
-.footer-bottom{
-  padding-top:30px;
-  text-align:center;
-  font-size:12px;
-  letter-spacing:1px;
-  color:rgba(245,241,232,.5);
-}
-
-/* ================= WHATSAPP FLOAT ================= */
-.wa-float{
-  position:fixed;right:24px;bottom:24px;z-index:50;
-  display:flex;align-items:center;gap:10px;
-  background:#25d366;color:#fff;
-  font-family:var(--f-sans);
-  font-size:13px;font-weight:500;
-  letter-spacing:1px;
-  padding:14px 22px 14px 18px;
-  border-radius:50px;
-  box-shadow:0 15px 40px -10px rgba(37,211,102,.55);
-  transition:all .4s var(--ease);
-}
-.wa-float:hover{
-  transform:translateY(-3px);
-  box-shadow:0 20px 45px -10px rgba(37,211,102,.7);
-}
-.wa-float i{font-size:20px}
-
-/* ================= REVEAL ================= */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.reveal.in{opacity:1;transform:none}
-
-/* ================= TABLET ================= */
-@media (max-width:1024px){
-  .container{padding:0 28px}
-  .hero h1{font-size:clamp(44px, 7vw, 68px)}
-  .hero-sub{font-size:16px}
-
-  .testimonial{padding:90px 0}
-  .quote-mark{font-size:90px}
-
-  .feature-row{gap:56px;margin-bottom:90px}
-  .feature-text h2{font-size:clamp(30px, 4vw, 42px)}
-
-  .classes-grid{grid-template-columns:repeat(2,1fr)}
-  .classes{padding:90px 0}
-  .classes-head{margin-bottom:60px}
-
-  .book-inner{grid-template-columns:1fr;gap:56px}
-  .form{padding:38px 34px}
-
-  .footer-grid{grid-template-columns:1fr 1fr;gap:44px}
-  .footer-brand{grid-column:1/-1}
-}
-
-/* ================= MÓVIL ================= */
-@media (max-width:767px){
-  .container{padding:0 20px}
-  .site-header{padding:18px 0}
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(253,246,236,.88);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--borde);
+  }
   .nav{
-    display:none;
-    position:absolute;
-    top:100%;left:20px;right:20px;
-    flex-direction:column;align-items:stretch;gap:0;
-    background:var(--bosque);
-    border-radius:var(--radius);
-    padding:8px 0;
-    box-shadow:0 20px 50px -10px rgba(0,0,0,.4);
+    display:flex;align-items:center;justify-content:space-between;
+    gap:1rem;padding:.85rem 0;
   }
-  .nav.open{display:flex}
-  .nav a{padding:14px 24px;font-size:14px}
-  .nav a::after{display:none}
-  .nav-cta{margin:10px 20px 6px;text-align:center}
-  .menu-toggle{display:block}
-
-  .hero-inner{padding:130px 0 80px}
-  .hero h1{font-size:clamp(36px, 10vw, 54px);line-height:1.05}
-  .hero-sub{font-size:15px}
-  .hero-buttons{flex-direction:column;align-items:stretch}
-  .hero-buttons .btn{justify-content:center}
-
-  .partners{padding:40px 0}
-  .partners-list{gap:28px}
-  .partner-name{font-size:16px}
-  .partner-name.caps{font-size:12px;letter-spacing:3px}
-
-  .testimonial{padding:70px 0}
-  .quote-mark{font-size:70px}
-  .testimonial-quote{font-size:clamp(22px, 6vw, 30px)}
-  .testimonial-meta{flex-direction:column;gap:10px}
-  .testimonial-name{text-align:center}
-
-  .features-block{padding:20px 0 70px}
-  .feature-row{
-    grid-template-columns:1fr;gap:32px;margin-bottom:70px;
+  .logo{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+  .logo span.fuego{
+    display:grid;place-items:center;width:38px;height:38px;border-radius:12px;
+    background:linear-gradient(135deg,var(--fuego),#f7a03c);
+    color:#fff;font-size:1.1rem;
   }
-  .feature-row.reverse .feature-text,
-  .feature-row.reverse .feature-media{order:unset}
-  .feature-media{aspect-ratio:4/3}
-  .feature-text h2{font-size:clamp(28px, 7vw, 38px)}
-  .feature-text p{font-size:15px}
-
-  .classes{padding:70px 0}
-  .classes-head{margin-bottom:50px}
-  .classes-grid{grid-template-columns:1fr;gap:16px}
-  .class-card{padding:30px 26px 26px}
-  .class-card p{min-height:auto}
-
-  .book{padding:80px 0}
-  .book-inner{gap:40px}
-  .book-lead h2{font-size:clamp(32px, 9vw, 44px)}
-  .form{padding:32px 24px 28px;gap:16px}
-  .form input,.form select,.form textarea{padding:11px 14px;font-size:15px}
-  .form-title{font-size:22px}
-
-  .footer{padding:60px 0 24px}
-  .footer-grid{grid-template-columns:1fr;gap:36px;padding-bottom:36px}
-  .footer-brand{grid-column:auto}
-
-  .wa-float{padding:12px;border-radius:50%}
-  .wa-float span{display:none}
-  .wa-float i{font-size:22px;margin:0}
-}
-
-/* ================= ACCESIBILIDAD ================= */
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.01ms!important;
-    scroll-behavior:auto!important;
+  .nav ul{display:flex;gap:1.6rem;list-style:none;font-weight:600;font-size:.94rem}
+  .nav ul a{position:relative;padding:.25rem 0;color:var(--gris);transition:color .2s}
+  .nav ul a:hover{color:var(--fuego)}
+  .nav ul a::after{
+    content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+    background:var(--fuego);transition:width .25s;
   }
-}
-:focus-visible{outline:2px solid var(--salvia);outline-offset:3px;border-radius:4px}
+  .nav ul a:hover::after{width:100%}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+    padding:.75rem 1.4rem;border-radius:999px;font-weight:700;font-size:.92rem;
+    border:none;cursor:pointer;transition:transform .18s, box-shadow .18s, background .18s;
+  }
+  .btn-primario{background:var(--fuego);color:#fff;box-shadow:0 6px 18px rgba(232,69,44,.32)}
+  .btn-primario:hover{background:var(--fuego-oscuro);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--texto);border:2px solid var(--borde)}
+  .btn-ghost:hover{border-color:var(--fuego);color:var(--fuego);transform:translateY(-2px)}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--texto)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:radial-gradient(circle at 82% 18%, #3a2d26 0%, var(--carbon) 55%);
+    color:#fff;padding:clamp(3.5rem,9vw,6.5rem) 0;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 12% 85%, rgba(232,69,44,.30), transparent 42%),
+      radial-gradient(circle at 90% 10%, rgba(247,160,60,.18), transparent 40%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative;z-index:1;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4rem);align-items:center;
+  }
+  .etiqueta{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:rgba(232,69,44,.16);border:1px solid rgba(232,69,44,.4);
+    color:#ffb4a3;padding:.4rem .95rem;border-radius:999px;
+    font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  }
+  .hero h1{
+    font-size:clamp(2.2rem,5.2vw,3.6rem);line-height:1.08;
+    letter-spacing:-.03em;margin:1.1rem 0 .9rem;font-weight:800;
+  }
+  .hero h1 em{font-style:normal;color:#ff7a5c}
+  .hero p{color:#cfc3bb;font-size:1.05rem;max-width:46ch}
+  .hero-acciones{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.9rem}
+  .hero-datos{display:flex;flex-wrap:wrap;gap:1.8rem;margin-top:2.2rem;font-size:.88rem;color:#b8a9a0}
+  .hero-datos strong{display:block;color:#fff;font-size:1.15rem;font-weight:800}
+  .hero-img{
+    border-radius:24px;overflow:hidden;aspect-ratio:4/5;
+    box-shadow:0 30px 60px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1);
+  }
+  .hero-img img{width:100%;height:100%;object-fit:cover}
+
+  /* ---------- SECCIONES ---------- */
+  section{padding:clamp(3.5rem,7vw,5.5rem) 0}
+  .cabecera-seccion{max-width:640px;margin-bottom:2.8rem}
+  .cabecera-seccion h2{
+    font-size:clamp(1.7rem,3.6vw,2.4rem);letter-spacing:-.02em;
+    line-height:1.15;margin-bottom:.7rem;font-weight:800;
+  }
+  .cabecera-seccion p{color:var(--gris);font-size:1.02rem}
+  .kicker{
+    color:var(--fuego);font-weight:800;font-size:.8rem;
+    letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem;display:block;
+  }
+
+  /* ---------- SOBRE ---------- */
+  .sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  .sobre-img{border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);aspect-ratio:5/4}
+  .sobre-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .sobre-img:hover img{transform:scale(1.05)}
+  .valores{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+  .valor{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:1.1rem;text-align:center}
+  .valor span{font-size:1.5rem;display:block;margin-bottom:.3rem}
+  .valor strong{display:block;font-size:.88rem}
+  .valor small{color:var(--gris);font-size:.75rem}
+
+  /* ---------- MENÚ ---------- */
+  #menu{background:#fff;border-block:1px solid var(--borde)}
+  .menu-categorias{display:grid;gap:2.5rem}
+  .categoria h3{
+    font-size:1.25rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:.7rem;font-weight:800;
+  }
+  .categoria h3::after{content:"";flex:1;height:1px;background:var(--borde)}
+  .items-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:.9rem}
+  .item{
+    display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;
+    background:var(--crema);border:1px solid var(--borde);border-radius:14px;
+    padding:1rem 1.15rem;transition:transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .item:hover{transform:translateY(-3px);box-shadow:var(--sombra);border-color:#f0c9bd}
+  .item h4{font-size:.98rem;font-weight:700;margin-bottom:.15rem}
+  .item p{font-size:.83rem;color:var(--gris);line-height:1.45}
+  .precio{
+    font-weight:800;color:var(--fuego);white-space:nowrap;
+    font-size:1rem;background:#fff;border-radius:10px;padding:.15rem .6rem;
+  }
+
+  /* ---------- GALERÍA ---------- */
+  .galeria{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem}
+  .galeria figure{
+    border-radius:14px;overflow:hidden;aspect-ratio:1;position:relative;
+  }
+  .galeria figure:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+  .galeria img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
+  .galeria figure:hover img{transform:scale(1.08)}
+
+  /* ---------- VIDEOS ---------- */
+  #videos{background:var(--carbon);color:#fff}
+  #videos .cabecera-seccion h2{color:#fff}
+  #videos .cabecera-seccion p{color:#b8a9a0}
+  .videos-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:1.5rem;align-items:start;justify-items:center;
+  }
+  .video-card{
+    width:100%;background:var(--carbon-2);border:1px solid rgba(255,255,255,.09);
+    border-radius:var(--radio);overflow:hidden;
+    box-shadow:0 20px 45px rgba(0,0,0,.45);
+    transition:transform .25s, border-color .25s;
+  }
+  .video-card:hover{transform:translateY(-6px);border-color:rgba(232,69,44,.6)}
+  .video-marco{position:relative;width:100%;background:#000}
+  .video-marco.vertical{aspect-ratio:9/16}
+  .video-marco.horizontal{aspect-ratio:16/9}
+  .video-marco iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video-pie{padding:.9rem 1.1rem;display:flex;align-items:center;gap:.6rem;font-size:.85rem}
+  .video-pie .plataforma{
+    font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    padding:.2rem .55rem;border-radius:6px;
+  }
+  .plataforma.tiktok{background:#000;color:#25f4ee;border:1px solid #25f4ee}
+  .plataforma.youtube{background:#ff0000;color:#fff}
+  .video-pie span.titulo{color:#cfc3bb}
+
+  /* ---------- CONTACTO / HORARIOS ---------- */
+  .contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+  .tarjeta{
+    background:#fff;border:1px solid var(--borde);border-radius:var(--radio);
+    padding:clamp(1.5rem,3vw,2.2rem);box-shadow:var(--sombra);
+  }
+  .tarjeta h3{font-size:1.15rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.55rem}
+  .horario-fila{
+    display:flex;justify-content:space-between;padding:.65rem 0;
+    border-bottom:1px dashed var(--borde);font-size:.92rem;
+  }
+  .horario-fila:last-child{border-bottom:none}
+  .horario-fila .dia{font-weight:600}
+  .horario-fila .hora{color:var(--gris)}
+  .horario-fila.hoy{color:var(--fuego);font-weight:700}
+  .horario-fila.hoy .hora{color:var(--fuego)}
+  .dato{display:flex;gap:.85rem;margin-bottom:1.15rem;font-size:.93rem}
+  .dato .icono{
+    flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+    background:var(--crema);border:1px solid var(--borde);font-size:1.05rem;
+  }
+  .dato strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gris)}
+  .redes{display:flex;gap:.6rem;margin-top:1.4rem;flex-wrap:wrap}
+  .redes a{
+    padding:.55rem 1.1rem;border-radius:999px;border:1px solid var(--borde);
+    font-size:.85rem;font-weight:600;transition:.2s;
+  }
+  .redes a:hover{background:var(--fuego);color:#fff;border-color:var(--fuego)}
+
+  /* ---------- TESTIMONIOS ---------- */
+  .testimonios{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+  .testimonio{
+    background:#fff;border:1px solid var(--borde);border-radius:var(--radio);
+    padding:1.5rem;box-shadow:0 4px 14px rgba(26,22,20,.05);
+  }
+  .estrellas{color:#f7a03c;letter-spacing:2px;margin-bottom:.6rem;font-size:.95rem}
+  .testimonio p{font-size:.93rem;color:#4a3f39;font-style:italic;margin-bottom:.9rem}
+  .testimonio .autor{font-size:.83rem;font-weight:700}
+  .testimonio .autor small{display:block;font-weight:500;color:var(--gris)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--carbon);color:#a89a92;padding:3rem 0 2rem;font-size:.88rem}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+  footer h4{color:#fff;font-size:.95rem;margin-bottom:.9rem}
+  footer ul{list-style:none;display:grid;gap:.55rem}
+  footer a:hover{color:var(--fuego)}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.09);padding-top:1.5rem;
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.8rem;
+  }
+  footer .logo{color:#fff;margin-bottom:.7rem}
+
+  /* ---------- WHATSAPP FLOTANTE ---------- */
+  .wa-flotante{
+    position:fixed;right:20px;bottom:20px;z-index:60;
+    width:58px;height:58px;border-radius:50%;
+    background:#25d366;color:#fff;display:grid;place-items:center;
+    box-shadow:0 8px 24px rgba(37,211,102,.45);
+    transition:transform .2s;font-size:1.7rem;
+  }
+  .wa-flotante:hover{transform:scale(1.08)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .hero-grid,.sobre-grid,.contacto-grid{grid-template-columns:1fr}
+    .hero-img{aspect-ratio:16/10;max-width:100%}
+    .videos-grid{grid-template-columns:1fr 1fr}
+    .videos-grid .video-card:last-child{grid-column:1/-1;max-width:560px}
+    .footer-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:680px){
+    .nav ul{
+      display:none;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--borde);
+      padding:.5rem 0;box-shadow:var(--sombra);
+    }
+    .nav ul.abierto{display:flex}
+    .nav ul li a{display:block;padding:.85rem 6%}
+    .menu-toggle{display:block}
+    .nav .btn{display:none}
+    .videos-grid{grid-template-columns:1fr}
+    .videos-grid .video-card:last-child{max-width:100%}
+    .galeria{grid-template-columns:repeat(2,1fr)}
+    .galeria figure:first-child{grid-column:span 2;grid-row:auto;aspect-ratio:16/10}
+    .valores{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
 
-<!-- ============ HEADER ============ -->
-<header class="site-header">
-  <div class="container">
-    <a href="#inicio" class="logo">
-      <span class="logo-mark"><i class="fa fa-leaf" aria-hidden="true"></i></span>
-      raíz
-    </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-      <i class="fa fa-bars"></i>
-    </button>
-    <nav class="nav" id="mainNav" aria-label="Navegación principal">
-      <a href="#practica">Práctica</a>
-      <a href="#clases">Clases</a>
-      <a href="#espacio">Espacio</a>
-      <a href="#reservar" class="nav-cta"><i class="fa fa-whatsapp" aria-hidden="true"></i> Reservar</a>
-    </nav>
+<!-- ============================================================
+     DATOS DEL NEGOCIO  ·  edita SOLO este JSON
+     ============================================================ -->
+<script type="application/json" id="datos-negocio">
+{
+  "negocio": {
+    "nombre": "Taquería El Fuego",
+    "eslogan": "Tacos al carbón desde 1998",
+    "descripcion": "Somos una taquería familiar en el corazón de la Roma Norte. Nuestra carne se marina 24 horas, el carbón es de mezquite y las salsas se muelen a mano cada mañana. Nada congelado, nada industrial: puro fuego y sabor de barrio.",
+    "telefono": "+52 55 4821 7730",
+    "whatsapp": "525548217730",
+    "email": "hola@taqueriaelfuego.mx",
+    "direccion": "Calle Orizaba 148, Roma Norte, CDMX, 06700",
+    "mapa": "https://maps.google.com/?q=Orizaba+148+Roma+Norte+CDMX",
+    "rating": "4.8",
+    "reseñas": "1,240"
+  },
+
+  "horarios": [
+    { "dia": "Lunes",     "hora": "Cerrado" },
+    { "dia": "Martes",    "hora": "13:00 – 22:00" },
+    { "dia": "Miércoles", "hora": "13:00 – 22:00" },
+    { "dia": "Jueves",    "hora": "13:00 – 23:00" },
+    { "dia": "Viernes",   "hora": "13:00 – 01:00" },
+    { "dia": "Sábado",    "hora": "13:00 – 01:00" },
+    { "dia": "Domingo",   "hora": "13:00 – 20:00" }
+  ],
+
+  "menu": [
+    {
+      "categoria": "Tacos al carbón",
+      "items": [
+        { "nombre": "Taco al pastor",        "descripcion": "Cerdo marinado, piña asada, cebolla y cilantro", "precio": 22 },
+        { "nombre": "Taco de suadero",       "descripcion": "Suadero confitado 6 horas, salsa verde cruda",   "precio": 24 },
+        { "nombre": "Taco de arrachera",     "descripcion": "Arrachera de Sonora, nopales y chimichurri",     "precio": 32 },
+        { "nombre": "Taco de costilla",      "descripcion": "Costilla de cerdo al carbón, cebollitas",        "precio": 30 }
+      ]
+    },
+    {
+      "categoria": "Especialidades",
+      "items": [
+        { "nombre": "Quesadilla volcán",     "descripcion": "Queso Oaxaca, trompo, piña y salsa habanero",    "precio": 48 },
+        { "nombre": "Gringa de pastor",      "descripcion": "Tortilla de harina, queso, pastor y aguacate",   "precio": 52 },
+        { "nombre": "Volcán de suadero",     "descripcion": "Tostada dorada, suadero y queso gratinado",      "precio": 44 }
+      ]
+    },
+    {
+      "categoria": "Para compartir",
+      "items": [
+        { "nombre": "Orden de 8 tacos",      "descripcion": "Surtidos: pastor, suadero, costilla y arrachera", "precio": 180 },
+        { "nombre": "Nachos El Fuego",       "descripcion": "Totopos, frijol, queso, jalapeño y crema",         "precio": 95 },
+        { "nombre": "Guacamole de la casa",  "descripcion": "Aguacate, jitomate, cebolla y chile serrano",      "precio": 78 }
+      ]
+    },
+    {
+      "categoria": "Bebidas",
+      "items": [
+        { "nombre": "Aguas frescas",         "descripcion": "Horchata, jamaica o tamarindo (1 L)",            "precio": 35 },
+        { "nombre": "Refresco artesanal",    "descripcion": "Sabores de temporada, endulzado con piloncillo",  "precio": 42 },
+        { "nombre": "Cerveza artesanal",     "descripcion": "Selección local rotativa, 355 ml",                "precio": 65 }
+      ]
+    }
+  ],
+
+  "galeria": [
+    { "img": "https://picsum.photos/seed/tacos1/800/800", "alt": "Tacos al pastor recién hechos" },
+    { "img": "https://picsum.photos/seed/tacos2/600/600", "alt": "Trompo de pastor girando" },
+    { "img": "https://picsum.photos/seed/tacos3/600/600", "alt": "Quesadillas en el comal" },
+    { "img": "https://picsum.photos/seed/tacos4/600/600", "alt": "Salsas de la casa" },
+    { "img": "https://picsum.photos/seed/tacos5/600/600", "alt": "Interior de la taquería" }
+  ],
+
+  "videos": [
+    {
+      "plataforma": "tiktok",
+      "url": "https://www.tiktok.com/@taqueriaelfuego/video/7301234567890123456",
+      "titulo": "El trompo de las 3 pm 🔥"
+    },
+    {
+      "plataforma": "tiktok",
+      "url": "https://www.tiktok.com/@taqueriaelfuego/video/7309876543210987654",
+      "titulo": "Salsa habanero: el reto 🥵"
+    },
+    {
+      "plataforma": "youtube",
+      "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "titulo": "Así se hace nuestro taco al pastor"
+    }
+  ],
+
+  "testimonios": [
+    { "texto": "El mejor suadero de la Roma, sin discusión. La salsa verde es otro nivel.", "autor": "Mariana G.", "detalle": "Google Reviews" },
+    { "texto": "Vine por un taco y me quedé tres horas. Ambiente de barrio auténtico.", "autor": "Carlos R.", "detalle": "TripAdvisor" },
+    { "texto": "Pedimos a domicilio cada viernes. Llega caliente y con todo completo.", "autor": "Familia Ortega", "detalle": "Cliente frecuente" }
+  ],
+
+  "redes": [
+    { "nombre": "Instagram", "url": "https://instagram.com/taqueriaelfuego" },
+    { "nombre": "TikTok",    "url": "https://tiktok.com/@taqueriaelfuego" },
+    { "nombre": "Facebook",  "url": "https://facebook.com/taqueriaelfuego" },
+    { "nombre": "YouTube",   "url": "https://youtube.com/@taqueriaelfuego" }
+  ]
+}
+</script>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="contenedor nav">
+    <a href="#" class="logo"><span class="fuego">🔥</span><span id="logo-texto">El Fuego</span></a>
+    <ul id="nav-lista">
+      <li><a href="#sobre">Nosotros</a></li>
+      <li><a href="#menu">Menú</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#" class="btn btn-primario" id="btn-pedir">Pedir ahora</a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</button>
   </div>
 </header>
 
-<!-- ============ 1. HERO ============ -->
-<section id="inicio" class="hero">
-  <div class="hero-bg"></div>
-  <div class="container">
-    <div class="hero-inner">
-      <p class="hero-eyebrow">Estudio de yoga · La Paz</p>
-      <h1>
-        Encontrá tu centro,<br>
-        volvé a <em>respirar</em>.
-      </h1>
-      <p class="hero-sub">
-        Un espacio íntimo para moverte, soltar y habitarte.
-        Clases de Hatha, Vinyasa, Yin y meditación guiada
-        para todos los niveles, en el corazón de Sopocachi.
-      </p>
-      <div class="hero-buttons">
-        <a href="#clases" class="btn btn-primary">
-          <i class="fa fa-arrow-right" aria-hidden="true"></i>
-          Ver clases
-        </a>
-        <a href="https://wa.me/59173913409?text=Hola%20Ra%C3%ADz%2C%20quiero%20reservar%20una%20clase%20de%20prueba." class="btn btn-wa" target="_blank" rel="noopener">
-          <i class="fa fa-whatsapp" aria-hidden="true"></i>
-          Clase de prueba
-        </a>
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="contenedor hero-grid">
+    <div>
+      <span class="etiqueta">📍 Roma Norte · CDMX</span>
+      <h1 id="hero-titulo">Tacos al carbón<br>que <em>saben a barrio</em></h1>
+      <p id="hero-desc"></p>
+      <div class="hero-acciones">
+        <a href="#menu" class="btn btn-primario">Ver el menú</a>
+        <a href="#" class="btn btn-ghost" id="btn-wa-hero" style="color:#fff;border-color:rgba(255,255,255,.3)">Pedir por WhatsApp</a>
       </div>
+      <div class="hero-datos">
+        <div><strong id="dato-rating">4.8 ★</strong><span>Google Reviews</span></div>
+        <div><strong id="dato-horario">13:00 – 22:00</strong><span>Abierto hoy</span></div>
+        <div><strong>+25 años</strong><span>En el mismo barrio</span></div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://picsum.photos/seed/herotaqueria/800/1000" alt="Tacos al carbón de Taquería El Fuego">
     </div>
   </div>
 </section>
 
-<!-- ============ 2. FORMACIONES / ALIADOS ============ -->
-<section class="partners">
-  <div class="container">
-    <div class="partners-inner">
-      <p class="partners-label">Formaciones &amp; certificaciones</p>
-      <div class="partners-list">
-        <span class="partner-name serif-i">Yoga Alliance</span>
-        <span class="partner-name caps">RYT 500</span>
-        <span class="partner-name">Sattva School</span>
-        <span class="partner-name caps">Mindfulness Lab</span>
-        <span class="partner-name serif-i">Pranam</span>
+<!-- ================= SOBRE NOSOTROS ================= -->
+<section id="sobre">
+  <div class="contenedor">
+    <div class="sobre-grid">
+      <div class="sobre-img">
+        <img src="https://picsum.photos/seed/sobrefuego/900/720" alt="Cocina de Taquería El Fuego">
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 3. TESTIMONIO ============ -->
-<section class="testimonial">
-  <div class="container">
-    <div class="testimonial-inner reveal">
-      <div class="quote-mark" aria-hidden="true">“</div>
-      <blockquote class="testimonial-quote">
-        Llegué con dolor de espalda y la cabeza explotada.
-        Tres meses después sigo viniendo porque, más que una clase,
-        encontré un lugar al que quiero volver.
-      </blockquote>
-      <div class="testimonial-meta">
-        <div class="testimonial-photo">
-          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&amp;fit=crop&amp;w=200&amp;q=80" alt="Lucía, alumna del estudio" loading="lazy">
-        </div>
-        <div class="testimonial-name">
-          <strong>Lucía Herrera</strong>
-          <span>Sopocachi · Practica hace 1 año</span>
+      <div>
+        <span class="kicker">Nuestra historia</span>
+        <h2 class="cabecera-seccion" style="margin-bottom:1rem">Fuego lento,<br>sabor de siempre</h2>
+        <p id="sobre-texto" style="color:var(--gris)"></p>
+        <div class="valores">
+          <div class="valor"><span>🌿</span><strong>Producto fresco</strong><small>Compra diaria</small></div>
+          <div class="valor"><span>🔥</span><strong>Carbón de mezquite</strong><small>Sabor real</small></div>
+          <div class="valor"><span>👨‍🍳</span><strong>Receta familiar</strong><small>Desde 1998</small></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 4. FEATURE BLOCKS ============ -->
-<section id="practica" class="features-block">
-  <div class="container">
-
-    <div class="feature-row reveal">
-      <div class="feature-media">
-        <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Sala de práctica con luz natural" loading="lazy">
-      </div>
-      <div class="feature-text">
-        <p class="eyebrow">Una práctica para cada cuerpo</p>
-        <h2>Nadie llega sabiendo.<br>Acá se aprende.</h2>
-        <p>
-          No creemos en el yoga como performance. Creemos en el yoga
-          como cuidado: una práctica amable con el cuerpo que tenés
-          hoy, no con el que te gustaría tener.
-        </p>
-        <a href="#clases" class="link-arrow">
-          Conocer las clases <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        </a>
-      </div>
+<!-- ================= MENÚ ================= -->
+<section id="menu">
+  <div class="contenedor">
+    <div class="cabecera-seccion">
+      <span class="kicker">Menú</span>
+      <h2>Lo que sale de la parrilla</h2>
+      <p>Precios en pesos mexicanos. Todos los tacos se sirven con cebolla, cilantro y limón.</p>
     </div>
-
-    <div class="feature-row reverse reveal">
-      <div class="feature-text">
-        <p class="eyebrow">Respirá, movete, soltá</p>
-        <h2>El ritmo lo marcás vos,<br>no al revés.</h2>
-        <p>
-          Grupos reducidos, propuestas claras y profes que ajustan
-          cada postura a tu cuerpo real. Podés empezar sin experiencia
-          y sin saber si te va a gustar. A veces pasa.
-        </p>
-        <a href="#reservar" class="link-arrow">
-          Reservar clase de prueba <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        </a>
-      </div>
-      <div class="feature-media">
-        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Práctica de yoga en grupo reducido" loading="lazy">
-      </div>
-    </div>
-
-    <div class="feature-row reveal">
-      <div class="feature-media">
-        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Clase de vinyasa al atardecer" loading="lazy">
-      </div>
-      <div class="feature-text">
-        <p class="eyebrow">Un espacio cuidado</p>
-        <h2>Un lugar,<br>tres respiraciones.</h2>
-        <p>
-          Ventanas grandes, madera, plantas y silencio antes de entrar.
-          Mats, blocks y mantas incluidos. Solo traé ropa cómoda:
-          del resto nos ocupamos.
-        </p>
-        <a href="#espacio" class="link-arrow">
-          Conocer el espacio <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        </a>
-      </div>
-    </div>
-
+    <div class="menu-categorias" id="menu-contenedor"></div>
   </div>
 </section>
 
-<!-- ============ 5. CLASES ============ -->
-<section id="clases" class="classes">
-  <div class="container">
-    <div class="classes-head reveal">
-      <p class="eyebrow" style="text-align:center">Nuestras clases</p>
-      <h2>Una práctica para<br><em>cada momento</em></h2>
-      <p>
-        Seis propuestas, un mismo cuidado. Elegí por dónde empezar
-        o escribinos y te ayudamos a encontrar la clase justa.
-      </p>
+<!-- ================= GALERÍA ================= -->
+<section id="galeria">
+  <div class="contenedor">
+    <div class="cabecera-seccion">
+      <span class="kicker">Galería</span>
+      <h2>Puro antojo</h2>
     </div>
-
-    <div class="classes-grid">
-      <article class="class-card reveal">
-        <div class="class-icon"><i class="fa fa-sun-o" aria-hidden="true"></i></div>
-        <h3>Hatha</h3>
-        <p>Posturas sostenidas, alineación y respiración. Ideal para empezar y entender las bases.</p>
-        <div class="class-meta">
-          <span>45 min</span>
-          <strong>Todos los niveles</strong>
-        </div>
-      </article>
-
-      <article class="class-card reveal">
-        <div class="class-icon"><i class="fa fa-bolt" aria-hidden="true"></i></div>
-        <h3>Vinyasa</h3>
-        <p>Fluidez entre posturas al ritmo de la respiración. Más dinámico, más calor interno.</p>
-        <div class="class-meta">
-          <span>60 min</span>
-          <strong>Intermedio</strong>
-        </div>
-      </article>
-
-      <article class="class-card reveal">
-        <div class="class-icon"><i class="fa fa-moon-o" aria-hidden="true"></i></div>
-        <h3>Yin</h3>
-        <p>Posturas pasivas, largas y profundas para abrir tejido conectivo y calmar el sistema nervioso.</p>
-        <div class="class-meta">
-          <span>60 min</span>
-          <strong>Todos los niveles</strong>
-        </div>
-      </article>
-
-      <article class="class-card reveal">
-        <div class="class-icon"><i class="fa fa-circle-o-notch" aria-hidden="true"></i></div>
-        <h3>Meditación</h3>
-        <p>Práctica de atención plena y respiración consciente. Sin posturas: solo estar.</p>
-        <div class="class-meta">
-          <span>30 min</span>
-          <strong>Todos los niveles</strong>
-        </div>
-      </article>
-
-      <article class="class-card reveal">
-        <div class="class-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></div>
-        <h3>Prenatal</h3>
-        <p>Adaptado a cada trimestre. Movilidad, respiración y descanso activo para la dulce espera.</p>
-        <div class="class-meta">
-          <span>50 min</span>
-          <strong>Embarazadas</strong>
-        </div>
-      </article>
-
-      <article class="class-card reveal">
-        <div class="class-icon"><i class="fa fa-laptop" aria-hidden="true"></i></div>
-        <h3>Online</h3>
-        <p>Clases en vivo por Zoom con grabación disponible por 7 días. Misma calidad, desde casa.</p>
-        <div class="class-meta">
-          <span>45 min</span>
-          <strong>Todos los niveles</strong>
-        </div>
-      </article>
-    </div>
-  </div><div class="hvs-fac" role="button" tabindex="0" aria-label="Reproducir vídeo de TikTok" data-s="https://www.tiktok.com/player/v1/7683620377435720981" style="width: 325px; max-width: 100%; height: 575px; border: 0px; background: center center / cover rgb(17, 17, 17); color: rgb(255, 255, 255); display: flex; align-items: center; justify-content: center; font-size: 48px; cursor: pointer; border-radius: 25px; padding: 30px; margin: 30px auto;" onclick="var d=this,f=document.createElement('iframe');f.allow='encrypted-media;autoplay;picture-in-picture;fullscreen';f.allowFullscreen=true;f.title=d.getAttribute('aria-label')||'Vídeo';f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');f.style.cssText=d.getAttribute('style')||'';['background','color','align-items','justify-content','font-size','cursor'].forEach(function(p){f.style.removeProperty(p)});f.style.display='block';f.style.border='0';f.src=d.dataset.s;d.replaceWith(f);" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">▶</div>
+    <div class="galeria" id="galeria-contenedor"></div>
+  </div>
 </section>
 
-<!-- ============ 6. FORMULARIO / RESERVAR ============ -->
-<section id="reservar" class="book">
-  <div class="container">
-    <div class="book-inner">
+<!-- ================= VIDEOS ================= -->
+<section id="videos">
+  <div class="contenedor">
+    <div class="cabecera-seccion">
+      <span class="kicker" style="color:#ff7a5c">Síguenos</span>
+      <h2>El Fuego en video</h2>
+      <p>Detrás de la parrilla, retos de salsa y el proceso completo. Síguenos en TikTok y YouTube.</p>
+    </div>
+    <div class="videos-grid" id="videos-contenedor"></div>
+  </div>
+</section>
 
-      <div class="book-lead reveal">
-        <p class="eyebrow">Empezá hoy</p>
-        <h2>Tu primera clase<br>es <em>de prueba</em>.</h2>
-        <p>
-          Completá el formulario y te escribimos por WhatsApp para
-          coordinar día, horario y nivel. Sin compromiso, sin pagos
-          por adelantado.
-        </p>
-        <ul class="book-info">
-          <li>
-            <i class="fa fa-whatsapp" aria-hidden="true"></i>
-            +591 73913409
-          </li>
-          <li>
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
-            Sopocachi · La Paz
-          </li>
-          <li>
-            <i class="fa fa-clock-o" aria-hidden="true"></i>
-            Lun a Sáb · 6:30 a 21:00
-          </li>
-        </ul>
+<!-- ================= CONTACTO ================= -->
+<section id="contacto">
+  <div class="contenedor">
+    <div class="cabecera-seccion">
+      <span class="kicker">Visítanos</span>
+      <h2>Horarios y ubicación</h2>
+    </div>
+    <div class="contacto-grid">
+      <div class="tarjeta">
+        <h3>🕒 Horarios</h3>
+        <div id="horarios-contenedor"></div>
       </div>
-
-      <form class="form reveal" id="contactForm" novalidate="">
-        <h3 class="form-title">Reservá tu clase</h3>
-
-        <div class="field">
-          <label for="f-nombre">Nombre</label>
-          <input type="text" id="f-nombre" name="nombre" placeholder="Ej: Camila Rojas" required="" autocomplete="name">
-        </div>
-
-        <div class="field">
-          <label for="f-telefono">WhatsApp <span class="opt">(opcional)</span></label>
-          <input type="tel" id="f-telefono" name="telefono" placeholder="+591 700 00000" autocomplete="tel">
-        </div>
-
-        <div class="field form-full">
-          <label for="f-email">Email <span class="opt">(opcional)</span></label>
-          <input type="email" id="f-email" name="email" placeholder="tucorreo@email.com" autocomplete="email">
-        </div>
-
-        <div class="field">
-          <label for="f-experiencia">Tu experiencia</label>
-          <select id="f-experiencia" name="experiencia" required="">
-            <option value="">Seleccioná</option>
-            <option>Nunca practiqué</option>
-            <option>Principiante</option>
-            <option>Intermedio</option>
-            <option>Avanzado</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="f-clase">Clase de interés</label>
-          <select id="f-clase" name="clase" required="">
-            <option value="">Seleccioná</option>
-            <option>Hatha</option>
-            <option>Vinyasa</option>
-            <option>Yin</option>
-            <option>Meditación</option>
-            <option>Prenatal</option>
-            <option>Online</option>
-            <option>No lo sé todavía</option>
-          </select>
-        </div>
-
-        <div class="field form-full">
-          <label for="f-horario">Horario preferido</label>
-          <select id="f-horario" name="horario" required="">
-            <option value="">Seleccioná</option>
-            <option>Mañana temprano (6:30 – 9:00)</option>
-            <option>Media mañana (9:00 – 12:00)</option>
-            <option>Mediodía (12:00 – 14:00)</option>
-            <option>Tarde (15:00 – 18:00)</option>
-            <option>Noche (18:00 – 21:00)</option>
-          </select>
-        </div>
-
-        <div class="field form-full">
-          <label for="f-mensaje">Contanos algo <span class="opt">(opcional)</span></label>
-          <textarea id="f-mensaje" name="mensaje" rows="3" placeholder="Ej: Hace años no hago actividad física y tengo una lesión en la rodilla..."></textarea>
-        </div>
-
-        <div class="form-submit">
-          <button type="submit" class="btn btn-wa">
-            <i class="fa fa-whatsapp" aria-hidden="true"></i>
-            Enviar por WhatsApp
-          </button>
-        </div>
-
-        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-        <p class="form-privacy">
-          Al enviar se abrirá WhatsApp con tu mensaje listo. No guardamos tus datos.
-        </p>
-      </form>
-
+      <div class="tarjeta">
+        <h3>📍 Dónde estamos</h3>
+        <div id="contacto-contenedor"></div>
+        <div class="redes" id="redes-contenedor"></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 7. FOOTER ============ -->
-<footer id="espacio" class="footer">
-  <div class="container">
+<!-- ================= TESTIMONIOS ================= -->
+<section style="background:#fff;border-top:1px solid var(--borde)">
+  <div class="contenedor">
+    <div class="cabecera-seccion">
+      <span class="kicker">Reseñas</span>
+      <h2>Lo que dice la gente</h2>
+    </div>
+    <div class="testimonios" id="testimonios-contenedor"></div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="contenedor">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo">
-          <span class="logo-mark"><i class="fa fa-leaf" aria-hidden="true"></i></span>
-          raíz
-        </div>
-        <p>
-          Estudio de yoga y bienestar en Sopocachi, La Paz.
-          Un espacio para moverte, respirar y volver a casa.
-        </p>
-        <div class="footer-social">
-          <a href="https://wa.me/59173913409" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <i class="fa fa-whatsapp" aria-hidden="true"></i>
-          </a>
-          <a href="#" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-        </div>
-      </div>
-
       <div>
-        <h5>Explorar</h5>
+        <div class="logo"><span class="fuego">🔥</span><span id="footer-nombre"></span></div>
+        <p id="footer-desc" style="max-width:34ch"></p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
         <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#practica">Práctica</a></li>
-          <li><a href="#clases">Clases</a></li>
-          <li><a href="#reservar">Reservar</a></li>
+          <li><a href="#sobre">Nosotros</a></li>
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="#videos">Videos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
-
       <div>
-        <h5>Contacto</h5>
-        <ul>
-          <li><a href="https://wa.me/59173913409" target="_blank" rel="noopener">+591 73913409</a></li>
-          <li>Sopocachi · La Paz</li>
-          <li>Lun a Sáb · 6:30 – 21:00</li>
-        </ul>
+        <h4>Contacto</h4>
+        <ul id="footer-contacto"></ul>
       </div>
     </div>
     <div class="footer-bottom">
-      © <span id="year"></span> Raíz Estudio · Todos los derechos reservados.
+      <span>© <span id="anio"></span> <span id="footer-nombre-2"></span>. Todos los derechos reservados.</span>
+      <span>Hecho con 🔥 en la CDMX</span>
     </div>
   </div>
 </footer>
 
-<!-- ============ WHATSAPP FLOTANTE ============ -->
-<a class="wa-float" href="https://wa.me/59173913409?text=Hola%20Ra%C3%ADz%2C%20quiero%20reservar%20una%20clase%20de%20prueba." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
-  <i class="fa fa-whatsapp" aria-hidden="true"></i>
-  <span>Escribinos</span>
-</a>
+<a href="#" class="wa-flotante" id="wa-flotante" aria-label="Escríbenos por WhatsApp" target="_blank" rel="noopener">💬</a>
 
+<!-- ============================================================
+     LÓGICA: lee el JSON y pinta la página
+     ============================================================ -->
 <script>
-const WHATSAPP = '59173913409';
-
-/* Año footer */
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* Menú móvil */
 (function () {
-  const btn = document.getElementById('menuToggle');
-  const nav = document.getElementById('mainNav');
-  if (!btn || !nav) return;
-  btn.addEventListener('click', () => nav.classList.toggle('open'));
-  nav.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => nav.classList.remove('open'))
-  );
-})();
+  const D = JSON.parse(document.getElementById('datos-negocio').textContent);
+  const $ = (id) => document.getElementById(id);
 
-/* Reveal on scroll */
-(function () {
-  const els = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) {
-    els.forEach(el => el.classList.add('in'));
-    return;
-  }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  els.forEach(el => io.observe(el));
-})();
+  /* ---------- Utilidades ---------- */
+  const esc = (s) => String(s).replace(/[&<>"']/g, c =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-/* Saludo dinámico */
-function saludo() {
-  const h = new Date().getHours();
-  if (h >= 5 && h < 12) return 'Buenos días';
-  if (h >= 12 && h < 19) return 'Buenas tardes';
-  return 'Buenas noches';
-}
+  const money = (n) => '$' + n + ' MXN';
 
-/* Formulario → WhatsApp */
-(function () {
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
-  if (!form) return;
+  const waLink = (msg) =>
+    `https://wa.me/${D.negocio.whatsapp}?text=${encodeURIComponent(msg)}`;
 
-  function setStatus(text, cls) {
-    status.textContent = text;
-    status.className = 'form-status ' + (cls || '');
-  }
+  /* Extrae el ID de un video de TikTok (…/video/1234567890) */
+  const tiktokId = (url) => (url.match(/\/video\/(\d+)/) || [])[1] || '';
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  /* Extrae el ID de YouTube en cualquiera de sus formatos */
+  const youtubeId = (url) =>
+    (url.match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/)([A-Za-z0-9_-]{11})/) || [])[1] || '';
 
-    const data = {
-      nombre:      form.nombre.value.trim(),
-      telefono:    form.telefono.value.trim(),
-      email:       form.email.value.trim(),
-      experiencia: form.experiencia.value,
-      clase:       form.clase.value,
-      horario:     form.horario.value,
-      mensaje:     form.mensaje.value.trim(),
-    };
+  /* ---------- Datos generales ---------- */
+  const n = D.negocio;
+  document.title = `${n.nombre} · ${n.eslogan}`;
+  $('logo-texto').textContent = n.nombre;
+  $('footer-nombre').textContent = n.nombre;
+  $('footer-nombre-2').textContent = n.nombre;
+  $('footer-desc').textContent = n.descripcion;
+  $('hero-desc').textContent = n.descripcion;
+  $('sobre-texto').textContent = n.descripcion;
+  $('dato-rating').textContent = `${n.rating} ★`;
+  $('anio').textContent = new Date().getFullYear();
 
-    if (!data.nombre)      { setStatus('Por favor, escribí tu nombre.', 'err'); form.nombre.focus(); return; }
-    if (!data.experiencia) { setStatus('Elegí tu nivel de experiencia.', 'err'); form.experiencia.focus(); return; }
-    if (!data.clase)       { setStatus('Elegí una clase de interés.', 'err'); form.clase.focus(); return; }
-    if (!data.horario)     { setStatus('Elegí un horario preferido.', 'err'); form.horario.focus(); return; }
-    if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      setStatus('El email no parece válido.', 'err');
-      form.email.focus(); return;
+  /* ---------- Horario de hoy ---------- */
+  const hoy = new Date().getDay(); // 0 = domingo
+  const orden = [6, 0, 1, 2, 3, 4, 5]; // lunes primero
+  const idxHoy = orden.indexOf(hoy);
+  const horarioHoy = D.horarios[idxHoy];
+  if (horarioHoy) $('dato-horario').textContent = horarioHoy.hora;
+
+  /* ---------- Menú ---------- */
+  $('menu-contenedor').innerHTML = D.menu.map(cat => `
+    <div class="categoria">
+      <h3>${esc(cat.categoria)}</h3>
+      <div class="items-grid">
+        ${cat.items.map(it => `
+          <div class="item">
+            <div>
+              <h4>${esc(it.nombre)}</h4>
+              <p>${esc(it.descripcion)}</p>
+            </div>
+            <span class="precio">${money(it.precio)}</span>
+          </div>`).join('')}
+      </div>
+    </div>`).join('');
+
+  /* ---------- Galería ---------- */
+  $('galeria-contenedor').innerHTML = D.galeria.map(g => `
+    <figure><img src="${esc(g.img)}" alt="${esc(g.alt)}" loading="lazy"></figure>
+  `).join('');
+
+  /* ---------- VIDEOS (2 TikTok + 1 YouTube) ---------- */
+  $('videos-contenedor').innerHTML = D.videos.map(v => {
+    if (v.plataforma === 'tiktok') {
+      const id = tiktokId(v.url);
+      return `
+        <article class="video-card">
+          <div class="video-marco vertical">
+            <iframe
+              src="https://www.tiktok.com/embed/v2/${id}"
+              title="${esc(v.titulo)}"
+              allow="encrypted-media; fullscreen; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+          <div class="video-pie">
+            <span class="plataforma tiktok">TikTok</span>
+            <span class="titulo">${esc(v.titulo)}</span>
+          </div>
+        </article>`;
     }
+    const id = youtubeId(v.url);
+    return `
+      <article class="video-card">
+        <div class="video-marco horizontal">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/${id}"
+            title="${esc(v.titulo)}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"></iframe>
+        </div>
+        <div class="video-pie">
+          <span class="plataforma youtube">YouTube</span>
+          <span class="titulo">${esc(v.titulo)}</span>
+        </div>
+      </article>`;
+  }).join('');
 
-    const lineas = [];
-    lineas.push('*Nueva reserva desde la web* 🧘');
-    lineas.push('');
-    lineas.push(`${saludo()} 👋`);
-    lineas.push('');
-    lineas.push(`• *Nombre:* ${data.nombre}`);
-    if (data.telefono) lineas.push(`• *WhatsApp:* ${data.telefono}`);
-    if (data.email)    lineas.push(`• *Email:* ${data.email}`);
-    lineas.push(`• *Experiencia:* ${data.experiencia}`);
-    lineas.push(`• *Clase:* ${data.clase}`);
-    lineas.push(`• *Horario:* ${data.horario}`);
-    if (data.mensaje) {
-      lineas.push('');
-      lineas.push('*Mensaje:*');
-      lineas.push(data.mensaje);
-    }
-    lineas.push('');
-    lineas.push('_Reserva enviada desde raiz-estudio.com_');
+  /* ---------- Horarios ---------- */
+  $('horarios-contenedor').innerHTML = D.horarios.map((h, i) => `
+    <div class="horario-fila ${i === idxHoy ? 'hoy' : ''}">
+      <span class="dia">${esc(h.dia)}${i === idxHoy ? ' · hoy' : ''}</span>
+      <span class="hora">${esc(h.hora)}</span>
+    </div>`).join('');
 
-    const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(lineas.join('\n'))}`;
+  /* ---------- Contacto ---------- */
+  $('contacto-contenedor').innerHTML = `
+    <div class="dato">
+      <div class="icono">📍</div>
+      <div><strong>Dirección</strong>
+        <a href="${esc(n.mapa)}" target="_blank" rel="noopener">${esc(n.direccion)}</a>
+      </div>
+    </div>
+    <div class="dato">
+      <div class="icono">📞</div>
+      <div><strong>Teléfono</strong>
+        <a href="tel:${esc(n.telefono.replace(/\s/g, ''))}">${esc(n.telefono)}</a>
+      </div>
+    </div>
+    <div class="dato">
+      <div class="icono">✉️</div>
+      <div><strong>Correo</strong>
+        <a href="mailto:${esc(n.email)}">${esc(n.email)}</a>
+      </div>
+    </div>
+    <div class="dato">
+      <div class="icono">💬</div>
+      <div><strong>WhatsApp</strong>
+        <a href="${waLink('¡Hola! Quiero hacer un pedido 🍽️')}" target="_blank" rel="noopener">Escríbenos</a>
+      </div>
+    </div>`;
 
-    setStatus('Abriendo WhatsApp… ✨', 'ok');
-    setTimeout(() => {
-      window.open(url, '_blank', 'noopener');
-      setStatus('Listo. Si no se abrió, revisá el bloqueo de ventanas.', 'ok');
-      form.reset();
-      setTimeout(() => setStatus('', ''), 6000);
-    }, 400);
-  });
+  $('redes-contenedor').innerHTML = D.redes.map(r => `
+    <a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.nombre)}</a>
+  `).join('');
+
+  /* ---------- Testimonios ---------- */
+  $('testimonios-contenedor').innerHTML = D.testimonios.map(t => `
+    <div class="testimonio">
+      <div class="estrellas">★★★★★</div>
+      <p>“${esc(t.texto)}”</p>
+      <div class="autor">${esc(t.autor)}<small>${esc(t.detalle)}</small></div>
+    </div>`).join('');
+
+  /* ---------- Footer contacto ---------- */
+  $('footer-contacto').innerHTML = `
+    <li><a href="${esc(n.mapa)}" target="_blank" rel="noopener">${esc(n.direccion)}</a></li>
+    <li><a href="tel:${esc(n.telefono.replace(/\s/g, ''))}">${esc(n.telefono)}</a></li>
+    <li><a href="mailto:${esc(n.email)}">${esc(n.email)}</a></li>`;
+
+  /* ---------- Botones de WhatsApp ---------- */
+  const msgPedido = `¡Hola ${n.nombre}! Quiero hacer un pedido 🍽️`;
+  $('btn-pedir').href = waLink(msgPedido);
+  $('btn-pedir').target = '_blank';
+  $('btn-wa-hero').href = waLink(msgPedido);
+  $('btn-wa-hero').target = '_blank';
+  $('wa-flotante').href = waLink(msgPedido);
+
+  /* ---------- Menú móvil ---------- */
+  const toggle = $('menu-toggle');
+  const lista = $('nav-lista');
+  toggle.addEventListener('click', () => lista.classList.toggle('abierto'));
+  lista.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => lista.classList.remove('abierto')));
+
+  /* ---------- JSON-LD para SEO local ---------- */
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": n.nombre,
+    "description": n.descripcion,
+    "telephone": n.telefono,
+    "email": n.email,
+    "address": { "@type": "PostalAddress", "streetAddress": n.direccion, "addressCountry": "MX" },
+    "servesCuisine": "Mexicana",
+    "priceRange": "$$",
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": n.rating, "reviewCount": n.reseñas }
+  };
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
 })();
 </script>
-
-</body></html>
+</body>
+</html>
