@@ -180,6 +180,16 @@
   .video-marco.vertical{aspect-ratio:9/16}
   .video-marco.horizontal{aspect-ratio:16/9}
   .video-marco iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  
+  /* Contenedor especial para el blockquote de TikTok */
+  .tiktok-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 500px; /* Asegura espacio para que el script de TikTok lo renderice */
+    background: #000;
+  }
+
   .video-pie{padding:.9rem 1.1rem;display:flex;align-items:center;gap:.6rem;font-size:.85rem}
   .video-pie .plataforma{
     font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
@@ -560,7 +570,7 @@
   const waLink = (msg) =>
     `https://wa.me/${D.negocio.whatsapp}?text=${encodeURIComponent(msg)}`;
 
-  /* Extrae el ID de un video de TikTok (…/video/1234567890) */
+  /* Extrae el ID de un video de TikTok */
   const tiktokId = (url) => (url.match(/\/video\/(\d+)/) || [])[1] || '';
 
   /* Extrae el ID de YouTube en cualquiera de sus formatos */
@@ -580,8 +590,8 @@
   $('anio').textContent = new Date().getFullYear();
 
   /* ---------- Horario de hoy ---------- */
-  const hoy = new Date().getDay(); // 0 = domingo
-  const orden = [6, 0, 1, 2, 3, 4, 5]; // lunes primero
+  const hoy = new Date().getDay();
+  const orden = [6, 0, 1, 2, 3, 4, 5];
   const idxHoy = orden.indexOf(hoy);
   const horarioHoy = D.horarios[idxHoy];
   if (horarioHoy) $('dato-horario').textContent = horarioHoy.hora;
@@ -607,20 +617,19 @@
     <figure><img src="${esc(g.img)}" alt="${esc(g.alt)}" loading="lazy"></figure>
   `).join('');
 
-  /* ---------- VIDEOS (2 TikTok + 1 YouTube) ---------- */
+  /* ---------- VIDEOS (Carga oficial de TikTok + YouTube) ---------- */
   $('videos-contenedor').innerHTML = D.videos.map(v => {
     if (v.plataforma === 'tiktok') {
       const id = tiktokId(v.url);
+      // Usamos el blockquote oficial que TikTok exige ahora
       return `
         <article class="video-card">
-          <div class="video-marco vertical">
-            <iframe
-              src="https://www.tiktok.com/embed/v2/${id}"
-              title="${esc(v.titulo)}"
-              allow="encrypted-media; fullscreen; picture-in-picture"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <div class="tiktok-wrapper">
+            <blockquote class="tiktok-embed" cite="${esc(v.url)}" data-video-id="${id}" style="max-width: 605px; min-width: 325px;">
+              <section>
+                <a target="_blank" href="${esc(v.url)}">Ver video en TikTok</a>
+              </section>
+            </blockquote>
           </div>
           <div class="video-pie">
             <span class="plataforma tiktok">TikTok</span>
@@ -646,6 +655,13 @@
         </div>
       </article>`;
   }).join('');
+
+  /* ---------- Cargar script de TikTok (Obligatorio) ---------- */
+  // Como insertamos el HTML dinámicamente, debemos cargar el script después.
+  const tiktokScript = document.createElement('script');
+  tiktokScript.src = "https://www.tiktok.com/embed.js";
+  tiktokScript.async = true;
+  document.body.appendChild(tiktokScript);
 
   /* ---------- Horarios ---------- */
   $('horarios-contenedor').innerHTML = D.horarios.map((h, i) => `
