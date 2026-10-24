@@ -140,7 +140,7 @@
     align-items: center;
     justify-content: flex-end;
     padding-right: 10px;
-    pointer-events: none; /* Para que no bloquee el video */
+    pointer-events: none;
   }
   .island-camera {
     width: 10px; height: 10px;
@@ -149,26 +149,65 @@
     box-shadow: inset 0 0 2px rgba(255,255,255,0.3);
   }
 
-  /* Contenedor de TikTok dentro del celular */
-  .tiktok-container {
+  /* Pantalla de carga (Miniatura) */
+  .video-facade {
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  /* FORZAR AL IFRAME DE TIKTOK A LLENAR LA PANTALLA */
-  .tiktok-container iframe {
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    border: none;
     border-radius: 45px;
+    overflow: hidden;
+  }
+  
+  /* Diseño para las miniaturas de TikTok (Fondo oscuro degradado) */
+  .facade-tiktok {
+    background: linear-gradient(45deg, #1a1a1a, #000);
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .facade-tiktok svg {
+    width: 60px; height: 60px; fill: #fff;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+    transition: transform 0.3s;
+  }
+  .facade-tiktok span {
+    font-weight: 600; font-size: 0.9rem; color: #fff;
+    background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 20px;
+  }
+  .video-facade:hover svg { transform: scale(1.1); }
+
+  /* Botón de Play para YouTube */
+  .facade-youtube {
+    background-image: url('https://img.youtube.com/vi/alIRDysk3jk/maxresdefault.jpg');
+  }
+  .play-btn {
+    width: 68px; height: 48px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 12px;
+    display: flex; justify-content: center; align-items: center;
+    transition: background 0.2s;
+  }
+  .play-btn::after {
+    content: '';
+    display: block;
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent #fff;
+  }
+  .video-facade:hover .play-btn { background: var(--fuego); }
+
+  /* Iframe dinámico (cuando se da clic) */
+  .video-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 
   /* --- BOTONES LATERALES DEL IPHONE --- */
@@ -178,15 +217,10 @@
     background: #333;
     border-radius: 2px;
   }
-  .iphone::before { /* Botón de encendido */
-    right: -4px; top: 150px; width: 4px; height: 80px;
-  }
-  .iphone::after { /* Botones de volumen */
-    left: -4px; top: 130px; width: 4px; height: 50px;
-    box-shadow: 0 60px 0 #333;
-  }
+  .iphone::before { right: -4px; top: 150px; width: 4px; height: 80px; }
+  .iphone::after { left: -4px; top: 130px; width: 4px; height: 50px; box-shadow: 0 60px 0 #333; }
 
-  /* ---------- SECCIÓN YOUTUBE (CINE) ---------- */
+  /* ---------- SECCIÓN YOUTUBE ---------- */
   .youtube-section{
     padding:6rem 5%;background:var(--carbon-claro);
     display:flex;flex-direction:column;align-items:center;
@@ -198,9 +232,6 @@
     border:1px solid var(--borde);
     position:relative;
     background: #000;
-  }
-  .video-wrapper iframe{
-    position:absolute;inset:0;width:100%;height:100%;border:none;
   }
 
   /* ---------- FOOTER ---------- */
@@ -215,7 +246,6 @@
     .phones-grid { flex-direction: column; gap: 2rem; }
     .iphone { width: 300px; height: 620px; border-radius: 45px; padding: 10px;}
     .screen { border-radius: 35px; }
-    .tiktok-container iframe { border-radius: 35px; }
     .hero h1 { font-size: 2.5rem; }
   }
 </style>
@@ -252,8 +282,10 @@
     <div class="iphone">
       <div class="screen">
         <div class="dynamic-island"><div class="island-camera"></div></div>
-        <div class="tiktok-container" id="tiktok-1">
-          <!-- Se inyecta vía JS -->
+        <!-- Miniatura que se convierte en iframe -->
+        <div class="video-facade facade-tiktok" data-type="tiktok" data-id="7670110751599643918" data-url="https://www.tiktok.com/@ktaial/video/7670110751599643918">
+          <svg viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          <span>Ver en TikTok</span>
         </div>
       </div>
     </div>
@@ -262,8 +294,10 @@
     <div class="iphone">
       <div class="screen">
         <div class="dynamic-island"><div class="island-camera"></div></div>
-        <div class="tiktok-container" id="tiktok-2">
-          <!-- Se inyecta vía JS -->
+        <!-- Miniatura que se convierte en iframe -->
+        <div class="video-facade facade-tiktok" data-type="tiktok" data-id="7670488447102078229" data-url="https://www.tiktok.com/@albertinasacaca1/video/7670488447102078229">
+          <svg viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          <span>Ver en TikTok</span>
         </div>
       </div>
     </div>
@@ -276,14 +310,10 @@
   <h2 class="section-title">Detrás de la parrilla.</h2>
   <p class="section-sub">Conoce nuestra historia en alta definición.</p>
   <div class="video-wrapper">
-    <!-- Se agregó referrerpolicy para evitar el error 153 -->
-    <iframe 
-      src="https://www.youtube.com/embed/alIRDysk3jk?rel=0&modestbranding=1" 
-      title="Video de YouTube El Fuego"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
+    <!-- Miniatura que se convierte en iframe -->
+    <div class="video-facade facade-youtube" data-type="youtube" data-id="alIRDysk3jk">
+      <div class="play-btn"></div>
+    </div>
   </div>
 </section>
 
@@ -292,38 +322,53 @@
   <p>© 2024 Taquería El Fuego. Diseñado para impresionar.</p>
 </footer>
 
-<!-- LÓGICA DE TIKTOK -->
+<!-- LÓGICA DE CARGA DIFERIDA (LITE EMBED) -->
 <script>
-  const tiktokUrls = [
-    "https://www.tiktok.com/@ktaial/video/7670110751599643918",
-    "https://www.tiktok.com/@albertinasacaca1/video/7670488447102078229"
-  ];
+  document.addEventListener("DOMContentLoaded", () => {
+    const facades = document.querySelectorAll('.video-facade');
 
-  function extractTikTokId(url) {
-    const match = url.match(/\/video\/(\d+)/);
-    return match ? match[1] : '';
-  }
+    facades.forEach(facade => {
+      facade.addEventListener('click', function() {
+        const type = this.getAttribute('data-type');
+        const id = this.getAttribute('data-id');
+        const url = this.getAttribute('data-url');
 
-  tiktokUrls.forEach((url, index) => {
-    const id = extractTikTokId(url);
-    const container = document.getElementById(`tiktok-${index + 1}`);
-    if(container) {
-      // Insertamos el blockquote oficial
-      container.innerHTML = `
-        <blockquote class="tiktok-embed" cite="${url}" data-video-id="${id}" style="margin:0; width:100%; height:100%;">
-          <section>
-            <a target="_blank" href="${url}">Ver video en TikTok</a>
-          </section>
-        </blockquote>
-      `;
-    }
+        // 1. Si es YouTube
+        if (type === 'youtube') {
+          this.innerHTML = `<iframe class="video-iframe" 
+            src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" 
+            title="YouTube video player" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>`;
+        } 
+        
+        // 2. Si es TikTok
+        else if (type === 'tiktok') {
+          // Inyectamos el blockquote oficial de TikTok
+          this.innerHTML = `
+            <blockquote class="tiktok-embed" cite="${url}" data-video-id="${id}" style="margin:0; width:100%; height:100%;">
+              <section><a target="_blank" href="${url}">Ver video</a></section>
+            </blockquote>
+          `;
+          
+          // Cargamos el script de TikTok EN ESE MOMENTO (solo la primera vez)
+          if (!window.tiktokScriptLoaded) {
+            const script = document.createElement('script');
+            script.src = "https://www.tiktok.com/embed.js";
+            script.async = true;
+            document.body.appendChild(script);
+            window.tiktokScriptLoaded = true;
+          } else {
+            // Si el script ya se cargó antes, forzamos a TikTok a escanear el nuevo bloque
+            if (window.tiktok && window.tiktok.embed) {
+               // En versiones recientes no hace falta hacer nada más, el script observa el DOM
+            }
+          }
+        }
+      });
+    });
   });
-
-  // Cargar el script de TikTok
-  const script = document.createElement('script');
-  script.src = "https://www.tiktok.com/embed.js";
-  script.async = true;
-  document.body.appendChild(script);
 </script>
 
 </body>
